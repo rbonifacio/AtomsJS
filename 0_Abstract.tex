@@ -1,0 +1,48 @@
+\begin{abstract}
+{\bf Context.} Engineering maintainable software is essential and must take into account \emph{how understandable the code is} from a human perspective, and spending much cognitive effort might discourage a developer when trying to familiarize herself with a legacy codebase. 
+\noindent{\bf Problem.} 
+%Besides lack of experience and other factors, 
+Previous research works have discussed the impact of small code patterns that contribute to misunderstanding the source code written in statically typed languages (e.g., \clang, \cpplang, and Swift). However, little is known about the influence of these small code patterns (hereafter atoms of confusion) on understanding dynamically typed languages. 
+\noindent{\bf Research Method and Goal.} In this work, we fill this research gap by presenting the results of a mixed-methods research:
+a survey, a set of interviews with practitioners, and a mining software repositories (MSR) effort. Our goal is to investigate the impact of atoms of confusion on understanding JavaScript code---a dynamically typed language whose popularity is growing in the most different application domains (from web programming to backend and IOT development).
+\noindent{\bf Results.} From our survey and interviews, we confirm that atoms of confusion lead to a code that is hard to understand: 
+%removing the atoms of confusion lead to an improvement above 15\% in 6 out of 9 atoms we consider in our study when developers try to predict the outcomes of code examples. 
+developers correctly predict the outcome of at least 15\% more when an atom of confusion is not present for 6 out of 9 atoms.
+Also, the results of our MSR effort reveal that atoms of confusion frequently arise in open-source JavaScript systems: the \texttt{comma operator} is present in 11\% of the projects in our dataset; while five other atoms appear in more than 60\% of the projects---including the atoms \texttt{assignment as value} and \texttt{omitted curly braces}, which appear \num{8253} and \num{53357} times, respectively. Our investigation also reveals additional JavaScript constructs and idioms that might hinder developers from understanding JavaScript code. For instance, even experienced JavaScript developers agree that it is hard to understand code that uses callback functions, even though we found widespread use of \texttt{callbacks} in our projects dataset.  
+\noindent{\bf Implications.} Altogether, our findings could help developers write cleaner JavaScript code and contribute to the design of new program transformation tools that aim to simplify JavaScript code. 
+\end{abstract}
+
+\begin{CCSXML}
+<ccs2012>
+ <concept>
+  <concept_id>10010520.10010553.10010562</concept_id>
+  <concept_desc>Computer systems organization~Embedded systems</concept_desc>
+  <concept_significance>500</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10010520.10010575.10010755</concept_id>
+  <concept_desc>Computer systems organization~Redundancy</concept_desc>
+  <concept_significance>300</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10010520.10010553.10010554</concept_id>
+  <concept_desc>Computer systems organization~Robotics</concept_desc>
+  <concept_significance>100</concept_significance>
+ </concept>
+ <concept>
+  <concept_id>10003033.10003083.10003095</concept_id>
+  <concept_desc>Networks~Network reliability</concept_desc>
+  <concept_significance>100</concept_significance>
+ </concept>
+</ccs2012>
+\end{CCSXML}
+
+\ccsdesc[500]{Computer systems organization~Embedded systems}
+\ccsdesc[300]{Computer systems organization~Redundancy}
+\ccsdesc{Computer systems organization~Robotics}
+\ccsdesc[100]{Networks~Network reliability}
+
+%%
+%% Keywords. The author(s) should pick words that accurately describe
+%% the work being presented. Separate the keywords with commas.
+\keywords{datasets, neural networks, gaze detection, text tagging}

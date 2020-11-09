@@ -1,0 +1,10 @@
+\newenvironment{atom}[1]
+  {\mdfsetup{
+    frametitle={\colorbox{white}{\space#1\space}},
+    innertopmargin=10pt,
+    frametitleaboveskip=-\ht\strutbox,
+    frametitlealignment=\center
+    }
+  \begin{mdframed}%
+  }
+  {\end{mdframed}}
