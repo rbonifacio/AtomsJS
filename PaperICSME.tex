@@ -1,0 +1,202 @@
+\documentclass[10pt,conference]{IEEEtran}
+\IEEEoverridecommandlockouts
+% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{supertabular}
+\usepackage{textcomp}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{scalefnt}
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{xspace}
+\usepackage{todonotes}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{tabularx} 
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{xspace}
+\usepackage{booktabs}
+\usepackage{siunitx}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{graphics}
+\usepackage{textcomp}
+\usepackage{siunitx}
+\usepackage{xcolor}
+\usepackage{csquotes}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{scalefnt}
+\usepackage{multirow}
+\usepackage{pifont}
+\usepackage{appendix}
+\usepackage[framemethod=TikZ]{mdframed}
+\definecolor{oldlace}{rgb}{0.99, 0.96, 0.9}
+\newmdenv [ %
+ skipabove=\topsep,
+ skipbelow=\topsep,
+ leftmargin       = 2,
+ rightmargin      = 2,
+ splittopskip     = \topskip]{mh}
+
+\newmdenv [ %
+ skipabove=\topsep,
+ skipbelow=\topsep,
+ roundcorner = 5pt,
+ leftmargin = 2,
+ rightmargin = 2,
+ % backgroundcolor = oldlace,
+ innertopmargin = 3,
+ splittopskip = 3]{mq}
+
+\definecolor{javared}{rgb}{0.6,0,0} % for strings
+\definecolor{javagreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{javapurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{javadocblue}{rgb}{0.25,0.35,0.75} % javadoc
+\lstset{
+  basicstyle=\footnotesize\tt,        % the size of the fonts that are used for the code
+  breakatwhitespace=false,         % sets if automatic breaks should only happen at whitespace
+  breaklines=true,                 % sets automatic line breaking
+  captionpos=b,                    % sets the caption-position to bottom
+  extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+  frame=single,                    % adds a frame around the code
+  language=Java,                 % the language of the code
+  keywordstyle=\bf,
+  showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+  showstringspaces=false,          % underline spaces within strings only
+  showtabs=false,                  % show tabs within strings adding particular underscores
+  tabsize=2,                       % sets default tabsize to 2 spaces
+  keywordstyle=\color{javapurple}\bfseries,
+  stringstyle=\color{javared},
+  commentstyle=\color{javagreen},
+  morecomment=[s][\color{javadocblue}]{/**}{*/},
+  numbers=left,
+  numberstyle=\tiny\color{black},
+  stepnumber=1,
+}    
+\AtBeginDocument{%
+  \providecommand\BibTeX{{%
+    \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
+
+\newcommand{\clang}{C\nolinebreak\xspace}
+
+\newcommand{\cpplang}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\small\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\small\bf +}\xspace}
+
+% TODO: Completar
+\newcommand{\minedprojects}{X\xspace}
+
+\newcommand{\rb}[1]{\todo[inline]{{\bf (rb note) }#1}}
+\newcommand{\diego}[1]{\todo[inline,color=green]{{\bf (diego note) }#1}}
+\newcommand{\adriano}[1]{\todo[inline,color=yellow]{{\bf (adriano note) }#1}}
+\newcommand{\castor}[1]{\todo[inline,color=pink]{{\bf (castor note) }#1}}
+
+\lstset{language=C}
+\lstset{
+ morekeywords={printf}
+}
+
+\newcommand{\lhs}{left-hand side\xspace}
+\newcommand{\rhs}{right-hand side\xspace}
+
+\lstdefinelanguage{JavaScript}[]{Java}{
+  morekeywords={let, console.log},
+  moredelim=[is][\textcolor{darkgray}]{\%\%}{\%\%},
+  moredelim=[il][\textcolor{darkgray}]{§§}
+}
+
+\begin{document}
+\input{atom-mdframe-config}
+
+\title{On The Impact of Atoms of Confusion in JavaScript
+Code}
+
+
+\author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+\and
+\IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
+\IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
+\textit{name of organization (of Aff.)}\\
+City, Country \\
+email address or ORCID}
+}
+
+\maketitle
+
+% Número das páginas. Remover para camera-ready
+% útil para nós e Program Chair que pode ver o total de páginas facilmente
+\thispagestyle{plain}
+\pagestyle{plain}
+
+\begin{abstract}
+{\bf Context.} Evolving legacy code is a challenging task. It is even more difficult when the code has been poorly written, imposing significant cognitive load on developers when trying to familiarize themselves with a legacy code base. 
+\noindent{\bf Problem.} 
+%Besides lack of experience and other factors, 
+Previous research works have discussed the impact of small code patterns that contribute to misunderstanding the source code written in statically typed languages (e.g., \clang, \cpplang, and Swift). However, little is known about the influence of these small code patterns (hereafter atoms of confusion) on understanding dynamically typed languages. 
+\noindent{\bf Research Method and Goal.} In this work, we fill this research gap by presenting the results of a mixed-methods research:
+a survey, a set of interviews with practitioners, and a mining software repositories (MSR) effort. Our goal is to investigate the impact of atoms of confusion on understanding JavaScript code---a dynamically typed language whose popularity is growing in the most different application domains (from web programming to backend and IOT development).
+\noindent{\bf Results.} From our survey and interviews, we confirm that atoms of confusion lead to code that is hard to understand: 
+%removing the atoms of confusion lead to an improvement above 15\% in 6 out of 9 atoms we consider in our study when developers try to predict the outcomes of code examples. 
+developers correctly predict the outcome of at least 15\% more cases when an atom of confusion is not present in 6 out of 9 atoms.
+Also, the results of our MSR effort reveal that atoms of confusion frequently arise in open-source JavaScript systems: the \texttt{comma operator} is present in 11\% of the projects in our dataset; while five other atoms appear in more than 60\% of the projects---including the atoms \texttt{assignment as value} and \texttt{omitted curly braces}, which appear \num{8253} and \num{53357} times, respectively. Our investigation also reveals additional JavaScript constructs and idioms that might hinder developers from understanding JavaScript code. For instance, even experienced JavaScript developers agree that it is hard to understand code that uses callback functions, even though we found widespread use of \texttt{callbacks} in our projects dataset.  
+\noindent{\bf Implications.} Altogether, our findings could help developers write cleaner JavaScript code and contribute to the design of new program transformation tools that aim to simplify JavaScript code. 
+\end{abstract}
+
+\begin{IEEEkeywords}
+datasets, neural networks, gaze detection, text tagging
+\end{IEEEkeywords}
+
+\input{1_Introduction}
+\input{2_Background}
+\input{3_Method}
+\input{4_Result}
+\input{5_Threats}
+\input{6_Conclusion}
+\input{7_Atoms}
+
+\section*{Acknowledgment}
+
+\section*{References}
+\bibliographystyle{IEEEtran}
+\bibliography{reference}
+
+\vspace{12pt}
+\end{document}

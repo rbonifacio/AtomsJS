@@ -1,0 +1,243 @@
+% \appendix{Atoms of Confusion Considered in our Research}\label{sec:appendix-atoms} 
+
+% \begin{atom}{Arithmetic as Logic}
+% \emph{Use of the result of an arithmetic expression as control logic.}
+
+% \begin{lstlisting}[language=JavaScript]
+% if(array_1.length - array_2.length){
+%   console.log(true);
+% }
+% \end{lstlisting}
+% \end{atom}
+
+% \todo[inline]{detalhar os demais atomos seguindo esse padr\~{a}o}
+
+% \begin{longtable}{| p{.50\linewidth} | p{.50\linewidth} |} 
+% % \begin{center}
+% \caption*{Code Snippets presented on the survey}
+% % \begin{tabular}{ | p{8.2cm} | p{8.2cm} | } \hline
+
+% \hline
+% \multicolumn{2}{| c |}{Arithmetic as Logic}  \\ \hline
+% Obfuscated ID: 11  Obfuscated Answer: false  &  Transformed ID: 1  Transformed Answer: false \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% let array_1 = [1,2,3];
+% let array_2 = [2,3,2];
+% if(array_1.length - array_2.length){
+%   console.log(true);
+% }
+% else{
+%   console.log(false);
+% } \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% let array_1 = [1,2,3];
+% let array_2 = [2,3,2];
+% if(array_1.length != array_2.length){
+%   console.log(true);
+% }
+% else{
+%   console.log(false);
+% } \end{lstlisting} \\ \hline
+
+
+% \multicolumn{2}{| c |}{Assignment as value}  \\ \hline
+% Obfuscated ID: 12  Obfuscated Answer: 0  &  Transformed ID: 2  Transformed Answer: 0 \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% function resetSchedulerState () {
+%   let activatedChildren = {length: 10};
+%   let index = length = activatedChildren.length = 0;
+%   console.log(index);
+% }
+% resetSchedulerState(); \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% function resetSchedulerState () {
+%   let activatedChildren = {length: 10};
+%   activatedChildren.length = 0;
+%   let length = activatedChildren.length;
+%   let index = length;
+%   console.log(index);
+% }
+% resetSchedulerState(); \end{lstlisting} \\ \hline
+
+
+% \pagebreak 
+% \hline
+% \multicolumn{2}{| c |}{Automatic Semicolon Insertion}  \\ \hline
+% Obfuscated ID: 13  Obfuscated Answer: false  &  Transformed ID: 3  Transformed Answer: true \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% function example(){
+%   return
+%       10
+% }
+% if(example() == 10){
+%   console.log(true);
+% }
+% else{
+%   console.log(false);
+% } \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% function example(){
+%   return 10;
+% }
+% if(example() == 10){
+%   console.log(true);
+% }
+% else{
+%   console.log(false);
+% } \end{lstlisting} \\ \hline
+
+
+% \multicolumn{2}{| c |}{Comma Operator}  \\ \hline
+% Obfuscated ID: 14 Obfuscated Answer: 13  &Transformed ID: 4 Transformed Answer: 3 \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 5, V2 = 10;
+% V1 = (V2 = 1, 2);
+% console.log(V1+V2);
+% \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 5, V2 = 10;
+% V2 = 1;
+% V1 = 2;
+% console.log(V1+V2);
+% \end{lstlisting} \\ \hline
+
+% \pagebreak
+% \hline
+% \multicolumn{2}{| c |}{Ternary Operator}  \\ \hline
+% Obfuscated ID: 15 Obfuscated Answer: 10  &Transformed ID: 5 Transformed Answer: 10 \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% let config = {size: 3, isActive: false};
+% const _config = config.isActive === true ? config : {size: 10};
+% console.log(_config.size); \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% let config = {size: 3, isActive: false}
+% let _config;
+% if(config.isActive === true){
+%   _config = config;
+% }
+% else{
+%   _config = {size: 10};
+% }
+% console.log(_config.size); \end{lstlisting} \\ \hline
+
+
+
+
+% \multicolumn{2}{| c |}{Implicit Predicate}  \\ \hline
+% Obfuscated ID: 16 Obfuscated Answer: false&Transformed ID: 6 Transformed Answer: false \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 10, V2 = 3;
+% if (!(V1 % V2)){
+%   console.log(true);
+% }
+% else{
+%   console.log(false);
+% } \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 1, V2 = 2;
+% if ((V2 - V1) == 0){
+%   console.log(true);
+% }
+% else{
+%   console.log(false);
+% } \end{lstlisting} \\ \hline
+
+
+
+
+
+% \multicolumn{2}{| c |}{Logic Control Flow}  \\ \hline
+% Obfuscated ID: 17 Obfuscated Answer: 7&Transformed ID: 7 Transformed Answer: 21 \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 3;
+% let V2 = 5;
+% let V3 = 0;
+% while (V1 != V2 && ++V1) {
+%   V3++;
+% }
+% console.log(V1 + V3); \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 1;
+% let V2 = 11;
+% let V3 = 0;
+% while (V1 != V2) {
+%   V1++;
+%   V3++;
+% }
+% console.log(V1+V3); \end{lstlisting} \\ \hline
+
+
+
+% \multicolumn{2}{| c |}{Omitted Curly Braces \& Indentation}  \\ \hline
+% Obfuscated ID: 18 Obfuscated Answer: 4  &Transformed ID: 8 Transformed Answer: 4 \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 1, V2 = 2
+% if (V1 > V2)
+% V2 = 1
+% V1 = 2
+% console.log(V2+V1) \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 1, V2 = 2;
+% if (V1 > V2) {
+%   V2 = 1;
+% }
+% V1 = 2;
+% console.log(V2+V1); \end{lstlisting} \\ \hline
+
+
+
+% \multicolumn{2}{| c |}{Post Increment}  \\ \hline
+% Obfuscated ID: 19 Obfuscated Answer: true&Transformed ID: 9 Transformed Answer: true\\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 0;
+% if (V1++ == 0) {
+%   console.log(true);
+% }
+% else {
+%   console.log(false);
+% } \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% let V1 = 0;
+% if (V1 == 0) {
+%   console.log(true);
+% }
+% else {
+%   console.log(false);
+% }
+% V1 = V1 + 1; \end{lstlisting} \\ \hline
+
+
+
+% \multicolumn{2}{| c |}{Pre Increment}  \\ \hline
+% Obfuscated ID: 20  Obfuscated Answer: 2  &  Transformed ID: 10  Transformed Answer: 1 \\ \hline
+% \begin{lstlisting}[language=JavaScript]
+% var index = 1;
+% while (++index < 10) {
+%   console.log(index);
+%   break;
+% } \end{lstlisting}
+% & 
+% \begin{lstlisting}[language=JavaScript]
+% var index = 0;
+% index = index + 1;
+% while (index < 10) {
+%   console.log(index);
+%   index = index + 1;
+%   break;
+% } \end{lstlisting} \\ \hline
+
+
+
+% % \end{tabular}
+% % \end{center}
+% % \end{table}
+% \end{longtable}
