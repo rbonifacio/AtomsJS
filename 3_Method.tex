@@ -1,20 +1,20 @@
 \section{Study Settings}
 \label{method}
 
-The main goal of this research is to investigate the impact of atoms of confusion in JavaScript code comprehension. As such, in this paper we answer the following general research questions: 
+The main goal of this research is to investigate the impact of atoms of confusion in JavaScript code comprehension. As such, in this paper we answer the following research questions: 
 
 \begin{enumerate}[(RQ1)]
     \item Do JavaScript developers identify atoms of confusion as contributing to program misunderstanding? 
-    \item What is the impact of atoms of confusion on developers' comprehension of JavaScript code? 
+    \item What is the impact of atoms of confusion on the comprehension of JavaScript code? 
     \item What are the particular JavaScript idioms and language constructs that might cause source code misunderstanding?
     \item What is the frequency of occurrence of atoms of confusion in practice (i.e., in open-source JavaScript projects)?
 \end{enumerate}
 
  
-Answering these research questions has several implications. For instance, we can either generalize or refute the perceptions about atoms of confusion already discussed in the literature (goal of research questions (RQ1) and (RQ2)). In addition, answers to the third and fourth questions allow us to enrich existing catalogs about atoms of confusion and discuss how often they occur in practice. Our motivation to detect the presence and impact of atoms of confusion is also motivated by the possibility of laying the foundations for the implementation of libraries that can automatically transform code into its simpler versions---though we postpone these results to a future research work. This might lead to a new catalog of refactoring for removing atoms of confusion.  To answer these research questions we conduct a mixed-methods study, including a survey, a set of interviews, and an effort of mining JavaScript software repositories.  
+Answering these research questions has several implications. For instance, we can either generalize or refute the perceptions about atoms of confusion already discussed in the literature (goal of research questions (RQ1) and (RQ2)). In addition, answers to the third and fourth questions allow us to enrich existing catalogs about atoms of confusion and discuss how often they occur in practice. Our motivation to detect the presence and impact of atoms of confusion is also motivated by the possibility of laying the foundations for the implementation of libraries that can automatically transform code into its cleaner versions---though we postpone these results to a future research work. This might lead to a new catalog of refactoring for removing atoms of confusion.  To answer these research questions we conduct a mixed-methods study, including a survey, a set of interviews, and an effort of mining JavaScript software repositories.  
 
 
- \subsection{Settings for the first study: a survey}\label{sec:survey-settings}\castor{Eu mudaria os títulos desta sub-seção e das duas próximas para "First study: Survey", "Second study: Mining open source repositories", etc. Vale a pena manter "First study", etc.?}
+ \subsection{First Study: Survey}\label{sec:survey-settings}\castor{Eu mudaria os títulos desta sub-seção e das duas próximas para "First study: Survey", "Second study: Mining open source repositories", etc. Vale a pena manter "First study", etc.?}
 % \subsubsection{The Atoms Considered In This Work}
 
 In the first study, our goal was to collect evidence to answer two specific questions: 
@@ -29,7 +29,7 @@ To address these questions we conducted a survey to assess the impact of atoms o
 
 The design of our first study aims to block two variables (developer experience and the code snippets) and considers two treatments: the presence or absence of 
 atoms of confusion within the code snippets. 
-To achieve such a design goal, controlling the effect of experience and individual code snippets, we resorted to the \textit{Latin Square Design} \cite{Hunter-Experimenters}. Using this design we create a $2 x 2$ matrix in which each row represents a subject and each column indicates the set of code snippets. The design of each square (a replica) is such that no treatment is repeated in the same row or column. For example, if a given subject (P1) is asked to predict the output of code snippets that contain atom candidates \texttt{\{1,2,3,4,5\}}, then, when answering questions about non-confusing code snippets, they will only be presented with non-confusing versions of atom candidates \texttt{\{6,7,8,9,10\}}. Furthermore, a given subject (P2), which constitutes the second row of our example square, will be asked questions about the non-confusing versions of \texttt{\{1,2,3,4,5\}}, and will answer questions about confusing snippets of \texttt{\{6,7,8,9,10\}}. By doing that, we guarantee that all of our 20 snippets are contained within each square, and that each configuration occurs only once within a square. Figure \ref{fig:latinsquare} offers a visual representation of the concept.
+To achieve such a design goal, controlling the effect of experience and individual code snippets, we resorted to the \textit{Latin Square Design} \cite{Hunter-Experimenters}. Using this design we create a 2 x 2 matrix in which each row represents a subject and each column indicates the set of code snippets. The design of each square (a replica) is such that no treatment is repeated in the same row or column. For example, if a given subject (P1) is asked to predict the output of code snippets that contain atom candidates \texttt{\{1,2,3,4,5\}}, then, when answering questions about non-confusing code snippets, they will only be presented with non-confusing versions of atom candidates \texttt{\{6,7,8,9,10\}}. Furthermore, a given subject (P2), which constitutes the second row of our example square, will be asked questions about the non-confusing versions of \texttt{\{1,2,3,4,5\}}, and will answer questions about confusing snippets of \texttt{\{6,7,8,9,10\}}. By doing that, we guarantee that all of our 20 snippets are contained within each square, and that each configuration occurs only once within a square. Figure \ref{fig:latinsquare} offers a visual representation of the concept.
 
   \begin{figure}[htb!]
       \noindent
@@ -63,7 +63,8 @@ We decided not to provide feedback about the time students took to answer each q
 
 % As we mentioned before, we first wrote the code listings in a text editor, and took pictures of it. In the case of an atom of confusion that was exclusive to JavaScript, which we called \textit{Automatic Semicolon Insertion} (see Appendix~\ref{sec:appendix-atoms}), it was necessary to remove the syntax highlighter. Even though semicolons at the end of statements are optional to programmers in JavaScript, the interpreter automatically inserts them into the code. Our text editor was incorrectly highlighting a line break after a return statement, even thought it was valid JavaScript syntax. We had thus to turn the highlighter off to take the picture of this atom. 
 
-\subsubsection{Survey audience} 
+\subsubsection{Survey audience}
+
 \diego{Esses detalhes são possíveis candidatos para remoção, se precisarmos de espaço}
 {\color{blue}We invited developers to answer our survey by sending invitations to communities of JavaScript programmers on the Internet. Our initial plan was to try to engage contributors for two major JavaScript projects, namely Node.js and NPM. None of the projects, though, offered a direct way to interact with the community, such as an online discussion forums or mailing list. We would be required to first make contact with the projects' leaders, and only then would we have a chance to approach potential respondents. Due to time constraints, we decided to look for respondents elsewhere.}
 We then posted the survey on Reddit.\footnote{Reddit is a North American online discussion platform. Its discussion threads, often called subreddits, are sorted by subject. For our research, we posted information and links to the survey in two JavaScript subreddits.}. We explained our research purposes, and asked developers of any level of expertise to take the survey. To incentivize serious engagement, we proposed to raffle \$50 gift cards on Amazon products at the end of the survey. Within twelve hours we collected more than 150 answers, populating more than 70 replicas of the Latin Squares. We were able to collect significant data on time taken and discrepancies in answer correctness between confusing and non-confusing versions of the snippets. 
@@ -98,7 +99,7 @@ Inconsistencies may arise when each square is being built. The main source of in
     
 %     These two facts led us to conclude we needed to conduct a survey in which partakers engaged voluntarily, whilst also having an incentive to think hard enough about the problems they faced. To address these points, we prepared our final setting.
     
-\subsection{Settings for the second study: Mining open source repositories}
+\subsection{Second Study: Mining Software Repositories}
 
 To understand how often atoms of confusion appear in real settings, and thus answer our fourth research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mined a set of GitHub open source repositories. To this end, we first collected the most popular GitHub repositories that are primarily written is JavaScript. We measured popularity using the project's stargazers, and selected only projects with stargazers\_count > 100. This metric, available on  GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate project's popularity~\cite{gyimesi2019bugsjs}.
 
@@ -122,7 +123,7 @@ We also automate the process of running the queries and exporting the results to
  \label{tab:projects-statistics} 
  \end{table*}
  
-\subsection{Settings for the third study: interview with practitioners}
+\subsection{Third Study: Interviews with Practitioners}
 
 To complement our initial survey, we performed semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding code snippets containing atoms of confusion. We also asked each participant if they knew of any other JavaScript-specific construct that they regarded as confusing. In this section we details the protocol we followed to conduct the interviews, and we also describe how their results were analysed.
 
