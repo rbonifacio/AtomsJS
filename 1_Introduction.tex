@@ -31,12 +31,17 @@ features combined make JavaScript source code fertile ground for errors~\cite{Bu
 Our research aims to help practitioners identify potentially confusing snippets of code, so that
 developers could replace them with clearer code.
 To achieve that, we investigate {\color{red}XYZ} JavaScript idioms that
-might compromize program understanding. These idioms correspond to a set of candidates for \emph{atoms of confusion} in
+might compromise program understanding. These idioms correspond to a set of candidates for \emph{atoms of confusion} in
 JavaScript---that is, small
 pieces of code that hinder developers' understanding of the source code of a program
 for which there are functionally equivalent alternatives that are easier
-to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. \castor{I think it would be really nice to have an example here. Maybe even a figure with a left-hand and a right-hand side. What do you say? If yes, I
-'d go for post increment or assignment as value. If not a figure, the text could be as follow: An example of atom of confusion identified by previous work~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} is the use \texttt{if} statements without the accompanying curly braces. The alternative, in this case, is simply to always use the curly braces.}
+to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For instance, consider
+the pair of code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}
+for presentation purpose only). The code in the left of the figure contains two atoms of confusion discussed in a previous work~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic as Control Flow} and \emph{Post-increment}. On the right we present a cleaned version of the code, that is, without atoms of confusion. According to
+Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} removing
+the atom \emph{Logic as Control Flow} and \emph{Post-increment} improves the accuracy of
+program understanding tasks in  41\% and 34\%, respectively.
+
 Among the atoms in this work, X are shared between JavaScript and \clang/\cpplang (e.g., pre/post-increment), while Y others are specific to JavaScript, e.g., the atom Assignment as Value.
 Recent work~\cite{DBLP:journals/ese/MedeirosLAAKRG19,DBLP:conf/sigsoft/GopsteinIYDZYC17} has
 already explored the impact of atoms of confusion on program understanding,
@@ -45,6 +50,31 @@ However, they were constrained to statically typed languages (e.g., \clang and \
 To the best of our knowledge, we are the first to explore atoms of confusion
 in the context of a dynamically typed language (JavaScript).\castor{Review the number of atoms, X, and Y.}
 
+\begin{figure*}
+\noindent\begin{minipage}{.45\textwidth}  
+\begin{lstlisting}[language=JavaScript]
+res = properties.reduce((s, b) => {
+  b && s++
+  return s
+}
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\begin{lstlisting}[language=JavaScript]
+res = properties.reduce((s, b) => {
+  if(b) {
+    s = s + 1
+  }
+  return s
+}
+\end{lstlisting}
+\end{minipage}
+\label{fig:lst01}
+\captionof{lstlisting}{Code snippet from \textsc{NervJS/taro} project. Line 2 in the left hand side of the figure contains two
+  atoms of confusion discussed in ~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic
+  as Control Flow} and \emph{Post-increment}. In the right hand side, we present the alternative code without atoms of confusion. We could simplify the code on the left even more, by replacing the \texttt{reduce} recursive pattern by a functional composition between the \texttt{filter} and
+\texttt{length} patterns (e.g., \texttt{res = properties.filter(p => p).length}).}
+\end{figure*}
 
 To understand whether an atom of confusion introduces misunderstandings, we surveyed 140 developers from the Reddit community. Their task was to predict the output of short snippets of code, with half of them containing atoms of confusion. We found an improvement of at least 15\% in the correct answers when removing the confusing code for seven atoms (out of 9 atoms). The presence of the Comma Operator atom, for instance, can increase the average time to predict the output by 65\%, while the behavior of snippets containing the Pre-Increment atom were predicted 44\% faster.  An atom's presence---or lack of---in open-source repositories may reveal cases where developers should be more or less careful when writing code. To identify such cases, we mined the 100 most popular JavaScript projects from GitHub and found a total of X atoms in the analyzed projects. To learn more about the misunderstandings in the snippets used in the survey, we interviewed 15 experienced professional developers. Participants preferred code snippets \textit{without} an atom in 70\% of the cases, therefore corroborating to the survey findings. During the MSR and interview studies, we also explored additional atom candidates that are specific to the
 JavaScript language. 
