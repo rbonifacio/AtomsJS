@@ -101,11 +101,11 @@ Inconsistencies may arise when each square is being built. The main source of in
     
 \subsection{Second Study: Mining Software Repositories}
 
-To understand how often atoms of confusion appear in real settings, and thus answer our fourth research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mined a set of GitHub open source repositories. To this end, we first collected the most popular GitHub repositories that are primarily written is JavaScript. We measured popularity using the project's stargazers, and selected only projects with stargazers\_count > 100. This metric, available on  GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate project's popularity~\cite{gyimesi2019bugsjs}.
+To understand how often atoms of confusion appear in real settings, and thus answer our fourth research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mined a set of GitHub open source repositories. To this end, we first collected the most popular GitHub repositories that are primarily written is JavaScript. We measured popularity using the project's stargazers, and selected only projects with stargazers\_count greater than 100. This metric, available on  GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate project's popularity~\cite{gyimesi2019bugsjs}. We then selected the top 100 most popular repositories and removed projects that did not reach the first quartile of the distribution of lines of code.
 
-After filtering out JavaScript project candidates, in the second step we built a curate dataset comprising the top 100 most popular repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (883 liens of code) to complex systems with more than 10 MLOC. All projects in our dataset have at least \num{1161} forks and \num{23643} stars. We automated all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
+After filtering out JavaScript project candidates, in the second step we built a curate dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num{1244} forks and \num{23672} stars. We automated all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
 
-In the third step we mined atoms of confusion from the repositories in our curate dataset. We written source code queries usng the CodeQL language~\cite{moor:gttse2007}, in order to filter the atoms of confusion. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as Java and JavaScript). 
+In the third step we mined atoms of confusion from the repositories in our curate dataset. We written source code queries using the CodeQL language~\cite{moor:gttse2007}, in order to filter the atoms of confusion. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as Java and JavaScript). 
 We also automate the process of running the queries and exporting the results to a format that simplifies our analysis and the reproduction of this study. In the final step we carry out basic descriptive statistics, in order to understand how often the atoms of confusion appear in practice. 
 
 \begin{table*}[ht]
@@ -113,10 +113,11 @@ We also automate the process of running the queries and exporting the results to
  \begin{tabular}{rrrrrrr}
    \hline
              & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\ \hline
- Lines of Code           & \num{883}  & \num{14939} & \num{39520} & \num{281088.46} & \num{145990.75} & \num{10149685} \\
- Num. of Contributors    & \num{6}   & \num{121} & \num{243} & \num{431.82} & \num{436.75} & \num{4042} \\
- Num. of Forks           & \num{1161}   & \num{3365} & \num{5711} & \num{8201.96} & \num{8438.25} & \num{68826} \\
- Num. of Stars        & \num{23643} & \num{27542.25} & \num{35687.5} & \num{45284.86} & \num{47963.25} & \num{310725} \\
+ Lines of Code           & \num{5543}  & \num{16060.25} & \num{36161.5} & \num{111432.33} & \num{111182.50} & \num{1278405} \\
+ Num. of Forks     & \num{1244}   & \num{3029.75} & \num{6078} & \num{8906.24} & \num{9260.50} & \num{68849} \\
+ Num. of Contributors  & \num{6}   & \num{184} & \num{285.5} & \num{533.44} & \num{515.75} & \num{4047} \\
+ Num. of Stars        & \num{23672} & \num{27055} & \num{34990} & \num{46919.51} & \num{48518} & \num{310935} \\
+ 
     \hline
  \end{tabular}
  \caption{Some descriptive statistics about the projects used in the study}
