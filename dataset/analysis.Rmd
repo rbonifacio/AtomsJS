@@ -1,0 +1,44 @@
+---
+title: "atoms-of-confusion"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd(".")
+require(sqldf)
+```
+
+## Load the Dataset
+
+```{r}
+ds <- read.csv("survey-results.csv")
+colnames(ds)
+nrow(ds)
+``` 
+
+## Clean up the Dataset
+
+```{r}
+ds <- ds[ds$ref=="reddit" & ds$total == "YES",]
+ds.count <- tapply(ds$time,ds$rid,length)
+ds.full <- names(ds.count)[ds.count==20]
+finalds <- ds[is.element(el = ds$rid, set = ds.full),]
+dim(finalds)
+```
+
+
+## Number of Latin squares 
+
+```{r}
+sqldf("select count(distinct rid) from finalds")
+```
+
+## Effect of atoms of confusion in correctness 
+
+```{r}
+prop.table(table(finalds$correct,finalds$atom),margin = 2)
+chisq.test(finalds$correct,finalds$atom)
+```
+
+
