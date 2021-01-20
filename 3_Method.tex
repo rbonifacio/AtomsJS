@@ -45,7 +45,7 @@ code samples $s_0, s_1, ..., s_{10}$, if a given subject (P1) is asked to predic
 
 Having selected 10 atoms in our first study, we wrote small pieces of code that contained each atom. We also wrote their equivalent snippet without the confusing idioms and constructs, leading to a total of 20 code snippets. In order to reduce the cognitive effort, we decided that each subject would be asked to predict the output of a subset of 10 listings, wherein each subset contained 5 blocks that contained atoms of confusion, whilst the remaining 5 had the atoms removed. The order in which the questions were presented was randomized. By doing this, we were seeking to minimize the chances of subjects being aware that the current listing they were analyzing contained (or not) atoms of confusion.
 That is, each respondent of the survey should indicate what would be the outcomes of the code snippets, some of them having atoms of confusion (while other code snippets did not). 
-We measured answer correctness and the total time each participant needed to answer reach question of the survey. 
+We measured answer correctness and the total time each participant needed to answer the survey's questions.
 
 \subsubsection{Survey Instrument} 
 
@@ -67,19 +67,23 @@ We decided not to provide feedback about the time students took to answer each q
 
 %% \diego{Esses detalhes são possíveis candidatos para remoção, se precisarmos de espaço}
 %% {\color{blue}We invited developers to answer our survey by sending invitations to communities of JavaScript programmers on the Internet. Our initial plan was to try to engage contributors for two major JavaScript projects, namely Node.js and NPM. None of the projects, though, offered a direct way to interact with the community, such as an online discussion forums or mailing list. We would be required to first make contact with the projects' leaders, and only then would we have a chance to approach potential respondents. Due to time constraints, we decided to look for respondents elsewhere.}
-We posted the survey on Reddit.\footnote{Reddit is a North American online discussion platform. Its discussion threads, often called subreddits, are sorted by subject. For our research, we posted information and links to the survey in two JavaScript subreddits.}. We explained our research purposes, and asked developers of any level of expertise to take the survey. To incentivize serious engagement, we proposed to raffle \$50 gift cards on Amazon products at the end of the survey. Within twelve hours we collected more than 150 answers, populating more than 70 replicas of the Latin Squares. We were able to collect significant data on time taken and discrepancies in answer correctness between confusing and non-confusing versions of the snippets. Some inconsistencies arose while building the squares, for instannce, when a user quit in the middle of the survey. When this happened, the corresponding row in the square was left incomplete. During data analysis, we considered all squares which contained incomplete rows to be invalid, and discarded them. Since we had a large enough number of samples, the squares we had to discard did not impact our analysis.
-    
+
+We posted the survey on Reddit.\footnote{Reddit is a North American online discussion platform.
+Its discussion threads, often called subreddits, are sorted by subject. For our research, we po\
+sted information and links to the survey in two JavaScript subreddits.} We explained our research purposes and asked developers of any level of expertise to take the survey. Within twelve hours, we collected more than 150 answers, populating more than 70 replicas of the Latin Squares. We collected significant data on time taken and discrepancies in answer correctness between confusing and non-confusing versions of the snippets. Some inconsistencies arose while building the squares, for instance, when a user quit in the middle of the survey. When this happened, the corresponding row in the square was left incomplete. We considered all squares that contained incomplete rows to be invalid during data analysis and discarded them. Since we had\
+ a large enough number of samples, the squares we had to discard did not impact our analysis.
+
  
-\subsection{Third Study: Interviews with Practitioners}
+\subsection{Second Study: Interviews with Practitioners}
 
 To complement our initial survey, we performed semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding code snippets containing atoms of confusion. We also asked each participant if they knew of any other JavaScript-specific construct that they regarded as confusing. In this section we details the protocol we followed to conduct the interviews and analyze the results.
 
 % Nós realizamos entrevistas semi-estruturas com o objetivo de identificar a percepção dos desenvolvedores com experiência em JavaScript sobre algumas questões relacionadas à compreensão de código em JavaScript. Assim, nesta Seção nós descrevemos os procedimentos adotados para selecionar os participantes para as entrevistas e detalhamos como as entrevistas foram conduzidas. Além disso, detalhamos como os resultados das entrevistas foram analisados.
 
-\subsubsection{Participants Selection} We invited the participants of the interviews using a snow balling technique. That is, starting from our network of contacts, we invited an initial set of candidates to take part of our survey. From this initial list, we asked for indication of additional candidates. Our main criterion of selection was that all participants shoukd have to been working professionally with JavaScript. We invited a total of 17 developers, and 15 of these agreed to participate. We conducted the interviews during a period of two weeks.
+\subsubsection{Participants Selection} We invited the participants of the interviews using a snow balling technique. That is, starting from our network of contacts, we invited an initial set of candidates to take part of our survey. From this initial list, we asked for indication of additional candidates. Our main criterion of selection was that all participants shoukd havebeen working professionally with JavaScript. We invited a total of 17 developers, and 15 of these agreed to participate. We conducted the interviews during a period of two weeks.
 
 
-\subsubsection{Interview Process} We conducted semi-structured interviews using a web conferencing software. All the interviews were recorded with the consent of the participants. On average, the interviews lasted 26.29 minutes, with the shortest one lasting 14.59 minutes, and the longest one 43.06 minutes. The main goal of the interviews was to have developers assess in real time whether two versions of code (one with a single atom and another one without the atom) with the same behavior differed in readability, and, if so, which version they regarded as the easier one to understand. The interviews were conducted by two of the authors of this paper, and a third one listened to all the recordings to cross-validate the collected data.
+\subsubsection{Interview Process} We conducted semi-structured interviews using a web conferencing software. All the interviews were recorded with the consent of the participants. On average, the interviews lasted 26.29 minutes, with the shortest one lasting 14.59 minutes, and the longest one 43.06 minutes. The main goal of the interviews was to have developers assess in real time whether two versions of code (one with a single atom and another one without the atom) with the same behavior differed in readability, and, if so, which version they regarded as the easier one to understand. The interviews were conducted by two of the researchers, and a third one listened to all the recordings to cross-validate the collected data.
 
 
 The interviews had three main parts. In the first one, we asked the developers the following demographic information: name, email, gender, level of education, current job position, JavaScript experience in years and other programming languages they have worked with.
@@ -127,22 +131,11 @@ P15 & Female &  Graduate & Software Developer & 2 years & Java, PHP
 \end{table*}
 
 In the second part of the interview our aim was to allow the subjects to describe
-their JavaScript experience, as well as to allow them to reveal any JavaScript's constructs they regarded as innately confusing. This would allow us to identify potential atom candidates that are more specific to the JavaScript language. The questions we explored in this section include:
-
-\begin{itemize}
-\item In general, do you implement new JavaScript components,
-  or do you maintain components developed by other programmers?;
-
-\item In your opinion, what are the main pros and cons of the JavaScript language?;
-
-\item Do you think JavaScript is a language that produces code that is hard to understand?
-
-\item Do you regard any particular construct or idiom of the language as
-  especially confusing?
-\end{itemize}
+their JavaScript experience, as well as to allow them to reveal any JavaScript's constructs they regarded as innately confusing. This would allow us to identify potential atom candidates that are more specific to the JavaScript language. Examples of questions we explored in this section include:\emph{Do you think JavaScript is a language that produces code that is hard to understand?} and \emph{Do you regard any particular construct or idiom of the language as
+  especially confusing?}
 
 
-In the third part of the interview, participants were shown the 20 code snippets that were used in the first study. The participants were told both sides of each pair had the same output, and were asked to evaluate which version of the code was easier to understand. The interviewers restrained themselves from introducing bias into the answers by not explaining that one of the sides of each pair contained the atom under investigation. Subjects were just presented the snippets and allowed to take the necessary time to decide on the most readable snippet.
+In the third part of the interview, participants were shown the code snippets that were used in the first study. The participants were told both sides of each pair had the same output, and were asked to evaluate which version of the code was easier to understand. The interviewers restrained themselves from introducing bias into the answers by not explaining that one of the sides of each pair contained the atom under investigation. Subjects were just presented the snippets and allowed to take the necessary time to decide on the most readable snippet.
 
 \subsubsection{Interview Analysis}
 
@@ -182,7 +175,7 @@ atoms of confusion appear in practice.
  
     \hline
  \end{tabular}
- \caption{Some descriptive statistics about the projects used in the study}
+ \caption{Some descriptive statistics about the projects used in the MSR study}
  \label{tab:projects-statistics} 
  \end{table*}
 
