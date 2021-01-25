@@ -172,17 +172,33 @@ email address or ORCID}
 \pagestyle{plain}
 
 \begin{abstract}
-{\bf Context.} Evolving legacy code is a challenging task. It is even more difficult when the code has been poorly written, imposing significant cognitive load on developers when trying to familiarize themselves with a legacy code base. 
+  {\bf Context.} Evolving legacy code is a challenging task, in particular when the code has been poorly written---
+  which imposes significant cognitive load on developers when trying to familiarize themselves with a legacy code base. 
 \noindent{\bf Problem.} 
 %Besides lack of experience and other factors, 
-Previous research works have discussed the impact of small code patterns that contribute to misunderstanding the source code written in statically typed languages (e.g., \clang, \cpplang, and Swift). However, little is known about the influence of these small code patterns (hereafter atoms of confusion) on understanding dynamically typed languages. 
-\noindent{\bf Research Method and Goal.} In this work, we fill this research gap by presenting the results of a mixed-methods research:
-a survey, a set of interviews with practitioners, and a mining software repositories (MSR) effort. Our goal is to investigate the impact of atoms of confusion on understanding JavaScript code---a dynamically typed language whose popularity is growing in the most different application domains (from web programming to backend and IOT development).
-\noindent{\bf Results.} From our survey and interviews, we confirm that atoms of confusion lead to code that is hard to understand: 
-%removing the atoms of confusion lead to an improvement above 15\% in 6 out of 9 atoms we consider in our study when developers try to predict the outcomes of code examples. 
-developers correctly predict the outcome of at least 15\% more cases when an atom of confusion is not present in 6 out of 9 atoms.
-Also, the results of our MSR effort reveal that atoms of confusion frequently arise in open-source JavaScript systems: the \texttt{comma operator} is present in 11\% of the projects in our dataset; while five other atoms appear in more than 60\% of the projects---including the atoms \texttt{assignment as value} and \texttt{omitted curly braces}, which appear \num{8253} and \num{53357} times, respectively. Our investigation also reveals additional JavaScript constructs and idioms that might hinder developers from understanding JavaScript code. For instance, even experienced JavaScript developers agree that it is hard to understand code that uses callback functions, even though we found widespread use of \texttt{callbacks} in our projects dataset.  
-\noindent{\bf Implications.} Altogether, our findings could help developers write cleaner JavaScript code and contribute to the design of new program transformation tools that aim to simplify JavaScript code. 
+Previous research have investigatedthe impact of small code patterns
+that contribute to misunderstanding the source code written in \clang and \cpplang.
+However, little is known about the influence of these small code patterns (hereafter atoms of confusion)
+on understanding a dynamic languages (such as JavaScript). 
+\noindent{\bf Research Method and Goal.} In this work, we present the results of a mixed-methods research:
+a survey, a set of interviews with practitioners, and a mining software repositories (MSR) effort.
+Our goal is to investigate the impact of atoms of confusion on understanding JavaScript code---a dynamically typed language
+whose popularity is growing in the most different application domains (from web programming to backend and IOT development).
+\noindent{\bf Results.} From our survey and interviews, we confirm that atoms of confusion lead
+to code that is hard to understand: 
+developers correctly predict the outcome of at least 15\% more cases when an atom of confusion is not
+present in 6 out of 9 atom candidates.
+Also, the results of our MSR effort reveal that atoms of confusion frequently arise
+in open-source JavaScript systems: the \texttt{comma operator} is present in 11\% of the projects in our dataset; while five other
+atoms appear in more than 60\% of the projects---including the atoms Assignment as Value and Oomitted Curly Braces, which appear 8253 and 53357 times,
+respectively. Our investigation also reveals additional
+JavaScript constructs and idioms that might hinder developers from understanding
+JavaScript code. For instance, even experienced JavaScript
+developers agree that it is hard to understand code that uses callback functions,
+even though we found widespread use of \texttt{callbacks} in our
+projects dataset.
+\noindent{\bf Implications.} Altogether, our findings might help
+developers write cleaner JavaScript code and contribute to the design of new program transformation tools that aim to simplify JavaScript code. 
 \end{abstract}
 
 \begin{IEEEkeywords}
