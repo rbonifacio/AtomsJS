@@ -2,7 +2,10 @@
 \label{back}
 \subsection{Program Comprehension}\castor{It would be nice to have a table with the atom candidates similar to the one that appears in Gopstein et al. 2017.}
 
-The concept of program comprehension is central to software maintenance and feature development \cite{DBLP:conf/iwpc/TilleySP96}. Regardless of whether they are performing maintenance on legacy software or adding new features, programmers have to understand what the source code does before making any improvements. A natural consequence of this is that a programmer must also have in mind that other programmers (or their future selves) are going to have to spend time trying to understand the code being currently developed before doing any work themselves.
+The concept of program comprehension is central to software maintenance and feature development \cite{DBLP:conf/iwpc/TilleySP96}. Regardless of whether they are performing maintenance on legacy software or adding new features, programmers have to understand what the source code does before making any improvements. A natural consequence of this is that a programmer must also have in mind that other programmers (or their future selves) 
+%are going to have to
+will
+spend time trying to understand the code being currently developed before doing any work themselves.
 
 As program comprehension is regarded less as a systematic process than as an objective \cite{DBLP:journals/ibmsj/OHareT94}, there is no single approach or framework that is capable of yielding easily understandable programs. Factors such as problem domain, size and complexity of the code base, and available tools all vary significantly between different working settings. These aspects, combined with differences between individuals, which can include experience, working memory capacity, and other cognitive traits, make it clear that program comprehension should be approached in different ways in different contexts. 
 
@@ -31,7 +34,9 @@ Castor~\cite{castor2018} presented a preliminary catalog of six atom candidates 
 According to Arnaoudova et al.~\cite{Arnaoudova:2016:LAW}, Linguistic Antipatterns (LA) are \textit{``recurring poor practices in the naming, documentation, and choice of identifiers in the implementation of an entity [..] that may impair program understanding''}. These antipatterns are design issues that go against developer's  intuition about a program, for example, a \texttt{set} method that returns a result. Similarly to atoms of confusion, LAs occur at the source code level and hinder code readability. Differently from atoms of confusion, LAs are more akin to design principles than code idioms. In addition, they are language-agnostic, unlike atoms of confusion.
 
 Santos and Gerosa~\cite{Santos:2018:ICP} analyze the impact of eleven coding practices on program readability. Some of them, such as avoiding more than three levels of code
-block nesting, are atom candidates. This work evaluates the coding practices solely based on personal opinions of the study subjects. Furthermore, it focuses on the Java language. Finally, most of the practices are more related to code formatting than language constructs or idioms.
+block nesting, are atom candidates. 
+% Diego: Troquei "this work" para "their work". Removi o "more" de "are more related"
+Their work evaluates the coding practices solely based on personal opinions of the study subjects. Furthermore, it focuses on the Java language. Finally, most of the practices are related to code formatting than language constructs or idioms.
 
 %% \castor{Provavelmente devemos reduzir o espaço tomado pelos quatro trabalhos acima, a depender da existência de outros. O de Linguistic Antipatterns talvez até devesse sair.}
 %% \rb{Incluir os trabalhos do grupo do Marcio Ribeiro e do Fernando Castor. Quais outros trabalhos deveriamos incluir aqui?}
