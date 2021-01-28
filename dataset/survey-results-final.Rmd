@@ -68,6 +68,7 @@ demEducation <- sqldf("select b.description, count(*) total
                       group by b.description 
                       order by 2 desc")
 
+demEducation
 barplot(demEducation$total, col=topo.colors(5), ylim = c(0, 70), cex=0.7, cex.lab = 0.7, cex.axis=0.7, ylab="Number of participants")
 
 legend("topright", legend=demEducation$description, fill=topo.colors(5), cex=0.6)
@@ -208,6 +209,7 @@ for(i in 1:5){
 
 chiTest <- c()
 oddsRatio <- c()
+oddsRatioTest <- c()
 mannWhitneyTest <- c()
 cliffDelta <- c()
 
@@ -226,7 +228,8 @@ for(i in 1:10){
   
   chiTest[i] <- format.pval(test$p.value) 
   oddsRatio[i] <- odds.ratio(tableCorrectness)$OR
-
+  oddsRatioTest[i] <- format.pval(odds.ratio(tableCorrectness)$p)
+  
   mannWhitneyTest[i] <- format.pval(wilcox.test(subSet$time~as.factor(subSet$atom))$p.value)
   cliffDelta[i] <- cliff.delta(subSet$time~as.factor(subSet$atom))$estimate
   
@@ -239,10 +242,10 @@ for(i in 1:10){
   print(prop.table(table(subSet$correct,subSet$experience),margin = 2))
 }
 
-analysis_df <- data.frame(atomDescription, chiTest, oddsRatio, mannWhitneyTest, cliffDelta)
+analysis_df <- data.frame(atomDescription, chiTest, oddsRatio, oddsRatioTest, mannWhitneyTest, cliffDelta)
 analysis_df <- analysis_df[order(-oddsRatio),]
 
-colnames(analysis_df) <- c("Atom", "ChiTest", "Odds Ratio Correctness", "Wilcox Test (Time)", "Cliff Delta")
+colnames(analysis_df) <- c("Atom", "ChiTest", "Odds Ratio Correctness", "p-value", "Wilcox Test (Time)", "Cliff Delta")
 
 analysis_df
 
