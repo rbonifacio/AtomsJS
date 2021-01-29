@@ -91,7 +91,7 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a nonnegligible decreas
   Implicit Predicate &  58 &  68 &  +17 & 6.94 \\ 
   Logic as Control Flow &  41 &  48 &  +17 & 1.53 \\ 
   Ternary Operator &  60 &  66 &  +10 & 2.73 \\ 
-  Pre Increment &  50 &  53 &  +6 & 1.24 \\ 
+  Pre-Increment &  50 &  53 &  +6 & 1.24 \\ 
   Arithmetic as Logic &  64 &  63 &  -2 & 0.84 \\ \bottomrule 
 \end{tabular}
 }
@@ -126,7 +126,8 @@ in the frequency of correct and incorrect answers---due to the versions
 of the code snippets (confuse and clean code). The result indicates that the confusing version of the code snippets impacts code understanding (p-value $< 0.05$). We also use the \emph{Binomial Generalized Logistic Regression} analysis to investigate if either participant
 \emph{education} or participant \emph{experience} impact on correctness. Although the results suggest that experience impact correctness, the education level does not. As such, we replicate the \emph{Pearson's Chi-squared test} for each experience group and found that the statistic difference is less significant for those developers with more than ten years of experience.
 Finally, we measure the effect size of the clean version of the code snippets into the answers' correctness, using the \emph{Odds Ratio} (OR)
-method (see the Effect Size column of Table~\ref{tab:difference-correctness}). We found a negligible effect size for the atom candidates Arithmetic as Logic, Logic as Control Flow, and Pre Increment. Nonetheless, for the remaining candidates, the effect size is significant. For instance, the Comma Operator leads to an \emph{Odds Ratio} of
+method (see the Effect Size column of Table~\ref{tab:difference-correctness}). We found a negligible effect size for the atom candidates Arithmetic as Logic, Logic as Control Flow, and
+Pre-Increment. Nonetheless, for the remaining candidates, the effect size is significant. For instance, the Comma Operator leads to an \emph{Odds Ratio} of
 \num{19.02}, meaning that the the odds of a correct answer are \num{19.02} times
 higher when interpreting the clean version of a code---in comparison with the corresponding, confuse version of the code snippet.
 
@@ -152,7 +153,7 @@ Not all atom candidates, though, take less time to predict the answer. In fact, 
 of 29.06\% and 38.19\% in the average time taken to give a correct answer---wherein the clean code versions.
 
 \begin{table*}[htbp]
-\caption{Time in seconds to submit a {\color{red}correct} answer}
+\caption{Time in seconds to submit a correct answer}
 \label{tab:difference-time-taken}
 \centering{
 \begin{tabular}{lccc|cc} \toprule
@@ -166,7 +167,7 @@ Post Increment & 28.70 & 25.67 & -10.56 & 0.12 & 0.15 \\
 Assignment as Value & 52.47 & 48.95 & -6.71 & 0.82 & 0.02 \\ 
 Ternary Operator & 41.80 & 39.34 & -5.90 & 0.24 & -0.12 \\ 
 Arithmetic as Logic & 28.82 & 37.20 & +29.06 & \colorbox{lightgray}{0.01} & 0.23 \\ 
-Pre Increment & 30.71 & 42.45 & +38.19 & \colorbox{lightgray}{$<$ 0.01} & 0.27 \\ 
+Pre-Increment & 30.71 & 42.45 & +38.19 & \colorbox{lightgray}{$<$ 0.01} & 0.27 \\ 
          \bottomrule
     \end{tabular}}
 \end{table*}
@@ -183,19 +184,19 @@ shows the results, which suggest that we
 should refute the null hypotheses for
 five atom candidates (Comma Operator, Logic
 as Control Flow, Implicit Predicate, Arithmetic
-as Logic, and Pre Increment). For the first three,
+as Logic, and Pre-Increment). For the first three,
 the analysis suggest that the participants
 need more time to predict the outcome of
 the code snippet in the confuse code version. Interesting,
 for the atom candidates Arithmetic as Logic and
-Pre Increment, the participants take less time
+Pre-Increment, the participants take less time
 to predict the outcome of the code snippets in
 the confuse version.
 We also computed the effect size using the Cliff's Delta method.
 We found a large effect for the Comma Operator atom
 candidate; and a moderate effect for the atom candidates
 Logic as Control Flow, Implicit Predicate, Arithmetic
-as Logic, and Pre Increment. 
+as Logic, and Pre-Increment. 
 
 
 \begin{mh}
@@ -206,7 +207,7 @@ as Logic, and Pre Increment.
   Control Flow, and Implicit Predicate. Conversely,
   the version of the code snippets with the
   atom candidates Arithmetic as Logic and
-  Pre Increment demands less time to
+  Pre-Increment demands less time to
   predict the correct answers. 
 \end{mh}
 
@@ -239,23 +240,22 @@ in the study. A total of 15 practitioners
 took part of the interviews.
 We collected information regarding programming
 experience, familiarity with JavaScript, and their opinion
-about the {\color{red}nine} atom candidates---by
+about the nine atom candidates---by
 (a) presenting them pairs of code snippets whose behavior were identical
 and then (b) asking them to compare the code snippets readability.
 
 %% In the second round of interviews, ten of the fifteen developers
 %% who participated in the first round were shown another 8 atom candidates to atom of confusion whose frequency we observed during the repository mining phase. The same procedure of showing code that behaves exactly the same and surveying for how easy to understand each snippet was applied in this phase. 
 
-Supporting the results of the survey, Tables~\ref{tab:interview-results1}
-and~\ref{tab:interview-results2} show that for twelve out of the
-seventeen scenarios surveyed, the respondents prefer the version of the
-code without the atom of confusion, and in no case the \emph{neutral}
+\subsubsection*{The Participants' perceptions of the atom candidates}
+Supporting the results of the survey, Table~\ref{tab:interview-results1}
+ shows that for eight out of the
+nine scenarios surveyed, the maijority of the respondents agree that the version of the
+code without the atom of confusion is easier to understand, and in no case the \emph{neutral}
 ratio was higher than the option for the version without atoms of confusion.
 %% An example entry is contained in Appendix~\ref{}. 
 %% For a full listing of the code snippets, visit the paper repository. 
-
-\subsubsection*{Participants views of the atoms} Interesting,
-only for the \emph{ternary operator} scenario the participants
+Only for the Ternary Operator atom candidate the participants
 prefer the version of the code with the atom of confusion,
 instead of the more cleaner version without the atom of confusion.
 Even in this case, some participants who opted for
@@ -312,8 +312,8 @@ ternaries construct, in which the right-hand side of the a
 ternary operator can be another ternary construct.
 While nested ternaries remove the number of lines that
 would be necessary to construct using nested if-then-else statements,
-they can become quite taxing, cognitively speaking, to understand.
-Therefore, nested ternaries are a choice of atoms to be analyzed in future work.
+they can become quite taxing to understand.
+Nested ternaries are a choice of atoms to be analyzed in future work.
 
 The Pre-Increment atom candidate also caused such
 divide in one of the interviewees, as they
@@ -324,15 +324,15 @@ one of the participants found the version that contained the atom
 of confusion more elegant, but recognized it was less readable,
 and was willing to sacrifice elegance for readability.
 
-\rb{pela discuss\~{a}o anterior, parece-me que alguns
-  desenvolvedores reconhecem que esses candidatos
-  a \'{a}tomos introduzem certa dificuldade de compreens\~{a}o;
-  mas mesmo assim optam por usar a constru\c c\~{a}o correspondente.
-  Acho que cabe um box aqui com essa discuss\~{a}o sobre isso.}
+%% \rb{pela discuss\~{a}o anterior, parece-me que alguns
+%%   desenvolvedores reconhecem que esses candidatos
+%%   a \'{a}tomos introduzem certa dificuldade de compreens\~{a}o;
+%%   mas mesmo assim optam por usar a constru\c c\~{a}o correspondente.
+%%   Acho que cabe um box aqui com essa discuss\~{a}o sobre isso.}
 
 When analyzing the Logic as Control Flow atom candidate, one of
 the interviewees gave an example of his own experience
-on why one should avoid writing code using this construct:
+that might motivate one avoid writing code using this construct:
 
 \begin{mq}
   \emph{``This one is interesting, because I have written
@@ -363,15 +363,38 @@ As for the atom candidate Omitted Curly Braces, one of the interviewees mentione
 \emph{``[I prefer the \rhs version of the code \ldots] If I want to see well-written, easily understandable code, then I also have to do my job. Therefore I believe that, since I do not know who is on the other end maintaining this code, and it could be any person with any level of expertise, then I try to write readable, easy-to-understand code''}
 \end{mq}
 
-This is an interesting perspective, because such small, yet tricky, constructs should be avoided, since maintenance is one of the longer and most costly parts of the software development life cycle, and one cannot make any assumptions about the other programmers' experience.
+This is an interesting perspective, because such small, yet tricky program constructs and idioms, might hinder novice developers in the task of maintaining code; and one cannot make any assumption about the programmers' experience of who is going to maintain a code in a long run.
 
-% \subsection{Common Remarks From the Open-ended Questions}
+\begin{table}[!htb]
+    \centering
+    \caption{Interviews Round 1 - Summary of participants' preferences for code snippets \textsc{with} and \textsc{without} atoms of confusion (\textsc{aoc}). Participants were also allowed to choose \textsc{neutral} when they thought both sides were equally readable.}
+    \label{tab:interview-results1}
+    \begin{tabular}{lrrr}\toprule
+      & \multicolumn{3}{c}{\textsc{Preference (\%)}} \\
+      \cmidrule(lr){2-4}
+         \textsc{atom}           & \multicolumn{1}{c}{\textsc{with aoc}}
+                                      &  \multicolumn{1}{c}{\textsc{without aoc}}
+                                               & \multicolumn{1}{c}{\textsc{neutral}} \\ \midrule
+         Arithmetic as Logic     & 0  & 93.33  & 6.67  \\
+         Assignment as Value     & 20 & 60     & 20    \\
+         Comma Operator          & 0  & 100    & 0     \\
+         Ternary Operator        & 60 & 26.67  & 13.3  \\
+         Implicit Predicate      & 20 & 73.33  & 6.67  \\
+         Logic as Control Flow   & 20 & 60     & 20    \\
+         Omitted Curly Braces    & 0  & 100    & 0     \\
+         Post Increment          & 20 & 73.33  & 6.67  \\
+         Pre-Increment           & 40 & 46.67  & 13.33 \\ \midrule
+         \textsc{overall}        & 20 & 70.37  & 9.63  \\
+         \bottomrule
+    \end{tabular}
+\end{table}
+
+
+\subsubsection*{Confusion in JavaScript Code} 
 
 The final remarks that were drawn from the interviews are related to potentially confusing constructs that were suggested by the participants, as well as their perspective on JavaScript as a language, from which we can also uncover some other forms in which the language itself might contribute to writing confuse code.
 
 One of the participants mentioned that the use of JavaScript's prototype-based inheritance can make it difficult to understand code, particularly when involving  deep prototype chains. This is a core feature of the language, and most high-level tools and frameworks abstract it away. Although this was only mentioned by one practitioner, this is an important remark, as true understanding of JavaScript software necessarily involves understanding the concept of prototypes.
-
-\rb{seria importante incluir uma cita\c c\~{a}o para a \'{u}ltima afirma\c c\~{a}o acima.}
 
 When asked about particular JavaScript constructs or patterns that can make code difficult to understand, three participants cited the callback pattern, which can lead to several levels of nested function calls, as extremely difficult to assimilate. One of the respondents stated:
 
@@ -394,45 +417,13 @@ programming in JavaScript might miss out on important lower-level
 aspects, such as garbage collection, memory management,
 and process management.}''. 
 
-\rb{esse pr\'{o}ximo par\'{a}grafo eh interessante,
-  se refor\c carmos que os desenvolvedores tem
-  experi\^{e}ncia com a linguagem. caso contr\'{a}rio,
-  parece que nao fizemos uma boa selecao de participantes.
-  algo para discutirmos.}
-
 Moreover, such abstractions might lead a developer to start to program
 using the language without actually understanding some of its basic aspects.
-For instance, four participants argued that the language is not typed, two  believed the language runs exclusively on browsers, and two other developers stated that the language is natively asynchronous, all of which are incorrect statements. For the multi-purpose language that is one of the most, if not the most used one by practitioners
-~\cite{}, a lack of understanding of the languages core
+For instance, four participants argued that the language is not typed, two  believed the language runs exclusively on browsers, and two other developers stated that the language is natively asynchronous, all of which are incorrect statements. For the multi-purpose language that is one of the most, if not the most used one by practitioners,
+a lack of understanding of the languages core
 features may be a problem worth investigating in future studies.
 
-\rb{seria importante apresentar uma conclus\~{a}o em rela\c c\~{a}o a essa parte do estudo. Acredito que seja interessante discutir um pouco essa ``faca de dois gumes'' sobre a flexibilidade, mencionada abaixo. }
 
-\adriano{Fiquei em duvida se vale citar os contras mais interessantes que os entrevistados falaram sobre JS: (1x) o jeito como ela lida com 'this', (que esta ligado a ela ser puramente orientada a objetos, sem classe); (2x)falta de precisao para tratamento de ponto flutuante, o que pode a tornar inadequada para tratamento de dados/ciencias puras; e a faca de dois gumes que e a flexibilidade da linguagem: muitos falavam isso como ponto positivo e negativo ao mesmo tempo. \todo[inline]{eu acho que podemos mencionar sim}}
-
-\begin{table}[!htb]
-    \centering
-    \caption{Interviews Round 1 - Summary of participants' preferences for code snippets \textsc{with} and \textsc{without} atoms of confusion (\textsc{aoc}). Participants were also allowed to choose \textsc{neutral} when they thought both sides were equally readable.}
-    \label{tab:interview-results1}
-    \begin{tabular}{lrrr}\toprule
-      & \multicolumn{3}{c}{\textsc{Preference (\%)}} \\
-      \cmidrule(lr){2-4}
-         \textsc{atom}           & \multicolumn{1}{c}{\textsc{with aoc}}
-                                      &  \multicolumn{1}{c}{\textsc{without aoc}}
-                                               & \multicolumn{1}{c}{\textsc{neutral}} \\ \midrule
-         Arithmetic as Logic     & 0  & 93.33  & 6.67  \\
-         Assignment as Value     & 20 & 60     & 20    \\
-         Comma Operator          & 0  & 100    & 0     \\
-         Ternary Operator        & 60 & 26.67  & 13.3  \\
-         Implicit Predicate      & 20 & 73.33  & 6.67  \\
-         Logic as Control Flow   & 20 & 60     & 20    \\
-         Omitted Curly Braces    & 0  & 100    & 0     \\
-         Post Increment          & 20 & 73.33  & 6.67  \\
-         Pre Increment           & 40 & 46.67  & 13.33 \\ \midrule
-         \textsc{overall}        & 20 & 70.37  & 9.63  \\
-         \bottomrule
-    \end{tabular}
-\end{table}
 
 %% \begin{table}[!htb]
 %%     \centering
@@ -514,9 +505,3 @@ Regarding frequency, we proceeded with a classification of atom occurrences acco
 The results of our survey and interviews suggest that the Ternary Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post Increment Expression and Omitted Curly Braces atoms are listed in the top three sources of misunderstanding 
 (see Table~\ref{tab:difference-correctness}). As such, fixing the the Post Increment and Omitted Curly Braces might solve most of the unclear code caused by atoms of confusion. 
 
-\rb{continuar desse ponto}
-
-
-
-\subsection{Discussion}
-\label{sec:discussion}
