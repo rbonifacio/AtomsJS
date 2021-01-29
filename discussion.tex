@@ -1,0 +1,28 @@
+\section{Discussion}
+\label{sec:discussion}
+
+Our work leads to several implications.
+First, we generalize the
+work of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17},
+which investigates
+the impact of atom candidates on
+understanding \clang and \cpplang code. That is,
+similarly to their work, the atom candidates
+Comma Operator, Post/Pre Increment, Omitted Curly Braces,
+Assignment as Value, Implicit Predicate, Logic as
+Control Flow, and Ternary Operator make the 
+JavaScript code hard to understand. Our results also 
+refute the hypothesis that Arithmetic as Logic is an atom of
+confusion (i.e., a source of misunderstanding).
+We just find some differences in the effect size
+of the atom candidates, in comparison to the original
+work of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}.
+
+
+The results of the interview study complement the understanding of atoms of confusion because the participants make clear the existence of a tradeoff between code comprehension and other quality attributes. For instance, most of the participants prefer the versions of the code with the Ternary Operator, even though they agree that its uses might contribute to the misunderstanding of JavaScript code, particularly when novices are maintaining the codebase. The participants of the interview study also mentioned other possible sources of misunderstanding in JavaScript,
+including the use of prototype-inheritance and nested call-backs (as discussed in Section~\ref{sec:interview-results}). Other JavaScript atom candidates include
+Object Destructuring, Array Spread, Object Spread, and Type Conversion. We conducted a non-exact replication of the three studies (survey, interview, and mining software repositories) considering these more specific JavaScript atom candidates. We confirmed that they truly correspond to sources of misunderstanding. Due to lack of space,
+we cannot present all the results here, and we postpone the presentation of these results as future work.
+
+
+
