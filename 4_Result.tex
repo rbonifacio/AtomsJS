@@ -451,10 +451,12 @@ features may be a problem worth investigating in future studies.
 \section{Results of the MSR Effort}
 \label{sec:msr-results} 
 
-We mined \minedprojects open source JavaScript repositories to understand how often atoms of confusion arise in real software. Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18}~\cite{DBLP:journals/ese/MedeirosLAAKRG19}, which investigates the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion frequently arise in JavaScript open source systems.
+We mined \minedprojects open source JavaScript repositories to understand how often atoms of confusion arise in real software. However, it was not possible to detect the atom Implicit Predicate using the mining techniques employed in this study because it depends on the semantics. As such, we were able to mine only the eight atoms listed in Table~\ref{tab:occurrences-summary}.
+
+Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18}~\cite{DBLP:journals/ese/MedeirosLAAKRG19}, which investigates the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion frequently arise in JavaScript open source systems.
 
 The 5 most frequently found atoms occur in at least 80\% of the projects.
-Considering the extremes, atoms Ternary Operator and Access Property were found in all repositories, while atom Comma Operator occurred only in 15\% of them (as seen in Table~\ref{tab:occurrences-summary}).
+Considering the extremes, atoms Ternary Operator was found in all repositories, while atom Comma Operator occurred only in 15\% of them (as seen in Table~\ref{tab:occurrences-summary}).
 
 % Figure~\ref{fig:rate} summarizes this finding, showing that the occurrence of atoms of confusion in JavaScript systems range from 11.34\% (Comma Operator) to 89.69\% (Ternary Operator).
 
@@ -475,30 +477,22 @@ Considering the extremes, atoms Ternary Operator and Access Property were found 
 Atom & Projects & Occurrences/KLOC & Category \\ 
  \hline
 Ternary Operator & 100\% & 10.16 &  highly used \\ 
-  Access Property & 100\% & 3.63 &  highly used \\ 
-  Omitted Curly Braces & 91.67\% & 6.61 &  highly used \\ 
-  Post Increment & 90.28\% & 5.62 &  highly used \\ 
-  Arrow Function & 83.33\% & 21.10 &  highly used \\ 
-  Change Literal Encoding & 76.39\% & 21.43 &  highly used \\ 
-  Object Destructing & 72.22\% & 2.86 &  highly used \\ 
-  Pre-Increment & 83.33\% & 1.04 & commonly used \\ 
-  Assignment as Value & 81.94\% & 1.02 & commonly used \\ 
-  Implicit Operand Conversion & 79.17\% & 0.80 & commonly used \\ 
-  Array Destructing & 62.50\% & 0.47 & commonly used \\ 
-  Array Spread & 59.72\% & 0.31 & commonly used \\ 
-  Logic as Control Flow & 56.94\% & 0.95 & commonly used \\ 
-  Object Spread & 55.56\% & 0.64 & commonly used \\ 
-  Arithmetic as Logic & 23.61\% & 0.02 & little used \\ 
-  Comma Operator & 15.28\% & 0.03 & little used \\ 
+Omitted Curly Braces & 91.67\% & 6.61 &  highly used \\ 
+Post Increment & 90.28\% & 5.62 &  highly used \\ 
+Pre-Increment & 83.33\% & 1.04 & commonly used \\ 
+Assignment as Value & 81.94\% & 1.02 & commonly used \\ 
+Logic as Control Flow & 56.94\% & 0.95 & commonly used \\ 
+Arithmetic as Logic & 23.61\% & 0.02 & little used \\ 
+Comma Operator & 15.28\% & 0.03 & little used \\ 
    \hline
 \end{tabular}
 \end{table}
 
 
 Considering all JavaScript projects in our dataset, we found 
-a total of \num{615364} atoms of confusion, though five atoms are responsible for 84.65\% of this total: Arrow Function, Change Literal Encoding, Ternary Operator, Omitted Curly Braces and the Post Increment. The remaining atoms accounts for \num{94450} (15.35\%) of the total number of occurrences, and the Comma Operator and Arithmetic as Logic are the atoms that arise less frequently (0.0064\% in total with 232 and 165 occurrences, respectively). 
+a total of \num{204229} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces and the Post Increment. The remaining atoms accounts for \num{24558} (12.03\%) of the total number of occurrences, and the Comma Operator and Arithmetic as Logic are the atoms that arise less frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
 
-Regarding frequency, we proceeded with a classification of atom occurrences according to the metrics established by a previous study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. As such, we found 7 atoms as highly used (43.75\%), 7 as commonly used (43.75\%) and only 2 atoms as little used (12.50\%). We also calculated the frequency of each atom per KLOC and found atoms Change Literal Encoding and Arrow Function as the most occurring in practice (21.43 and 21.10 occurrences per KLOC, respectively).
+Regarding frequency, we proceeded with a classification of atom occurrences according to the metrics established by a previous study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. As such, we found 3 atoms as highly used (37.50\%), 3 as commonly used (37.50\%) and 2 atoms as little used (25.00\%). We also calculated the frequency of each atom per KLOC and found atom Ternary Operator as the most occurring in practice (10.16 occurrences per KLOC).
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
