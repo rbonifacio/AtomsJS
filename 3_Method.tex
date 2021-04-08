@@ -4,10 +4,10 @@
 The main goal of this research is to investigate the impact of atoms of confusion in JavaScript code comprehension. As such, in this paper we answer the following research questions: 
 
 \begin{enumerate}[(RQ1)]
-    \item Do JavaScript developers identify atoms of confusion as contributing to program misunderstanding? 
-    \item What is the impact of atoms of confusion on the comprehension of JavaScript code? 
-    \item What are the particular JavaScript idioms and language constructs that might cause source code misunderstanding?
-    \item What is the frequency of occurrence of atoms of confusion in practice (i.e., in open-source JavaScript projects)?
+\item \rqa 
+\item \rqb
+\item \rqc  
+\item \rqd
 \end{enumerate}
 
  
@@ -16,15 +16,13 @@ Answering these research questions has several implications. For instance, we ca
 
 \subsection{Survey Study Settings}
 
-
-
-In the first study we explore the impact of atom candidates on
-understanding JavaScript code, by answering two questions:
-(a) \emph{Do code snippets that contain atom candidates
-produce a higher misunderstanding rate when programmers
-try to predict their outcome?}
-and (b) \emph{Do code snippets with atom candidates require
-programmers to take longer to predict their output?}
+In the first study, we explore the impact of atom candidates on
+understanding JavaScript code (goal of research question RQ1).	
+To this end, we investigate whether or not code snippets that
+contain atom candidates (a) produce a higher
+misunderstanding rate when programmers
+try to predict their outcome and (b) require
+programmers to take longer to predict their output.
 Since JavaScript and C have some constructs in common (Section~\ref{sec:aoc}), we first selected a set of atoms of confusion for the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} whose idioms also exist in JavaScript programs. Our supplementary material
 summarizes all atoms we consider in our research. 
 
@@ -49,7 +47,7 @@ code samples $s_0, s_1, ..., s_{10}$, if a given subject (P1) is asked to predic
   \end{figure}
 
 
-Having selected 10 atoms in our first study, we wrote small pieces of code that contained each atom. We also wrote their equivalent snippet without the confusing idioms and constructs, leading to a total of 20 code snippets. In order to reduce the cognitive effort, we decided that each subject would be asked to predict the output of a subset of 10 code snippets, wherein each subset contained 5 blocks of code that contained atoms of confusion, whilst the remaining 5 had the atoms removed. The order in which the questions were presented was randomized. By doing this, we were seeking to minimize the chances of subjects being aware that the current listing they were analyzing contained (or not) atoms of confusion.
+Having selected 10 atoms in our first study, we wrote small pieces of code that contained each atom. We also wrote their equivalent snippet without the confusing idioms and constructs, leading to a total of 20 code snippets. In order to reduce the cognitive effort, we decided that each subject would be asked to predict the output of a subset of 10 code snippets, wherein each subset contained five blocks of code that contained atoms of confusion, whilst the remaining five had the atoms removed. The order in which the questions were presented was randomized. By doing this, we were seeking to minimize the chances of subjects being aware that the current listing they were analyzing contained (or not) atoms of confusion.
 That is, each respondent of the survey should indicate what would be the outcomes of the code snippets, some of them having atoms of confusion (while other code snippets did not). 
 We measured answer correctness and the total time each participant needed to answer the survey's questions.
 
@@ -81,7 +79,7 @@ Its discussion threads, often called subreddits, are sorted by subject. For our 
  
 \subsection{Interview Study Settings}
 
-To complement our initial survey, we performed semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding code snippets containing atoms of confusion. We also asked each participant if they knew of any other JavaScript-specific construct that they regarded as being likely to make the code hard to understand. In this section we detail the protocol we followed to conduct the interviews and to analyze the results.
+To complement our initial survey, we performed semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding code snippets containing atoms of confusion (research question RQ2). We also asked each participant if they knew of any other JavaScript-specific construct that they regarded as being likely to make the code hard to understand (research question RQ3). In this section we detail the protocol we followed to conduct the interviews and to analyze the results.
 
 % Nós realizamos entrevistas semi-estruturas com o objetivo de identificar a percepção dos desenvolvedores com experiência em JavaScript sobre algumas questões relacionadas à compreensão de código em JavaScript. Assim, nesta Seção nós descrevemos os procedimentos adotados para selecionar os participantes para as entrevistas e detalhamos como as entrevistas foram conduzidas. Além disso, detalhamos como os resultados das entrevistas foram analisados.
 
@@ -137,7 +135,7 @@ P15 & Female &  Graduate & Software Developer & 2 years & Java, PHP
 \end{table*}
 
 In the second part of the interview our aim was to allow the subjects to describe
-their JavaScript experience, as well as to allow them to reveal any JavaScript's constructs they regarded as innately confusing. This would allow us to identify potential atom candidates that are more specific to the JavaScript language. Examples of questions we explored in this section include:\emph{Do you think JavaScript is a language that produces code that is hard to understand?} and \emph{Do you regard any particular construct or idiom of the language as
+their JavaScript experience, as well as to allow them to reveal any JavaScript's constructs they regarded as innately confusing. This would allow us to identify potential atom candidates that are more specific to the JavaScript language. Examples of questions we explored in this section include: \emph{Do you think JavaScript is a language that produces code that is hard to understand?} and \emph{Do you regard any particular construct or idiom of the language as
   especially confusing?}
 
 
@@ -158,7 +156,7 @@ Section~\ref{sec:interview-results}. Finally, we consolidate the feedback of the
 
 To understand how often atoms of confusion appear in open source projects, and thus answer our fourth research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mined a set of GitHub open source repositories. To this end, we first collected the most popular GitHub repositories that are primarily written in JavaScript. We measured popularity using the project's stargazers. This metric, available on  GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate project's popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then selected the top 100 most popular repositories and removed projects that did not reach the first quartile of the distribution of lines of code.
 
-After filtering out JavaScript project candidates, in the second step we built a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num{1244} forks and \num{23672} stars. We automated all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
+After filtering out JavaScript project candidates, in the second step we built a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num{1244} forks and at least \num{23672} stars. We automated all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
 
 We mined the occurrence of atom candidates from the repositories in our curate dataset using source code queries that we had written using the CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). We also automate the process of running the queries and exporting the results to a format that simplifies our
 analysis (and also the reproduction of this study). Finally, we carried

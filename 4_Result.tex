@@ -13,7 +13,8 @@ from 140 participants (in a total of 70 replicas).
 All participants had taken at least some university course or hold a bachelor
 degree or equivalent, meaning the participants have had some
 level of formal education on programming.
-Twenty four participants hold either a master degree (21 participants) or a doctorate degree (3 participant). 
+Twenty four participants hold either a master degree (21 participants) or a doctorate degree
+(three participants). 
 
 
 %% Figure~\ref{fig:degree} and Figure~\ref{fig:xp} show the distributions of the subjects,
@@ -44,11 +45,15 @@ code taking into account the perceptions of both novice and experience developer
 
 \subsubsection*{Exploratory Data Analysis}
 
-Each participant in this study evaluated 10 code snippets, from which 5 were in their confusing versions, whilst the other 5 contained cleaned versions of the code snippets (i.e., without the confusing constructs and idioms). The participants should provide the expected outcomes of the code snippets. As discussed, we collected information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{cognitive workload} (the time taken to answer the question). 
-Table~\ref{tab:difference-correctness} and Figure~\ref{fig:boxplotcorrectness} summarize the results of the survey w.r.t. correctness. Accordingly, the version of six code snippets without atoms of confusion present at least a 15\% improvement in answer correctness. In particular, the presence of the \emph{Comma Operator} atom presents the highest impact on
+Each participant in this study evaluated 10 code snippets, from which five were in their confusing versions, whilst the other five contained cleaned versions of the code snippets (i.e., without the confusing constructs and idioms). The participants should provide the expected outcomes of the code snippets. As discussed, we collected information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{cognitive workload} (the time taken to answer the question). 
+Table~\ref{tab:difference-correctness} and Figure~\ref{fig:boxplotcorrectness} summarize the results of the survey w.r.t. correctness.
+
+Considering Table~\ref{tab:difference-correctness}, the version of six code snippets without atoms of confusion present at least a 15\% improvement in answer correctness. In particular, the presence of the \emph{Comma Operator} atom presents the highest impact on
 misunderstanding, and  
 frequently used constructs and idioms, such as \emph{Post Increment} and \emph{Omitted Curly Braces} (see Section~\ref{sec:msr-results}), also introduce high degrees of confusion.
-The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a nonnegligible decrease in the average number of incorrect answers when observing the cleaned version of the code snippets. Also, the sample of responses with no atoms had almost no dispersion, which signifies that the non-confusing code is easier to evaluate correctly. 
+The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a nonnegligible decrease in the average number of incorrect answers when observing the cleaned version of the code snippets. Also, the sample of responses with no atoms had almost no dispersion, which supports the
+argument that the non-confusing versions of the code snippets are
+easier to evaluate correctly. 
 
 
 % \begin{table}[htbp]
@@ -402,7 +407,7 @@ When asked about particular JavaScript constructs or patterns that can make code
 \emph{``Nested callbacks are very confusing. Even writing them can be confusing, let alone understanding them.''}
 \end{mq}
 
-Two other developers implicitly touched upon the callback pattern, mentioning that it can be difficult to understand 'asynchronous' programming in JavaScript. Since what is really happening at a lower level is that the JavaScript engine creates a callback stack that is separate from the main execution stack, and that callback functions are only executed when the main execution stack is empty, the concepts of asynchronous events and callbacks are inseparable in the language, and any abstractions for callback functions, such as promises and async/await syntax only hide the pattern.
+Two other developers implicitly touched upon the callback pattern, mentioning that it can be difficult to understand \emph{asynchronous} programming in JavaScript. Since what is really happening at a lower level is that the JavaScript engine creates a callback stack that is separate from the main execution stack, and that callback functions are only executed when the main execution stack is empty, the concepts of asynchronous events and callbacks are inseparable in the language, and any abstractions for callback functions, such as promises and async/await syntax only hide the pattern.
 
 % citar uninitialized objects' types. floating point precision issues, 'this', type coercion
 
@@ -451,12 +456,14 @@ features may be a problem worth investigating in future studies.
 \section{Results of the MSR Effort}
 \label{sec:msr-results} 
 
-We mined \minedprojects open source JavaScript repositories to understand how often atoms of confusion arise in real software. However, it was not possible to detect the atom Implicit Predicate using the mining techniques employed in this study because it depends on the semantics. As such, we were able to mine only the eight atoms listed in Table~\ref{tab:occurrences-summary}.
+We mined \minedprojects open source JavaScript repositories to understand how often atoms of confusion arise in real software. We discarded in this analysis the atom Implicit Predicate,
+because writing a CodeQL query for mining this particular atom is everything but trival.
+As such, in this study
+we only mined the eight atoms listed in Table~\ref{tab:occurrences-summary}.
 
-Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18}~\cite{DBLP:journals/ese/MedeirosLAAKRG19}, which investigates the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion frequently arise in JavaScript open source systems.
-
-The 5 most frequently found atoms occur in at least 80\% of the projects.
-Considering the extremes, atoms Ternary Operator was found in all repositories, while atom Comma Operator occurred only in 15\% of them (as seen in Table~\ref{tab:occurrences-summary}).
+Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18}~\cite{DBLP:journals/ese/MedeirosLAAKRG19}, which investigates the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion frequently arise in JavaScript open source systems. For instance, the 5 most frequently found atoms occur in at least 80\% of the projects.
+Considering the extremes, atom Ternary Operator was found in all repositories,
+while atom Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:occurrences-summary}).
 
 % Figure~\ref{fig:rate} summarizes this finding, showing that the occurrence of atoms of confusion in JavaScript systems range from 11.34\% (Comma Operator) to 89.69\% (Ternary Operator).
 
@@ -490,12 +497,20 @@ Comma Operator & 15.28\% & 0.03 & little used \\
 
 
 Considering all JavaScript projects in our dataset, we found 
-a total of \num{204229} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces and the Post Increment. The remaining atoms accounts for \num{24558} (12.03\%) of the total number of occurrences, and the Comma Operator and Arithmetic as Logic are the atoms that arise less frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
+a total of \num{204229} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces and the Post Increment. The remaining atoms
+account for \num{24558} (12.03\%) of the total number of occurrences, and the Comma Operator and Arithmetic as Logic are the atoms that arise less frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
 
-Regarding frequency, we proceeded with a classification of atom occurrences according to the metrics established by a previous study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. As such, we found 3 atoms as highly used (37.50\%), 3 as commonly used (37.50\%) and 2 atoms as little used (25.00\%). We also calculated the frequency of each atom per KLOC and found atom Ternary Operator as the most occurring in practice (10.16 occurrences per KLOC).
+Regarding frequency, we proceeded with a classification of \emph{atom occurrence}
+according to the thresholds of a previous
+study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. As such, we found three
+atoms as highly used (Ternary Operator, Omitted Curly Braces, and Post Increment),
+three as commonly used (Pre-Increment, Assignment as Value, and Logic as Control Flow)
+and two atoms as little used (Arithmetic as Logic and Comma Operator).
+We also calculated the frequency of each atom per KLOC and found the atom
+Ternary Operator as the most occurring in practice (10.16 occurrences per KLOC).
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
 The results of our survey and interviews suggest that the Ternary Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post Increment Expression and Omitted Curly Braces atoms are listed in the top three sources of misunderstanding 
-(see Table~\ref{tab:difference-correctness}). As such, fixing the the Post Increment and Omitted Curly Braces might solve most of the unclear code caused by atoms of confusion. 
-
+(see Table~\ref{tab:difference-correctness}). As such, fixing the the Post Increment and Omitted Curly Braces might solve most of the unclear code caused by atoms of confusion
+in JavaScript projects. 
