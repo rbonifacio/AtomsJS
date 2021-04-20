@@ -78,24 +78,27 @@ To understand whether an atom of confusion introduces misunderstandings,
 we surveyed 140 JavaScript developers. In the survey, 
 their task was to predict the output of short code
 snippets, with half of them containing atoms of confusion. 
-\castor{Improvement of 15\% in terms of what. This is too loose.}
-       {\color{red}The number of correct answers for the
-         cleaned version of the code snippets for seven (out of nine)
-         atom candidates is at least 15\% higher, in comparison to the version
-         of the code with the atoms. The presence of an atom candidate
-       might also affects the time necessary for submitting a correct answer.}
-       For instance, the presence of the Comma Operator atom increases
-       the average time to predict the output by 65\%, though the output of snippets containing
-       the Pre-Increment atom were correctly predicted 44\% faster.
-       To learn more about the misunderstandings in the snippets used in the survey, we interviewed 15
-       experienced professional developers. Participants preferred code snippets \textit{without} an atom in 70\% of the cases,
-       therefore corroborating with the survey findings. The participants also discussed additional 
-       idioms that might lead developers to incorrectly comprehend the JavaScript code.
-       The occurrence of atoms in open-source repositories may reveal cases where developers
-       should be more or less careful when writing code. To identify such cases, we mined popular JavaScript projects
-       from GitHub and found that four atoms are highly used in JavaScript
-       code: the Implicit Predicate atom, for instance, occurs 19.89 times per KLOC of
-       code. 
+{\color{red}The number of correct answers for the
+  \emph{cleaned version} of the code snippets for seven (out of nine)
+  atom candidates is at least 15\% higher than the corresponding
+  \emph{confuse version
+  of the code snippet (i.e., with an atom candidate). The presence of an atom candidate
+  might also affects the time necessary for submitting a correct answer.}
+  For instance, the presence of the Comma Operator atom increases
+  the average time to predict the output by 65\%, though the output of snippets containing
+  the Pre-Increment atom were correctly predicted 44\% faster.
+  
+  To learn more about the misunderstandings in the snippets used in the survey, we interviewed 15
+  experienced professional developers. Participants considered the code snippets without
+  the atom candidates easier to understand in 70\% of the cases,
+  therefore corroborating the survey findings. The participants also discussed other 
+  idioms that might lead developers to misunderstand JavaScript code.
+  The occurrence of atoms in open-source repositories might reveal cases where developers
+  should be more or less careful when writing code---and open the possibility to implement
+  new program transformations for cleaning up confuse code. To identify such cases, we mined popular JavaScript projects
+  from GitHub and found four atom candidates that are highly used in JavaScript
+  code: the Implicit Predicate atom, for instance, occurs 19.89 times per KLOC of
+  code.}
 
 
 Altogether, the main contributions of this paper are:
