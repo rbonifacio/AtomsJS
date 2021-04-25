@@ -131,6 +131,8 @@
   moredelim=[il][\textcolor{darkgray}]{§§}
 }
 
+\newcommand{\na}{9\xspace}
+
 \begin{document}
 \input{atom-mdframe-config}
 
@@ -185,8 +187,7 @@ Code}
 \pagestyle{plain}
 
 \begin{abstract}
-Evolving legacy code is a challenging task, particularly when the code has been poorly written, increasing effort and imposing a significant cognitive load on developers. Previous research has investigated the impact of small code patterns (hereafter atoms of confusion) that contribute to misunderstanding the source code written in C and C++. However, little is known about the influence of these atoms on understanding dynamic languages (such as JavaScript). In this work, we investigate the impact of atoms of confusion on understanding code written in JavaScript in terms of a mixed-method research: a survey, a set of interviews with practitioners, and a mining software repositories (MSR) effort. From our survey and interviews, we confirm that atoms of confusion lead to code that is hard to understand: developers correctly predict the outcome of at least 15\% more cases when an atom of confusion is not present in 6 out of 9 atom candidates. Our MSR effort reveal that atoms of confusion frequently arise in open-source JavaScript systems: the Comma Operator is present in 11\% of the projects in our dataset; while five other atom candidates appear in more than 60\% of the projects, including the atoms Assignment as Value and Omitted Curly Braces, present in 8253 and 53357 cases, respectively. Altogether, our findings might help developers better understand the implications of atoms of confusion on understanding JavaScript code and contribute to the design of program transformation tools to simplify JavaScript code.
-
+  Evolving legacy code is a challenging task, particularly when the code has been poorly written, increasing effort and imposing a significant cognitive load on developers. Although previous research has investigated the impact of small code patterns (hereafter atoms of confusion) that contribute to misunderstanding the source code written in \clang, \cpplang, and Java, little is known about the influence of these atoms on understanding dynamic languages (such as JavaScript). In this work, we investigate the impact of atoms of confusion on understanding code written in JavaScript in terms of a mixed-method research: a survey, a set of interviews with practitioners, and a mining software repositories (MSR) effort. From our survey and interviews, we confirm that atoms of confusion also lead to code that is hard to understand in JavaScript: developers correctly predict the outcome of at least 15\% more cases when an atom of confusion is not present in {\color{red}6} out of \na atom candidates. In addition, our MSR effort reveals that atoms of confusion frequently arise in open-source JavaScript systems: the Comma Operator is present in 11\% of the projects in our dataset; while five other atom candidates appear in more than 60\% of the projects, including the atoms Assignment as Value and Omitted Curly Braces, present in 8253 and 53357 cases, respectively. Altogether, our findings might help practitioners (a) better understand the implications of atoms of confusion on understanding JavaScript code, (b) avoid writing code that is unnecessarily difficult to maintain, and (c) design program transformation tools that remove potential sources of misunderstanding in JavaScript code.
 
 % Our investigation also reveals additional JavaScript constructs that might hinder even experienced developers from understanding JavaScript code, such as the use of callbacks functions. Altogether...
 
@@ -195,7 +196,7 @@ Evolving legacy code is a challenging task, particularly when the code has been 
 \end{abstract}
 
 \begin{IEEEkeywords}
-code readability, program comprehension, program understanding, atoms of confusion
+code readability, program comprehension, program understanding, atoms of confusion, JavaScript code
 %datasets, neural networks, gaze detection, text tagging
 \end{IEEEkeywords}
 
