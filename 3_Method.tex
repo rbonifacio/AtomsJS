@@ -94,46 +94,47 @@ Two of the researchers conducted the interviews, and a third one listened to all
 The interviews had three main parts. In the first one, we asked the developers the following demographic information: name, email, gender, level of education, current job position, JavaScript experience in years and other programming languages they have worked with.
 Table \ref{pinterview} summarizes this demographic information.
 
-\begin{table*}[htb!]
-\centering
-\begin{tabular}
-{p{0.4cm}p{0.9cm}p{2.0cm}p{6cm}p{1.9cm} p{4.5cm}}
+\begin{table}[htb!]
+  \centering
+\begin{scriptsize}  
+\begin{tabular}{clcl}
 \toprule
-ID & Gender & Level & Role & JS Experience & Other Languages \\ \midrule 
-P1 & Male & Graduate & Software Developer & 9 years & Java, PHP, C, Go  
+ID & Education & JS Experience & Other Languages \\ \midrule 
+P1 & BSc Degree & 9 years & Java, PHP, C, Go  
 \\ 
-P2 & Male & High School & Software Developer & 3 years & Python, Go, Dart, Lua, C++, C\#
+P2 & HS Degree & 3 years & Python, Go, Dart, Lua, C++, C\#
 \\ 
-P3 & Male & Graduate & Software Developer & 4 years & Java, C
+P3 & BSc Degree & 4 years & Java, C
 \\ 
-P4 & Male & Undergraduate & Software Developer & 3 years & Python, C, C++, Java, Go
+P4 & Undergraduate & 3 years & Python, C, C++, Java, Go
 \\ 
-P5 & Male & Master Student & Software Developer & 3 years & Python, SQL
+P5 & Master Student & 3 years & Python, SQL
 \\ 
-P6 & Male & Graduate & Software Architect  & 15  years  & Java, PHP, C, Python , Ruby, C\# and R
+P6 & Bsc Degree & 15  years  & Java, PHP, C, Python , Ruby, C\# and R
 \\ 
-P7 & Male & Graduate & Software Developer  & 6 years & C, C++, Java, Assembly, Kotlin
+P7 & BSc Degree  & 6 years & C, C++, Java, Assembly, Kotlin
 \\ 
-P8 & Male & PhD & Software Developer & 2 years & Java, Python
+P8 & PhD Degree & 2 years & Java, Python
 \\ 
-P9 & Male & Graduate & Business Analyst and Software Developer & 5 years & PHP
+P9 & BSc Degree  & 5 years & PHP
 \\ 
-P10 & Male & Master Student & Business Analyst and Software Developer  & 4 years & Java, C\# and Python
+P10 & Master Student & 4 years & Java, C\# and Python
 \\ 
-P11 & Male & Master Student & Software Architect & 4 years & Java, Erlang, C\#, Cobol
+P11 & Master Student & 4 years & Java, Erlang, C\#, Cobol
 \\ 
-P12 & Female & Master & Software Developer  & 1 year & C
+P12 & Master Degree & 1 year & C
 \\ 
-P13 & Male & Master & Software Developer & 13 years & Java, PHP
+P13 & Master Degree & 13 years & Java, PHP
 \\ 
-P14 & Female & Master Student & Software Developer  & 3 years & C, Python, Ruby
+P14 & Master Student & 3 years & C, Python, Ruby
 \\ 
-P15 & Female &  Graduate & Software Developer & 2 years & Java, PHP
+P15 &  BSc degree  & 2 years & Java, PHP
 \\ \bottomrule
 \end{tabular}
+\end{scriptsize}
     \caption{Demographic information of the participants}
     \label{pinterview}
-\end{table*}
+\end{table}
 
 In the second part of the interview our aim was to allow the subjects to describe their JavaScript experience, as well as to allow them to reveal any JavaScript constructs they regarded as innately confusing. This would allow us to identify potential atom candidates that are more specific to the JavaScript language. Examples of questions we explored in this section include: \emph{Do you think JavaScript is a language that produces code that is hard to understand?} and \emph{Do you regard any particular construct or idiom of the language as
   especially confusing?}
@@ -159,20 +160,22 @@ After filtering out JavaScript project candidates, in the second step we built a
 We mined the occurrence of atom candidates from the repositories in our curated dataset using source code queries that we wrote using the CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). We also automate the process of running the queries and exporting the results to a format that simplifies our analysis (and also the reproduction of this study). Finally, we carried out basic descriptive statistics in order to understand how often the
 atoms of confusion appear in practice. 
 
-\begin{table*}[ht]
- \centering
- \begin{tabular}{rrrrrrr}
+\begin{table}[ht]
+  \centering
+  \begin{scriptsize}
+ \begin{tabular}{rrrrr}
    \hline
-             & Min. & 1st Qu. & Median & Mean & 3rd Qu. & Max. \\ \hline
- Lines of Code           & \num{5543}  & \num{16060.25} & \num{36161.5} & \num{111432.33} & \num{111182.50} & \num{1278405} \\
- Num. of Forks     & \num{1244}   & \num{3029.75} & \num{6078} & \num{8906.24} & \num{9260.50} & \num{68849} \\
- Num. of Contributors  & \num{6}   & \num{184} & \num{285.5} & \num{533.44} & \num{515.75} & \num{4047} \\
- Num. of Stars        & \num{23672} & \num{27055} & \num{34990} & \num{46919.51} & \num{48518} & \num{310935} \\
+                       & Min.             & Median        & Mean             & Max. \\ \hline
+ Lines of Code         & \num{5543}       & \num{36161.5} & \num{111432.33}  & \num{1278405} \\
+ Num. of Forks         & \num{1244}       & \num{6078}    & \num{8906.24}    & \num{68849} \\
+ Num. of Contributors  & \num{6}          & \num{285.5}   & \num{533.44}     & \num{4047} \\
+ Num. of Stars         & \num{23672}      & \num{34990}   & \num{46919.51}   & \num{310935} \\
  
     \hline
  \end{tabular}
+ \end{scriptsize}
  \caption{Some descriptive statistics about the projects used in the MSR study}
  \label{tab:projects-statistics} 
- \end{table*}
+ \end{table}
 
 
