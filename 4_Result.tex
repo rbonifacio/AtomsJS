@@ -275,7 +275,7 @@ in the study. A total of 15 practitioners
 took part of the interviews.
 We collected information regarding programming
 experience, familiarity with JavaScript, and their opinion
-about the nine atom candidates---by
+about the \na atom candidates---by
 (a) presenting them pairs of code snippets whose behavior were identical
 and then (b) asking them to compare the code snippets readability.
 
@@ -293,10 +293,11 @@ ratio was higher than the option for the version without atoms of confusion.
 Only for the Ternary Operator atom candidate the participants
 prefer the version of the code with the atom of confusion,
 instead of the more cleaner version without the atom of confusion.
-Even in this case, some participants who opted for
-the \emph{left-hand-side} (with the atom of confusion) version
-still believed that the \emph{right-hand-side} (without the atom of
-confusion) version was more readable (see Figure~\ref{code:ternary}). 
+We show the code snippets for the Ternary Operator in Figure~\ref{code:ternary}.
+Even for this atom candidate, some participants who preffered 
+the \emph{left-hand-side} version (with the atom of confusion) 
+still believed that the \emph{right-hand-side} version (without the atom of
+confusion) was more readable.  
 The following quotes were extracted from the transcripts with
 three interviewees:
 
@@ -336,19 +337,19 @@ console.log(_config.size);
 \emph{``When I am programming, I write code with the ternary operator, [...], but, to be honest, I still think that the [the code using the \lhs version] is easier to understand''}.
 \end{mq}
 
-\begin{mq}
-\emph{``I think [the \lhs version] is easier to understand, but [the \rhs version] is what I would write"}
-\end{mq}
+%% \begin{mq}
+%% \emph{``I think [the \lhs version] is easier to understand, but [the \rhs version] is what I would write"}
+%% \end{mq}
 
-The atom candidate Ternary Operator also opens up
-the possibility for a derivative construct that JavaScript
-allows which can be rather confusing, and that is the nested
-ternaries construct, in which the right-hand side of the a
-ternary operator can be another ternary construct.
-While nested ternaries remove the number of lines that
-would be necessary to construct using nested if-then-else statements,
-they can become quite taxing to understand.
-Nested ternaries are a choice of atoms to be analyzed in future work.
+%% The atom candidate Ternary Operator also opens up
+%% the possibility for a derivative construct that JavaScript
+%% allows which can be rather confusing, and that is the nested
+%% ternaries construct, in which the right-hand side of the a
+%% ternary operator can be another ternary construct.
+%% While nested ternaries remove the number of lines that
+%% would be necessary to construct using nested if-then-else statements,
+%% they can become quite taxing to understand.
+%% Nested ternaries are a choice of atoms to be analyzed in future work.
 
 The Pre-Increment atom candidate also caused such
 divide in one of the interviewees, as they
@@ -373,7 +374,7 @@ that might motivate one avoid writing code using this construct:
   \emph{``This one is interesting, because I have written
   code that looks like the [\lhs version (with the atom of confusion)],
   and my colleagues complained that it was difficult to understand.
-  So nowadays I prefer to write code using the [\rhs version]."}
+  Nowadays I prefer to write code using the [\rhs version]."}
 \end{mq}
 
 Two of the atom candidates had unanimous preference for the
@@ -381,12 +382,12 @@ versions that did not contain the atoms: Comma Operator and
 Omitted Curly Braces. Regarding the first one, we could
 often notice during the interviews that
 the \emph{\lhs} (with the atom of confusion) caused significant
-confusion among the participants. Two remarks about
-the \emph{Comma Operator} atom of confusion are listed below:
+confusion among the participants. One remark about
+the \emph{Comma Operator} atom of confusion is listed below:
 
-\begin{mq}
-\emph{``I just learned that [the \lhs version of this code] is possible. I did not even know it worked''}
-\end{mq}
+%% \begin{mq}
+%% \emph{``I just learned that [the \lhs version of this code] is possible. I did not even know it worked''}
+%% \end{mq}
 
 \begin{mq}
 \emph{``The code in [the \lhs version] is unlikely to be understood unless the programmer knows \clang or \cpplang''}
@@ -398,11 +399,11 @@ As for the atom candidate Omitted Curly Braces, one of the interviewees mentione
 \emph{``[I prefer the \rhs version of the code \ldots] If I want to see well-written, easily understandable code, then I also have to do my job. Therefore I believe that, since I do not know who is on the other end maintaining this code, and it could be any person with any level of expertise, then I try to write readable, easy-to-understand code''}
 \end{mq}
 
-This is an interesting perspective, because such small, yet tricky program constructs and idioms, might hinder novice developers in the task of maintaining code; and one cannot make any assumption about the programmers' experience of who is going to maintain a code in a long run.
+This is an interesting perspective, because such a perhaps simple decision,  might hinder novice developers in the task of maintaining code; and one cannot make any assumption about the programmers' experience of who is going to maintain a code in a long run.
 
 \begin{table}[!htb]
     \centering
-    \caption{Interviews Round 1 - Summary of participants' preferences for code snippets \textsc{with} and \textsc{without} atoms of confusion (\textsc{aoc}). Participants were also allowed to choose \textsc{neutral} when they thought both sides were equally readable.}
+    \caption{Summary of participants' preferences for code snippets \textsc{with} and \textsc{without} atoms of confusion (\textsc{aoc}). Participants were also allowed to choose \textsc{neutral} when they thought both sides were equally readable.}
     \label{tab:interview-results1}
     \begin{tabular}{lrrr}\toprule
       & \multicolumn{3}{c}{\textsc{Preference (\%)}} \\
@@ -454,9 +455,10 @@ and process management.}''.
 
 Moreover, such abstractions might lead a developer to start to program
 using the language without actually understanding some of its basic aspects.
-For instance, four participants argued that the language is not typed, two  believed the language runs exclusively on browsers, and two other developers stated that the language is natively asynchronous, all of which are incorrect statements. For the multi-purpose language that is one of the most, if not the most used one by practitioners,
-a lack of understanding of the languages core
-features may be a problem worth investigating in future studies.
+For instance, four participants argued that the language is not typed, two  believed the language runs exclusively on browsers, and two other developers stated that the language is natively asynchronous, all of which are incorrect statements.
+%% For the multi-purpose language that is one of the most, if not the most used one by practitioners,
+%% a lack of understanding of the languages core
+%% features may be a problem worth investigating in future studies.
 
 
 
@@ -486,13 +488,12 @@ features may be a problem worth investigating in future studies.
 \section{Results of the MSR Effort}
 \label{sec:msr-results} 
 
-We mined \minedprojects open source JavaScript repositories to understand how often atoms of confusion arise in real software. We discarded in this analysis the atom Implicit Predicate,
-because writing a CodeQL query for mining this particular atom is everything but trival.
-As such, in this study
-we only mined the eight atoms listed in Table~\ref{tab:occurrences-summary}.
-
-Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18}~\cite{DBLP:journals/ese/MedeirosLAAKRG19}, which investigates the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion frequently arise in JavaScript open source systems. For instance, the 5 most frequently found atoms occur in at least 80\% of the projects.
-Considering the extremes, atom Ternary Operator was found in all repositories,
+We mined \minedprojects open source JavaScript repositories to understand how
+often atoms of confusion arise in real software. 
+Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19}, which investigte
+the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion
+frequently arise in JavaScript open source systems. For instance, the six most frequently found atoms
+occur in at least 80\% of the projects. Considering the extremes, atom Ternary Operator was found in all repositories we mined,
 while atom Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:occurrences-summary}).
 
 % Figure~\ref{fig:rate} summarizes this finding, showing that the occurrence of atoms of confusion in JavaScript systems range from 11.34\% (Comma Operator) to 89.69\% (Ternary Operator).
@@ -534,7 +535,7 @@ while atom Comma Operator occurred in only 15\% of them (as seen in Table~\ref{t
 \label{tab:occurrences-summary}
 \begin{tabular}{lrcc}
   \hline
-Atom & Projects & Occurrences/KLOC & Category \\ 
+Atom & Projects & Occurr./KLOC & Category \\ 
   \hline
 Implicit Predicate & 100\% & 19.89 &  highly used \\ 
   Ternary Operator & 100\% & 10.16 &  highly used \\ 
@@ -552,20 +553,27 @@ Implicit Predicate & 100\% & 19.89 &  highly used \\
 
 
 Considering all JavaScript projects in our dataset, we found 
-a total of {\color{red}\num{364873}} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces and the Post Increment. The remaining atoms
+a total of {\color{red}\num{364873}} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces, and the Post Increment. The remaining atoms
 account for \num{24558} (12.03\%) of the total number of occurrences, and the Comma Operator and Arithmetic as Logic are the atoms that arise less frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
 
 Regarding frequency, we proceeded with a classification of \emph{atom occurrence}
 according to the thresholds of a previous
 study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. As such, we found three
 atoms as highly used (Ternary Operator, Omitted Curly Braces, and Post Increment),
-three as commonly used (Pre-Increment, Assignment as Value, and Logic as Control Flow)
+four as commonly used (Pre-Increment, Assignment as Value,
+Logic as Control Flow, and Automatic Semicolon Insertion),
 and two atoms as little used (Arithmetic as Logic and Comma Operator).
 We also calculated the frequency of each atom per KLOC and found the atom
 Ternary Operator as the most occurring in practice (10.16 occurrences per KLOC).
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
-The results of our survey and interviews suggest that the Ternary Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post Increment Expression and Omitted Curly Braces atoms are listed in the top three sources of misunderstanding 
-(see Table~\ref{tab:difference-correctness}). As such, fixing the the Post Increment and Omitted Curly Braces might solve most of the unclear code caused by atoms of confusion
-in JavaScript projects. 
+The results of our survey and interviews suggest that the
+Ternary Operator does not contribute significantly as a source of
+misunderstanding (increasing the number of wrong answers in 9\% of the cases,
+according to our survey). Nonetheless, the Post-Increment Expression
+and Omitted Curly Braces atoms are listed in the top four sources of misunderstanding 
+(see Table~\ref{tab:difference-correctness}). As such, fixing the
+the Post-Increment and Omitted Curly Braces might solve most
+of the unclear code caused by atoms of confusion in
+JavaScript projects. 
