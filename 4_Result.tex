@@ -204,7 +204,7 @@ Not all atom candidates, though, require less time for the participants to predi
 
 
 \subsubsection*{Hypothesis Testing}
-We use the non-parametric \emph{Mann-Whitney test} to
+We use the non-parametric \emph{Mann-Whitney U test}, also known as Wilcoxon rank-sum test, to
 investigate the null hypothesis that developers 
 spend the same amount of time to correctly
 predict the outcome of a code snippet, regardless
@@ -530,22 +530,23 @@ while atom Comma Operator occurred in only 15\% of them (as seen in Table~\ref{t
   \hline
 Atom & Projects & Occurrences/KLOC & Category \\ 
   \hline
-Implicit Predicate & 100.00 & 19.89 &  highly used \\ 
-  Ternary Operator & 100.00 & 10.16 &  highly used \\ 
-  Omitted Curly Braces & 91.67 & 6.61 &  highly used \\ 
-  Post Increment & 90.28 & 5.62 &  highly used \\ 
-  Pre Increment & 83.33 & 1.04 & commonly used \\ 
-  Assignment as Value & 81.94 & 1.02 & commonly used \\ 
-  Logic as Control Flow & 56.94 & 0.95 & commonly used \\ 
-  Arithmetic as Logic & 23.61 & 0.02 & little used \\ 
-  Comma Operator & 15.28 & 0.03 & little used \\ 
+Implicit Predicate & 100\% & 19.89 &  highly used \\ 
+  Ternary Operator & 100\% & 10.16 &  highly used \\ 
+  Omitted Curly Braces & 91.67\% & 6.61 &  highly used \\ 
+  Post Increment & 90.28\% & 5.62 &  highly used \\ 
+  Pre Increment & 83.33\% & 1.04 & commonly used \\ 
+  Assignment as Value & 81.94\% & 1.02 & commonly used \\ 
+  Logic as Control Flow & 56.94\% & 0.95 & commonly used \\ 
+  Automatic Semicolon Insertion & 33.33\% & 0.13 & commonly used \\ 
+  Arithmetic as Logic & 23.61\% & 0.02 & little used \\ 
+  Comma Operator & 15.28\% & 0.03 & little used \\ 
    \hline
 \end{tabular}
 \end{table}
 
 
 Considering all JavaScript projects in our dataset, we found 
-a total of {\color{red}\num{363810}} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces and the Post Increment. The remaining atoms
+a total of {\color{red}\num{364873}} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces and the Post Increment. The remaining atoms
 account for \num{24558} (12.03\%) of the total number of occurrences, and the Comma Operator and Arithmetic as Logic are the atoms that arise less frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
 
 Regarding frequency, we proceeded with a classification of \emph{atom occurrence}
