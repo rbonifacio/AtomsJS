@@ -1,0 +1,11 @@
+Atom;Left;Right;Neutral
+Comma Operator;0;100;0
+Automatic Semicolon Inserction;0;80;0
+Post-Increment;20;73.33;6.67
+Omitted Curly Braces;0;100;0
+Assignment as Value;20;60;20
+Implicit Predicate;20;73.33;6.67
+Logicas Control Flow;20;60;20
+Ternary Operator;60;26.67;13.3
+Pre-Increment;40;46.67;13.33
+Arithmetic as Logic;0;93.33;6.67
