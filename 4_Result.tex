@@ -163,9 +163,9 @@ Atom & Confusing Code & Clean Code & $\Delta$(\%) \\ \midrule
 Comma Operator & 87.67 & 20.84 & -76.23 \\ 
 Automatic Semicolon Insertion & 46.08 & 22.04 & -52.17 \\ 
 Post-Increment & 28.70 & 25.67 & -10.56 \\ 
-Ommitted Curly Braces & 48.85 & 30.00 & -38.58 \\ 
+Omitted Curly Braces & 48.85 & 30.00 & -38.58 \\ 
 Assignment as Value & 52.47 & 48.95 & -6.71 \\ 
-Implict Predicate & 36.24 & 24.01 & -33.75 \\ 
+Implicit Predicate & 36.24 & 24.01 & -33.75 \\ 
 Logic as Control Flow & 108.94 & 51.07 & -53.12 \\ 
 Ternary Operator & 41.80 & 39.34 & -5.90 \\ 
 Pre-Increment & 30.71 & 42.45 & 38.19 \\  
@@ -178,7 +178,7 @@ Arithmetic as Logic & 28.82 & 37.20 & 29.06 \\ \bottomrule
  % latex table generated in R 4.0.4 by xtable 1.8-4 package
  % Thu Apr 22 07:58:21 2021
  \begin{table*}[ht]
-\caption{Hipothesis Testing (misunderstanding and cognitive workload)}
+\caption{Hypotheses Testing (misunderstanding and cognitive workload)}
 \label{tab:hypothesis-testing}
 
  \centering
@@ -189,9 +189,9 @@ Atom candidate & Chi-square test & Odds Ratio          & CI & Mann-Whitey U test
 Comma Operator & 1.1727e-10 & 19.02 & (6.60, 68.22) & 5.8249e-08 & -0.53 \\ 
 Automatic Semicolon Insertion & 5.8352e-11 & 39.33 & (9.21, 356.62) & 0.09802 & -0.16 \\ 
 Post-Increment & 0.0015279 & 4.83 & (1.73, 15.74) & 0.12006 & 0.15 \\ 
-Ommitted Curly Braces & 0.050962 & 2.35 & (1.00, 5.77) & 0.92529 & -0.01 \\ 
+Omitted Curly Braces & 0.050962 & 2.35 & (1.00, 5.77) & 0.92529 & -0.01 \\ 
 Assignment as Value & 0.0034775 & 8.39 & (1.81, 79.12) & 0.82681 & 0.02 \\ 
-Implict Predicate & 0.01123 & 6.95 & (1.46, 66.56) & 0.0029039 & -0.29 \\ 
+Implicit Predicate & 0.01123 & 6.95 & (1.46, 66.56) & 0.0029039 & -0.29 \\ 
 Logic as Control Flow & 0.292 & 1.54 & (0.73, 3.28) & 7.5862e-05 & -0.39 \\ 
 Ternary Operator & 0.15896 & 2.73 & (0.74, 12.57) & 0.24073 & -0.12 \\ 
 Pre-Increment & 0.70147 & 1.25 & (0.55, 2.85) & 0.0062981 & 0.27 \\ 
@@ -209,7 +209,7 @@ predict the outcome of a code snippet, regardless
 of evaluating the confusing or  clean version
 of the code. The results of Table~\ref{tab:difference-time-taken}
 suggest that we should refute the null hypotheses for
-six atom candidates (Comma Operator, Automatic Semicolong Insertion,
+six atom candidates (Comma Operator, Automatic Semicolon Insertion,
 Implicit Predicate, Logic
 as Control Flow, Pre-Increment, and Arithmetic
 as Logic). For the first four, the analysis suggests that the participants
@@ -263,9 +263,10 @@ in the study. A total of 15 practitioners
 took part of the interviews.
 We collected information regarding programming
 experience, familiarity with JavaScript, and their opinion
-about the \na atom candidates---by
-(a) presenting them pairs of code snippets whose behavior were identical
-and then (b) asking them to compare the code snippets readability.
+about the \na atom candidates we explored in our research.
+To this end we first present them pairs of code snippets whose behavior were similar
+and then ask the participants to discuss their preferences (i.e.,
+code with or without atom).
 
 %% In the second round of interviews, ten of the fifteen developers
 %% who participated in the first round were shown another 8 atom candidates to atom of confusion whose frequency we observed during the repository mining phase. The same procedure of showing code that behaves exactly the same and surveying for how easy to understand each snippet was applied in this phase. 
@@ -273,16 +274,16 @@ and then (b) asking them to compare the code snippets readability.
 \subsubsection*{The Participants' perceptions of the atom candidates}
 Supporting the results of the survey, Table~\ref{tab:interview-results1}
  shows that for eight out of the
-nine scenarios surveyed, the majority of the respondents agree that the version of the
-code without the atom of confusion is easier to understand, and in no case the \emph{neutral}
+10 scenarios surveyed, the majority of the respondents prefer the version of the
+code without the atom of confusion, and in no case the \emph{neutral}
 ratio was higher than the option for the version without atoms of confusion.
 %% An example entry is contained in Appendix~\ref{}. 
 %% For a full listing of the code snippets, visit the paper repository. 
 Only for the Ternary Operator atom candidate the participants
 prefer the version of the code with the atom of confusion,
-instead of the more cleaner version without the atom of confusion.
+instead of the version without the atom of confusion.
 We show the code snippets for the Ternary Operator in Figure~\ref{code:ternary}.
-Even for this atom candidate, some participants who preffered 
+Even for this atom candidate, some participants who preferred 
 the \emph{left-hand-side} version (with the atom of confusion) 
 still believed that the \emph{right-hand-side} version (without the atom of
 confusion) was more readable.  
@@ -343,8 +344,8 @@ The Pre-Increment atom candidate also caused such
 divide in one of the interviewees, as they
 regarded the \emph{\rhs version} (without atom of confusion)
 as simpler to understand, but would still opt to write
-code that contained the atom. In contrast to such opinion,
-one of the participants found the version that contained the atom
+code with the atom. In contrast to such opinion,
+one of the participants found the version with the atom
 of confusion more elegant, but recognized it was less readable,
 and was willing to sacrifice elegance for readability.
 
@@ -356,7 +357,7 @@ and was willing to sacrifice elegance for readability.
 
 When analyzing the Logic as Control Flow atom candidate, one of
 the interviewees gave an example of his own experience
-that might motivate one avoid writing code using this construct:
+that might motivate one to avoid writing code using this construct:
 
 \begin{mq}
   \emph{``This one is interesting, because I have written
@@ -399,16 +400,17 @@ This is an interesting perspective, because such a perhaps simple decision,  mig
          \textsc{atom}           & \multicolumn{1}{c}{\textsc{with aoc}}
                                       &  \multicolumn{1}{c}{\textsc{without aoc}}
                                                & \multicolumn{1}{c}{\textsc{neutral}} \\ \midrule
-         Arithmetic as Logic     & 0  & 93.33  & 6.67  \\
-         Assignment as Value     & 20 & 60     & 20    \\
-         Comma Operator          & 0  & 100    & 0     \\
-         Ternary Operator        & 60 & 26.67  & 13.3  \\
-         Implicit Predicate      & 20 & 73.33  & 6.67  \\
-         Logic as Control Flow   & 20 & 60     & 20    \\
-         Omitted Curly Braces    & 0  & 100    & 0     \\
-         Post Increment          & 20 & 73.33  & 6.67  \\
-         Pre-Increment           & 40 & 46.67  & 13.33 \\ \midrule
-         \textsc{overall}        & 20 & 70.37  & 9.63  \\
+         Comma Operator                  & 0  & 100    & 0     \\
+         Automatic Semicolon Insertion  & 0  & 80     & 0     \\
+         Post-Increment                  & 20 & 73.33  & 6.67  \\
+         Omitted Curly Braces            & 0  & 100    & 0     \\
+         Assignment as Value             & 20 & 60     & 20    \\
+         Implicit Predicate              & 20 & 73.33  & 6.67  \\
+         Logic as Control Flow           & 20 & 60     & 20    \\
+         Ternary Operator                & 60 & 26.67  & 13.3  \\
+         Pre-Increment                   & 40 & 46.67  & 13.33 \\ 
+         Arithmetic as Logic             & 0  & 93.33  & 6.67  \\ \ midrule
+         \textsc{overall}                & 18 & 71.33  & 8.64  \\
          \bottomrule
     \end{tabular}
 \end{table}
@@ -478,7 +480,7 @@ For instance, four participants argued that the language is not typed, two  beli
 
 We mined \minedprojects open source JavaScript repositories to understand how
 often atoms of confusion arise in real software. 
-Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19}, which investigte
+Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19}, which investigate
 the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion
 frequently arise in JavaScript open source systems. For instance, the six most frequently found atoms
 occur in at least 80\% of the projects. Considering the extremes, atom Ternary Operator was found in all repositories we mined,
@@ -541,18 +543,23 @@ Implicit Predicate & 100\% & 19.89 &  highly used \\
 
 
 Considering all JavaScript projects in our dataset, we found 
-a total of {\color{red}\num{364873}} atoms of confusion, though three atoms are responsible for 87.97\% of this total: Ternary Operator, Omitted Curly Braces, and the Post Increment. The remaining atoms
-account for \num{24558} (12.03\%) of the total number of occurrences, and the Comma Operator and Arithmetic as Logic are the atoms that arise less frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
+a total of {\color{red}\num{364873}} atoms of confusion, though three atoms are responsible
+for {\color{red}87.97\% of this total}: Ternary Operator, Omitted Curly Braces, and the Post Increment. The remaining atoms
+account for \num{24558} (12.03\%) of the total number of occurrences, and the
+Comma Operator and Arithmetic as Logic are the atoms that arise less
+frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
 
 Regarding frequency, we proceeded with a classification of \emph{atom occurrence}
 according to the thresholds of a previous
-study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. As such, we found three
-atoms as highly used (Ternary Operator, Omitted Curly Braces, and Post Increment),
+study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. As such, we found four
+atoms as highly used (Implicit Predicate, Ternary Operator, Omitted Curly Braces, and Post Increment),
 four as commonly used (Pre-Increment, Assignment as Value,
 Logic as Control Flow, and Automatic Semicolon Insertion),
 and two atoms as little used (Arithmetic as Logic and Comma Operator).
-We also calculated the frequency of each atom per KLOC and found the atom
-Ternary Operator as the most occurring in practice (10.16 occurrences per KLOC).
+We also calculated the frequency of each atom per KLOC and found the atoms
+Implicit Predicate (19.89 occurrences per KLOC) and Ternary Operator (10.16
+occurrences per KLOC) as the most occurring
+in practice.
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
@@ -561,7 +568,8 @@ Ternary Operator does not contribute significantly as a source of
 misunderstanding (increasing the number of wrong answers in 9\% of the cases,
 according to our survey). Nonetheless, the Post-Increment Expression
 and Omitted Curly Braces atoms are listed in the top four sources of misunderstanding 
-(see Table~\ref{tab:difference-correctness}). As such, fixing the
-the Post-Increment and Omitted Curly Braces might solve most
-of the unclear code caused by atoms of confusion in
+(see Table~\ref{tab:difference-correctness}), and also frequently appear
+in open source systems. As such, fixing the
+the Post-Increment and Omitted Curly Braces might solve a considerable
+amount unclear code caused by atoms of confusion in
 JavaScript projects. 
