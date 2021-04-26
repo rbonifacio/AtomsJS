@@ -25,29 +25,22 @@ idioms and stylistic choices~\cite{DBLP:conf/msr/GopsteinZFC18}.
 % All these situations, which usually compound each other, expose the necessity of developing recommendations, tools, and techniques that help developers to avoid writing confusing code, identify potentially confusing code, and transform confusing code into clear code. 
 % Therefore, it is necessary to understand what programming language constructs and idioms might lead to code that is hard to understand.}
 
-This research focus on existing JavaScript idioms that a previous 
-research work have proved to introduce misunderstanding in \clang.
+%This research focuses on existing JavaScript idioms that a previous research work have proved to introduce misunderstanding in \clang.
 JavaScript is the most widely used language for web development and the most often adopted language on GitHub~\cite{BugsJS:ICST}. At the same time, JavaScript is infamously known to be ``the worst most popular language in the world''.\footnote{\url{https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/preface.md}} It is a weakly typed language~\cite{DynamicBehaviorJS:PLDI} that provides object-oriented, functional, and imperative constructs~\cite{JS-CodeSmells:SCAM}, in addition to features such as run-time evaluation~\cite{BugsJS:ICST,ClientSideBugsJS:TSE}, and asynchronous operations. All these 
 %diverse characteristics and capabilities
 features combined make JavaScript source code fertile ground for errors~\cite{BugsJS:ICST,ClientSideBugsJS:TSE} and confusion~\cite{JSGoodParts:book}.
 
-In particular, our research aims to help practitioners identify potentially confusing snippets of code and alternative snippets that can make the code clearer.
-To achieve that, we investigate JavaScript idioms that
-might negatively impact program understanding. These idioms correspond to a set of candidates for \emph{atoms of confusion} in
-JavaScript---that is, small
-pieces of code that hinder developers' understanding of the source code of a program
-for which there are functionally equivalent alternatives that are easier
-to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For instance, consider
-the pair of code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}).
+%In particular, 
+Our research aims to help practitioners identify potentially confusing snippets of code and alternative snippets that can make the code clearer. To achieve that, we investigate JavaScript idioms that might negatively impact program understanding. These idioms correspond to a set of candidates for \emph{atoms of confusion} in JavaScript---that is, small
+pieces of code that hinder developers' understanding of the source code of a program for which there are functionally equivalent alternatives that are easier
+to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For instance, consider the pair of code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}).
 %for presentation purpose only). 
 The code on the left-hand side of the figure contains two atoms of confusion discussed in previous work focusing on the \clang
-language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic as Control Flow} and \emph{Post-increment}. On the right-hand side, we present a cleaned version of the code, that is, without atoms of confusion. In the experiments of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, removing the atoms \emph{Logic as Control Flow} and \emph{Post-increment} improved the accuracy of program understanding tasks in  41\% and 34\%, respectively.
+language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic as Control Flow} and \emph{Post-increment}. On the right-hand side, we present a clean version of the code, that is, without atoms of confusion. In the experiments of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, removing the atoms \emph{Logic as Control Flow} and \emph{Post-increment} improved the accuracy of program understanding tasks in  41\% and 34\%, respectively.
 
 Recent work~\cite{DBLP:journals/ese/MedeirosLAAKRG19,DBLP:conf/sigsoft/GopsteinIYDZYC17,Langhout:2021:ACJ} has explored the impact of atoms of confusion on program understanding, and confirmed they negatively impact source code readability.
 However, these previous studies focus exclusively on statically typed languages (e.g., \clang, \cpplang, and Java). However, JavaScript's programming culture differs from that of languages such as \clang and \cpplang, particularly due to the JavaScript's dynamic
-capabilities and weaker type system. Thus, we may find that idioms and constructs that are atoms of confusion in those languages are not particularly difficult to understand for JavaScript programmers and vice-versa. Here we investigate a group of atom candidates
-that stems from the Gopstein et al. study and detail additional JavaScript constructs
-that might introduce misunderstanding---according to the opinion of JavaScript
+capabilities and weaker type system. Thus, we may find that idioms and constructs that are atoms of confusion in those languages are not particularly difficult to understand for JavaScript programmers and vice-versa. Here we investigate a group of atom candidates that stems from the study of Gopstein and colleagues and detail additional JavaScript constructs that might introduce misunderstanding---according to the opinions of JavaScript
 developers. 
 
 \begin{figure*}[thb]
@@ -74,18 +67,15 @@ res = properties.reduce((s, b) => {
   as Control Flow} and \emph{Post-increment}. On the right-hand side, we present an alternative implementation without atoms of confusion. We could simplify the code on the left-hand side even more, by using \texttt{filter} and \texttt{length} instead of the \texttt{reduce} recursive pattern (e.g., \texttt{res = properties.filter(p => p).length}).}\label{fig:lst01}
 \end{figure*}
 
-To understand whether an atom of confusion introduces misunderstandings,
-we surveyed 140 JavaScript developers. In the survey, 
-their task was to predict the output of short code
-snippets, with half of them containing atoms of confusion. 
+To understand whether an atom of confusion introduces misunderstandings, we surveyed 140 JavaScript developers. In the survey,  their task was to predict the output of short code snippets, with half of them containing atoms of confusion. 
 {\color{red}The number of correct answers for the
-  \emph{cleaned version} of the code snippets for seven (out of nine)
-  atom candidates is at least 10\% higher than the corresponding
-  \emph{confuse version}
+  \emph{clean version} of the code snippets for 7 out of \na
+  atom candidates is at least 15\% higher than the corresponding
+  \emph{confusing version}
   of the code snippet (i.e., with an atom candidate). The presence of an atom candidate
-  might also affects the time necessary for submitting a correct answer.
+  might also affect the time necessary for submitting a correct answer.
   For instance, the presence of the Comma Operator atom increases
-  the average time to predict the output by 76.23\%, though the output of snippets containing
+  the average time to predict the output by 76.23\%, though the outputs of snippets containing
   the Pre-Increment atom were correctly predicted 38.19\% faster.
   
   To learn more about the misunderstandings in the snippets used in the survey, we interviewed 15
@@ -95,11 +85,9 @@ snippets, with half of them containing atoms of confusion.
   idioms that might lead developers to misunderstand JavaScript code.
   The occurrence of atoms in open-source repositories might reveal cases where developers
   should be more or less careful when writing code---and open the possibility to implement
-  new program transformations for cleaning up confuse code. To identify such cases, we mined popular JavaScript projects
+  new program transformations for cleaning up confusing code. To identify such cases, we mined popular JavaScript projects
   from GitHub and found four atom candidates that are highly used in JavaScript
-  code: the Implicit Predicate atom, for instance, occurs 19.89 times per KLOC of
-  code.}
-
+  code. The Implicit Predicate atom, for instance, occurs 19.89 times per 1,000 lines of code.}
 
 Altogether, the main contributions of this paper are:
 \rb{revisar as contribuicoes quando o artigo estiver mais maduro. por enquanto, vamos ignorar esses bullets.}
