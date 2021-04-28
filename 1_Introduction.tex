@@ -1,47 +1,20 @@
 \section{Introduction}
 \label{intro}
 
-% The source code of a program can be naively understood as a collection of sentences in a language that would be interpreted by a computer (or compiled into a lower level representation and then executed by a computer). Nonetheless, this understanding is far from being complete. While it is not possible to execute programs without writing them in a way that the machine is able to interpret, it is also very difficult to develop software that performs complex tasks if developers do not care about how easily other programmers are going to understand its source code \cite{DBLP:journals/cj/Knuth84}.
+% Source code misunderstandings
+% Recent work... For instance, consider the pair...
+% However, focus on C, C++ and Java.
+% In this paper ==> Javascript!
 
-% \rb{acho que esse proximo paragrafo pode ser excluido}
-% \diego{também acho}
 
-% {\color{blue}That means programming should, in various ways, be regarded as an act of communication. In this context, the programmer is often faced with a dilemma. When initially confronted with a problem they have to solve, the programmer will proceed to employ their cognition into developing the logic of the solution, whilst simultaneously having to worry about writing ``syntactically correct'' code for the machine to parse and translate. The problem is that, during the time spent solving the problem and communicating with the computer, developers often do not have enough cognitive resources to also make considerations about whether their code is understandable by other programmers. Therefore, it takes a change of track to make the code easier to understand \cite{DBLP:books/daglib/0019908}. Not proceeding with such change of track is one of the reasons why ``confusing'' language constructs and idioms arise and remain in a program.}
 
-Source code misunderstandings can occur due to diverse reasons.
-For instance, a poorly understood requirement might lead to poorly implemented code.
-An intricate algorithm may require extra time to be fully comprehended.
-Besides that, programming languages can also be at fault
-and specific syntax and semantics of a language can cause misunderstandings. The same applies to some code
-idioms and stylistic choices~\cite{DBLP:conf/msr/GopsteinZFC18}.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% INICIO INTRODUCAO - MARCIO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% \diego{acho que o prox. parágrafo deve ser adaptado ou até removido}
-% {\color{blue}A direct consequence of the presence of these idioms in the code base is that it becomes even more difficult to develop new features for the software. 
-% According to Gopstein et al. \cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} ``\emph{the ability to understand pre-existing source code is one of the most important elements of a continuously successful software project}'', it follows that, if one cannot properly understand the \emph{purpose} and \emph{meaning} of a piece of code, they are not going to be able to build upon its existing parts.
-% Other consequences of the presence of confusing code include: 
-% (a) increased probability of bug introduction, due to a lack of proper understanding of what the program does; 
-% and (b) loss of internal quality measures, such as cohesion and coupling. 
-% This phenomenon usually leads to an architectural erosion. 
-% All these situations, which usually compound each other, expose the necessity of developing recommendations, tools, and techniques that help developers to avoid writing confusing code, identify potentially confusing code, and transform confusing code into clear code. 
-% Therefore, it is necessary to understand what programming language constructs and idioms might lead to code that is hard to understand.}
+Source code misunderstandings can occur due to many reasons. For instance, a poorly understood requirement might lead to poorly implemented code.  Besides that, programming languages can also have specific constructs that may lead to misunderstandings. In this context, the same applies to \emph{atoms of confusion}---that is, small pieces of code that hinder developers' understanding of the source code of a program for which there are functionally equivalent alternatives that are easier to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17, DBLP:conf/msr/GopsteinZFC18}.
 
-%This research focuses on existing JavaScript idioms that a previous research work have proved to introduce misunderstanding in \clang.
-JavaScript is the most widely used language for web development and the most often adopted language on GitHub~\cite{BugsJS:ICST}. At the same time, JavaScript is infamously known to be ``the worst most popular language in the world''.\footnote{\url{https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/preface.md}} It is a weakly typed language~\cite{DynamicBehaviorJS:PLDI} that provides object-oriented, functional, and imperative constructs~\cite{JS-CodeSmells:SCAM}, in addition to features such as run-time evaluation~\cite{BugsJS:ICST,ClientSideBugsJS:TSE}, and asynchronous operations. All these 
-%diverse characteristics and capabilities
-features combined make JavaScript source code fertile ground for errors~\cite{BugsJS:ICST,ClientSideBugsJS:TSE} and confusion~\cite{JSGoodParts:book}.
-
-%In particular, 
-Our research aims to help practitioners identify potentially confusing snippets of code and alternative snippets that can make the code clearer. To achieve that, we investigate JavaScript idioms that might negatively impact program understanding. These idioms correspond to a set of candidates for \emph{atoms of confusion} in JavaScript---that is, small
-pieces of code that hinder developers' understanding of the source code of a program for which there are functionally equivalent alternatives that are easier
-to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For instance, consider the pair of code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}).
-%for presentation purpose only). 
-The code on the left-hand side of the figure contains two atoms of confusion discussed in previous work focusing on the \clang
-language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic as Control Flow} and \emph{Post-increment}. On the right-hand side, we present a clean version of the code, that is, without atoms of confusion. In the experiments of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, removing the atoms \emph{Logic as Control Flow} and \emph{Post-increment} improved the accuracy of program understanding tasks in  41\% and 34\%, respectively.
-
-Recent work~\cite{DBLP:journals/ese/MedeirosLAAKRG19,DBLP:conf/sigsoft/GopsteinIYDZYC17,Langhout:2021:ACJ} has explored the impact of atoms of confusion on program understanding, and confirmed they negatively impact source code readability.
-However, these previous studies focus exclusively on statically typed languages (e.g., \clang, \cpplang, and Java). However, JavaScript's programming culture differs from that of languages such as \clang and \cpplang, particularly due to the JavaScript's dynamic
-capabilities and weaker type system. Thus, we may find that idioms and constructs that are atoms of confusion in those languages are not particularly difficult to understand for JavaScript programmers and vice-versa. Here we investigate a group of atom candidates that stems from the study of Gopstein and colleagues and detail additional JavaScript constructs that might introduce misunderstanding---according to the opinions of JavaScript
-developers. 
+Recent work~\cite{DBLP:journals/ese/MedeirosLAAKRG19,DBLP:conf/sigsoft/GopsteinIYDZYC17,Langhout:2021:ACJ} has explored the impact of atoms of confusion on program understanding, and confirmed they negatively impact source code readability. For instance, consider the pair of code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}). The code at the left-hand side contains two atoms of confusion discussed in previous work focusing on the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic as Control Flow} and \emph{Post-increment}. At the right-hand side, we present a clean version of the code, that is, without atoms of confusion. According to the experiments of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, removing the atoms \emph{Logic as Control Flow} and \emph{Post-increment} improved the accuracy of program understanding tasks in 41\% and 34\%, respectively.
 
 \begin{figure*}[thb]
 \noindent\begin{minipage}{.45\textwidth}  
@@ -67,41 +40,117 @@ res = properties.reduce((s, b) => {
   as Control Flow} and \emph{Post-increment}. On the right-hand side, we present an alternative implementation without atoms of confusion. We could simplify the code on the left-hand side even more, by using \texttt{filter} and \texttt{length} instead of the \texttt{reduce} recursive pattern (e.g., \texttt{res = properties.filter(p => p).length}).}\label{fig:lst01}
 \end{figure*}
 
-To understand whether an atom of confusion introduces misunderstandings, we surveyed 140 JavaScript developers. In the survey,  their task was to predict the output of short code snippets, with half of them containing atoms of confusion. 
-{\color{red}The number of correct answers for the
-  \emph{clean version} of the code snippets for 7 out of \na
-  atom candidates is at least 15\% higher than the corresponding
-  \emph{confusing version}
-  of the code snippet (i.e., with an atom candidate). The presence of an atom candidate
-  might also affect the time necessary for submitting a correct answer.
-  For instance, the presence of the Comma Operator atom increases
-  the average time to predict the output by 76.23\%, though the outputs of snippets containing
-  the Pre-Increment atom were correctly predicted 38.19\% faster.
-  
-  To learn more about the misunderstandings in the snippets used in the survey, we interviewed 15
-  experienced professional developers. Participants considered the code snippets without
-  the atom candidates easier to understand in 70\% of the cases,
-  therefore corroborating the survey findings. The participants also discussed other 
-  idioms that might lead developers to misunderstand JavaScript code.
-  The occurrence of atoms in open-source repositories might reveal cases where developers
-  should be more or less careful when writing code---and open the possibility to implement
-  new program transformations for cleaning up confusing code. To identify such cases, we mined popular JavaScript projects
-  from GitHub and found four atom candidates that are highly used in JavaScript
-  code. The Implicit Predicate atom, for instance, occurs 19.89 times per 1,000 lines of code.}
+However, these previous studies focus exclusively on statically typed languages (e.g., \clang, \cpplang, and Java). This way, there is a knowledge gap with respect to the impact of such atoms in dynamic languages such as JavaScript. In this sense, because JavaScript's programming culture differs from that of languages such as \clang and \cpplang, particularly due to the JavaScript's dynamic capabilities and weaker type system, we may find that idioms and constructs that are atoms of confusion in those languages are not particularly difficult to understand for JavaScript programmers and vice-versa. Also, besides being the most widely used language for web development and the most often adopted language on GitHub~\cite{BugsJS:ICST}, JavaScript contains features that combined make the source code fertile ground for errors~\cite{BugsJS:ICST,ClientSideBugsJS:TSE} and confusion~\cite{JSGoodParts:book}, such as weakly typed language~\cite{DynamicBehaviorJS:PLDI}, object-oriented, functional, and imperative constructs~\cite{JS-CodeSmells:SCAM}, and features such as run-time evaluation~\cite{BugsJS:ICST,ClientSideBugsJS:TSE}, and asynchronous operations.
+
+In this way, to better understand the impact of atoms of confusion in JavaScript, in this paper we present a mixed-method research effort based on a survey, on interviews, and on a mining software repositories study. First, we surveyed 140 JavaScript developers. In the survey, their task was to predict the output of short code snippets, with half of them containing atoms of confusion. The number of correct answers for the \emph{clean version} of the code snippets for 7 out of \na atom candidates is at least 15\% higher than the corresponding \emph{confusing version} of the code snippet (i.e., with an atom candidate). The presence of an atom candidate might also affect the time necessary for submitting a correct answer. For instance, the presence of the Comma Operator atom increases the average time to predict the output by 76.23\%, though the outputs of snippets containing the Pre-Increment atom were correctly predicted 38.19\% faster.
+
+To learn more about the misunderstandings in the snippets used in the survey, we also interviewed 15 experienced professional developers. Participants considered the code snippets without the atom candidates easier to understand in 70\% of the cases, therefore corroborating the survey findings. The participants also discussed other idioms that might lead developers to misunderstand JavaScript code. The occurrence of atoms in open-source repositories might reveal cases where developers should be more or less careful when writing code---and open the possibility to implement new program transformations for cleaning up confusing code. To identify such cases, we mined popular JavaScript projects from GitHub and found four atom candidates that are highly used in JavaScript code. The Implicit Predicate atom, for instance, occurs 19.89 times per 1,000 lines of code.
 
 Altogether, the main contributions of this paper are:
-\rb{revisar as contribuicoes quando o artigo estiver mais maduro. por enquanto, vamos ignorar esses bullets.}
 
 \begin{itemize}
-    \item A study about the impact of atoms of confusion on a
-    dynamic language.
+    
+    \item A mixed-method research effort---based on a survey, interviews, and mining software repositories---about the impact of atoms of confusion on a
+    dynamic language;
+    
     \item A list of additional atoms of confusion addressing particular 
-    JavaScript constructs and idioms.
+    JavaScript constructs and idioms;
+    
     \item A library and infrastructure to mine atoms of confusion using 
     code queries (implemented in the .QL language). This library and 
     infrastructure are freely available and might help researchers and 
     practitioners to automate program analysis at a large scale.
+
 \end{itemize}
+
+As implications, our results can help researchers and practitioners to better understand atoms of confusion in JavaScript. For example, our findings might alert the JavaScript community to avoid writing code with certain atoms of confusion. Moreover, our mixed study might help researchers and practitioners to design program transformation tools to remove atoms of confusion in JavaScript. They might prioritize atoms that cause a lot of confusion and are very common in the repositories, for instance.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% FINAL INTRODUCAO - MARCIO
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
+
+
+%Here we investigate a group of atom candidates that stems from the study of Gopstein and colleagues and detail additional JavaScript constructs that might introduce misunderstanding---according to the opinions of JavaScript developers.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% The source code of a program can be naively understood as a collection of sentences in a language that would be interpreted by a computer (or compiled into a lower level representation and then executed by a computer). Nonetheless, this understanding is far from being complete. While it is not possible to execute programs without writing them in a way that the machine is able to interpret, it is also very difficult to develop software that performs complex tasks if developers do not care about how easily other programmers are going to understand its source code \cite{DBLP:journals/cj/Knuth84}.
+
+% \rb{acho que esse proximo paragrafo pode ser excluido}
+% \diego{também acho}
+
+% {\color{blue}That means programming should, in various ways, be regarded as an act of communication. In this context, the programmer is often faced with a dilemma. When initially confronted with a problem they have to solve, the programmer will proceed to employ their cognition into developing the logic of the solution, whilst simultaneously having to worry about writing ``syntactically correct'' code for the machine to parse and translate. The problem is that, during the time spent solving the problem and communicating with the computer, developers often do not have enough cognitive resources to also make considerations about whether their code is understandable by other programmers. Therefore, it takes a change of track to make the code easier to understand \cite{DBLP:books/daglib/0019908}. Not proceeding with such change of track is one of the reasons why ``confusing'' language constructs and idioms arise and remain in a program.}
+
+% ESSE PARAGRAFO ESTAVA NA VERSAO ANTIGA
+%Source code misunderstandings can occur due to diverse reasons. For instance, a poorly understood requirement might lead to poorly implemented code. An intricate algorithm may require extra time to be fully comprehended. Besides that, programming languages can also be at fault and specific syntax and semantics of a language can cause misunderstandings. The same applies to some code idioms and stylistic choices~\cite{DBLP:conf/msr/GopsteinZFC18}.
+
+% \diego{acho que o prox. parágrafo deve ser adaptado ou até removido}
+% {\color{blue}A direct consequence of the presence of these idioms in the code base is that it becomes even more difficult to develop new features for the software. 
+% According to Gopstein et al. \cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} ``\emph{the ability to understand pre-existing source code is one of the most important elements of a continuously successful software project}'', it follows that, if one cannot properly understand the \emph{purpose} and \emph{meaning} of a piece of code, they are not going to be able to build upon its existing parts.
+% Other consequences of the presence of confusing code include: 
+% (a) increased probability of bug introduction, due to a lack of proper understanding of what the program does; 
+% and (b) loss of internal quality measures, such as cohesion and coupling. 
+% This phenomenon usually leads to an architectural erosion. 
+% All these situations, which usually compound each other, expose the necessity of developing recommendations, tools, and techniques that help developers to avoid writing confusing code, identify potentially confusing code, and transform confusing code into clear code. 
+% Therefore, it is necessary to understand what programming language constructs and idioms might lead to code that is hard to understand.}
+
+%This research focuses on existing JavaScript idioms that a previous research work have proved to introduce misunderstanding in \clang.
+
+% ESSE PARAGRAFO ESTAVA NA VERSAO ANTIGA
+%JavaScript is the most widely used language for web development and the most often adopted language on GitHub~\cite{BugsJS:ICST}. At the same time, JavaScript is infamously known to be ``the worst most popular language in the world''.\footnote{\url{https://github.com/getify/You-Dont-Know-JS/blob/2nd-ed/preface.md}} It is a weakly typed language~\cite{DynamicBehaviorJS:PLDI} that provides object-oriented, functional, and imperative constructs~\cite{JS-CodeSmells:SCAM}, in addition to features such as run-time evaluation~\cite{BugsJS:ICST,ClientSideBugsJS:TSE}, and asynchronous operations. All these features combined make JavaScript source code fertile ground for errors~\cite{BugsJS:ICST,ClientSideBugsJS:TSE} and confusion~\cite{JSGoodParts:book}.
+
+% ESSE PARAGRAFO ESTAVA NA VERSAO ANTIGA
+%Our research aims to help practitioners identify potentially confusing snippets of code and alternative snippets that can make the code clearer. To achieve that, we investigate JavaScript idioms that might negatively impact program understanding. These idioms correspond to a set of candidates for \emph{atoms of confusion} in JavaScript---that is, small pieces of code that hinder developers' understanding of the source code of a program for which there are functionally equivalent alternatives that are easier to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For instance, consider the pair of code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}). The code on the left-hand side of the figure contains two atoms of confusion discussed in previous work focusing on the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic as Control Flow} and \emph{Post-increment}. On the right-hand side, we present a clean version of the code, that is, without atoms of confusion. In the experiments of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, removing the atoms \emph{Logic as Control Flow} and \emph{Post-increment} improved the accuracy of program understanding tasks in  41\% and 34\%, respectively.
+
+% ESSE PARAGRAFO ESTAVA NA VERSAO ANTIGA
+%Recent work~\cite{DBLP:journals/ese/MedeirosLAAKRG19,DBLP:conf/sigsoft/GopsteinIYDZYC17,Langhout:2021:ACJ} has explored the impact of atoms of confusion on program understanding, and confirmed they negatively impact source code readability. However, these previous studies focus exclusively on statically typed languages (e.g., \clang, \cpplang, and Java). However, JavaScript's programming culture differs from that of languages such as \clang and \cpplang, particularly due to the JavaScript's dynamic capabilities and weaker type system. Thus, we may find that idioms and constructs that are atoms of confusion in those languages are not particularly difficult to understand for JavaScript programmers and vice-versa. Here we investigate a group of atom candidates that stems from the study of Gopstein and colleagues and detail additional JavaScript constructs that might introduce misunderstanding---according to the opinions of JavaScript developers. 
+
+% \begin{figure*}[thb]
+% \noindent\begin{minipage}{.45\textwidth}  
+% \begin{lstlisting}[language=JavaScript]
+% res = properties.reduce((s, b) => {
+%   b && s++
+%   return s
+% }
+% \end{lstlisting}
+% \end{minipage}\hfill
+% \begin{minipage}{.45\textwidth}
+% \begin{lstlisting}[language=JavaScript]
+% res = properties.reduce((s, b) => {
+%   if(b) {
+%     s = s + 1
+%   }
+%   return s
+% }
+% \end{lstlisting}
+% \end{minipage}
+% \captionof{lstlisting}{Code snippet from \textsc{NervJS/taro} project. Line 2 on the left-hand side of the figure contains two
+%   atoms of confusion discussed in ~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic
+%   as Control Flow} and \emph{Post-increment}. On the right-hand side, we present an alternative implementation without atoms of confusion. We could simplify the code on the left-hand side even more, by using \texttt{filter} and \texttt{length} instead of the \texttt{reduce} recursive pattern (e.g., \texttt{res = properties.filter(p => p).length}).}\label{fig:lst01}
+% \end{figure*}
+
+% ESSE PARAGRAFO ESTAVA NA VERSAO ANTIGA
+%To understand whether an atom of confusion introduces misunderstandings, we surveyed 140 JavaScript developers. In the survey,  their task was to predict the output of short code snippets, with half of them containing atoms of confusion. {\color{red}The number of correct answers for the \emph{clean version} of the code snippets for 7 out of \na atom candidates is at least 15\% higher than the corresponding \emph{confusing version} of the code snippet (i.e., with an atom candidate). The presence of an atom candidate might also affect the time necessary for submitting a correct answer. For instance, the presence of the Comma Operator atom increases  the average time to predict the output by 76.23\%, though the outputs of snippets containing the Pre-Increment atom were correctly predicted 38.19\% faster.
+
+% ESSE PARAGRAFO ESTAVA NA VERSAO ANTIGA
+%To learn more about the misunderstandings in the snippets used in the survey, we interviewed 15 experienced professional developers. Participants considered the code snippets without the atom candidates easier to understand in 70\% of the cases, therefore corroborating the survey findings. The participants also discussed other idioms that might lead developers to misunderstand JavaScript code. The occurrence of atoms in open-source repositories might reveal cases where developers should be more or less careful when writing code---and open the possibility to implement new program transformations for cleaning up confusing code. To identify such cases, we mined popular JavaScript projects from GitHub and found four atom candidates that are highly used in JavaScript code. The Implicit Predicate atom, for instance, occurs 19.89 times per 1,000 lines of code.
+
+% ESSE PARAGRAFO ESTAVA NA VERSAO ANTIGA
+%Altogether, the main contributions of this paper are: \rb{revisar as contribuicoes quando o artigo estiver mais maduro. por enquanto, vamos ignorar esses bullets.}
+
+% \begin{itemize}
+%     \item A study about the impact of atoms of confusion on a
+%     dynamic language.
+%     \item A list of additional atoms of confusion addressing particular 
+%     JavaScript constructs and idioms.
+%     \item A library and infrastructure to mine atoms of confusion using 
+%     code queries (implemented in the .QL language). This library and 
+%     infrastructure are freely available and might help researchers and 
+%     practitioners to automate program analysis at a large scale.
+% \end{itemize}
 
 
 
