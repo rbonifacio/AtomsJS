@@ -392,14 +392,16 @@ This is an interesting perspective, because such a perhaps simple decision,  mig
 
 \begin{table}[!htb]
     \centering
-    \caption{Summary of participants' preferences for code snippets \textsc{with} and \textsc{without} atoms of confusion (\textsc{aoc}). Participants were also allowed to choose \textsc{neutral} when they thought both sides were equally readable.}
+    \caption{Summary of participants' preferences for code snippets \emph{with} (LHS) and
+      \emph{without} atoms of confusion (RHS).
+      Participants were also allowed to choose NEUTRAL when they thought both sides were equally readable.}
     \label{tab:interview-results1}
     \begin{tabular}{lrrr}\toprule
       & \multicolumn{3}{c}{\textsc{Preference (\%)}} \\
       \cmidrule(lr){2-4}
-         \textsc{atom}           & \multicolumn{1}{c}{\textsc{with aoc}}
-                                      &  \multicolumn{1}{c}{\textsc{without aoc}}
-                                               & \multicolumn{1}{c}{\textsc{neutral}} \\ \midrule
+         \textsc{atom}           & \multicolumn{1}{c}{\textsc{LHS}}
+                                      &  \multicolumn{1}{c}{\textsc{RHS}}
+                                               & \multicolumn{1}{c}{NEUTRAL} \\ \midrule
          Comma Operator                  & 0  & 100    & 0     \\
          Automatic Semicolon Insertion  & 0  & 80     & 0     \\
          Post-Increment                  & 20 & 73.33  & 6.67  \\
@@ -428,24 +430,42 @@ When asked about particular JavaScript constructs or patterns that can make code
 \emph{``Nested callbacks are very confusing. Even writing them can be confusing, let alone understanding them.''}
 \end{mq}
 
-Two other developers implicitly touched upon the callback pattern, mentioning that it can be difficult to understand \emph{asynchronous} programming in JavaScript. Since what is really happening at a lower level is that the JavaScript engine creates a callback stack that is separate from the main execution stack, and that callback functions are only executed when the main execution stack is empty, the concepts of asynchronous events and callbacks are inseparable in the language, and any abstractions for callback functions, such as promises and async/await syntax only hide the pattern.
+Two other developers implicitly touched upon the callback pattern, mentioning that it can be difficult to understand \emph{asynchronous} programming in JavaScript. Since what is really happening at a lower level is that the JavaScript engine creates a callback stack that is separate from the main execution stack, and that callback functions are only executed when the main execution stack is empty, the concepts of asynchronous events and callbacks are inseparable in the language, and any abstractions for callback functions, such as promises and async/await syntax only hide the pattern. We also found other idioms that are JavaScript atom candidates, including
+\emph{property access} via array subscription (\lstinline[language=javascript]{V1['P1']} instead of \lstinline[language=javascript]{V1.P1}) and \emph{arrow functions} (see listings~\ref{arr1} and~\ref{arr2}). 
+
+\begin{figure}
+\begin{small}
+\begin{lstlisting}[language=JavaScript,caption=Example of arrow function,label=arr1]
+let inc = (x) => x + 1;
+\end{lstlisting}
+\begin{lstlisting}[language=JavaScript,caption=Alternative version without arrow function,label=arr2]
+let inc = function(x) {
+  return x + 1
+}
+\end{lstlisting}
+\end{small}
+\end{figure}
+
 
 % citar uninitialized objects' types. floating point precision issues, 'this', type coercion
 
 % \subsection{Common Misunderstandings About the Language}
 
-Six practitioners regarded the JavaScript language as easy to learn, while four
-participants mentioned that the abundance of frameworks,
-coupled with the abstractions they provide, make it so that one
-can develop quickly in the language. However, as mentioned by one
-of the interviewees, ``\emph{Developers who have started
-programming in JavaScript might miss out on important lower-level
-aspects, such as garbage collection, memory management,
-and process management.}''. 
+% TODO: I don't see that our results support these claims.
+% Let us comment for now.
 
-Moreover, such abstractions might lead a developer to start to program
-using the language without actually understanding some of its basic aspects.
-For instance, four participants argued that the language is not typed, two  believed the language runs exclusively on browsers, and two other developers stated that the language is natively asynchronous, all of which are incorrect statements.
+%% Six practitioners regarded the JavaScript language as easy to learn, while four
+%% participants mentioned that the abundance of frameworks,
+%% coupled with the abstractions they provide, make it so that one
+%% can develop quickly in the language. However, as mentioned by one
+%% of the interviewees, ``\emph{Developers who have started
+%% programming in JavaScript might miss out on important lower-level
+%% aspects, such as garbage collection, memory management,
+%% and process management.}''. 
+
+%% Moreover, such abstractions might lead a developer to start to program
+%% using the language without actually understanding some of its basic aspects.
+%% For instance, four participants argued that the language is not typed, two  believed the language runs exclusively on browsers, and two other developers stated that the language is natively asynchronous, all of which are incorrect statements.
 %% For the multi-purpose language that is one of the most, if not the most used one by practitioners,
 %% a lack of understanding of the languages core
 %% features may be a problem worth investigating in future studies.
