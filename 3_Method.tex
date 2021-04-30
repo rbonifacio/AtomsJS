@@ -11,7 +11,9 @@ The main goal of this research is to investigate the impact of atoms of confusio
 \end{enumerate}
 
  
-Answering these research questions has several implications. For instance, we can either generalize or refute the perceptions about atoms of confusion already discussed in the literature (goal of research questions (RQ1) and (RQ2)). In addition, answers to the third and fourth questions allow us to enrich existing catalogs about atoms of confusion and discuss how often they occur in practice. Answering these research questions also lays the foundations for the implementation of tools that can automatically transform code into cleaner versions---though we postpone these results to future research work. To answer these research questions we conduct a mixed-methods study, including a survey, a set of interviews, and a JavaScript software repository mining study.  
+Answering these research questions has several implications. For instance, we can either generalize or refute the perceptions about atoms of confusion already discussed in the literature (goal of research questions (RQ1) and (RQ2)). In addition, answers to the third and fourth questions allow us to enrich existing catalogs about atoms of confusion and discuss how often they occur in practice. Answering these research questions also lays the foundations for the implementation of tools that can automatically transform code into cleaner versions.
+%---though we postpone these results to future research work.
+We conduct a mixed-methods study to anwer these questions, including a survey, a set of interviews, and a study for mining JavaScript software repositories.  
 
 
 \subsection{Survey Study Setting}\label{sec:meth:survey}
@@ -23,15 +25,16 @@ contain atom candidates (a) produce a higher
 misunderstanding rate when programmers
 try to predict their outcome and (b) require
 programmers to take longer to predict their output.
-Since JavaScript and C have some constructs in common (Section~\ref{back}), we first selected a set of atoms of confusion for the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} that also exist in JavaScript programs. Our supplementary material
-summarizes all atoms we consider in our research. 
+Since JavaScript and C have some constructs in common (Section~\ref{back}), we first selected a set of 9+1 atom candidates: 9 atoms of confusion already validated~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} for the \clang language that also exist in JavaScript programs + 1 atom candidate that is specific of the JavaScript language (Automatic Semicolon Insertion).
+Our supplementary material discusses and shows examples of
+the atoms we consider in our research. 
 
 \subsubsection*{Survey design} 
 
 The design of our first study blocks two variables
 (developer experience and the code snippets) and
 considers two treatments: the presence or absence of 
-atoms of candidates within the code snippets. 
+atoms candidates within the code snippets. 
 To achieve such a design goal, controlling the effect of experience and individual code snippets, we resorted to the \textit{Latin Square Design} \cite{Hunter-Experimenters}. Using this design we create a 2 x 2 matrix in which each row represents a subject and each column indicates the set of code snippets. The design of each square (a replica) is such that no treatment is repeated in the same row or column. For example, considering that we have a set of 10
 code samples $s_0, s_1, ..., s_{10}$, if a given subject (P1) is asked to predict the output of the code samples $s_0, s_1, ..., s_5$ that contain atom candidates, then, when answering questions about non-confusing code snippets, they will only be presented with non-confusing versions of the code samples $s_6, s_7,..., s_{10}$. Furthermore, a given subject (P2), which constitutes the second row of our example square, will be asked questions about the non-confusing versions for $s_1, s_2, ..., s_5$, and will answer questions about confusing snippets for $s_6, s_7,..., s_{10}$. By doing that, we guarantee that all versions of the code snippets are contained within each square, and that each configuration occurs only once within a square. Figure \ref{fig:latinsquare} offers a visual representation of the concept.
 
@@ -69,8 +72,7 @@ We decided not to provide feedback about the time students took to answer each q
 %% \diego{Esses detalhes são possíveis candidatos para remoção, se precisarmos de espaço}
 %% {\color{blue}We invited developers to answer our survey by sending invitations to communities of JavaScript programmers on the Internet. Our initial plan was to try to engage contributors for two major JavaScript projects, namely Node.js and NPM. None of the projects, though, offered a direct way to interact with the community, such as an online discussion forums or mailing list. We would be required to first make contact with the projects' leaders, and only then would we have a chance to approach potential respondents. Due to time constraints, we decided to look for respondents elsewhere.}
 
-We posted the survey on Reddit.\footnote{Reddit is a North American online discussion platform.
-Its discussion threads, often called subreddits, are sorted by subject. For our research, we posted information and links to the survey in two JavaScript subreddits.} We explained our research purposes and asked developers of any level of expertise to take the survey. Within twelve hours, we collected more than 150 answers, populating more than 70 replicas of the Latin Squares. We collected significant data on time taken and discrepancies in answer correctness between confusing and non-confusing versions of the snippets. Some inconsistencies arose while building the squares, for instance, when a user quit in the middle of the survey. When this happened, the corresponding row in the square was left incomplete. We considered all squares that contained incomplete rows to be invalid during data analysis and discarded them. 
+We posted the survey on a JavaScript Reddit channel.\footnote{https://www.reddit.com/r/javascript/} We explained our research purposes and asked developers of any level of expertise to take the survey. Within twelve hours, we collected more than 150 answers, populating more than 70 replicas of the Latin Squares. We collected significant data on time taken and discrepancies in answer correctness between confusing and non-confusing versions of the snippets. Some inconsistencies arose while building the squares, for instance, when a user quit in the middle of the survey. We discarded from our study all squares that contained incomplete rows (a common approach for data imputation).
 %Since we had a large enough number of samples, the squares we had to discard did not impact our analysis.
 
  
@@ -80,7 +82,7 @@ To complement our initial survey, we performed semi-structured interviews with p
 
 % Nós realizamos entrevistas semi-estruturas com o objetivo de identificar a percepção dos desenvolvedores com experiência em JavaScript sobre algumas questões relacionadas à compreensão de código em JavaScript. Assim, nesta Seção nós descrevemos os procedimentos adotados para selecionar os participantes para as entrevistas e detalhamos como as entrevistas foram conduzidas. Além disso, detalhamos como os resultados das entrevistas foram analisados.
 
-\subsubsection*{Participant Selection} We invited the participants of the interviews using a snowballing technique. That is, starting from our network of contacts, we invited an initial set of candidates to take part in our survey. From this initial list, we asked for an indication of additional candidates. Our main selection criterion was that all participants should have been working with JavaScript in their daily professional activities. We invited a total of 17 developers, and 15 of them agreed to participate.
+\subsubsection*{Participant Selection} We invited the participants of the interviews using a snowballing technique. That is, starting from our network of contacts, we invited an initial set of candidates to take part in our survey. From this initial list, we asked for an indication of additional candidates. Our main selection criterion was that all participants should have been working with JavaScript in their daily professional activities. We invited a total of 17 developers, and 15 of them agreed to participate.   
 %We conducted the interviews for a period of two weeks.
 
 
