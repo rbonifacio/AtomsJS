@@ -37,7 +37,7 @@ res = properties.reduce((s, b) => {
 \end{minipage}
 \captionof{lstlisting}{Code snippet from \textsc{NervJS/taro} project. Line 2 on the left-hand side of the figure contains two
   atoms of confusion discussed in ~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: \emph{Logic
-  as Control Flow} and \emph{Post-increment}. On the right-hand side, we present an alternative implementation without atoms of confusion. We could simplify the code on the left-hand side even more, by using \texttt{filter} and \texttt{length} instead of the \texttt{reduce} recursive pattern (e.g., \texttt{res = properties.filter(p => p).length}).}\label{fig:lst01}
+  as Control Flow} and \emph{Post-increment}. On the right-hand side, we present an alternative implementation without atoms of confusion. We could simplify the code on the left-hand side even more, by using \texttt{filter} and \texttt{length} instead of the \texttt{reduce} recursive pattern (e.g., \texttt{res = properties.filter(p => p.length})).}\label{fig:lst01}
 \end{figure*}
 
 However, these previous studies focus exclusively on statically typed languages (e.g., \clang, \cpplang, and Java). This way, there is a knowledge gap with respect to the impact of such atoms in dynamic languages such as JavaScript. In this sense, because JavaScript's programming culture differs from that of languages such as \clang and \cpplang, particularly due to the JavaScript's dynamic capabilities and weaker type system, we may find that idioms and constructs that are atoms of confusion in those languages are not particularly difficult to understand for JavaScript programmers and vice-versa. Also, besides being the most widely used language for web development and the most often adopted language on GitHub~\cite{BugsJS:ICST}, JavaScript contains features that combined make the source code fertile ground for errors~\cite{BugsJS:ICST,ClientSideBugsJS:TSE} and confusion~\cite{JSGoodParts:book}.
@@ -57,13 +57,13 @@ Altogether, the main contributions of this paper are:
     \item A mixed-method research effort---based on a survey, interviews, and mining software repositories---about the impact of atoms of confusion on a
     dynamic language;
     
-  \item A list of additional, JavaScript-specific
+  \item A list of additional JavaScript-specific
     constructs and idioms that might introduce code
     misunderstanding;
     
     \item A library and infrastructure to mine atoms of confusion using 
     code queries (implemented in the .QL language). This library and 
-    infrastructure are freely available and might help researchers and 
+    infrastructure are publicly available and might help researchers and 
     practitioners to automate program analysis at a large scale.
 
 \end{itemize}
