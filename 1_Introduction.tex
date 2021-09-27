@@ -12,7 +12,7 @@
 % INICIO INTRODUCAO - MARCIO
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-Source code misunderstandings can occur due to many reasons; for instance, the wrong choice of names for arguments, variables, and methods might hinder developers from understanding a piece of code~\cite{avidan:icpc2017}. Besides that, programming languages can also have specific idioms and constructs that may lead to misunderstandings. That is the case of \emph{atoms of confusion}---small pieces of code that hinder developers' understanding of the source code of a program for which there are functionally equivalent alternatives that are easier to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17, DBLP:conf/msr/GopsteinZFC18}.
+Source code misunderstandings can occur due to many reasons; for instance, the wrong choice of names for arguments, variables, and methods might hinder developers from understanding a piece of code~\cite{avidan:icpc2017}. Besides that, programming languages can also have specific idioms and constructs that may lead to misunderstandings. That is the case of atoms of confusion: small pieces of code that prevent developers from program comprehension, even though functionally equivalent alternatives exist and are easier to understand~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17, DBLP:conf/msr/GopsteinZFC18}.
 
 Recent work~\cite{DBLP:journals/ese/MedeirosLAAKRG19,DBLP:conf/sigsoft/GopsteinIYDZYC17,Langhout:2021:ACJ} has explored the impact of atoms of confusion on program understanding, and confirmed they negatively impact source code readability. For instance, consider the pair of JavaScript code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}). The code at the left-hand side contains two atoms of confusion discussed in previous work focusing on the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}: Logic as Control Flow and Post-increment. At the right-hand side, we present a clean version of the code, that is, without atoms of confusion. According to the experiments of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, removing the atoms Logic as Control Flow and Post-increment improved the accuracy of program understanding tasks in 41\% and 34\%, respectively.
 
@@ -54,12 +54,14 @@ Altogether, the main contributions of this paper are:
 
 \begin{itemize}
     
-    \item A mixed-method research effort---based on a survey, interviews, and mining software repositories---about the impact of atoms of confusion on a
-    dynamic language;
-    
-  \item A list of additional JavaScript-specific
-    constructs and idioms that might introduce code
-    misunderstanding;
+\item A mixed-method research effort---based on a survey, interviews, and mining software
+  repositories---about the impact of atoms of confusion on JavaScript (a
+    dynamic language).
+
+  \item A comparison of the impact and prevalence of atoms of confusion in
+    JavaScript with what has been previously reported for other languages
+    (\clang, \cpplang, and Java).
+
     
     \item A library and infrastructure to mine atoms of confusion using 
     code queries (implemented in the .QL language). This library and 

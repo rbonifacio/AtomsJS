@@ -1,5 +1,5 @@
 ---
-title: "survey-analysis-final"
+title: "Survey Analysis"
 output:
   html_document: default
   pdf_document: default
@@ -15,10 +15,9 @@ library(sqldf)
 library(xtable)
 library(effsize)
 setwd(".")
-
 ```
 
-## Load the datasets
+## (1) Load the datasets
 
 
 ```{r cars}
@@ -27,7 +26,8 @@ nrow(ds)
 colnames(ds)
 
 atomId <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 0) 
-atomDescription <- c("Arithmetic as Logic", "Assignment as Value", "Automatic Semicolon Insertion",
+atomDescription <- c("Arithmetic as Logic", "Assignment as Value", 
+            "Automatic Semicolon Insertion",
            "Comma Operator", "Ternary Operator", "Implict Predicate", 
            "Logic as Control Flow", "Ommitted Curly Braces", "Post Increment", 
            "Pre Increment")
@@ -36,7 +36,7 @@ atom_ds <- data.frame(atomId, atomDescription)
 ```
 
 
-## Filter the datasets
+## (2) Filter the datasets
 
 ```{r}
 subSet <- ds[ds$ref=="reddit" & ds$total == "YES",]
@@ -47,7 +47,7 @@ ds <- ds[is.element(el = ds$rid, set = completeCases),]
 dim(ds)
 ```
 
-## Exploratory Data Analysis
+## (3) Exploratory Data Analysis
 
 ### Demographics 
 
@@ -55,7 +55,10 @@ dim(ds)
 
 ```{r dem-education}
 educationLevelIds <- c(1, 2, 3, 4, 5)
-educationLevelLabels <- c("High school degree or equivalent", "Some university course but not a degree", "Bacharelor degree", "Master degree", "Doctor degree")
+educationLevelLabels <- c("High school degree or equivalent", 
+                          "Some university course but not a degree", 
+                          "Bacharelor degree", "Master degree", 
+                          "Doctor degree")
 
 education_ds <- data.frame(educationLevelIds, educationLevelLabels)
 colnames(education_ds) <- c("id", "description")
@@ -69,7 +72,10 @@ demEducation <- sqldf("select b.description, count(*) total
                       order by 2 desc")
 
 demEducation
-barplot(demEducation$total, col=topo.colors(5), ylim = c(0, 70), cex=0.7, cex.lab = 0.7, cex.axis=0.7, ylab="Number of participants")
+
+barplot(demEducation$total, col=topo.colors(5), 
+        ylim = c(0, 70), cex=0.7, cex.lab = 0.7, cex.axis=0.7, 
+        ylab="Number of participants")
 
 legend("topright", legend=demEducation$description, fill=topo.colors(5), cex=0.6)
 ```
@@ -79,14 +85,18 @@ legend("topright", legend=demEducation$description, fill=topo.colors(5), cex=0.6
 
 ```{r dem-experience}
 experienceLevelIds <- c(1, 2, 3, 4)
-experienceLevelLabels <- c("Under one year of experience", "One year and under four years of experience", "Four years and under ten years of experience", "More than ten years of experience")
+experienceLevelLabels <- c("Under one year of experience", 
+                           "One year and under four years of experience", 
+                           "Four years and under ten years of experience",
+                           "More than ten years of experience")
 
 experience_ds <- data.frame(experienceLevelIds, experienceLevelLabels)
 
 colnames(experience_ds) <- c("id", "description")
 
 tmp <- sqldf("select distinct sid, experience from ds")
-demExperience <- sqldf("select experience, count(*) total from tmp group by experience order by 1")
+demExperience <- sqldf("select experience, count(*) total 
+                       from tmp group by experience order by 1")
 
 demExperience <- sqldf("select a.experience, b.description, a.total
                         from demExperience a, experience_ds b
@@ -94,7 +104,9 @@ demExperience <- sqldf("select a.experience, b.description, a.total
                         order by 3 desc")
 demExperience
 
-barplot(demExperience$total, col=topo.colors(4), ylim = c(0, 60), cex=0.7, cex.lab = 0.7, cex.axis=0.7, ylab="Number of participants")
+barplot(demExperience$total, col=topo.colors(4), 
+        ylim = c(0, 60), cex=0.7, cex.lab = 0.7, cex.axis=0.7, 
+        ylab="Number of participants")
 
 legend("topright", legend=demExperience$description, fill=topo.colors(4), cex=0.6)
 ```
@@ -116,7 +128,8 @@ codeWithAtoms["atomId"] = codeWithAtoms$qid %% 10
 codeWithoutAtoms["atomId"] = codeWithoutAtoms$qid %% 10
 
 merged <- sqldf("select c.atomDescription as Atom, 
-                        a.confuseCode as 'Confuse Code', b.cleanCode as 'Clean Code',  
+                        a.confuseCode as 'Confuse Code', 
+                        b.cleanCode as 'Clean Code',  
                         (b.cleanCode * 100 / a.confuseCode) -100 as 'Delta (%)'
                  from codeWithAtoms a, codeWithoutAtoms b, atom_ds c
                  where a.atomId = b.atomId and a.atomId = c.atomId
@@ -142,7 +155,8 @@ boxplot(wrongAnswersByStudentTreatment$rid ~ wrongAnswersByStudentTreatment$atom
 
 ```{r time}
 merged <- sqldf("select c.atomDescription as Atom, 
-                        a.timeConfuseCode as 'Confuse Code', b.timeCleanCode as 'Clean Code',
+                        a.timeConfuseCode as 'Confuse Code', 
+                        b.timeCleanCode as 'Clean Code',
                         (b.timeCleanCode * 100 / a.timeConfuseCode) -100 as 'Delta (%)'
                  from codeWithAtoms a, codeWithoutAtoms b, atom_ds c
                  where a.atomId = b.atomId and a.atomId = c.atomId
@@ -168,7 +182,7 @@ prop.table(table(ds$correct,ds$atom),margin = 2)
 chisq.test(ds$correct,ds$atom)
 ```
 
-## Regression Analysis (correctness~atom + experience + education)
+## (4) Regression Analysis (correctness~atom + experience + education)
 
 ```{r}
 experience <- as.factor(ds$experience)
@@ -183,7 +197,7 @@ mod <- glm(ds$correct~ds$atom+experience+education,family = "binomial")
 summary(mod)
 ```
 
-## Impact considering Developer Experience 
+### Impact considering Developer Experience 
 
 ```{r experience}
 for(i in 1:4){
@@ -193,7 +207,7 @@ for(i in 1:4){
 }
 ```
 
-## Impact considering Developer Education 
+### Impact considering Developer Education 
 
 ```{r education}
 for(i in 1:5){
@@ -203,7 +217,7 @@ for(i in 1:5){
 }
 ```
 
-## Impact of Individual Atoms 
+## Impact of Individual Atoms and Hypotheses Testing
 
 ```{r}
 chiTest <- c()
@@ -243,9 +257,16 @@ for(i in 1:10){
   print(summary(mod))
   print(prop.table(table(subSet$correct,subSet$experience),margin = 2))
 }
-analysis_df <- data.frame(atomDescription, chiTest, oddsRatio, oddsRatioTest, ci25, ci975, mannWhitneyTest, cliffDelta)
+analysis_df <- data.frame(atomDescription, chiTest, oddsRatio, 
+                          oddsRatioTest, ci25, ci975, mannWhitneyTest, cliffDelta)
+
 analysis_df <- analysis_df[order(-oddsRatio),]
-colnames(analysis_df) <- c("Atom", "ChiTest", "Odds Ratio Correctness", "p-value", "CI 2.5%", "CI 97.5%", "Wilcox Test (Time)", "Cliff Delta")
-analysis_df
+
+colnames(analysis_df) <- c("Atom", "ChiTest", 
+                           "Odds Ratio Correctness", 
+                           "p-value", "CI 2.5%", "CI 97.5%", 
+                           "Wilcox Test (Time)", 
+                           "Cliff Delta")
+
 xtable(analysis_df)
 ```
