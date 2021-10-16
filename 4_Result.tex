@@ -135,7 +135,15 @@ Using the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR
 %We found a negligible effect size for the atom candidates Arithmetic as Logic, Logic as Control Flow, and Pre-Increment. Nonetheless, for the remaining candidates, the effect size is significant. 
 For instance, when comparing clean and confusing code snippets pertaining to the Comma Operator atom candidate, we observed an \emph{Odds Ratio} of \num{19.02}. This means that the odds of a correct answer are \num{19.02} times higher when interpreting the clean version---in comparison with the corresponding confusing version of the code snippet. Furthermore, with a 95\% confidence level, the odds  ratio is between 6.6 and 68.22, i.e., although the error margin is wide, it is strongly in favor of the clean version. If there is a significant likelihood of a developer committing a mistake when analyzing a clean version, the lower bound of the CI should be a number between 0 and 1 (since the OR is a ratio). This is the case for the four atom candidates in the lower part of the table. In particular, in the last row (Arithmetic as Logic), the OR between 0 and 1 indicates that a participant was actually more likely to misunderstand the clean version. 
 
-Finally, we also use the \emph{Binomial Generalized Logistic Regression} analysis to investigate if either participant \emph{education} or participant \emph{experience} impact correctness. Although the results suggest that experience impacts correctness, the education level does not. As such, we replicate the \emph{Pearson's Chi-squared test} for each experience group and found that the statistical difference is less significant for those developers with more than ten years of experience. 
+{\color{blue}Finally, we also use the \emph{Binomial Generalized Logistic Regression} analysis to investigate if either participant \emph{education} or participant \emph{experience} impact correctness. The findings suggest that \emph{developer experience} impacts on the results related to correctness (see Figure~\ref{fig:correctness-over-experience}). Even though the presence of atoms of confusion reduces the number of correct answers to all developer experience groups, this effect is not uniform. For instance, novice developers provide a higher number of wrong answers for the confusing version of the code (57.8\%), while developers with more than four years of experience provide more than 70\% of correct answers when evaluating the confusing version of the code snippets. It is also important to note that, independently of the developer experience group, developers tend to provide more than 84\% of correct answers while predicting the outputs for the clean versions of the code.} {\color{red}We replicate the \emph{Pearson's Chi-squared test} for each experience group and found that the statistical difference is less significant for those developers with more than ten years of experience.} Differently from developer experience, the factor \emph{education level} does not change substantially the correctness of the answers. 
+
+
+\begin{figure}
+  \includegraphics[scale=0.35]{images/correctness-by-experience}
+  \caption{Impact of atoms of confusion on the correctness (over the developer experience groups)}
+  \label{fig:correctness-over-experience}
+\end{figure}
+
 
 \begin{mh}
   The results of our exploratory data analysis and   hypothesis testing suggest that the atom candidates Comma Operator, Automatic Semicolon Insertion, Post Increment, Omitted Curly Braces, Assignment as Value, and Implicit Predicate %, and Ternary Operator
@@ -284,10 +292,10 @@ Supporting the results of the survey, Table~\ref{tab:interview-results1}
 10 scenarios surveyed, the majority of the respondents prefer the version of the
 code without the atom candidate.
 In no case the \emph{neutral}
-ratio was higher than the option for the Clean version.
+ratio was higher than the option for the clean version.
 %% An example entry is contained in Appendix~\ref{}. 
 %% For a full listing of the code snippets, visit the paper repository. 
-Only for the Ternary Operator atom candidate the participants prefer the Confusing version, instead of the Clean one. We show the code snippets for the Ternary Operator in Figure~\ref{code:ternary}. Even for this atom candidate, some participants who preferred the left-hand side version (confusing) still believed that the right-hand side version (clean) was more readable. The following quotes were extracted from the transcripts with
+Only for the Ternary Operator atom candidate the participants prefer the Confusing version, instead of the clean one. We show the code snippets for the Ternary Operator in Figure~\ref{code:ternary}. Even for this atom candidate, some participants who preferred the left-hand side version (confusing) still believed that the right-hand side version (clean) was more readable. The following quotes were extracted from the transcripts with
 % three interviewees:
 two interviewees:
 
@@ -391,8 +399,8 @@ If I want to see well-written, easily understandable code, then I also have to d
 
 The final remarks drawn from the interviews are related to potentially confusing constructs suggested by the participants and their perspectives on JavaScript as a language. From the latter, we can also uncover some other forms in which the language itself might contribute to writing confusing code.
 
-One of the participants mentioned that the use of JavaScript's prototype-based inheritance can make it difficult to understand code, particularly when involving deep prototype chains. This is a core feature of the language, and most high-level tools and frameworks abstract it away. Although this was only mentioned by one practitioner, this is an important remark, as true understanding of JavaScript software necessarily involves understanding the concept of prototypes.
-
+One of the participants mentioned that the use of JavaScript's prototype-based inheritance can make it difficult to understand code, particularly when involving deep prototype chains. This is a core feature of the language, and most high-level tools and frameworks abstract it away.
+%Although this was only mentioned by one practitioner, this is an important remark, as true understanding of JavaScript software necessarily involves understanding the concept of prototypes.
 % When asked about particular JavaScript constructs or patterns that can make code difficult to understand, three participants cited the callback pattern, which can lead to several levels of nested function calls, as extremely difficult to assimilate.
 When asked about particular JavaScript constructs or patterns that can make code difficult to understand, three participants cited the callback pattern---potentially leading to several levels of nested function calls---as extremely difficult to assimilate. One of the respondents stated:
 
@@ -550,3 +558,5 @@ The four atoms mentioned in the previous paragraph,
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
 The results of our survey and interviews suggest that the Ternary Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, fixing the the Post-Increment and Automatic Semicolon Insertion might improve the readabiliy of large amounts of code in JavaScript projects. 
+
+\todo[inline]{Seria legal contrastar esses achados com o que foi reportado anteriormente}
