@@ -183,7 +183,8 @@ Logic as Control Flow.}
 Table \ref{tab:difference-time-taken} shows the average time necessary for the participants to give a correct answer about the expected outcomes of a code snippet, considering both confusing and clean versions. We do not consider cases where the participants made mistakes. Seven atom candidates required more time from participants to predict a correct response. For these seven atom candidates, developers take at least 5.90\% less time on average to find a correct answer when considering the clean version of a code snippet. In the extreme case (atom candidate Comma Operator), the participants take 76.23\% less
 time on average to find the correct answer for the clean version of the code snippets. 
 Not all atom candidates, though, require less time for the participants to predict the answer. In fact, for the Arithmetic as Logic and the Pre-Increment atoms, the time to give a correct answer increased  
-29.06\% and 38.19\% for the clean versions.
+29.06\% and 38.19\% for the clean versions---we did not confirm these
+atoms as atoms of confusion in the previous section.
 
 \begin{table}[htbp]
 \caption{Time in seconds to submit a correct answer}
@@ -260,10 +261,15 @@ suggests that we should refute the null hypotheses for five atom candidates (Com
 %% Pre-Increment         & 34 & 49  & +44  \\
 
 
-\
 % \rb{acho que podemos melhorar a apresenta\c c\~{a}o dessas tabelas, talvez usando booktabs.}
 
-\vspace*{-0.5cm}
+Next, we summarize the results of our second study (interview with
+practitioners), which
+we use to contrast the findings discussed here with the opinion
+of software developers about their preferences regarding the confusing
+or clean versions of the code snippets we used in our experiment. 
+
+
 \section{Results of the Interview Study}
 \label{sec:interview-results}
 
@@ -271,9 +277,9 @@ suggests that we should refute the null hypotheses for five atom candidates (Com
 %%   gerando uma complexidade desnecess\'{a}ria. vou tentar
 %%   remover isso}.
 
-In this section, we present the results of the 
-interviews with the 15 practitioners who agreed to participate in the study. 
-% A total of 15 practitioners took part of the interviews.
+%In this section, we present the results of the 
+% interviews with the 15 practitioners who agreed to participate in the study. 
+A total of 15 practitioners took part of the interviews.
 We collected information regarding programming
 experience, familiarity with JavaScript, and their opinion about the \na atom candidates we explored in our research. We first presented them pairs of clean and confusing code snippets and then asked them to discuss their preferences towards one version. We did not indicate in any way whether any version was assumed to be confusing or not. 
 % ask the participants to discuss their preferences (i.e., code with or without atom).
@@ -356,7 +362,7 @@ console.log(_config.size);
 \end{mq}
 
 \begin{mq}
-\emph{``When I am programming, I write code with the ternary operator, [...], but, to be honest, I still think that the 
+\emph{``When I am programming, I write code with the conditional operator, [...], but, to be honest, I still think that the 
 [the code using the \rhs version] 
 is easier to understand''}.
 \end{mq}
@@ -387,10 +393,10 @@ one of the participants found the version with the atom candidate more elegant, 
 %%   mas mesmo assim optam por usar a constru\c c\~{a}o correspondente.
 %%   Acho que cabe um box aqui com essa discuss\~{a}o sobre isso.}
 
-When analyzing the Logic as Control Flow atom candidate, one of the interviewees gave an example personal experience that might motivate one to avoid writing code using this construct:
+When analyzing the Logic as Control Flow atom candidate, one of the interviewees gave an example of personal experience that might motivate one to avoid writing code using this construct:
 
 \begin{mq}
-  \emph{``This one is interesting, because I have written code that looks like the left-hand side [Confusing version], and my colleagues complained that it was difficult to understand. Nowadays I prefer to write code using the version on the right-hand side [Clean]''}.
+  \emph{``This one is interesting, because I have written code that looks like the left-hand side [confusing version], and my colleagues complained that it was difficult to understand. Nowadays I prefer to write code using the version on the right-hand side [clean version]''}.
 \end{mq}
 
 For two of the atom candidates, the interviewees were unanimous in their preference for the clean version: Comma Operator and Omitted Curly Braces. Regarding the first one, we could often notice during the interviews that the \emph{\lhs} (with the atom of confusion) caused significant confusion among the participants. One remark about the \emph{Comma Operator} atom of confusion is listed below:
@@ -432,7 +438,7 @@ When asked about particular JavaScript constructs or patterns that can make code
 \end{mq}
 
 Two other developers implicitly touched upon the callback pattern, mentioning that it can be difficult to understand \emph{asynchronous} programming in JavaScript. Since what is really happening at a lower level is that the JavaScript engine creates a callback stack that is separate from the main execution stack, and that callback functions are only executed when the main execution stack is empty, the concepts of asynchronous events and callbacks are inseparable in the language, and any abstractions for callback functions, such as promises and async/await syntax only hide the pattern. We also found other idioms that are JavaScript atom candidates, including
-\emph{property access} via array subscription (\lstinline[language=javascript]{V1['P1']} instead of \lstinline[language=javascript]{V1.P1}) and \emph{arrow functions} (see listings~\ref{arr1} and~\ref{arr2}). 
+\emph{property access} via array subscription (\lstinline[language=javascript]{V1['P1']} instead of \lstinline[language=javascript]{V1.P1}) and \emph{arrow functions} (see listings~\ref{arr1} and~\ref{arr2}).  As future work, we aim at investigating whether or not these atom candidates are more likely to introduce confusion in JavaScript code. The following section presents the results of our mining software repository effort, whose goal is to reveal how frequent atom candidates are in open source code. 
 
 \begin{figure}
 \begin{small}
@@ -582,4 +588,4 @@ The four atoms mentioned in the previous paragraph,
 
 The results of our survey and interviews suggest that the Conditional Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, fixing the the Post-Increment and Automatic Semicolon Insertion might improve the readabiliy of large amounts of code in JavaScript projects. 
 
-\todo[inline]{Seria legal contrastar esses achados com o que foi reportado anteriormente}
+
