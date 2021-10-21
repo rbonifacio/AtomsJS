@@ -13,7 +13,7 @@ The main goal of this research is to investigate the impact of atoms of confusio
  
 Answering these research questions has several implications. For instance, we can either generalize or refute the perceptions about atoms of confusion already discussed in the literature (goal of research questions (RQ1) and (RQ2)). In addition, answers to the third and fourth questions allow us to enrich existing catalogs about atoms of confusion and discuss how often they occur in practice. Answering these research questions also lays the foundations for the implementation of tools that can automatically transform code into cleaner versions.
 %---though we postpone these results to future research work.
-We conduct a mixed-methods study to anwer these questions, including a survey, a set of interviews, and a study for mining JavaScript software repositories.  
+We conduct a mixed-methods study to answer these questions, including a survey, a set of interviews, and a study for mining JavaScript software repositories.  
 
 
 \subsection{Survey Study Setting}\label{sec:meth:survey}
@@ -23,9 +23,8 @@ understanding JavaScript code (goal of research question RQ1).
 To this end, we investigate whether or not code snippets that
 contain atom candidates (a) produce a higher
 misunderstanding rate when programmers
-try to predict their outcome and (b) require
-programmers to take longer to predict their output.
-Since JavaScript and \clang have some constructs in common (Section~\ref{back}), we first selected a set of 9+1 atom candidates: 9 atoms of confusion already validated~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} for the \clang language that also exist in JavaScript programs + 1 atom candidate that is specific of the JavaScript language (Automatic Semicolon Insertion).
+try to predict their outcome and (b) require more time for programmers to predict their output.
+Since JavaScript and \clang have some constructs in common (Section~\ref{back}), we first selected a set of 9+1 atom candidates: nine previously-validated atoms of confusion for the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} that also exist in JavaScript programs plus one atom candidate that is specific to the JavaScript language (Automatic Semicolon Insertion).
 Our supplementary material discusses and shows examples of the atoms we consider in our research. 
 
 \subsubsection*{Survey design} 
@@ -35,7 +34,7 @@ The design of our first study blocks two variables
 considers two treatments: the presence or absence of 
 atoms candidates within the code snippets. 
 To achieve such a design goal, controlling the effect of experience and individual code snippets, we resorted to the \textit{Latin Square Design} \cite{Hunter-Experimenters}. Using this design we create a 2 x 2 matrix in which each row represents a subject and each column indicates the set of code snippets. The design of each square (a replica) is such that no treatment is repeated in the same row or column. For example, considering that we have a set of 10
-code samples $s_0, s_1, ..., s_{10}$, if a given subject (P1) is asked to predict the output of the code samples $s_0, s_1, ..., s_5$ that contain atom candidates, then, when answering questions about non-confusing code snippets, they will only be presented with non-confusing versions of the code samples $s_6, s_7,..., s_{10}$. Furthermore, a given subject (P2), which constitutes the second row of our example square, will be asked questions about the non-confusing versions for $s_1, s_2, ..., s_5$, and will answer questions about confusing snippets for $s_6, s_7,..., s_{10}$. By doing that, we guarantee that all versions of the code snippets are contained within each square, and that each configuration occurs only once within a square. Figure \ref{fig:latinsquare} offers a visual representation of the concept.
+code samples $s_0, s_1, ..., s_{10}$, if a given subject (P1) is asked to predict the output of the code samples $s_0, s_1, ..., s_5$ that contain atom candidates, then, when answering questions about non-confusing code snippets, they will only be presented with non-confusing versions of the code samples $s_6, s_7,..., s_{10}$. Furthermore, a given subject (P2), who constitutes the second row of our example square, will be asked questions about the non-confusing versions for $s_1, s_2, ..., s_5$, and will answer questions about confusing snippets for $s_6, s_7,..., s_{10}$. By doing that, we guarantee that all versions of the code snippets are contained within each square, and that each configuration occurs only once within a square. Figure \ref{fig:latinsquare} offers a visual representation of the concept.
 
   \begin{figure}[htb!]
       \noindent
