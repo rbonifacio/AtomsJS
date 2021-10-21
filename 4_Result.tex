@@ -145,11 +145,11 @@ For instance, when comparing clean and confusing code snippets pertaining to the
 \end{figure}
 
 
-\begin{mh}
-  The results of our exploratory data analysis and   hypothesis testing suggest that the atom candidates Comma Operator, Automatic Semicolon Insertion, Post Increment, Omitted Curly Braces, Assignment as Value, and Implicit Predicate %, and Ternary Operator
-  introduce some degree of misunderstanding in JavaScript code. %Based on the results of this study, 
-  Therefore, they can be deemed atoms of confusion for JavaScript.
-\end{mh}
+%% \begin{mh}
+%%   The results of our exploratory data analysis and   hypothesis testing suggest that the atom candidates Comma Operator, Automatic Semicolon Insertion, Post Increment, Omitted Curly Braces, Assignment as Value, and Implicit Predicate %, and Ternary Operator
+%%   introduce some degree of misunderstanding in JavaScript code. %Based on the results of this study, 
+%%   Therefore, they can be deemed atoms of confusion for JavaScript.
+%% \end{mh}
 
 {\color{red}Comparing to previous research, three 
 atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed
@@ -168,12 +168,12 @@ as an atom of confusion. Our findings diverged from
 the work of Langhout and Aniche for two atoms: Pre Increment and
 Logic as Control Flow.}
 
-\begin{mh}
-{\color{red}Comparing the results of different studies,
-  the impact of atoms candidates on source code
-  (mis)understanding differ according to the programming
-  language.}
-\end{mh}
+%% \begin{mh}
+%% {\color{red}Comparing the results of different studies,
+%%   the impact of atoms candidates on source code
+%%   (mis)understanding differ according to the programming
+%%   language.}
+%% \end{mh}
 %% Regarding the first question we 
 %% address in the survey (\emph{Do code snippets that contain atoms of confusion produce a higher error rate than snippets where the atom is removed?}), we found evidence that the atoms of confusion lead programmers to misunderstand JavaScript code. We also realized that just one atom whose correction has a non-significant improvement in the percentage of correct answers---we found an improvement of at least 15\% in the correct answers when removing the confusing code for seven atoms (out of ten atoms we consider in the survey). 
 
@@ -244,10 +244,10 @@ of the code. The results of Table~\ref{tab:difference-time-taken}
 suggests that we should refute the null hypotheses for five atom candidates (Comma Operator, Implicit Predicate, Logic as Control Flow, Pre-Increment, and Arithmetic as Logic), after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. For the first three, the analysis suggests that the participants need more time to predict the outcome of the code snippet in the confusing code version. For the atom candidates Arithmetic as Logic and Pre-Increment, the participants take less time to predict the outcome of the code snippets in the confusing version. We also computed the effect size using Cliff's Delta statistic. In the table, negative effect sizes suggest that it took less time to correctly predict the output of clean versions of the snippets.  Considering the thresholds established by Romano et al.~\cite{Romano:2006:ASO} (0.147 $<$ $|$d$|$ $<$ 0.33 small, $|$d$|$ $<$ 0.474 medium, otherwise large), we found a large effect for the Comma Operator atom candidate; a medium effect size for Logic as Control Flow, and small effect sizes for Automatic Semicolon Insertion, Implicit Predicate, Arithmetic as Logic, Post-, and Pre-Increment. 
 
 
-\begin{mh}
-  The results suggest that developers tend to spend
-  more time to predict the correct answer in the presence of the atom candidates Comma Operator, Logic as Control Flow, and Implicit Predicate. Conversely, the code snippets with the atom candidates Arithmetic as Logic and Pre-Increment demand less time to predict the correct answers. 
-\end{mh}
+%% \begin{mh}
+%%   The results suggest that developers tend to spend
+%%   more time to predict the correct answer in the presence of the atom candidates Comma Operator, Logic as Control Flow, and Implicit Predicate. Conversely, the code snippets with the atom candidates Arithmetic as Logic and Pre-Increment demand less time to predict the correct answers. 
+%% \end{mh}
 
 
 %%  Comma Operator        & 60 & 21  & -65  \\
