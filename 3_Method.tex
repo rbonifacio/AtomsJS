@@ -58,7 +58,7 @@ We organized the survey in three sections. The first section aims to characteriz
 
 The last section of the survey presented a sequence of ten questions, each containing a code snippet. For each question, there was a text box where the answer should be written. There was also an ``I do not know'' button, which, when clicked, led the subject to the next question. In our setting, ``I do not know'' was treated as a wrong answer. The code snippets were presented as images copied from a text editor, so as to demotivate respondents from resorting to external resources by copying and pasting the code into an interpreter. Upon submitting their answer for a particular question, the subject was automatically led to a similar page, containing another snippet.
 
-We decided not to provide feedback about the time students took to answer each question. We also did not tell them whether their answers were correct or not. Our main concern was to avoid introducing bias for future respondents. Since we posted the survey in a social media platform, possible threats could have arisen if we gave respondents instant feedback.
+We decided not to provide feedback about the time students took to answer each question. We also did not tell them whether their answers were correct or not. Our main concern was to avoid introducing bias for future respondents. Since we posted the survey on a social media platform, possible threats could have arisen if we gave respondents instant feedback.
 
 % \rb{nao acho esse paragrafo necessario} 
 % \adriano{o de baixo ne? eu tambem acho}
@@ -84,9 +84,9 @@ To complement our initial survey, we performed semi-structured interviews with p
 %We conducted the interviews for a period of two weeks.
 
 
-\subsubsection*{Interview Process} We conducted semi-structured interviews using a web conferencing software. We recorded all the interviews with the consent of the participants. On average, the interviews lasted 26.29 minutes, with the shortest one lasting 14.59 minutes and the longest one 43.06 minutes. 
+\subsubsection*{Interview Process} We conducted semi-structured interviews using web conferencing software. We recorded all the interviews with the consent of the participants. On average, the interviews lasted 26.29 minutes, with the shortest one lasting 14.59 minutes and the longest one 43.06 minutes. 
 Two of the researchers conducted the interviews, and a third one listened to all the recordings to cross-validate the collected data.
-The interviews had three main parts. In the first one, we asked the developers the following demographic information: name, email, gender, level of education, current job position, JavaScript experience in years and other programming languages they have worked with.
+The interviews had three main parts. In the first one, we asked the developers the following demographic information: name, email, gender, level of education, current job position, JavaScript experience in years, and other programming languages they have worked with.
 Table \ref{pinterview} summarizes this demographic information.
 
 \begin{table}[htb!]
@@ -131,8 +131,7 @@ P15 &  BSc degree  & 2 years & Java, PHP
     \label{pinterview}
 \end{table}
 
-In the second part of the interview our aim was to allow the subjects to describe their JavaScript experience, as well as to allow them to reveal any JavaScript constructs they regarded as innately confusing. This would allow us to identify potential atom candidates that are more specific to the JavaScript language. Examples of questions we explored in this section include: \emph{Does JavaScript favor developers to produce code that is hard to understand?} and \emph{Do you regard any particular construct or idiom of the language as
-  especially confusing?}
+In the second part of the interview our aim was to allow the subjects to describe their JavaScript experience, as well as to allow them to reveal any JavaScript constructs they regarded as innately confusing. This would allow us to identify potential atom candidates that are more specific to the JavaScript language. Examples of questions we explored in this section include: \emph{Does JavaScript favor developers to produce code that is hard to understand?} and \emph{Do you regard any particular construct or idiom of the language as especially confusing?}
 
 In the third part of the interview, participants were shown the code snippets that were used in the first study. The snippets were presented in pairs, where each pair contained a clean and a confusing version. The participants 
 %were told both sides of each pair had the same output, and 
@@ -155,7 +154,7 @@ To understand how often the analyzed atom candidates appear in open source proje
 
 After filtering out JavaScript project candidates, in the second step we built a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num{1244} forks and at least \num{23672} stars. We automated all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
 
-We mined the occurrence of atom candidates from the repositories in our curated dataset using source code queries that we wrote using the CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). We also automate the process of running the queries and exporting the results to a format that simplifies our analysis (and also the reproduction of this study). Finally, we carried out basic descriptive statistics in order to understand how often the atoms of confusion appear in practice. 
+We mined the occurrence of atom candidates from the repositories in our curated dataset using source code queries that we wrote using the CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). We also automate the process of running the queries and exporting the results to a format that simplifies our analysis (and also the reproduction of this study). Finally, we computed some descriptive statistics to measure the prevalence of atoms of confusion in practice. 
 
 \begin{table}[ht]
   \centering
