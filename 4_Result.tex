@@ -11,7 +11,7 @@ We estimate this impact considering two perspectives: \emph{misunderstanding rat
 and \emph{time} (how long to provide a correct answer).
 We received full answers to our survey from 140 participants (a total of 70 replicas).
 All participants had taken at least some university course or hold a bachelor
-degree or equivalent, meaning the participants have had some level of formal education in programming. Twenty four participants hold either a master's degree (21 participants) or a doctorate degree (three participants). 
+degree or equivalent, meaning the participants have had some level of formal education in programming. In addition, 21 participants hold a master's degree and three a doctorate degree. 
 Considering the programming experience of our respondents, 19\% have more than ten years of programming experience, 37\% have between four and ten years of experience, 37\% have between one and four years of experience, and 7\% have less than one year of programming experience.  
 Accordingly, we characterize the effect of atoms of confusion in JavaScript
 code taking into account the perceptions of both novice and experienced developers. 
@@ -47,10 +47,9 @@ As mentioned in Section~\ref{sec:meth:survey}, each participant in this study ev
 code snippets, from which five were in their confusing versions, whilst the other five contained clean versions of the code snippets (i.e., without the confusing constructs and idioms). The participants should provide the expected outcomes of the code snippets. As discussed, we collected information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{time}. 
 Table~\ref{tab:difference-correctness} and Figure~\ref{fig:boxplotcorrectness} summarize the results of the survey w.r.t. correctness.
 
-Considering Table~\ref{tab:difference-correctness}, the clean versions of six code snippets present at least a 15\% improvement in answer correctness when compared with the confusing versions. In particular, the presence of the \emph{Comma Operator} atom presents the highest impact on misunderstanding. 
+Considering Table~\ref{tab:difference-correctness}, the clean versions of six code snippets present at least a 15\% improvement in answer correctness when compared with the confusing versions. In particular, the presence of the \emph{Comma Operator} atom exhibits the highest impact on misunderstanding. 
 Frequently used constructs and idioms, such as \emph{Post Increment} and \emph{Omitted Curly Braces} (see Section~\ref{sec:msr-results}), also result in many mistakes. %introduce high degrees of confusion.
-The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrease in the average number of incorrect answers when observing the clean versions of the code snippets. Also, the sample of responses with no atoms had almost no dispersion, which supports the
-argument that the non-confusing versions of the code snippets are easier to evaluate correctly. 
+The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrease in the average number of incorrect answers when observing the clean versions of the code snippets. Also, the sample of responses with no atoms had almost no dispersion, which supports the argument that the non-confusing versions of the code snippets are easier to evaluate correctly. 
 
 
 % \begin{table}[htbp]
@@ -84,7 +83,7 @@ argument that the non-confusing versions of the code snippets are easier to eval
 \centering{
 \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
-  Atom & Confusing Code & Clean Code & $\Delta$(\%)  \\ \midrule
+  Atom & Confusing & Clean & $\Delta$(\%)  \\ \midrule
   Comma Operator                &  28 &  65 & +132   \\ 
   Automatic Semicolon Insertion &  32 &  68 & +112   \\ 
   Post-Increment                &  48 &  64 & +33    \\ 
@@ -120,11 +119,11 @@ argument that the non-confusing versions of the code snippets are easier to eval
  \vspace*{-1.3cm}
  \caption{Number of wrong answers of each subject.}
  \label{fig:boxplotcorrectness}
- \end{figure}
-
+ \end{figure}\castor{Fiz de tudo para ajeitar a figura porque o texto embaixo deveria ser "Clean versions" e "Confusing versions" mas não sei porque não funcionou. Até mudei a figura. Não sei o que está havendo.}
+ 
 % \rb{verificar a consistencia nas questoes de pesquisa mais especificas}
 
-\subsubsection*{Hypothesis Testing and Effect Size}
+\subsubsection*{Statistical analysis}
 
 We first use the \emph{Pearson's Chi-squared test}
 to investigate if there is a statistically significant difference in the frequency of correct and incorrect answers---due to the versions of the code snippets (confusing and clean code). The p-values for these tests are reported in the ``Chi-square test'' column of Table~\ref{tab:hypothesis-testing}. The results indicate that for five atom candidates (Comma Operator, Automatic Semicolon Insertion, Post-Increment, Assignment as Value, Implicit Predicate) the confusing versions of the code snippets have a negative impact on code understanding (p-value $< 0.05$). This result holds even after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. 
@@ -135,15 +134,14 @@ Using the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR
 %We found a negligible effect size for the atom candidates Arithmetic as Logic, Logic as Control Flow, and Pre-Increment. Nonetheless, for the remaining candidates, the effect size is significant. 
 For instance, when comparing clean and confusing code snippets pertaining to the Comma Operator atom candidate, we observed an \emph{Odds Ratio} of \num{19.02}. This means that the odds of a correct answer are \num{19.02} times higher when interpreting the clean version---in comparison with the corresponding confusing version of the code snippet. Furthermore, with a 95\% confidence level, the odds  ratio is between 6.6 and 68.22, i.e., although the error margin is wide, it is strongly in favor of the clean version. If there is a significant likelihood of a developer committing a mistake when analyzing a clean version, the lower bound of the CI should be a number between 0 and 1 (since the OR is a ratio). This is the case for the four atom candidates in the lower part of the table. In particular, in the last row (Arithmetic as Logic), the OR between 0 and 1 indicates that a participant was actually more likely to misunderstand the clean version. 
 
-Finally, we also use the \emph{Binomial Generalized Logistic Regression} analysis to investigate if either \emph{participant education} or \emph{participant experience} impact correctness. The findings suggest that \emph{participant experience} impacts on the results related to correctness (see Figure~\ref{fig:correctness-over-experience}). Even though the presence of atoms of confusion reduces the number of correct answers to all \emph{experience groups}, this effect is not uniform. For instance, novice developers provide a higher number of wrong answers for the confusing version of the code (57.8\%), while developers with more than four years of experience provide more than 70\% of correct answers even when evaluating the confusing version of the code snippets. It is also important to note that, independently of the \emph{experience group}, developers tend to provide more than 84\% of correct answers while predicting the outputs for the clean versions of the code. We replicate the \emph{Pearson's Chi-squared test} for each experience group and found that the statistical difference is less significant for those developers with more than ten years of experience. Differently from \emph{participant experience}, the factor \emph{participant education} does not change substantially the correctness of the answers. 
-
+Finally, we also use a \emph{Binomial Generalized Logistic Regression} analysis to investigate if either \emph{participant education} or \emph{participant experience} impact correctness. The findings suggest that \emph{participant experience} impacts on the results related to correctness (Figure~\ref{fig:correctness-over-experience}). Even though the presence of atoms of confusion reduces the number of correct answers to all \emph{experience groups}, this effect is not uniform. For instance, novice developers (up to four years of programming experience) provide a higher number of wrong answers for the confusing version of the code (57.8\%), while developers with more than four years of experience provide more than 70\% of correct answers even when evaluating the confusing version of the code snippets. It is also important to note that, independently of the \emph{experience group}, developers tend to provide more than 84\% of correct answers while predicting the outputs for the clean versions of the code. We replicate the \emph{Pearson's Chi-squared test} for each experience group and find that the statistical difference is less significant for those developers with more than ten years of experience. Differently from \emph{participant experience}, the factor \emph{participant education} does not significantly change the correctness of the answers.\castor{What does "for each experience group" mean above?}
 
 \begin{figure}
   \includegraphics[scale=0.3]{images/correctness-by-experience}
   \caption{Impact of atoms of confusion on the correctness (over the participant experience groups)}
   \label{fig:correctness-over-experience}
 \end{figure}
-
+\castor{This figure is missing. Is that expected?}
 
 %% \begin{mh}
 %%   The results of our exploratory data analysis and   hypothesis testing suggest that the atom candidates Comma Operator, Automatic Semicolon Insertion, Post Increment, Omitted Curly Braces, Assignment as Value, and Implicit Predicate %, and Ternary Operator
@@ -157,10 +155,8 @@ for \clang and \cpplang do not lead to a statistically significant impact
 on correctness in our study: Logic as Control Flow,
 Conditional Operator, and Pre-Increment. Our results
 support the Gopstein et al. findings for the remaining
-atoms. Considering the work of Langhout and Aniche~\cite{Langhout:2021:ACJ},
-their work investigates six atom candidates for Java that
-we also explore here for JavaScript. Among these atom
-candidates, we achieve similar conclusions with their
+atoms. The work of Langhout and Aniche~\cite{Langhout:2021:ACJ} investigates six atom candidates for Java that we also explore here for JavaScript. Among these atom
+candidates, we achieve similar conclusions to their
 study for four atom candidates: Post Increment,
 Conditional Operator, Arithmetic as Logic, and
 Omitted Curly Braces---both studies confirmed only the former
@@ -191,7 +187,7 @@ atoms as atoms of confusion in the previous section.
 \centering{
 \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
-Atom & Confusing Code & Clean Code & $\Delta$(\%) \\ \midrule
+Atom & Confusing  & Clean & $\Delta$(\%) \\ \midrule
 Comma Operator & 87.67 & 20.84 & -76.23 \\ 
 Automatic Semicolon Insertion & 46.08 & 22.04 & -52.17 \\ 
 Post-Increment & 28.70 & 25.67 & -10.56 \\ 
@@ -211,37 +207,37 @@ Arithmetic as Logic & 28.82 & 37.20 & 29.06 \\ \bottomrule
  % latex table generated in R 4.0.4 by xtable 1.8-4 package
  % Thu Apr 22 07:58:21 2021
  \begin{table*}[ht]
-\caption{Hypotheses Testing (misunderstanding and time)}
+\caption{Hypotheses Testing (misunderstanding and time). Asterisks ($^{*}$) indicate a statistically significant difference.}
 
  \centering
  \begin{tabular}{lccc|cc}
    \toprule
 Atom  & Chi-square test & Odds Ratio          & CI & Mann-Whitey U test & Cliff's Delta \\ 
      &         & (misunderstanding)  &                    & (workload)             & \\ \midrule
-Comma Operator & 1.1727e-10 & 19.02 & (6.60, 68.22) & 5.8249e-08 & -0.53 \\ 
-Automatic Semicolon Insertion & 5.8352e-11 & 39.33 & (9.21, 356.62) & 0.09802 & -0.16 \\ 
-Post-Increment & 0.0015279 & 4.83 & (1.73, 15.74) & 0.12006 & 0.15 \\ 
+Comma Operator & 1.1727e-10$^{*}$ & 19.02 & (6.60, 68.22) & 5.8249e-08$^{*}$ & -0.53 \\ 
+Automatic Semicolon Insertion & 5.8352e-11$^{*}$ & 39.33 & (9.21, 356.62) & 0.09802 & -0.16 \\ 
+Post-Increment & 0.0015279$^{*}$ & 4.83 & (1.73, 15.74) & 0.12006 & 0.15 \\ 
 Omitted Curly Braces & 0.050962 & 2.35 & (1.00, 5.77) & 0.92529 & -0.01 \\ 
-Assignment as Value & 0.0034775 & 8.39 & (1.81, 79.12) & 0.82681 & 0.02 \\ 
-Implicit Predicate & 0.01123 & 6.95 & (1.46, 66.56) & 0.0029039 & -0.29 \\ 
-Logic as Control Flow & 0.292 & 1.54 & (0.73, 3.28) & 7.5862e-05 & -0.39 \\ 
+Assignment as Value & 0.0034775$^{*}$ & 8.39 & (1.81, 79.12) & 0.82681 & 0.02 \\ 
+Implicit Predicate & 0.01123$^{*}$ & 6.95 & (1.46, 66.56) & 0.0029039$^{*}$ & -0.29 \\ 
+Logic as Control Flow & 0.292 & 1.54 & (0.73, 3.28) & 7.5862e-05$^{*}$ & -0.39 \\ 
 Conditional Operator & 0.15896 & 2.73 & (0.74, 12.57) & 0.24073 & -0.12 \\ 
-Pre-Increment & 0.70147 & 1.25 & (0.55, 2.85) & 0.0062981 & 0.27 \\ 
-Arithmetic as Logic & 1 & 0.84 & (0.22, 3.12) & 0.01723 & 0.23 \\ 
+Pre-Increment & 0.70147 & 1.25 & (0.55, 2.85) & 0.0062981$^{*}$ & 0.27 \\ 
+Arithmetic as Logic & 1 & 0.84 & (0.22, 3.12) & 0.01723$^{*}$ & 0.23 \\ 
     \bottomrule
  \end{tabular}
  \label{tab:hypothesis-testing}
  \end{table*}
 
 
-\subsubsection*{Hypothesis Testing}
+\subsubsection*{Statistical analysis}
 We use the non-parametric \emph{Mann-Whitney U test}, also known as Wilcoxon rank-sum test, to
 investigate the null hypothesis that developers 
 spend the same amount of time to correctly
-predict the outcome of a code snippet, regardless
-of evaluating the confusing or clean version
-of the code. The results of Table~\ref{tab:difference-time-taken}
-suggests that we should refute the null hypotheses for five atom candidates (Comma Operator, Implicit Predicate, Logic as Control Flow, Pre-Increment, and Arithmetic as Logic), after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. For the first three, the analysis suggests that the participants need more time to predict the outcome of the code snippet in the confusing code version. For the atom candidates Arithmetic as Logic and Pre-Increment, the participants take less time to predict the outcome of the code snippets in the confusing version. We also computed the effect size using Cliff's Delta statistic. In the table, negative effect sizes suggest that it took less time to correctly predict the output of clean versions of the snippets.  Considering the thresholds established by Romano et al.~\cite{Romano:2006:ASO} (0.147 $<$ $|$d$|$ $<$ 0.33 small, $|$d$|$ $<$ 0.474 medium, otherwise large), we found a large effect for the Comma Operator atom candidate; a medium effect size for Logic as Control Flow, and small effect sizes for Automatic Semicolon Insertion, Implicit Predicate, Arithmetic as Logic, Post-, and Pre-Increment. 
+predict the outcome of clean and confusing versions of a code snippet.
+%, regardless of evaluating the confusing or clean version of the code.
+The results of Table~\ref{tab:difference-time-taken}
+suggest that we should refute the null hypotheses for five atom candidates (Comma Operator, Implicit Predicate, Logic as Control Flow, Pre-Increment, and Arithmetic as Logic), after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. For the first three, the analysis suggests that the participants need more time to predict the outcome of the code snippet in the confusing code version. For the atom candidates Arithmetic as Logic and Pre-Increment, the participants take less time to predict the outcome of the code snippets in the confusing version. We also computed the effect size using Cliff's Delta statistic. In the table, negative effect sizes suggest that it took less time to correctly predict the output of clean versions of the snippets.  Considering the thresholds established by Romano et al.~\cite{Romano:2006:ASO} (0.147 $<$ $|$d$|$ $<$ 0.33 small, $|$d$|$ $<$ 0.474 medium, otherwise large), we found a large effect for the Comma Operator atom candidate; a medium effect size for Logic as Control Flow, and small effect sizes for Automatic Semicolon Insertion, Implicit Predicate, Arithmetic as Logic, Post-, and Pre-Increment. 
 
 
 %% \begin{mh}
@@ -263,15 +259,16 @@ suggests that we should refute the null hypotheses for five atom candidates (Com
 
 % \rb{acho que podemos melhorar a apresenta\c c\~{a}o dessas tabelas, talvez usando booktabs.}
 
-Next, we summarize the results of our second study (interview with
-practitioners), which
-we use to contrast the findings discussed here with the opinion
+
+\section{Results of the Interview Study}
+\label{sec:interview-results}
+
+In this section we present the results of the interviews with the practitioners. 
+We contrast the findings of the survey presented in Section~\ref{sec:survey-resuts} here with the opinion
 of software developers about their preferences regarding the confusing
 or clean versions of the code snippets we used in our experiment. 
 
 
-\section{Results of the Interview Study}
-\label{sec:interview-results}
 
 %% \rb{acho que essa separa\c c\~{a}o em dois rounds est\'{a}
 %%   gerando uma complexidade desnecess\'{a}ria. vou tentar
@@ -315,8 +312,7 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
     \label{tab:interview-results1}
 \end{table}
 
-\subsubsection*{The Participants' perceptions of the atom candidates}
-Supporting the results of the survey, Table~\ref{tab:interview-results1}
+\subsubsection*{The Participants' perceptions of the atom candidates} Supporting the results of the survey, Table~\ref{tab:interview-results1}
  shows that for eight out of the
 10 scenarios surveyed, the majority of the respondents prefer the version of the
 code without the atom candidate.
@@ -324,7 +320,7 @@ In no case the \emph{neutral}
 ratio was higher than the option for the clean version.
 %% An example entry is contained in Appendix~\ref{}. 
 %% For a full listing of the code snippets, visit the paper repository. 
-Only for the Conditional Operator atom candidate the participants prefer the Confusing version, instead of the clean one. We show the code snippets for the Conditional Operator in Figure~\ref{code:ternary}. Even for this atom candidate, some participants who preferred the left-hand side version (confusing) still believed that the right-hand side version (clean) was more readable. The following quotes were extracted from the transcripts with
+Only for the Conditional Operator atom candidate the participants prefer the confusing version, instead of the clean one. Figure~\ref{code:ternary} shows the code snippets for the corresponding confusing and clean versions. For this atom candidate, some participants who preferred the left-hand side version (confusing) still believed that the right-hand side version (clean) was more readable. The following quotes were extracted from the transcripts with
 % three interviewees:
 two interviewees:
 
@@ -352,7 +348,7 @@ else{
 console.log(_config.size);
 \end{lstlisting}
 \end{minipage}
-\caption{Example of a pair of code snippets used in the interview. This case explores the use of the \emph{Conditional Operator atom of confusion}}
+\caption{Example of a pair of code snippets used in the interview pertaining to the \emph{Conditional Operator} atom candidate}
 \label{code:ternary}
 \vspace{-0.2cm}
 \end{figure*}
@@ -362,7 +358,7 @@ console.log(_config.size);
 \end{mq}
 
 \begin{mq}
-\emph{``When I am programming, I write code with the conditional operator, [...], but, to be honest, I still think that the 
+\emph{``When I am programming, I write code with the conditional operator, [...], but, to be honest, I still think that 
 [the code using the \rhs version] 
 is easier to understand''}.
 \end{mq}
@@ -383,7 +379,7 @@ is easier to understand''}.
 
 The Pre-Increment atom candidate also caused such
 divide in one of the interviewees, who
-regarded the clean version as simpler to understand, but would still opted to write
+regarded the clean version as simpler to understand, but would still opt to write
 code with the atom. In contrast, %to such opinion,
 one of the participants found the version with the atom candidate more elegant, but recognized it was less readable, and was willing to sacrifice elegance for readability.
 
@@ -441,7 +437,7 @@ When asked about particular JavaScript constructs or patterns that can make code
 Two other developers implicitly touched upon the callback pattern, mentioning that it can be difficult to understand \emph{asynchronous} programming in JavaScript.
 %Since what is really happening at a lower level is that the JavaScript engine creates a callback stack that is separate from the main execution stack, and that callback functions are only executed when the main execution stack is empty, the concepts of asynchronous events and callbacks are inseparable in the language, and any abstractions for callback functions, such as promises and async/await syntax only hide the pattern.
 We also found other idioms that are JavaScript atom candidates, including
-\emph{property access} via array subscription (\lstinline[language=javascript]{V1['P1']} instead of \lstinline[language=javascript]{V1.P1}) and \emph{arrow functions} (see listings~\ref{arr1} and~\ref{arr2}).  As future work, we aim at investigating whether or not these atom candidates are more likely to introduce confusion in JavaScript code. The following section presents the results of our mining software repository effort, whose goal is to reveal how frequent atom candidates are in open source code. 
+\emph{property access} via array subscription (\lstinline[language=javascript]{V1['P1']} instead of \lstinline[language=javascript]{V1.P1}) and \emph{arrow functions} (see listings~\ref{arr1} and~\ref{arr2}).  As future work, we aim at investigating whether or not these atom candidates are more likely to introduce confusion in JavaScript code.
 
 \begin{figure}
 \begin{small}
@@ -508,6 +504,7 @@ let inc = function(x) {
 \section{Results of the MSR Effort}
 \label{sec:msr-results} 
 
+In this section we present the results of our mining software repository effort, whose goal is to reveal how prevalent atom candidates are in open source JavaScript projects. 
 We mined \minedprojects open source JavaScript repositories to understand how
 often atoms of confusion arise in real software. 
 Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19}, which investigate
@@ -550,7 +547,7 @@ while Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:oc
 % Tue Apr 13 09:34:35 2021
 \begin{table}[ht]
 \centering
-\caption{Summary of atom candidate occurrences on our dataset.}
+\caption{Summary of atom candidate occurrences in our dataset.}
 \setlength\tabcolsep{2pt} % default value: 6pt
 \begin{tabular}{lrc}%c}
   \toprule
@@ -589,6 +586,6 @@ The four atoms mentioned in the previous paragraph,
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
-The results of our survey and interviews suggest that the Conditional Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, fixing the the Post-Increment and Automatic Semicolon Insertion might improve the readabiliy of large amounts of code in JavaScript projects. 
+The results of our survey and interviews suggest that the Conditional Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, refactoring existing systems to avoid Post-Increment and Automatic Semicolon Insertion might improve the readabiliy of large amounts of code in JavaScript projects. 
 
 

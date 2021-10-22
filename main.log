@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.27)  21 OCT 2021 23:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.27)  23 OCT 2021 01:55
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1157,53 +1157,46 @@ File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 ) [1{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}
 
 
-]) (./2_Background.tex
+]) (./2_Background.tex [2]
 Underfull \hbox (badness 1681) in paragraph at lines 40--42
 \OT1/ptm/m/n/10 can-di-dates for the Swift pro-gram-ming lan-guage. Un-like
  []
 
-[2]) (./3_Method.tex
+) (./3_Method.tex
 <images/latin-square.pdf, id=43, 400.49625pt x 128.48pt>
 File: images/latin-square.pdf Graphic file (type pdf)
 <use images/latin-square.pdf>
-Package pdftex.def Info: images/latin-square.pdf  used on input line 43.
+Package pdftex.def Info: images/latin-square.pdf  used on input line 42.
 (pdftex.def)             Requested size: 200.24763pt x 64.23984pt.
- [3 <./images/latin-square.pdf>] [4]) (./4_Result.tex
-[5]
+ [3] [4 <./images/latin-square.pdf>]) (./4_Result.tex [5]
 <images/wrong-answers-plot-1.pdf, id=131, 433.62pt x 289.08pt>
 File: images/wrong-answers-plot-1.pdf Graphic file (type pdf)
 <use images/wrong-answers-plot-1.pdf>
 Package pdftex.def Info: images/wrong-answers-plot-1.pdf  used on input line 11
-9.
+8.
 (pdftex.def)             Requested size: 252.0pt x 168.00174pt.
 
 
-./4_Result.tex:142: LaTeX Error: File `images/correctness-by-experience' not fo
+./4_Result.tex:140: LaTeX Error: File `images/correctness-by-experience' not fo
 und.
 
 See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.142 ...le=0.3]{images/correctness-by-experience}
+l.140 ...le=0.3]{images/correctness-by-experience}
                                                   
 ? 
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [6 <./images/wrong-answers-plot-1.pdf>] [7]
-Underfull \vbox (badness 4229) has occurred while \output is active []
-
-
-Underfull \hbox (badness 3439) in paragraph at lines 431--436
+[6 <./images/wrong-answers-plot-1.pdf>] [7] [8]
+Underfull \hbox (badness 3439) in paragraph at lines 427--432
 []\OT1/ptm/m/n/10 One of the par-tic-i-pants men-tioned that the use of
  []
 
-
+) (./discussion.tex [9]) (./5_Threats.tex) (./6_Conclusion.tex
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [8])
-(./discussion.tex [9]) (./5_Threats.tex) (./6_Conclusion.tex [10]) (./main.bbl)
+ [10])
+(./main.bbl)
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1215,33 +1208,37 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[11] (./main.aux) ) 
+[11] (./main.aux)
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
+ ) 
 Here is how much of TeX's memory you used:
- 23192 strings out of 478994
- 461865 string characters out of 5858184
- 1022812 words of memory out of 5000000
- 40167 multiletter control sequences out of 15000+600000
+ 23210 strings out of 478994
+ 462307 string characters out of 5858184
+ 1023811 words of memory out of 5000000
+ 40185 multiletter control sequences out of 15000+600000
  449884 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,13n,102p,2182b,1455s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.
-enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.p
-fb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb
-></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><
-/usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></us
-r/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr
-/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/l
-ocal/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loc
-al/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texli
-ve/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/
-texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist
-/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
-pe1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/ti
-mes/utmri8a.pfb>
-Output written on main.pdf (11 pages, 231024 bytes).
+ 102i,13n,102p,2291b,1455s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/t
+exlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/te
+xlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texl
+ive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
+e/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2
+021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/20
+21/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021
+/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/tex
+mf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2021/texmf-dist/
+fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/ty
+pe1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/ti
+mes/utmbi8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr8
+a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
+Output written on main.pdf (11 pages, 241581 bytes).
 PDF statistics:
- 202 PDF objects out of 1000 (max. 8388607)
- 124 compressed objects within 2 object streams
+ 206 PDF objects out of 1000 (max. 8388607)
+ 127 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  119 words of extra memory for PDF output out of 10000 (max. 10000000)
 
