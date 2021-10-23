@@ -101,6 +101,13 @@ R.~M.~a. dos Santos and M.~A. Gerosa, ``Impacts of coding practices on
   0.4em\relax New York, NY, USA: Association for Computing Machinery, 2018, p.
   277–285.
 
+\bibitem{arab:sigplan}
+\BIBentryALTinterwordspacing
+M.~Arab, ``Enhancing program comprehension: Formatting and documenting,''
+  \emph{SIGPLAN Not.}, vol.~27, no.~2, p. 37–46, Feb. 1992. [Online].
+  Available: \url{https://doi.org/10.1145/130973.130975}
+\BIBentrySTDinterwordspacing
+
 \bibitem{gyimesi2019bugsjs}
 P.~Gyimesi, B.~Vancsics, A.~Stocco, D.~Mazinanian, A.~Besz{\'e}des, R.~Ferenc,
   and A.~Mesbah, ``Bugsjs: A benchmark of javascript bugs,'' in \emph{2019 12th
