@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.8)  23 OCT 2021 19:09
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (TeX Live 2020) (preloaded format=pdflatex 2021.3.8)  24 OCT 2021 21:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1166,37 +1166,41 @@ File: images/latin-square.pdf Graphic file (type pdf)
 <use images/latin-square.pdf>
 Package pdftex.def Info: images/latin-square.pdf  used on input line 42.
 (pdftex.def)             Requested size: 200.24763pt x 64.23984pt.
- [3 <./images/latin-square.pdf>] [4]) (./4_Result.tex
-[5]
-<images/wrong-answers-plot-1.pdf, id=131, 371.3875pt x 187.70125pt>
+ [3 <./images/latin-square.pdf>]
+Underfull \vbox (badness 3108) has occurred while \output is active []
+
+ [4])
+(./4_Result.tex
+<images/wrong-answers-plot-1.pdf, id=126, 371.3875pt x 187.70125pt>
 File: images/wrong-answers-plot-1.pdf Graphic file (type pdf)
 <use images/wrong-answers-plot-1.pdf>
 Package pdftex.def Info: images/wrong-answers-plot-1.pdf  used on input line 11
 7.
 (pdftex.def)             Requested size: 252.0pt x 127.36594pt.
+ [5]
 <images/correctness-by-experience.pdf, id=132, 740.7675pt x 256.96pt>
 File: images/correctness-by-experience.pdf Graphic file (type pdf)
 <use images/correctness-by-experience.pdf>
 Package pdftex.def Info: images/correctness-by-experience.pdf  used on input li
 ne 138.
 (pdftex.def)             Requested size: 222.23196pt x 77.0886pt.
- [6 <./images/wrong-answers-plot-1.pdf> <./images/correctness-by-experience.pdf
->] [7]
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
-Package mdframed Info: Not enough space on this page on input line 404.
-
+ [6 <./images/wrong-answers-plot-1.pdf> <./images/correctness-by-experience.pdf
+>] [7]
 Underfull \hbox (badness 3439) in paragraph at lines 425--430
 []\OT1/ptm/m/n/10 One of the par-tic-i-pants men-tioned that the use of
  []
 
+[8]) (./discussion.tex [9]
+Package mdframed Info: Not enough space on this page on input line 40.
+) (./5_Threats.tex) (./6_Conclusion.tex) (./main.bbl
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Package balance Warning: You have called \balance in second column
+(balance)                Columns might not be balanced.
 
- [8]
-Package mdframed Info: Not enough space on this page on input line 433.
-)
-(./discussion.tex [9]) (./5_Threats.tex) (./6_Conclusion.tex [10]) (./main.bbl)
+[10])
 
 ** Conference Paper **
 Before submitting the final camera ready copy, remember to:
@@ -1214,10 +1218,10 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 
  ) 
 Here is how much of TeX's memory you used:
- 23184 strings out of 480608
- 462153 string characters out of 5903631
+ 23180 strings out of 480608
+ 462021 string characters out of 5903631
  937436 words of memory out of 5000000
- 38585 multiletter control sequences out of 15000+600000
+ 38581 multiletter control sequences out of 15000+600000
  578792 words of font info for 118 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  68i,13n,96p,2203b,1457s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1235,7 +1239,7 @@ fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/ti
 mes/utmbi8a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/local/texlive/2020/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (11 pages, 258144 bytes).
+Output written on main.pdf (11 pages, 257113 bytes).
 PDF statistics:
  217 PDF objects out of 1000 (max. 8388607)
  133 compressed objects within 2 object streams
