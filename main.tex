@@ -1,13 +1,12 @@
-\documentclass[10pt,conference,blind]{IEEEtran}
+\documentclass[review]{elsarticle}
 
-\IEEEoverridecommandlockouts
+%%\acmConference[ESEC/FSE 2020]{The 28th ACM Joint European Software %%Engineering Conference and Symposium on the Foundations of Software %%Engineering}{8 - 13 November, 2020}{Sacramento, California, United States}
 
-% The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
+
+% Fonte em português brasileiro
 
 \usepackage{enumerate}
-\usepackage{balance}
 \usepackage{caption}
-\usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
 \usepackage{graphicx}
@@ -18,7 +17,6 @@
 \def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
     T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
 \usepackage{listings}
-\usepackage{color}
 \usepackage{scalefnt}
 \usepackage{multirow}
 \usepackage{pifont}
@@ -28,26 +26,42 @@
 \usepackage{longtable}
 \usepackage{tabularx} 
 \usepackage{multicol}
-\usepackage{listings}
-\usepackage{xspace}
-\usepackage{booktabs}
+
 \usepackage{siunitx}
-\usepackage{amsmath,amssymb,amsfonts}
-\usepackage{algorithmic}
-\usepackage{graphicx}
-\usepackage{graphics}
 \usepackage{textcomp}
-\usepackage{siunitx}
-\usepackage{xcolor}
 \usepackage{csquotes}
 \usepackage{array}
-\usepackage{listings}
-\usepackage{color}
 \usepackage{scalefnt}
 \usepackage{multirow}
 \usepackage{pifont}
 \usepackage{xurl}
-% \usepackage{appendix}
+
+\usepackage{csvsimple}
+\usepackage{pgfplotstable,filecontents}
+
+
+
+% Default fixed font does not support bold face
+\DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+\DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+       
+% Identação e Margens
+\usepackage{fullpage}      % Margens
+\usepackage{indentfirst}   % Autoidentar
+
+
+
+% Figuras
+\usepackage{graphicx}       % Pictures
+\usepackage{subfig}
+\usepackage{venndiagram}
+
+
+
+
+%%%%%%
+
 \usepackage[framemethod=TikZ]{mdframed}
 \definecolor{oldlace}{rgb}{0.99, 0.96, 0.9}
 \newmdenv [ %
@@ -97,6 +111,8 @@
   \providecommand\BibTeX{{%
     \normalfont B\kern-0.5em{\scshape i\kern-0.25em b}\kern-0.8em\TeX}}}
 
+\newcommand{\na}{10\xspace}
+
 \newcommand{\clang}{C\nolinebreak\xspace}
 
 \newcommand{\cpplang}{C\nolinebreak\hspace{-.05em}\raisebox{.4ex}{\small\bf +}\nolinebreak\hspace{-.10em}\raisebox{.4ex}{\small\bf +}\xspace}
@@ -133,69 +149,37 @@
   moredelim=[il][\textcolor{darkgray}]{§§}
 }
 
-\newcommand{\na}{10\xspace}
 
 \begin{document}
-\input{atom-mdframe-config}
+
+\begin{frontmatter}
 
 \title{On The Impact of Atoms of Confusion in JavaScript
 Code}
 
-\author{\IEEEauthorblockN{Anonymous}}
+
+\author[1]{Adriano Torres}
+\author[1]{M\'{a}rcio Okimoto}
+\author[1]{Caio Oliveira}
+\author[2]{Diego Marc\'{i}lio}
+\author[3]{Pedro Queiroga}
+\author[4]{M\'{a}rcio Ribeiro}
+\author[1]{Edna Dias Canedo}
+\author[5]{Fernando Castor}
+\author[1]{Rodrigo Bonif\'{a}cio}
+\author[6]{Eduardo Monteiro}
+
+\address[1]{Computer Science Department, University of Bras\'{i}lia, Brazil}
+\address[2]{Faculty of Informatics, Universit\`{a} della Svizzera Italiana, Switzerland}
+\address[3]{Informatics Center, Federal University of Pernambuco, Brazil}
+\address[4]{Institute of Computing, Federal University of Alagoas, Brazil}
+\address[5]{Department of Information and Computing Sciences, Utrecht University, The Netherlands}
+\address[6]{Statistics Department, University of Bras\'{i}lia, Brazil}
+
+\input{abstract}
 
 
-%% \author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% }
-
-\maketitle
-
-% Número das páginas. Remover para camera-ready
-% útil para nós e Program Chair que pode ver o total de páginas facilmente
-\thispagestyle{plain}
-\pagestyle{plain}
-
-\begin{abstract}
-  Evolving legacy code is a challenging task, particularly when the code has been poorly written or uses confuse idioms and language constructs, which might increase maintenance efforts and impose a significant cognitive load on developers. For this reason, researchers have investigated possible sources of confusion in codebases, including the impact of small code patterns (hereafter atoms of confusion) that contribute to misunderstanding the source code written in statically typed languages such as \clang, \cpplang, and Java. In this work, we investigate whether atoms of confusion identified in statically typed languages also confuse developers of a dynamically typed language. We use JavaScript as a representative example of dynamic programming languages and collect evidence from a mixed-method research effort: a survey, a set of interviews with practitioners, and an activity of mining open source JavaScript repositories (MSR). Our survey and interviews confirm that atoms of confusion lead to code that is hard to understand in JavaScript. Considering ten atom candidates, developers correctly predict the outcome of at least 15\% more cases in code snippets where atom candidates are not present, compared to alternative versions that include the atom candidates. For five of these atoms, the difference is statistically significant (accounting for p-value correction). Effect size is large for four atoms and medium for one of them. In addition, our MSR effort reveals that atom candidates are frequent and used intensively in 72 popular open-source JavaScript systems. Four atom candidates appear in 90\% of the analyzed projects, and two of them occur more than once for every 100 lines of code in the dataset. Altogether, our findings might help practitioners: (1) better understand the implications of atoms of confusion on understanding JavaScript code, (2) avoid writing code that is unnecessarily difficult to maintain, and (3) design program transformation tools that remove potential sources of misunderstanding in JavaScript code.
-\end{abstract}
-
-\begin{IEEEkeywords}
-code readability, program comprehension, program understanding, atoms of confusion, JavaScript code
-%datasets, neural networks, gaze detection, text tagging
-\end{IEEEkeywords}
+\end{frontmatter}
 
 \input{1_Introduction_alt}
 \input{2_Background}
@@ -204,13 +188,9 @@ code readability, program comprehension, program understanding, atoms of confusi
 \input{discussion}
 \input{5_Threats}
 \input{6_Conclusion}
-% \input{7_Atoms}
 
-% \section*{Acknowledgment}
-
-\balance
-\bibliographystyle{IEEEtran}
+\bibliographystyle{elsarticle-num}
 \bibliography{reference}
 
-\vspace{12pt}
+
 \end{document}
