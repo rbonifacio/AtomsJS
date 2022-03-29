@@ -1,5 +1,5 @@
-This is BibTeX, Version 0.99d (TeX Live 2020)
-Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+This is BibTeX, Version 0.99d (TeX Live 2018)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
 The top-level auxiliary file: main.aux
 The style file: IEEEtran.bst
 Reallocated singl_function (elt_size=4) to 100 items from 50.
@@ -16,43 +16,43 @@ Warning--empty booktitle in ThinkingAloud
 Done.
 You've used 22 entries,
             4087 wiz_defined-function locations,
-            982 strings with 13157 characters,
-and the built_in function-call counts, 17851 in all, are:
-= -- 1395
-> -- 459
-< -- 116
-+ -- 238
+            986 strings with 13392 characters,
+and the built_in function-call counts, 17697 in all, are:
+= -- 1360
+> -- 465
+< -- 120
++ -- 242
 - -- 88
-* -- 850
-:= -- 2568
-add.period$ -- 55
+* -- 834
+:= -- 2520
+add.period$ -- 54
 call.type$ -- 22
-change.case$ -- 22
-chr.to.int$ -- 264
+change.case$ -- 20
+chr.to.int$ -- 282
 cite$ -- 23
-duplicate$ -- 1318
-empty$ -- 1552
+duplicate$ -- 1287
+empty$ -- 1556
 format.name$ -- 107
-if$ -- 4230
+if$ -- 4201
 int.to.chr$ -- 0
 int.to.str$ -- 22
-missing$ -- 248
-newline$ -- 99
+missing$ -- 242
+newline$ -- 97
 num.names$ -- 24
-pop$ -- 620
+pop$ -- 622
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1389
+skip$ -- 1370
 stack$ -- 0
-substring$ -- 706
-swap$ -- 1035
-text.length$ -- 28
+substring$ -- 732
+swap$ -- 1013
+text.length$ -- 26
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 22
 warning$ -- 1
-while$ -- 75
+while$ -- 78
 width$ -- 24
-write$ -- 243
+write$ -- 235
 (There was 1 warning)

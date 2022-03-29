@@ -94,19 +94,15 @@ D.~Gopstein, A.-L. Fayard, S.~Apel, and J.~Cappos, ``Thinking aloud about
   605–616. [Online]. Available: \url{https://doi.org/10.1145/3368089.3409714}
 \BIBentrySTDinterwordspacing
 
-\bibitem{Santos:2018:ICP}
-R.~M.~a. dos Santos and M.~A. Gerosa, ``Impacts of coding practices on
-  readability,'' in \emph{Proceedings of the 26th International Conference on
-  Program Comprehension}, ser. ICPC ’18.\hskip 1em plus 0.5em minus
-  0.4em\relax New York, NY, USA: Association for Computing Machinery, 2018, p.
-  277–285.
+\bibitem{Juristo2012}
+N.~Juristo and O.~S. G{\'o}mez, \emph{Replication of Software Engineering
+  Experiments}.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg:
+  Springer Berlin Heidelberg, 2012, pp. 60--88.
 
-\bibitem{arab:sigplan}
-\BIBentryALTinterwordspacing
-M.~Arab, ``Enhancing program comprehension: Formatting and documenting,''
-  \emph{SIGPLAN Not.}, vol.~27, no.~2, p. 37–46, Feb. 1992. [Online].
-  Available: \url{https://doi.org/10.1145/130973.130975}
-\BIBentrySTDinterwordspacing
+\bibitem{Neely:1991:SPE}
+J.~H. Neely, \emph{Semantic priming effects in visual word recognition: A
+  selective review of current findings and theories}.\hskip 1em plus 0.5em
+  minus 0.4em\relax Lawrence Erlbaum Associates, Inc., 1991, p. 264–336.
 
 \bibitem{gyimesi2019bugsjs}
 P.~Gyimesi, B.~Vancsics, A.~Stocco, D.~Mazinanian, A.~Besz{\'e}des, R.~Ferenc,
