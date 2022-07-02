@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2021.10.4)  29 MAR 2022 14:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.19 (TeX Live 2018) (preloaded format=pdflatex 2021.10.4)  27 JUN 2022 09:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1565,7 +1565,7 @@ ine 29.
 <images/latin-square.pdf, id=22, 400.49625pt x 128.48pt>
 File: images/latin-square.pdf Graphic file (type pdf)
 <use images/latin-square.pdf>
-Package pdftex.def Info: images/latin-square.pdf  used on input line 68.
+Package pdftex.def Info: images/latin-square.pdf  used on input line 66.
 (pdftex.def)             Requested size: 200.24763pt x 64.23984pt.
  [4 <./images/latin-square.pdf>] [5]) (./4_Result.tex [6]
 <images/wrong-answers-plot-1.pdf, id=110, 371.3875pt x 187.70125pt>
@@ -1613,12 +1613,15 @@ Before submitting the final camera ready copy, remember to:
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
+
  ) 
 Here is how much of TeX's memory you used:
- 30435 strings out of 492649
- 607954 string characters out of 6129622
+ 30437 strings out of 492649
+ 607980 string characters out of 6129622
  710678 words of memory out of 5000000
- 33825 multiletter control sequences out of 15000+600000
+ 33827 multiletter control sequences out of 15000+600000
  576726 words of font info for 116 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  62i,13n,94p,10392b,1430s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1636,7 +1639,7 @@ fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/ty
 pe1/urw/times/utmb8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/ti
 mes/utmbi8a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmr8
 a.pfb></usr/local/texlive/2018/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on main.pdf (12 pages, 262002 bytes).
+Output written on main.pdf (12 pages, 261948 bytes).
 PDF statistics:
  196 PDF objects out of 1000 (max. 8388607)
  127 compressed objects within 2 object streams
