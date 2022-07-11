@@ -6,15 +6,67 @@
 \section{Results of the Survey}
 \label{sec:survey-resuts} 
 
-Our first study investigates the impact of atoms of confusion while developers try to understand JavaScript code.
-We estimate this impact considering two perspectives: \emph{misunderstanding rate} (number of wrong answers)
-and \emph{time} (how long to provide a correct answer).
-We received full answers to our survey from 140 participants (a total of 70 replicas).
-All participants had taken at least some university course or hold a bachelor
-degree or equivalent, meaning the participants have had some level of formal education in programming. In addition, 21 participants hold a master's degree and three a doctorate degree. 
-Considering the programming experience of our respondents, 19\% have more than ten years of programming experience, 37\% have between four and ten years of experience, 37\% have between one and four years of experience, and 7\% have less than one year of programming experience.  
-Accordingly, we characterize the effect of atoms of confusion in JavaScript
-code taking into account the perceptions of both novice and experienced developers. 
+%-----------------------------------------------------------------------
+\subsection{Repeated measures study}\label{sec:repeated}
+
+
+In the repeated measures study, we investigate whether 24 atom candidates and their clear counterparts impact readability. We examine mainly the cases where participants are able to successfully predict the output of a clear version but fail to do so for the corresponding obfuscated version and vice-versa. In addition, similarly to Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, we verify whether there is a trade-off between correctness and time irrespective of the presence of atoms; we check if participants who correctly predict the outputs of the programs tend to do so more slowly than the ones that make incorrect predictions. 
+
+Overall, this study had 70 participants. Out of these, 67 have received university-level training in programming, 4 hold a PhD degree, 7 hold a master's degree, and 11 hold a bachelor's degree. 
+The median programming experience of the participants is four years (mean 6.5 years) and the median experience with JavaScript programming is one year (mean 2.5 years). 
+% General programming: median: 48, 1st quartile: 22,5, 3rd quartile: 91,5
+% JavaScript programming: median: 12, 1st quartile: 4, 3rd: 24
+
+
+%-----------------------------------------------------------------------
+\subsection{Correctness Analysis}
+
+\subsubsection*{Exploratory Data Analysis}
+
+For each of the 24 atom candidates, the participants predicted the outputs of two versions, one clean (control) and one obfuscated (treatment), as per the definition of a repeated measures design~\cite{Hunter-Experimenters}. Thus, each participant examined 48 code snippets.  We also measured the time required by the participants to provide their answers. For most cases, participants made more mistakes when attempting to predict the outcomes of the obfuscated versions. 
+
+Table~\ref{tab:diff-correctness-repeated} presents the number of correct predictions for the clean and obfuscated versions of each atom candidate, as well as the percentage difference. In only three cases the participants predicted results correctly more often for the obfuscated versions, Arithmetic as Logic, Logic as Control Flow, and Property Access. The former two were empirically validated as atoms of confusion in the study of Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For seven of the atom candidates, the number of correct predictions for the clean versions is more than twice the corresponding number for the obfuscated versions.  Some of these atoms are common programming patterns in JavaScript programs, such as pre- and post-increments and object destructuring. The difference was even greater for Type Conversion (+440\%) and Change of Literal Encoding (+300\%). 
+\begin{table}[htbp]
+\caption{Summary of the correctness analysis}
+\label{tab:diff-correctness-repeated}
+\centering{
+\begin{scriptsize}
+\begin{tabular}{lccc} \toprule
+  Atom & Confusing & Clean & $\Delta$(\%)  \\ \midrule
+Type Conversion           &            5.0 &      27.0 &                 +440.0 \\
+Change of Literal Encoding &           9.0 &      36.0 &                 +300.0 \\
+Comma Operator            &            8.0 &      29.0 &                 +262.0 \\
+Object Destructuring      &           15.0 &      42.0 &                 +180.0 \\
+Assignment As Value       &           18.0 &      43.0 &                 +139.0 \\
+Pre-Increment             &           13.0 &      28.0 &                 +115.0 \\
+Post-Increment            &            8.0 &      17.0 &                 +112.0 \\
+Array Destructuring       &           15.0 &      28.0 &                 +87.0 \\
+Indentation no Braces     &           30.0 &      50.0 &                 +67.0 \\
+Omitted Curly Braces      &           35.0 &      51.0 &                 +46.0 \\
+Object Spread             &           21.0 &      30.0 &                 +43.0 \\
+Array Spread              &           22.0 &      31.0 &                 +41.0 \\
+Automatic Semicolon Insertion &       15.0 &      21.0 &                 +40.0 \\
+Infix Operator Precedence &           47.0 &      53.0 &                 +13.0 \\
+Arrow Function            &           54.0 &      58.0 &                  +7.0 \\
+Implicit Predicate        &           41.0 &      44.0 &                  +7.0 \\
+Indentation With Braces   &           53.0 &      55.0 &                  +4.0 \\
+Conditional Operator      &           60.0 &      62.0 &                  +3.0 \\
+Constant Variables        &           59.0 &      61.0 &                  +3.0 \\
+Dead Unreachable Repeated &           63.0 &      64.0 &                  +2.0 \\
+Repurposed Variables      &           23.0 &      23.0 &                   0.0 \\
+Arithmetic as Logic       &           52.0 &      47.0 &                 -10.0 \\
+Logic as Control Flow     &           33.0 &      28.0 &                 -15.0 \\
+Property Access           &           51.0 &      42.0 &                 -18.0 \\
+\bottomrule  
+\end{tabular}
+\end{scriptsize}
+}
+\end{table}
+
+
+\subsubsection*{Statistical analysis}
+
+Data is categorical, paired, dependent. This is analogous to clinical trials where the same patient receives two different treatments. These treatments are spaced to reduce interaction between them. For this, McNemar. Odds ratio as a measure of effect size. 
 
 %Our audience comprises professional developers, and 93\% of the respondents have more than one year of experience with programming.
 % (see Figure~\ref{fig:xp}). 
@@ -38,13 +90,22 @@ code taking into account the perceptions of both novice and experienced develope
 %%   \end{figure}
 %Figure~\ref{fig:xp} shows that more than a half of
 
+%-----------------------------------------------------------------------
+\subsection{Latin-square study}\label{sec:latin}
+
+Our first study investigates the impact of atoms of confusion while developers try to understand JavaScript code.
+We estimate this impact considering two perspectives: \emph{misunderstanding rate} (number of wrong answers)
+and \emph{time} (how long to provide a correct answer).
+We received full answers to our survey from 140 participants (a total of 70 replicas). All participants had taken at least some university course or hold a bachelor degree or equivalent, meaning the participants have had some level of formal education in programming. In addition, 21 participants hold a master's degree and three a doctorate degree. 
+Considering the programming experience of our respondents, 19\% have more than ten years of programming experience, 37\% have between four and ten years of experience, 37\% have between one and four years of experience, and 7\% have less than one year of programming experience.  
+Accordingly, we characterize the effect of atoms of confusion in JavaScript code taking into account the perceptions of both novice and experienced developers. 
 
 \subsection{Misunderstanding Rate Analysis}
+\castor{We need to be uniform about terminology. Are we going with ``misunderstanding rate analysis''? The problem is that it is not clear to me which rate is being referred to.}
 
 \subsubsection*{Exploratory Data Analysis}
 
-As mentioned in Section~\ref{sec:meth:survey}, each participant in this study evaluated ten
-code snippets, from which five were in their confusing versions, whilst the other five contained clean versions of the code snippets (i.e., without the confusing constructs and idioms). The participants should provide the expected outcomes of the code snippets. As discussed, we collected information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{time}. 
+As mentioned in Section~\ref{sec:meth:survey}, each participant in this study evaluated ten code snippets, from which five were in their confusing versions, whilst the other five contained clean versions of the code snippets (i.e., without the confusing constructs and idioms). The participants should provide the expected outcomes of the code snippets. As discussed, we collected information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{time}. 
 Table~\ref{tab:difference-correctness} and Figure~\ref{fig:boxplotcorrectness} summarize the results of the survey w.r.t. correctness.
 
 Considering Table~\ref{tab:difference-correctness}, the clean versions of six code snippets present at least a 15\% improvement in answer correctness when compared with the confusing versions. In particular, the presence of the \emph{Comma Operator} atom exhibits the highest impact on misunderstanding. 

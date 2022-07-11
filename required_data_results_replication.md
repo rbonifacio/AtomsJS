@@ -8,6 +8,9 @@
 import pandas as pd
 import numpy as np
 import scipy.stats as stats
+import statsmodels.stats.contingency_tables as statsmodels
+from statsmodels.stats.contingency_tables import Table2x2
+
 
 atoms = pd.read_csv('results_JS_replication_study.csv')
 atoms.dropna(thresh=10, inplace=True)
@@ -28,7 +31,8 @@ print(np.std(correctTimes), np.std(incorrectTimes))
 
 A primeira coisa que fui calcular foram os tempos médios para respostas corretas e incorretas (independente de serem versões obscurecidas ou clarificadas), devido a análise que o Gopstein faz no artigo dele sobre o trade-off entre corretude e tempo (será que quem acerta vai mais devagar?). No nosso trabalho, os resultados foram significativamente diferentes entre resultados corretos e incorretos, por questão: 
 Mean time correct: 35.44412803398052s
-Mean time incorrect: 44.50444720101791sWilcoxon Rank Sum test: (statistic=-5.042914598471609, pvalue=4.5849391631250766e-07)
+Mean time incorrect: 44.50444720101791s
+Wilcoxon Rank Sum test: (statistic=-5.042914598471609, pvalue=4.5849391631250766e-07)
 Medians, respectively:
 24.362499999999997 and 29.2825
 Standard deviations: 38.427615862599204 and 62.48393041895574
@@ -56,7 +60,9 @@ In [33]: temp = np.zeros((70, 144))
 
 In [34]: atomResults = pd.DataFrame(temp)
 
-In [35]: atomResults.columns=[topLevel, secondLevel, thirdLeve
+In [35]: atomResults.columns=[topLevel, secondLevel, thirdLevel]
+
+In [65]: atomResults.replace(0, np.nan, inplace=True)
 
 In [43]: atomResults.loc[0, (3, 'obfuscated', 2)]
 
@@ -78,6 +84,8 @@ In [95]: def processAtomsOfInterest(theAtoms, results):
     ...:             results.loc[j, getSnippetId(row[i])] = row[i + numQuestions]
     ...:             i += 1
     ...:         j += 1
+
+In [27]: processAtomsOfInterest(atomsOfInterest, atomResults)
 
 In [116]: atomCounts = pd.DataFrame(np.zeros((24, 4)), columns=['obfuscated_ok', 'obfuscated_wrong', 'clear_ok', 'clear_wrong'])
 
@@ -111,6 +119,14 @@ In [182]: def buildContingencyTable(aSeries):
      ...:     return [[aSeries.iloc[0], aSeries.iloc[1]], [aSeries.iloc[2], aSeries.iloc[3]
      ...: ]]
 
+In [16]: def printOddsRatio(contingencyTable, label):
+    ...:     ct = Table2x2(contingencyTable)
+    ...:     print(label)
+    ...:     print("Odds ratio: ", ct.oddsratio)
+    ...:     print("p-value: ", ct.oddsratio_pvalue())
+    ...:     print("Confidence interval at 95% confidence level:", ct.oddsratio_confint(alpha=0.05, method='normal'))
+    ...:     print()
+
 In [196]: def outputOddsRatios(counts):
      ...:     i = 1
      ...:     while i <= len(counts):
@@ -122,6 +138,17 @@ In [196]: def outputOddsRatios(counts):
      ...: 
      ...: 
 
+In [196]: def outputMcNemar(counts):
+     ...:     i = 1
+     ...:     while i <= len(counts):
+     ...:         row = atomCounts.loc[i]
+     ...:         print(row)
+     ...:         print(statsmodels.mcnemar(buildContingencyTable(row), exact=True, correction=True), 'Atom ' + str(i))
+     ...:         i += 1
+
+
+
+#----- USING THIS ------
 In [197]: outputOddsRatios(atomCounts)
 obfuscated_ok       41.0
 obfuscated_wrong    29.0
