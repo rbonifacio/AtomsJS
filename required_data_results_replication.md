@@ -5,11 +5,6 @@
 - Mean time for correct responses and mean time for incorrect responses, independently of atoms. Wilcoxon rank sum test to check the difference. OK  --- 
 
 
-import pandas as pd
-import numpy as np
-import scipy.stats as stats
-import statsmodels.stats.contingency_tables as statsmodels
-from statsmodels.stats.contingency_tables import Table2x2
 
 
 atoms = pd.read_csv('results_JS_replication_study.csv')

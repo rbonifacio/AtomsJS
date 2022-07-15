@@ -3,31 +3,29 @@
 
 %% In this section we present the main findings of our research. We first present the results of each study (Section~\ref{sec:survey-resuts}, Sections~\ref{sec:msr-results}, and Section~\ref{sec:interview-results}). After that, in Section~\ref{sec:discussion} we consolidate our findings and present some implications of our study. 
 
-\section{Results of the Survey}
+%\section{Results of the Survey}
 \label{sec:survey-resuts} 
 
 %-----------------------------------------------------------------------
-\subsection{Repeated measures study}\label{sec:repeated}
+\section{Results of the Repeated Measures Study}\label{sec:repeated}
 
-
-In the repeated measures study, we investigate whether 24 atom candidates and their clear counterparts impact readability. We examine mainly the cases where participants are able to successfully predict the output of a clear version but fail to do so for the corresponding obfuscated version and vice-versa. In addition, similarly to Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, we verify whether there is a trade-off between correctness and time irrespective of the presence of atoms; we check if participants who correctly predict the outputs of the programs tend to do so more slowly than the ones that make incorrect predictions. 
+In this study, we investigate whether 24 atom candidates impact readability. We examine how the performance of the participants differ when predicting the outputs of the clean and obfuscated versions of small code snippets (Section~\ref{sec:repeated:correct}). Based on those results we establish which candidates can actually be considered atoms of confusion. In addition, similarly to Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, we verify whether there is a trade-off between correctness and time irrespective of the presence of atoms; we check if participants who correctly predict the outputs of the programs tend to do so more slowly than the ones that make incorrect predictions (Section~\ref{sec:repeated:time}). 
 
 Overall, this study had 70 participants. Out of these, 67 have received university-level training in programming, 4 hold a PhD degree, 7 hold a master's degree, and 11 hold a bachelor's degree. 
 The median programming experience of the participants is four years (mean 6.5 years) and the median experience with JavaScript programming is one year (mean 2.5 years). 
 % General programming: median: 48, 1st quartile: 22,5, 3rd quartile: 91,5
 % JavaScript programming: median: 12, 1st quartile: 4, 3rd: 24
 
-
 %-----------------------------------------------------------------------
-\subsection{Correctness Analysis}
+\subsection{Correctness Analysis}\label{sec:repeated:correct}
 
-\subsubsection*{Exploratory Data Analysis}
-
+\subsubsection*{Exploratory Data Analysis. }
 For each of the 24 atom candidates, the participants predicted the outputs of two versions, one clean (control) and one obfuscated (treatment), as per the definition of a repeated measures design~\cite{Hunter-Experimenters}. Thus, each participant examined 48 code snippets.  We also measured the time required by the participants to provide their answers. For most cases, participants made more mistakes when attempting to predict the outcomes of the obfuscated versions. 
 
 Table~\ref{tab:diff-correctness-repeated} presents the number of correct predictions for the clean and obfuscated versions of each atom candidate, as well as the percentage difference. In only three cases the participants predicted results correctly more often for the obfuscated versions, Arithmetic as Logic, Logic as Control Flow, and Property Access. The former two were empirically validated as atoms of confusion in the study of Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For seven of the atom candidates, the number of correct predictions for the clean versions is more than twice the corresponding number for the obfuscated versions.  Some of these atoms are common programming patterns in JavaScript programs, such as pre- and post-increments and object destructuring. The difference was even greater for Type Conversion (+440\%) and Change of Literal Encoding (+300\%). 
-\begin{table}[htbp]
-\caption{Summary of the correctness analysis}
+
+\begin{table}[tb]
+\caption{Summary of the correctness analysis.}
 \label{tab:diff-correctness-repeated}
 \centering{
 \begin{scriptsize}
@@ -66,32 +64,80 @@ Property Access           &           51.0 &      42.0 &                 -18.0 \
 
 \subsubsection*{Statistical analysis}
 
-Data is categorical, paired, dependent. This is analogous to clinical trials where the same patient receives two different treatments. These treatments are spaced to reduce interaction between them. For this, McNemar. Odds ratio as a measure of effect size. 
+Since this study uses a within-subject design, the data is paired and dependent. Our goal is to verify whether there is a significant difference in the performance of the same participants when examining clean and obfuscated versions of programs. The analyzed data is also dichotomous, since each participant either correctly predicts the output of a program or does not. Considering this scenario, we employ McNemar's test~\cite{McNemar:1947:NSE}, which is aimed at \textit{``judging the significance of the difference between correlated proportions''}.
 
-%Our audience comprises professional developers, and 93\% of the respondents have more than one year of experience with programming.
-% (see Figure~\ref{fig:xp}). 
-%Actually, 56\% of the participants have either between four and ten years of experience (37\%) or more than ten years of experience (19\%). Other 37\% of the respondents have between one and four years of experience.
+The ``McNemar test'' column of Table~\ref{tab:repeated:misunderstanding} indicates the p-values for the tests. These p-values are compared against an alpha of 0.0021, after applying Bonferroni correction (0.05/24). One of the atom candidates, Constant Variables, is omitted from the table because, due to the very low number of mistakes, it is not possible to perform the McNemar test. The table shows that eight of the 24 analyzed atom candidates can be considered atoms of confusion based on the results of our study, Object Destructuring, Type Conversion, Change of Literal Encoding, Comma Operator, Indentation No Braces, Assignment as Value, Pre-Increment, and Ommitted Curly Braces. Among these eight, only Object Destructuring is JavaScript-specific. The other seven atoms have been previously reported for the C language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and also for Java~\cite{Langhout:2021:ACJ} (with the exception of Comma Operator). For some candidates that have been previously identified as atoms, there was not a statistically significant difference. This is the case for Repurposed Variables, Logic as Control Flow, Implicit Predicate, and Conditional Operator. 
+
+We leverage the odds ratio (OR) as a measure of effect size, to quantify the meaningfulness~\cite{Ellis:2010:EGE} of these results. The odds ratio is an appropriate measure of effect size for scenarios where McNemar's test is applicable~\cite{Mangiafico:2016:SAE}. For example, odds ratio for Type Conversion is 12. This suggests that the odds of a participant correctly predicting the output of a clean version while incorrectly predicting the output of the corresponding obfuscated version is 12 times higher than the odds of correctly predicting the output of the obfuscated version and incorrectly predicting the output of the correct one. 
+
+According to the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR = 1.68 small, 3.47 medium, and 6.71 large), for most of the atoms where there was a statistically significant difference the odds ratio can be considered high. The value of the odds ratio for Object Destructuring is $\infty$ because no participant correctly guessed the output for the obfuscated version while incorrectly guessing the output for the clean one, which results in a denominator of 0. Omitted Curly Braces exhibits an OR of 6.3, which is borderline between medium and high~\cite{Chen:2010:HBB}. Array Destructuring and Post-Increment are two atom candidates that deserve a special note. The difference in the performance of participants examining clean and obfuscated versions of these atoms was not statistically significant, after correction. Notwithstanding, effect sizes were large and medium, respectively. This is a result that hints at practical relevance in spite of the p-values~\cite{Ellis:2010:EGE}. Further investigation is required for these two atom candidates.
+
+\begin{table}[tb]
+\caption{Hypotheses Testing (correctness). Asterisks ($^{*}$) indicate a statistically significant difference. Using Bonferroni correction, a p-value is considered statistically significant if it is lower than 0.0021.}
+ \centering
+ \begin{tabular}{lrr}
+   \toprule
+Atom candidate & McNemar test &      odds ratio \\
+\midrule
+Object Destructuring      &   \textbf{$<$ 0.0001*} & $\infty$ \\
+Type Conversion           &   \textbf{$<$ 0.0001*} & 12.0 \\
+Change of Literal Encoding   &   \textbf{$<$ 0.0001*} & 28.0 \\
+Comma Operator            &   \textbf{$<$ 0.0001*} & 11.5 \\
+Indentation No Braces     &   \textbf{$<$ 0.0001*} &  11.0 \\
+Assignment As Value       &   \textbf{$<$ 0.0001*} &  9.3 \\
+Pre-Increment              &  \textbf{0.0003*} &    16.0 \\
+Omitted Curly Braces      &  \textbf{0.0009*} &  6.3 \\
+Array Destructuring       &  0.0023 &     7.5 \\
+Post-Increment              &  0.0225 &     5.5 \\
+Array Spread              &  0.0490 &    3.3 \\
+Object Spread             &  0.0636 &     2.8 \\
+Property Access           &  0.0636 &     2.8 \\
+Infix Operator Precedence &  0.1796 &     2.5 \\
+Arrow Function            &  0.2891 &     3.0 \\
+Arithmetic As Logic       &  0.3323 &  1.8 \\
+Automated Semicolon Insertion  &  0.3915 &  1.4 \\
+Logic As Control Flow     &  0.4421 &  1.5 \\
+%Constant Variables        &  0.5000 &     0.0 \\
+Implicit Predicate        &  0.6900 &  1.3 \\
+Indentation With Braces   &  0.7266 &  1.7 \\
+Conditional Operator      &  0.7905 &  1.3 \\
+Dead Unreachable Repeated &  1.0000 &     1.5 \\
+Repurposed Variables      &   1.0000 &     1.0 \\
+\bottomrule
+\end{tabular}
+\label{tab:repeated:misunderstanding}
+\end{table}
 
 
-
-%% Figure~\ref{fig:degree} and Figure~\ref{fig:xp} show the distributions of the subjects,
-%% according to their education level and years of programming experience, respectively.
-
-%% \begin{figure}[htb]
-%%       \centering
-%%       \includegraphics[width=\columnwidth]{images/dem-education-1.pdf}
-%%       \caption{Participants' Education Level}\label{fig:degree}
-%%   \end{figure}
-  
-%%   \begin{figure}[htb]
-%%       \centering
-%%       \includegraphics[width=\columnwidth]{images/dem-experience-1.pdf}
-%%       \caption{Participants' Experience} \label{fig:xp}
-%%   \end{figure}
-%Figure~\ref{fig:xp} shows that more than a half of
 
 %-----------------------------------------------------------------------
-\subsection{Latin-square study}\label{sec:latin}
+\subsection{Time Analysis}\label{sec:repeated:time}
+
+\subsubsection*{Exploratory Data Analysis}
+
+In this section we investigate whether there is a trade-off between correctness and time required to predict program outputs, similarly to the analysis performed by Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For this analysis, we consider only whether participants correctly predict the outputs of programs or not, independently of the presence or absence of atoms, and the time required to do so. The null hypothesis we investigate is that there is no significant difference in time between correct and incorrect predictions. Intuitively, we would expect correct responses to take longer, on the basis that participants would spend more time carefully analyzing the programs before providing an answer. 
+
+Table~\ref{tab:repeated:time} presents the mean and median times required by participants to provide answers. The data is based on the 1648 correct and 1572 incorrect answers collected in the study. Contrary to our intuition, the mean time required by participants to provide an incorrect answer is 25\% greater than the time required to provide a correct one and the median time is 20\%. greater. The standard deviations suggest that there is great variation in the times required by different participants, for different code snippets. Notwithstanding, the standard deviation for incorrect answers is 62.58\% greater when compared to the same statistic for correct answers. 
+
+\begin{table}[tb]
+  \caption{Time in seconds required by the participants to correctly and incorrectly predict the outcomes of the programs.}\label{tab:repeated:time}
+  \centering
+  \begin{tabular}{lrrr}
+    \toprule  
+             & Mean  & Median & Std. Dev. \\
+    \midrule
+  Correct   & 35.44 & 24.36  & 38.43     \\
+  Incorrect & 44.50 & 29.29  & 62.48    \\
+  \bottomrule
+  \end{tabular}
+  \end{table}
+
+\subsubsection*{Statistical Analysis}
+
+We employ the non-parametric Mann-Whitney U test, also known as Wilcoxon's rank-sum test, to verify the aforementioned null hypothesis, i.e., to check whether the times for correct and incorrect answers can be considered identical. That test produces a p-value of \textbf{0.00000046}, which shows that the difference it statistically significant and we can reject the null hypothesis. To gauge the magnitude of that difference we employ Cliff's Delta as a measure of effect size. This produces a result of \textbf{0.1027}, which suggests that, although participants tend to provide correct predictions more quickly, they do that only slightly so. 
+
+%-----------------------------------------------------------------------
+\section{Results of the Latin-Square Study}\label{sec:latin}
 
 Our first study investigates the impact of atoms of confusion while developers try to understand JavaScript code.
 We estimate this impact considering two perspectives: \emph{misunderstanding rate} (number of wrong answers)
