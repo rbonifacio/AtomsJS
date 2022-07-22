@@ -16,43 +16,43 @@ Warning--empty booktitle in ThinkingAloud
 Done.
 You've used 25 entries,
             4087 wiz_defined-function locations,
-            1009 strings with 13961 characters,
-and the built_in function-call counts, 19893 in all, are:
-= -- 1538
-> -- 495
+            1007 strings with 13835 characters,
+and the built_in function-call counts, 19941 in all, are:
+= -- 1549
+> -- 497
 < -- 141
-+ -- 260
-- -- 91
-* -- 927
-:= -- 2839
++ -- 261
+- -- 92
+* -- 936
+:= -- 2864
 add.period$ -- 61
 call.type$ -- 25
-change.case$ -- 23
-chr.to.int$ -- 336
+change.case$ -- 24
+chr.to.int$ -- 330
 cite$ -- 26
-duplicate$ -- 1447
-empty$ -- 1754
-format.name$ -- 110
-if$ -- 4728
+duplicate$ -- 1456
+empty$ -- 1742
+format.name$ -- 111
+if$ -- 4732
 int.to.chr$ -- 0
 int.to.str$ -- 25
-missing$ -- 266
+missing$ -- 269
 newline$ -- 106
 num.names$ -- 27
-pop$ -- 681
+pop$ -- 678
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1540
+skip$ -- 1544
 stack$ -- 0
-substring$ -- 865
-swap$ -- 1142
-text.length$ -- 29
+substring$ -- 851
+swap$ -- 1150
+text.length$ -- 31
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 25
 warning$ -- 1
-while$ -- 88
+while$ -- 87
 width$ -- 27
-write$ -- 262
+write$ -- 265
 (There was 1 warning)

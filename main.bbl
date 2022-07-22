@@ -94,10 +94,10 @@ D.~Gopstein, A.-L. Fayard, S.~Apel, and J.~Cappos, ``Thinking aloud about
   605–616. [Online]. Available: \url{https://doi.org/10.1145/3368089.3409714}
 \BIBentrySTDinterwordspacing
 
-\bibitem{Juristo2012}
-N.~Juristo and O.~S. G{\'o}mez, \emph{Replication of Software Engineering
-  Experiments}.\hskip 1em plus 0.5em minus 0.4em\relax Berlin, Heidelberg:
-  Springer Berlin Heidelberg, 2012, pp. 60--88.
+\bibitem{Keselman:2001:ARM}
+H.~J. Keselman, J.~Algina, and R.~K. Kowalchuk, ``The analysis of repeated
+  measures designs: A review,'' \emph{British Journal of Mathematical and
+  Statistical Psychology}, vol.~54, no.~1, pp. 1--20, 2001.
 
 \bibitem{Neely:1991:SPE}
 J.~H. Neely, \emph{Semantic priming effects in visual word recognition: A

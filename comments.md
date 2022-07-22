@@ -3,3 +3,5 @@
 The part about the binomial generalized logistic regression includes no numbers. It does include a figure, but there is no explanation about the figure. I don't know how to explain it. 
 
 The repeated measures and latin square studies should be called "experiments", not surveys. I'll have to review this in the entire results section. 
+
+------------------//------------------
