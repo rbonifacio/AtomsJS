@@ -166,6 +166,12 @@ J.~Romano, J.~Kromrey, J.~Coraggio, and J.~Skowronek, ``{Appropriate statistics
   \emph{Proceedings of the Annual meeting of the Florida Association of
   Institutional Research}, 2006, pp. 1--3.
 
+\bibitem{Feitelson:2021:CPC}
+D.~G. Feitelson, ``Considerations and pitfalls in controlled experiments on
+  code comprehension,'' in \emph{29th {IEEE/ACM} International Conference on
+  Program Comprehension}.\hskip 1em plus 0.5em minus 0.4em\relax Madrid, Spain:
+  {IEEE}, May 2021, pp. 106--117.
+
 \bibitem{Oliveira:2020:ECR}
 D.~Oliveira, R.~Bruno, F.~Madeiral, and F.~Castor, ``Evaluating code
   readability and legibility: An examination of human-centric studies,'' in

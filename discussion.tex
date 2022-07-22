@@ -1,6 +1,24 @@
 \section{Discussion}
 \label{sec:discussion}
 
+
+% From the paper. I think it makes more sense to discuss this in the context of teh two studies. 
+Comparing the results of the latin square study to previous research, three 
+atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed
+for \clang and \cpplang do not lead to a statistically significant impact
+on correctness in our study: Logic as Control Flow,
+Conditional Operator, and Pre-Increment. Our results
+support the Gopstein et al. findings for the remaining
+atoms. The work of Langhout and Aniche~\cite{Langhout:2021:ACJ} investigates six atom candidates for Java that we also explore here for JavaScript. Among these atom
+candidates, we achieve similar conclusions to their
+study for four atom candidates: Post Increment,
+Conditional Operator, Arithmetic as Logic, and
+Omitted Curly Braces---both studies confirmed only the former
+as an atom of confusion. Our findings diverged from
+the work of Langhout and Aniche for two atoms: Pre Increment and
+Logic as Control Flow.
+
+
 \castor{Which atoms? The weight of experience. Statistical significance vs. practical relevance. Most of them, with the exception of Comma Operator and Object Destructuring, have also been observed for Java programs~\cite{Langhout:2021:ACJ}.
 
 In addition, many of the coding idioms that have been previously identified as atoms of confusion in previous work~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17,Langhout:2021:ACJ}, such as Logic as Control Flow
