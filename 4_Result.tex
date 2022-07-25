@@ -9,7 +9,7 @@
 %-----------------------------------------------------------------------
 \section{Results of the Repeated Measures Study}\label{sec:repeated}
 
-In this study, we investigate whether 24 atom candidates impact readability. We examine how the performance of the participants differ when predicting the outputs of the clean and obfuscated versions of small code snippets (Section~\ref{sec:repeated:correct}). Based on those results we establish which candidates can actually be considered atoms of confusion. In addition, similarly to Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, we verify whether there is a trade-off between correctness and time irrespective of the presence of atoms; we check if participants who correctly predict the outputs of the programs tend to do so more slowly than the ones that make incorrect predictions (Section~\ref{sec:repeated:time}). 
+In this experiment, we investigate whether 24 atom candidates impact readability. We examine how the performance of the participants differ when predicting the outputs of the clean and obfuscated versions of small code snippets (Section~\ref{sec:repeated:correct}). Based on those results we establish which candidates can actually be considered atoms of confusion. In addition, similarly to Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, we verify whether there is a trade-off between correctness and time irrespective of the presence of atoms; we check if participants who correctly predict the outputs of the programs tend to do so more slowly than the ones that make incorrect predictions (Section~\ref{sec:repeated:time}). 
 
 This study had 70 participants. Out of these, 67 have received university-level training in programming, 4 hold a PhD degree, 7 hold a master's degree, and 11 hold a bachelor's degree. 
 The median programming experience of the participants is four years (mean 6.5 years) and the median experience with JavaScript programming is one year (mean 2.5 years). 
@@ -30,7 +30,7 @@ Table~\ref{tab:diff-correctness-repeated} presents the number of correct predict
 \centering{
 \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
-  Atom & Confusing & Clean & $\Delta$(\%)  \\ \midrule
+  Atom & Obfuscated & Clean & $\Delta$(\%)  \\ \midrule
 Type Conversion           &            5 &      27 &                 +440 \\
 Change of Literal Encoding &           9 &      36 &                 +300 \\
 Comma Operator            &            8 &      29 &                 +262 \\
@@ -66,11 +66,11 @@ Property Access           &           51 &      42 &                 -18 \\
 
 Since this study uses a within-subject design, the data is paired and dependent. Our goal is to verify whether there is a significant difference in the performance of the same participants when examining clean and obfuscated versions of programs. The analyzed data is also dichotomous, since each participant either correctly predicts the output of a program or does not. Considering this scenario, we employ McNemar's test~\cite{McNemar:1947:NSE}, which is aimed at \textit{``judging the significance of the difference between correlated proportions''}.
 
-The ``McNemar test'' column of Table~\ref{tab:repeated:misunderstanding} indicates the p-values for the tests. These p-values are compared against an alpha of 0.0021, after applying Bonferroni correction (0.05/24). One of the atom candidates, Constant Variables, is omitted from the table because, due to the very low number of mistakes, it is not possible to perform the test. The table shows that eight of the 24 analyzed atom candidates can be considered atoms of confusion based on the results of our study, Object Destructuring, Type Conversion, Change of Literal Encoding, Comma Operator, Indentation No Braces, Assignment as Value, Pre-Increment, and Ommitted Curly Braces. Among these eight, only Object Destructuring is JavaScript-specific. The other seven atoms have been previously reported for the C language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and also for Java~\cite{Langhout:2021:ACJ} (with the exception of Comma Operator). For some candidates that have been previously identified as atoms, there was not a statistically significant difference. This is the case for Repurposed Variables, Logic as Control Flow, Implicit Predicate, and Conditional Operator. 
+The ``McNemar test'' column of Table~\ref{tab:repeated:misunderstanding} indicates the p-values for the tests. These p-values are compared against an alpha of 0.0021, after applying Bonferroni correction (0.05/24). One of the atom candidates, Constant Variables, is omitted from the table because, due to the very low number of mistakes, it is not possible to perform the test. The table shows that eight of the 24 analyzed atom candidates can be considered atoms of confusion based on the results of our study, Object Destructuring, Type Conversion, Change of Literal Encoding, Comma Operator, Indentation No Braces, Assignment as Value, Pre-Increment, and Ommitted Curly Braces. Among these eight, only Object Destructuring is JavaScript-specific. Six of the other atoms have been previously reported for the C language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and five for Java~\cite{Langhout:2021:ACJ}. Indentation No Braces is not specific to JavaScript, but has not been studied previously. For some candidates that have been previously identified as atoms, there was not a statistically significant difference. This is the case for Repurposed Variables, Logic as Control Flow, Implicit Predicate, and Conditional Operator. 
 
-We leverage the odds ratio (OR) as a measure of effect size, to quantify the meaningfulness~\cite{Ellis:2010:EGE} of these results. The odds ratio is an appropriate measure of effect size for scenarios where McNemar's test is applicable~\cite{Mangiafico:2016:SAE}. For example, odds ratio for Type Conversion is 12. This suggests that the odds of a participant correctly predicting the output of a clean version while incorrectly predicting the output of the corresponding obfuscated version is 12 times higher than the odds of correctly predicting the output of the obfuscated version and incorrectly predicting the output of the correct one. 
+We leverage the odds ratio (OR) as a measure of effect size, to quantify the meaningfulness~\cite{Ellis:2010:EGE} of these results. The odds ratio is an appropriate measure of effect size for scenarios where McNemar's test is applicable~\cite{Mangiafico:2016:SAE}. For example, the odds ratio for Type Conversion is 12. This suggests that the odds of a participant correctly predicting the output of a clean version while incorrectly predicting the output of the corresponding obfuscated version is 12 times higher than the odds of correctly predicting the output of the obfuscated version and incorrectly predicting the output of the correct one. 
 
-According to the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR = 1.68 small, 3.47 medium, and 6.71 large), for most of the atoms where there was a statistically significant difference the odds ratio can be considered high. The value of the odds ratio for Object Destructuring is $\infty$ because no participant correctly guessed the output for the obfuscated version while incorrectly guessing the output for the clean one, which results in a denominator of 0. Omitted Curly Braces exhibits an OR of 6.3, which is borderline between medium and high~\cite{Chen:2010:HBB}. Array Destructuring and Post-Increment are two atom candidates that deserve a special note. The difference in the performance of participants examining clean and obfuscated versions of these atoms was not statistically significant, after correction. Notwithstanding, effect sizes were large and medium, respectively. This is a result that hints at practical relevance in spite of the p-values~\cite{Ellis:2010:EGE}. Further investigation is required for these two atom candidates.
+According to the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR = 1.68 small, 3.47 medium, and 6.71 large), for most of the atoms where there is a statistically significant difference the odds ratio can be considered high. The value of the odds ratio for Object Destructuring is $\infty$ because no participant correctly guessed the output for the obfuscated version while incorrectly guessing the output for the clean one, which results in a denominator of 0. Omitted Curly Braces exhibits an OR of 6.3, which is borderline between medium and high~\cite{Chen:2010:HBB}. Array Destructuring and Post-Increment are two atom candidates that deserve a special note. The difference in the performance of participants examining clean and obfuscated versions of these atoms was not statistically significant, after correction. Notwithstanding, effect sizes were large and medium, respectively. This is a result that hints at practical relevance in spite of the p-values~\cite{Ellis:2010:EGE}. Further investigation is required for these two atom candidates.
 
 \begin{table}[tb]
 \caption{Hypotheses Testing (correctness). Asterisks ($^{*}$) indicate a statistically significant difference. Using Bonferroni correction, a p-value is considered statistically significant if it is lower than 0.0021.}
@@ -134,7 +134,7 @@ Table~\ref{tab:repeated:time} presents the mean and median times required by the
 
 \subsubsection*{Statistical Analysis}
 
-We employ the non-parametric Mann-Whitney U test, also known as Wilcoxon's rank-sum test, to verify the aforementioned null hypothesis, i.e., to check whether the times for correct and incorrect answers can be considered identical. That test produces a p-value of \textbf{0.00000046}, which shows that the difference is statistically significant and we can reject the null hypothesis. To gauge the magnitude of that difference we employ Cliff's Delta as a measure of effect size. This produces a result of \textbf{0.1027}, which suggests that, although participants tend to provide correct predictions more quickly, they do that only slightly so. 
+We employ the non-parametric Mann-Whitney U test, also known as Wilcoxon's rank-sum test, to verify the aforementioned null hypothesis, i.e., whether the times for correct and incorrect answers can be considered identical. That test produces a p-value of \textbf{0.00000046}, which shows that the difference is statistically significant and we can reject the null hypothesis. To gauge the magnitude of that difference we employ Cliff's Delta as a measure of effect size. This produces a result of \textbf{0.1027}, which suggests that, although participants tend to provide correct predictions more quickly, they do that only slightly so. 
 
 %-----------------------------------------------------------------------
 \section{Results of the Latin-Square Study}\label{sec:latin}
@@ -148,12 +148,12 @@ Accordingly, we characterize the effect of atoms of confusion in JavaScript code
 
 \subsubsection*{Exploratory Data Analysis}
 
-As mentioned in Section~\ref{sec:meth:survey}, each participant in this study evaluated ten code snippets, from which five were in their confusing versions, whilst the other five contained clean versions of the code snippets (i.e., without the atom candidates). As in the repeated measures study, the participants should provide the expected outcomes of the code snippets. Differently from that study, in this one each participant only predicts the outcome of one version of each code snippet, either clean or obfuscated. As discussed, we collected information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{time}. 
+As mentioned in Section~\ref{sec:meth:survey}, each participant in this experiment evaluated ten code snippets, from which five were in their obfuscated versions, whilst the other five contained clean versions of the code snippets (i.e., without the atom candidates). As in the repeated measures study, the participants should provide the expected outcomes of the code snippets. Differently from that study, in this one each participant only predicts the outcome of one version of each code snippet, either clean or obfuscated. As discussed, we collect information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{time}. 
 Table~\ref{tab:difference-correctness} and Figure~\ref{fig:boxplotcorrectness} summarize the results of the correctness experiment.
 
-Considering Table~\ref{tab:difference-correctness}, the clean versions of six code snippets present at least a 15\% improvement in answer correctness when compared with the confusing versions. In particular, the presence of the \emph{Comma Operator} atom exhibits the highest impact on misunderstanding. 
+Considering Table~\ref{tab:difference-correctness}, the clean versions of six code snippets present at least a 15\% improvement in answer correctness when compared with the obfuscated versions. In particular, the presence of the \emph{Comma Operator} atom exhibits the highest impact on misunderstanding. 
 Frequently used constructs and idioms, such as \emph{Post Increment} and \emph{Omitted Curly Braces} (see Section~\ref{sec:msr-results}), also result in many mistakes. %introduce high degrees of confusion.
-The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrease in the average number of incorrect answers when observing the clean versions of the code snippets. Also, the sample of responses with no atoms had almost no dispersion, which supports the argument that the non-confusing versions of the code snippets are easier to evaluate correctly. 
+The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrease in the average number of incorrect answers when observing the clean versions of the code snippets. Also, the sample of responses with no atoms had almost no dispersion, which supports the argument that the clean versions of the code snippets are easier to evaluate correctly. 
 
 
 % \begin{table}[htbp]
@@ -187,7 +187,7 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrea
 \centering{
 \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
-  Atom & Confusing & Clean & $\Delta$(\%)  \\ \midrule
+  Atom & Obfuscated & Clean & $\Delta$(\%)  \\ \midrule
   Comma Operator                &  28 &  65 & +132   \\ 
   Automatic Semicolon Insertion &  32 &  68 & +112   \\ 
   Post-Increment                &  48 &  64 & +33    \\ 
@@ -228,18 +228,18 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrea
 \subsubsection*{Statistical analysis}
 
 We first use the \emph{Pearson's Chi-squared test}
-to investigate if there is a statistically significant difference in the frequency of correct and incorrect answers---due to the versions of the code snippets (confusing and clean code). The p-values for these tests are reported in the ``Chi-square test'' column of Table~\ref{tab:hypothesis-testing}. The results indicate that for five atom candidates (Comma Operator, Automatic Semicolon Insertion, Post-Increment, Assignment as Value, Implicit Predicate) the confusing versions of the code snippets have a negative impact on code understanding (p-value $< 0.05$). This result holds even after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. 
+to investigate if there is a statistically significant difference in the frequency of correct and incorrect answers---due to the versions of the code snippets (obfuscated and clean code). The p-values for these tests are reported in the ``Chi-square test'' column of Table~\ref{tab:hypothesis-testing}. The results indicate that for five atom candidates (Comma Operator, Automatic Semicolon Insertion, Post-Increment, Assignment as Value, Implicit Predicate) the obfuscated versions of the code snippets have a negative impact on code understanding (p-value $< 0.05$). This result holds even after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. 
 
 We measure the effect size of the clean version of the code snippets into the answers' correctness using the \emph{Odds Ratio} (OR). The results are reported in the ``Odds Ratio'' column of Table~\ref{tab:hypothesis-testing}. In the table, we also report the confidence interval (CI) for the OR in the ``CI'' column. Although many of the intervals are wide, for six of the atom candidates the lower bound of the confidence interval is greater than or equal to 1. This indicates that, at a 95\% confidence level, a developer is likely to commit less mistakes when using the clean versions. 
 %Considering only the atoms for which there was a significant difference in correctness for confusing and clean versions and u
 %Using the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR = 1.68 small, 3.47 medium, and 6.71 large), 
 For four of the atoms, Comma Operator, Automatic Semicolon Insertion, Assignment as Value, and Implicit Predicate, effect size can be considered large. For Implicit Predicate, it is medium. 
 %We found a negligible effect size for the atom candidates Arithmetic as Logic, Logic as Control Flow, and Pre-Increment. Nonetheless, for the remaining candidates, the effect size is significant. 
-For instance, when comparing clean and confusing code snippets pertaining to the Comma Operator atom candidate, we observed an \emph{Odds Ratio} of \num{19.02}. This means that the odds of a correct answer are \num{19.02} times higher when interpreting the clean version---in comparison with the corresponding confusing version of the code snippet. Furthermore, with a 95\% confidence level, the odds  ratio is between 6.6 and 68.22, i.e., although the error margin is wide, it is strongly in favor of the clean version. If there is a significant likelihood of a developer committing a mistake when analyzing a clean version, the lower bound of the CI should be a number between 0 and 1 (since the OR is a ratio). This is the case for the four atom candidates in the lower part of the table. 
+For instance, when comparing clean and obfuscated code snippets pertaining to the Comma Operator atom candidate, we observed an \emph{Odds Ratio} of \num{19.02}. This means that the odds of a correct answer are \num{19.02} times higher when interpreting the clean version---in comparison with the corresponding obfuscated version of the code snippet. Furthermore, with a 95\% confidence level, the odds ratio is between 6.6 and 68.22, i.e., although the error margin is wide, it is strongly in favor of the clean version. If there is a significant likelihood of a developer committing a mistake when analyzing a clean version, the lower bound of the CI should be a number between 0 and 1 (since the OR is a ratio). This is the case for the four atom candidates in the lower part of the table. 
 %In particular, in the last row (Arithmetic as Logic), the OR between 0 and 1 indicates that a participant was actually more likely to misunderstand the clean version. 
 
-Finally, we also use a \emph{Binomial Generalized Logistic Regression} analysis to investigate if either \emph{participant education} or \emph{participant experience} impact correctness. The findings suggest that \emph{participant experience} impacts on the results related to correctness (Figure~\ref{fig:correctness-over-experience}). Even though the presence of atoms of confusion reduces the number of correct answers for all \emph{experience groups}, this effect is not uniform. For instance, novice developers (under one year of experience) provide a higher number of wrong answers for the confusing version of the code (57.8\%), while developers with more than four years of experience provide more than 70\% of correct answers even when evaluating the confusing version of the code snippets. It is also important to note that, independently of the \emph{experience group}, developers tend to provide more than 84\% of correct answers while predicting the outputs for the clean versions of the code. We replicate the \emph{Pearson's Chi-squared test} for each experience group and find that the statistical difference is less significant for those developers with more than ten years of experience. Differently from \emph{participant experience}, the factor \emph{participant education} does not significantly change the correctness of the answers.
-
+Finally, we also use a \emph{Binomial Generalized Logistic Regression} analysis to investigate if either \emph{participant education} or \emph{participant experience} impacts correctness. The findings suggest that \emph{participant experience} impacts the results related to correctness (Figure~\ref{fig:correctness-over-experience}). Even though the presence of atoms of confusion reduces the number of correct answers for all \emph{experience groups}, this effect is not uniform. For instance, novice developers (under one year of experience) provide a higher number of wrong answers for the obfuscated version of the code (57.8\%), while developers with more than four years of experience provide more than 70\% of correct answers even when evaluating the obfuscated version of the code snippets. It is also important to note that, independently of the \emph{experience group}, developers tend to provide more than 84\% of correct answers while predicting the outputs for the clean versions of the code. We replicate the \emph{Pearson's Chi-squared test} for each experience group and find that the statistical difference is less significant for those developers with more than ten years of experience. Differently from \emph{participant experience}, the factor \emph{participant education} does not significantly change the correctness of the answers.
+\castor{I'd like to have the numbers for the results above. What are the p-values, regression coefficients, etc.?}
 \begin{figure}
   \includegraphics[scale=0.3]{images/correctness-by-experience}
   \caption{Impact of atoms of confusion on the correctness (over the four participant experience groups)}
@@ -265,18 +265,17 @@ Finally, we also use a \emph{Binomial Generalized Logistic Regression} analysis 
 \subsection{Time Analysis}
 
 \subsubsection*{Exploratory Data Analysis}
-Table \ref{tab:difference-time-taken} shows the average time necessary for the participants to give a correct answer about the expected outcomes of a code snippet, considering both confusing and clean versions. We do not consider cases where the participants made mistakes. Seven atom candidates required more time from participants to predict a correct response. For these seven atom candidates, developers take at least 5.90\% less time on average to find a correct answer when considering the clean version of a code snippet. In the extreme case (atom candidate Comma Operator), the participants take 76.23\% less
+Table \ref{tab:difference-time-taken} shows the average time necessary for the participants to give a correct answer about the expected outcomes of a code snippet, considering both obfuscated and clean versions. We do not consider cases where the participants made mistakes. Seven atom candidates required more time from participants to predict a correct response. For these seven atom candidates, developers take at least 5.90\% less time on average to find a correct answer when considering the clean version of a code snippet. In the extreme case (atom candidate Comma Operator), the participants take 76.23\% less
 time on average to find the correct answer for the clean version of the code snippets. 
-Not all atom candidates, though, require less time for the participants to predict the answer. In fact, for the Arithmetic as Logic and the Pre-Increment atoms, the time to give a correct answer increased  
-29.06\% and 38.19\% for the clean versions---we did not confirm these
-atom candidates as atoms of confusion in the previous section.
+Not all atom candidates, though, require less time for the participants to predict the answer. In fact, for  Arithmetic as Logic and Pre-Increment, the time to give a correct answer for the clean versions was   
+29.06\% and 38.19\% than for the obfuscated versions---we did not confirm these atom candidates as atoms of confusion in the previous section.
 
 \begin{table}[htbp]
 \caption{Time in seconds to submit a correct answer}
 \centering{
 \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
-Atom & Confusing  & Clean & $\Delta$(\%) \\ \midrule
+Atom & Obfuscated  & Clean & $\Delta$(\%) \\ \midrule
 Comma Operator & 87.67 & 20.84 & -76.23 \\ 
 Automatic Semicolon Insertion & 46.08 & 22.04 & -52.17 \\ 
 Post-Increment & 28.70 & 25.67 & -10.56 \\ 
@@ -320,13 +319,13 @@ Arithmetic as Logic & 1 & 0.84 & (0.22, 3.12) & 0.01723$^{*}$ & 0.23 \\
 
 
 \subsubsection*{Statistical analysis}
-We use the non-parametric \emph{Mann-Whitney U test} to
+We use the \emph{Mann-Whitney U test} to
 investigate the null hypothesis that developers 
 spend the same amount of time to correctly
-predict the outcome of clean and confusing versions of a code snippet.
+predict the outcome of clean and obfuscated versions of a code snippet.
 %, regardless of evaluating the confusing or clean version of the code.
 The results of Table~\ref{tab:hypothesis-testing}
-suggest that we should refute the null hypotheses for five atom candidates (Comma Operator, Implicit Predicate, Logic as Control Flow, Pre-Increment, and Arithmetic as Logic), after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. For the first three, the analysis suggests that the participants need more time to predict the outcome of the code snippet in the confusing code version. For the atom candidates Arithmetic as Logic and Pre-Increment, the participants take less time to predict the outcome of the code snippets in the confusing version. We also computed the effect size using Cliff's Delta statistic. In the table, negative effect sizes suggest that it took less time to correctly predict the output of clean versions of the snippets.  Considering the thresholds established by Romano et al.~\cite{Romano:2006:ASO} (0.147 $<$ $|$d$|$ $<$ 0.33 small, $|$d$|$ $<$ 0.474 medium, otherwise large), we found a large effect for the Comma Operator atom candidate; a medium effect size for Logic as Control Flow, and small effect sizes for Automatic Semicolon Insertion, Implicit Predicate, Arithmetic as Logic, Post-, and Pre-Increment. 
+suggest that we should refute the null hypotheses for five atom candidates (Comma Operator, Implicit Predicate, Logic as Control Flow, Pre-Increment, and Arithmetic as Logic), after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. For the first three, the analysis suggests that the participants need more time to predict the outcome of the code snippet in the obfuscated code version. For the atom candidates Arithmetic as Logic and Pre-Increment, the participants take less time to predict the outcome of the code snippets in the obfuscated version. We also computed the effect size using Cliff's Delta statistic. In the table, negative effect sizes suggest that it took less time to correctly predict the output of clean versions of the snippets.  Considering the thresholds established by Romano et al.~\cite{Romano:2006:ASO} (0.147 $<$ $|$d$|$ $<$ 0.33 small, $|$d$|$ $<$ 0.474 medium, otherwise large), we found a large effect for the Comma Operator atom candidate; a medium effect size for Logic as Control Flow, and small effect sizes for Automatic Semicolon Insertion, Implicit Predicate, Arithmetic as Logic, Post-, and Pre-Increment. 
 
 
 %% \begin{mh}
@@ -352,7 +351,7 @@ suggest that we should refute the null hypotheses for five atom candidates (Comm
 \section{Results of the Interview Study}
 \label{sec:interview-results}
 
-In this section we present the results of the interviews with the practitioners. We contrast the findings presented in Section~\ref{sec:latin} and Section~\ref{sec:repeated} with the opinion of software developers about their preferences regarding the confusing or clean versions of the code snippets we used in our experiment. For the interview study, we only considered atoms that were analyzed in both the repeated measures (Section~\ref{sec:repeated}) and the latin square (Section~\ref{sec:latin}) studies. 
+In this section we present the results of the interviews with the practitioners. We contrast the findings of the experiments of Sections~\ref{sec:repeated} and~\ref{sec:latin} with the opinion of software developers about their preferences regarding the obfuscated or clean versions of the code snippets. For the interview study, we only considered atoms that were analyzed in both the repeated measures (Section~\ref{sec:repeated}) and the latin square (Section~\ref{sec:latin}) studies. 
 
 %% \rb{acho que essa separa\c c\~{a}o em dois rounds est\'{a}
 %%   gerando uma complexidade desnecess\'{a}ria. vou tentar
@@ -362,7 +361,7 @@ In this section we present the results of the interviews with the practitioners.
 % interviews with the 15 practitioners who agreed to participate in the study. 
 A total of 15 practitioners took part of the interviews.
 We collected information regarding programming
-experience, familiarity with JavaScript, and their opinion about the \na atom candidates we explored in the studies of the previous sections. We first presented them pairs of clean and confusing code snippets and then asked them to discuss their preferences towards one version. We did not indicate in any way whether any version was assumed to be confusing or not. 
+experience, familiarity with JavaScript, and their opinion about the \na atom candidates we explored in the both experiments. We first presented them pairs of clean and obfuscated code snippets and then asked them to discuss their preferences towards one version. We did not indicate in any way whether any version was assumed to be confusing or not. 
 % ask the participants to discuss their preferences (i.e., code with or without atom).
 
 
@@ -377,7 +376,7 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
     \begin{tabular}{lrrr}\toprule
       & \multicolumn{3}{c}{\textsc{Preference (\%)}} \\
       \cmidrule(lr){2-4}
-         Atom           & \multicolumn{1}{c}{Confusing}
+         Atom           & \multicolumn{1}{c}{Obfuscated}
                                       &  \multicolumn{1}{c}{Clean}
                                                & \multicolumn{1}{c}{Neutral} \\ \midrule
          Comma Operator                  & 0  & 100    & 0     \\
@@ -398,7 +397,7 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
   
 \subsubsection*{The Participants' perceptions of the atom candidates} 
 
-Supporting the results of the studies of Sections~\ref{sec:repeated} and~\ref{sec:latin}, Table~\ref{tab:interview-results1}
+Supporting the results of Sections~\ref{sec:repeated} and~\ref{sec:latin}, Table~\ref{tab:interview-results1}
  shows that for eight out of the
 10 scenarios surveyed, the majority of the respondents prefer the version of the
 code without the atom candidate.
@@ -406,7 +405,7 @@ In no case the \emph{neutral}
 ratio was higher than the option for the clean version.
 %% An example entry is contained in Appendix~\ref{}. 
 %% For a full listing of the code snippets, visit the paper repository. 
-Only for the Conditional Operator atom candidate the participants prefer the confusing version, instead of the clean one. Figure~\ref{code:ternary} shows the code snippets for the corresponding confusing and clean versions. For this atom candidate, some participants who preferred the left-hand side version (confusing) still believed that the right-hand side version (clean) was more readable. The following quotes were extracted from the transcripts with
+Only for the Conditional Operator atom candidate the participants preferred the obfuscated version, instead of the clean one. Figure~\ref{code:ternary} shows the code snippets for the corresponding obfuscated and clean versions. For this atom candidate, some participants who preferred the left-hand side version (obfuscated) still believed that the right-hand side version (clean) was more readable. The following quotes were extracted from the transcripts with
 % three interviewees:
 two interviewees:
 
@@ -463,8 +462,8 @@ is easier to understand''}.
 %% they can become quite taxing to understand.
 %% Nested ternaries are a choice of atoms to be analyzed in future work.
 
-The Pre-Increment atom candidate also caused such
-divide in one of the interviewees, who
+The Pre-Increment atom candidate also caused a
+conflict in one of the interviewees, who
 regarded the clean version as simpler to understand, but would still opt to write
 code with the atom. In contrast, %to such opinion,
 one of the participants found the version with the atom candidate more elegant, but recognized it was less readable, and was willing to sacrifice elegance for readability. In the repeated measures study, we found a significant difference in favor of the clean version, with a large effect size in its favor. In the latin square study, no difference could be observed in terms of correctness. However, there was a significant difference in terms of the time required to predict the output correctly in favor of the obfuscated version. This highlights how factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}.
@@ -479,12 +478,12 @@ one of the participants found the version with the atom candidate more elegant, 
 When analyzing the Logic as Control Flow atom candidate, one of the interviewees gave an example of personal experience that might motivate one to avoid writing code using this construct:
 
 \begin{mq}
-  \emph{``This one is interesting, because I have written code that looks like the left-hand side [confusing version], and my colleagues complained that it was difficult to understand. Nowadays I prefer to write code using the version on the right-hand side [clean version]''}.
+  \emph{``This one is interesting, because I have written code that looks like the left-hand side [obfuscated version], and my colleagues complained that it was difficult to understand. Nowadays I prefer to write code using the version on the right-hand side [clean version]''}.
 \end{mq}
 \noindent
 None of the two studies found a significant difference in correctness between clean and obfuscated versions of snippets related to this atom candidate. However, in the latin square study the participants analyzing clean versions of the snippets required significantly less time. 
 
-For two of the atom candidates, the interviewees were unanimous in their preference for the clean version: Comma Operator and Omitted Curly Braces. Not coincidentally, in both studies there were significant differences in correctness in favor of the clean versions for both atoms. Regarding the first one, we could often notice during the interviews that the \emph{\lhs} (with the atom of confusion) caused significant confusion among the participants. One remark about the \emph{Comma Operator} atom of confusion is listed below:
+For two of the atom candidates, the interviewees were unanimous in their preference for the clean version: Comma Operator and Omitted Curly Braces. Not coincidentally, in both experiments there were significant differences in correctness in favor of the clean versions for both atoms. Regarding the first one, we could often notice during the interviews that the \emph{\lhs} (with the atom of confusion) caused significant confusion among the participants. One remark about the \emph{Comma Operator} atom of confusion is listed below:
 
 %% \begin{mq}
 %% \emph{``I just learned that [the \lhs version of this code] is possible. I did not even know it worked''}
@@ -593,10 +592,12 @@ let inc = function(x) {
 \section{Results of the MSR Effort}
 \label{sec:msr-results} 
 
-In this section we present the results of our mining software repository effort, whose goal is to reveal how prevalent atom candidates are in open source JavaScript projects. 
+In this section we present the results of the  software repository mining effort, whose goal is to reveal how prevalent atom candidates are in open source JavaScript projects. 
 We mined \minedprojects open source JavaScript repositories to understand how
-often atoms of confusion arise in real software. 
-Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19}, which investigate
+often atoms arise in real software. As in the interview study, this study focused on atoms that were investigated in both experiments.  
+
+
+Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19} which investigate
 the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion
 frequently arise in JavaScript open source systems. For instance, the six most frequently found atoms
 occur in at least 80\% of the projects. Considering the extremes, atom candidates Conditional Operator and Implicit Predicate were found in all repositories we mined,
@@ -668,13 +669,13 @@ frequently (0.001\% in total with 232 and 165 occurrences, respectively).
 % based on thresholds used in a previous
 % study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. 
 % Atoms that occur 1000 times are classified as \textit{rarely used} while atoms with more than \num{10000} occurrences are classified as \textit{highly used}; \textit{commonly used} atoms occur in between.
-We calculated the frequency of each atom per KLOC.
+We calculate the frequency of each atom per KLOC.
 The four atoms mentioned in the previous paragraph,
- Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces, occur frequently in the analyzed projects. All of them have more than 5 occurrences per KLOC on average. In particular, two atom candidates occur very frequently, Implicit Predicate (19.89 occurrences per KLOC) and Conditional Operator (10.16 occurrences per KLOC). On the other hand, Arithmetic as Logic and Comma Operator occur less than once for every 50 KLOC. 
+Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces, occur frequently in the analyzed projects. All of them have more than 5 occurrences per KLOC on average. In particular, two atom candidates occur very frequently, Implicit Predicate (19.89 occurrences per KLOC) and Conditional Operator (10.16 occurrences per KLOC). On the other hand, Arithmetic as Logic and Comma Operator occur less than once for every 50 KLOC. 
 
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
-The results of our survey and interviews suggest that the Conditional Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to our survey). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, refactoring existing systems to avoid Post-Increment and Automatic Semicolon Insertion might improve the readabiliy of large amounts of code in JavaScript projects. 
+The results of our experiments and interviews suggest that Conditional Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to the Latin-square study). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, refactoring existing systems to avoid Post-Increment and Automatic Semicolon Insertion might improve the readability of large amounts of code in JavaScript projects. 
 
 
