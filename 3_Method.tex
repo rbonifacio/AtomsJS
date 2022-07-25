@@ -50,15 +50,15 @@ We posted the survey on the authors' social media platforms, on Brazilian CS dep
 
 \subsection{Latin Square Study Setting}\label{sec:meth:survey}
 
-This experiment uses a different experimental design that makes it possible to control for the experience of the subjects. It employs a subset of the atom candidates used in the repeated measures study. More specifically, we
+This experiment uses a different experimental design that makes it possible to control for the experience of the subjects. It employs a subset of the atom candidates used in the repeated measures study. More specifically, this study investigates ten of the atoms investigated in the repeated measures study: 
 %Since JavaScript and \clang have some constructs in common (Section~\ref{back}), we first 
-select a set of 9+1 atom candidates: nine previously-validated atoms of confusion for the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} that also exist in JavaScript programs plus one atom candidate that is specific to the JavaScript language (Automatic Semicolon Insertion). 
+%select a set of 9+1 atom candidates: 
+nine previously-validated atoms of confusion for the \clang language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} that also exist in JavaScript programs plus one atom candidate that is specific to the JavaScript language (Automatic Semicolon Insertion). 
 %Our supplementary material discusses and shows examples of the atoms we consider in our research.\castor{We should probably do this here or just refer to the table that I intend to insert for the replication study.}
 
 \subsubsection*{Experimental design} 
 
-The design of our second study blocks two variables (subject experience and the programs) and considers two treatments: the presence or absence of atom candidates within the programs. 
-To achieve such a design goal, controlling the effect of experience and individual programs, we resort to the \textit{Latin Square Design}~\cite{Hunter-Experimenters}. Using this design we create a 2 x 2 matrix in which each row represents a subject and each column indicates the set of programs. The design of each square (a replica) is such that no treatment is repeated in the same row or column. For example, considering that we have a set of 10
+The design of the Latin square study blocks two variables (subject experience and the programs) and considers two treatments: the presence or absence of atom candidates within the programs. To achieve such a design goal, controlling the effect of experience and individual programs, we resort to the \textit{Latin Square Design}~\cite{Hunter-Experimenters}. Using this design we create a 2 x 2 matrix in which each row represents a subject and each column indicates the set of programs. The design of each square (a replica) is such that no treatment is repeated in the same row or column. For example, considering that we have a set of 10
 code samples $s_0, s_1, ..., s_{10}$, if a given subject (P1) is asked to predict the output of the code samples $s_0, s_1, ..., s_5$ that contain atom candidates, then, when answering questions about clean programs, they will only be presented with clean versions of the code samples $s_6, s_7,..., s_{10}$. Furthermore, a given subject (P2), who constitutes the second row of our example square, will be asked questions about the clean versions for $s_1, s_2, ..., s_5$, and will answer questions about obfuscated programs for $s_6, s_7,..., s_{10}$. By doing that, we guarantee that all versions of the programs are contained within each square, and that each configuration occurs only once within a square. Figure \ref{fig:latinsquare} offers a visual representation of the concept.
 
   \begin{figure}[htb!]
@@ -76,8 +76,10 @@ For each of the 10 selected atom candidates, we write one short program containi
 
 \subsubsection*{Study instrument} 
 
-We implemented our survey as a web application and carried out a pilot. 
-%As part of this effort, we carried out an informal pilot whose main objectives were (i) to spot bugs in the application and in the data collection mechanism; (ii) to gain feedback from respondents about the user experience of the application; and (iii) to formulate an estimate about how long answering the survey would take on average.
+We implemented our survey as a web application and 
+%carried out a pilot. 
+%As part of this effort, we 
+carried out an informal pilot whose main objectives were (i) to spot bugs in the application and in the data collection mechanism; (ii) to gain feedback from respondents about the user experience of the application; and (iii) to formulate an estimate about how long answering the survey would take on average.
 Undergraduate students and professional colleagues took the pilot survey. Some users reported layout defects, and many reported that the landing page did not explain the survey well enough. We also spotted minor issues with our routines to create and populate the latin squares. 
 
 We organize the survey in three sections. The first section aims to characterize the subjects, asking their age, education level, and programming experience. We also include a check button, whose checking means users agree that all collected data will be used solely for research purposes. In the second section, we present to the participants a small set of instructions, where we explain how the survey works and ask them to dedicate their attention to it. We stress to participants the importance of not using any aids during the survey, such as online or console interpreters. For each question page, we kept track of whether or not the subjects switch windows. 
