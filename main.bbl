@@ -54,11 +54,31 @@ C.~Langhout and M.~Aniche, ``Atoms of confusion in java,'' in \emph{Proceedings
   of the 29th IEEE/ACM International Conference on Program Comprehension}, ser.
   ICPC ’21, New York, NY, USA, 2021, to appear.
 
+\bibitem{TheEyesDoNotLie}
+\BIBentryALTinterwordspacing
+B.~de~Oliveira, M.~Ribeiro, J.~A.~S. da~Costa, R.~Gheyi, G.~Amaral,
+  R.~de~Mello, A.~Oliveira, A.~Garcia, R.~Bonif\'{a}cio, and B.~Fonseca,
+  ``Atoms of confusion: The eyes do not lie,'' in \emph{Proceedings of the 34th
+  Brazilian Symposium on Software Engineering}, ser. SBES '20.\hskip 1em plus
+  0.5em minus 0.4em\relax New York, NY, USA: Association for Computing
+  Machinery, 2020, p. 243–252. [Online]. Available:
+  \url{https://doi.org/10.1145/3422392.3422437}
+\BIBentrySTDinterwordspacing
+
 \bibitem{DBLP:conf/msr/GopsteinZFC18}
 D.~Gopstein, H.~H. Zhou, P.~G. Frankl, and J.~Cappos, ``Prevalence of confusing
   code in software projects: atoms of confusion in the wild,'' in
   \emph{{MSR}}.\hskip 1em plus 0.5em minus 0.4em\relax
   https://doi.org/10.1145/3196398.3196432: {ACM}, 2018, pp. 281--291.
+
+\bibitem{Eich:2018:BHJ}
+B.~Eich, ``A brief history of {JavaScript},'' 2018, available at
+  https://www.youtube.com/watch?v=GxouWy-ZE80. Last access: July 25th 2022.
+
+\bibitem{Keselman:2001:ARM}
+H.~J. Keselman, J.~Algina, and R.~K. Kowalchuk, ``The analysis of repeated
+  measures designs: A review,'' \emph{British Journal of Mathematical and
+  Statistical Psychology}, vol.~54, no.~1, pp. 1--20, 2001.
 
 \bibitem{Hunter-Experimenters}
 E.~George, W.~G. Hunter, and J.~S. Hunter, \emph{Statistics for experimenters:
@@ -74,17 +94,6 @@ S.~R. Tilley, D.~B. Smith, and S.~Paul, ``Towards a framework for program
 A.~B. O'Hare and E.~W. Troan, ``Re-analyzer: From source code to structured
   analysis,'' \emph{{IBM} Systems Journal}, vol.~33, no.~1, pp. 110--130, 1994.
 
-\bibitem{TheEyesDoNotLie}
-\BIBentryALTinterwordspacing
-B.~de~Oliveira, M.~Ribeiro, J.~A.~S. da~Costa, R.~Gheyi, G.~Amaral,
-  R.~de~Mello, A.~Oliveira, A.~Garcia, R.~Bonif\'{a}cio, and B.~Fonseca,
-  ``Atoms of confusion: The eyes do not lie,'' in \emph{Proceedings of the 34th
-  Brazilian Symposium on Software Engineering}, ser. SBES '20.\hskip 1em plus
-  0.5em minus 0.4em\relax New York, NY, USA: Association for Computing
-  Machinery, 2020, p. 243–252. [Online]. Available:
-  \url{https://doi.org/10.1145/3422392.3422437}
-\BIBentrySTDinterwordspacing
-
 \bibitem{ThinkingAloud}
 \BIBentryALTinterwordspacing
 D.~Gopstein, A.-L. Fayard, S.~Apel, and J.~Cappos, ``Thinking aloud about
@@ -93,11 +102,6 @@ D.~Gopstein, A.-L. Fayard, S.~Apel, and J.~Cappos, ``Thinking aloud about
   0.4em\relax New York, NY, USA: Association for Computing Machinery, 2020, p.
   605–616. [Online]. Available: \url{https://doi.org/10.1145/3368089.3409714}
 \BIBentrySTDinterwordspacing
-
-\bibitem{Keselman:2001:ARM}
-H.~J. Keselman, J.~Algina, and R.~K. Kowalchuk, ``The analysis of repeated
-  measures designs: A review,'' \emph{British Journal of Mathematical and
-  Statistical Psychology}, vol.~54, no.~1, pp. 1--20, 2001.
 
 \bibitem{Neely:1991:SPE}
 J.~H. Neely, \emph{Semantic priming effects in visual word recognition: A

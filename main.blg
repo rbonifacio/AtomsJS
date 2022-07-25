@@ -14,45 +14,45 @@ Database file #1: reference.bib
 Warning--empty booktitle in ThinkingAloud
 
 Done.
-You've used 25 entries,
+You've used 26 entries,
             4087 wiz_defined-function locations,
-            1007 strings with 13835 characters,
-and the built_in function-call counts, 19941 in all, are:
-= -- 1549
-> -- 497
+            1012 strings with 13990 characters,
+and the built_in function-call counts, 20312 in all, are:
+= -- 1579
+> -- 501
 < -- 141
-+ -- 261
-- -- 92
-* -- 936
-:= -- 2864
-add.period$ -- 61
-call.type$ -- 25
-change.case$ -- 24
++ -- 263
+- -- 93
+* -- 947
+:= -- 2930
+add.period$ -- 63
+call.type$ -- 26
+change.case$ -- 26
 chr.to.int$ -- 330
-cite$ -- 26
-duplicate$ -- 1456
-empty$ -- 1742
-format.name$ -- 111
-if$ -- 4732
+cite$ -- 27
+duplicate$ -- 1489
+empty$ -- 1779
+format.name$ -- 112
+if$ -- 4815
 int.to.chr$ -- 0
-int.to.str$ -- 25
-missing$ -- 269
-newline$ -- 106
-num.names$ -- 27
-pop$ -- 678
+int.to.str$ -- 26
+missing$ -- 277
+newline$ -- 109
+num.names$ -- 28
+pop$ -- 700
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 1544
+skip$ -- 1574
 stack$ -- 0
-substring$ -- 851
-swap$ -- 1150
+substring$ -- 854
+swap$ -- 1168
 text.length$ -- 31
 text.prefix$ -- 0
 top$ -- 5
-type$ -- 25
+type$ -- 26
 warning$ -- 1
-while$ -- 87
-width$ -- 27
-write$ -- 265
+while$ -- 88
+width$ -- 28
+write$ -- 273
 (There was 1 warning)
