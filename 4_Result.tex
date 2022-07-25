@@ -4,7 +4,7 @@
 %% In this section we present the main findings of our research. We first present the results of each study (Section~\ref{sec:survey-resuts}, Sections~\ref{sec:msr-results}, and Section~\ref{sec:interview-results}). After that, in Section~\ref{sec:discussion} we consolidate our findings and present some implications of our study. 
 
 %\section{Results of the Survey}
-\label{sec:survey-resuts} 
+%\label{sec:survey-resuts} 
 
 %-----------------------------------------------------------------------
 \section{Results of the Repeated Measures Study}\label{sec:repeated}
@@ -19,7 +19,7 @@ The median programming experience of the participants is four years (mean 6.5 ye
 %-----------------------------------------------------------------------
 \subsection{Correctness Analysis}\label{sec:repeated:correct}
 
-\subsubsection*{Exploratory Data Analysis. }
+\subsubsection*{Exploratory Data Analysis}
 For each of the 24 atom candidates, the participants predicted the outputs of two versions, one clean (control) and one obfuscated (treatment), as per the definition of a repeated measures design~\cite{Hunter-Experimenters}. Thus, each participant examined 48 code snippets.  We also measured the time required by the participants to provide their answers. For most cases, participants made more mistakes when attempting to predict the outcomes of the obfuscated versions. 
 
 Table~\ref{tab:diff-correctness-repeated} presents the number of correct predictions for the clean and obfuscated versions of each atom candidate, as well as the percentage difference. In only three cases the participants predicted results correctly more often for the obfuscated versions, Arithmetic as Logic, Logic as Control Flow, and Property Access. The former two were empirically validated as atoms of confusion in the study of Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For seven of the atom candidates, the number of correct predictions for the clean versions is more than twice the corresponding number for the obfuscated versions.  Some of these atoms are common programming patterns in JavaScript programs, such as pre- and post-increments and object destructuring. The difference was even greater for Type Conversion (+440\%) and Change of Literal Encoding (+300\%). 
@@ -31,30 +31,30 @@ Table~\ref{tab:diff-correctness-repeated} presents the number of correct predict
 \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
   Atom & Confusing & Clean & $\Delta$(\%)  \\ \midrule
-Type Conversion           &            5.0 &      27.0 &                 +440.0 \\
-Change of Literal Encoding &           9.0 &      36.0 &                 +300.0 \\
-Comma Operator            &            8.0 &      29.0 &                 +262.0 \\
-Object Destructuring      &           15.0 &      42.0 &                 +180.0 \\
-Assignment As Value       &           18.0 &      43.0 &                 +139.0 \\
-Pre-Increment             &           13.0 &      28.0 &                 +115.0 \\
-Post-Increment            &            8.0 &      17.0 &                 +112.0 \\
-Array Destructuring       &           15.0 &      28.0 &                 +87.0 \\
-Indentation no Braces     &           30.0 &      50.0 &                 +67.0 \\
-Omitted Curly Braces      &           35.0 &      51.0 &                 +46.0 \\
-Object Spread             &           21.0 &      30.0 &                 +43.0 \\
-Array Spread              &           22.0 &      31.0 &                 +41.0 \\
-Automatic Semicolon Insertion &       15.0 &      21.0 &                 +40.0 \\
-Infix Operator Precedence &           47.0 &      53.0 &                 +13.0 \\
-Arrow Function            &           54.0 &      58.0 &                  +7.0 \\
-Implicit Predicate        &           41.0 &      44.0 &                  +7.0 \\
-Indentation With Braces   &           53.0 &      55.0 &                  +4.0 \\
-Conditional Operator      &           60.0 &      62.0 &                  +3.0 \\
-Constant Variables        &           59.0 &      61.0 &                  +3.0 \\
-Dead Unreachable Repeated &           63.0 &      64.0 &                  +2.0 \\
-Repurposed Variables      &           23.0 &      23.0 &                   0.0 \\
-Arithmetic as Logic       &           52.0 &      47.0 &                 -10.0 \\
-Logic as Control Flow     &           33.0 &      28.0 &                 -15.0 \\
-Property Access           &           51.0 &      42.0 &                 -18.0 \\
+Type Conversion           &            5 &      27 &                 +440 \\
+Change of Literal Encoding &           9 &      36 &                 +300 \\
+Comma Operator            &            8 &      29 &                 +262 \\
+Object Destructuring      &           15 &      42 &                 +180 \\
+Assignment As Value       &           18 &      43 &                 +139 \\
+Pre-Increment             &           13 &      28 &                 +115 \\
+Post-Increment            &            8 &      17 &                 +112 \\
+Array Destructuring       &           15 &      28 &                 +87 \\
+Indentation no Braces     &           30 &      50 &                 +67 \\
+Omitted Curly Braces      &           35 &      51 &                 +46 \\
+Object Spread             &           21 &      30 &                 +43 \\
+Array Spread              &           22 &      31 &                 +41 \\
+Automatic Semicolon Insertion &       15 &      21 &                 +40 \\
+Infix Operator Precedence &           47 &      53 &                 +13 \\
+Arrow Function            &           54 &      58 &                  +7 \\
+Implicit Predicate        &           41 &      44 &                  +7 \\
+Indentation With Braces   &           53 &      55 &                  +4 \\
+Conditional Operator      &           60 &      62 &                  +3 \\
+Constant Variables        &           59 &      61 &                  +3 \\
+Dead Unreachable Repeated &           63 &      64 &                  +2 \\
+Repurposed Variables      &           23 &      23 &                   0 \\
+Arithmetic as Logic       &           52 &      47 &                 -10 \\
+Logic as Control Flow     &           33 &      28 &                 -15 \\
+Property Access           &           51 &      42 &                 -18 \\
 \bottomrule  
 \end{tabular}
 \end{scriptsize}
@@ -117,7 +117,7 @@ Repurposed Variables      &   1.0000 &     1.0 \\
 
 In this section we investigate whether there is a trade-off between correctness and time required to predict program outputs, similarly to the analysis performed by Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For this analysis, we consider only whether participants correctly predict the outputs of programs or not, independently of the presence or absence of atoms, and the time required to do so. The null hypothesis we investigate is that there is no significant difference in time between correct and incorrect predictions. Intuitively, we would expect correct responses to take longer, on the basis that participants would spend more time carefully analyzing the programs before providing an answer. 
 
-Table~\ref{tab:repeated:time} presents the mean and median times required by participants to provide answers. The data is based on the 1648 correct and 1572 incorrect answers collected in the study. Contrary to our intuition, the mean time required by participants to provide an incorrect answer is 25\% greater than the time required to provide a correct one and the median time is 20\%. greater. The standard deviations suggest that there is great variation in the times required by different participants, for different code snippets. Notwithstanding, the standard deviation for incorrect answers is 62.58\% greater when compared to the same statistic for correct answers. 
+Table~\ref{tab:repeated:time} presents the mean and median times required by the participants to provide answers. The data is based on the 1648 correct and 1572 incorrect answers collected in the study. Contrary to our intuition, the mean time required by participants to provide an incorrect answer is 25\% greater than the time required to provide a correct one and the median time is 20\% greater. The standard deviations suggest that there is great variation in the times required by different participants, for different code snippets. Notwithstanding, the standard deviation for incorrect answers is 62.58\% greater when compared to the same statistic for correct answers. 
 
 \begin{table}[tb]
   \caption{Time in seconds required by the participants to correctly and incorrectly predict the outcomes of the programs.}\label{tab:repeated:time}
@@ -139,17 +139,17 @@ We employ the non-parametric Mann-Whitney U test, also known as Wilcoxon's rank-
 %-----------------------------------------------------------------------
 \section{Results of the Latin-Square Study}\label{sec:latin}
 
-In the latin-square study, we estimate the impact of atoms considering two perspectives: \emph{misunderstanding rate} (number of wrong answers)
+In the latin-square study, we estimate the impact of atoms considering the same two perspectives of the previous experiment: \emph{correctness} (number of wrong answers)
 and \emph{time} (how long to provide a correct answer). In particular, in the time analysis, differently from the repeated  measures study, we compare the time required by participants to submit a correct response when analyzing code snippets with and without atom candidates. This study is based on the responses of 140 participants (a total of 70 replicas). All participants had taken at least some university course or hold a bachelor degree or equivalent. In addition, 21 participants hold a master's degree and three a doctorate degree. Considering the programming experience of our respondents, 19\% have more than ten years of programming experience, 37\% have between four and ten years of experience, 37\% have between one and four years of experience, and 7\% have less than one year of programming experience.  
 Accordingly, we characterize the effect of atoms of confusion in JavaScript code taking into account the perceptions of both novice and experienced developers. 
 
-\subsection{Misunderstanding Rate Analysis}
-\castor{We need to be uniform about terminology. Are we going with ``misunderstanding rate analysis''? The problem is that it is not clear to me to which rate this refers.}
+\subsection{Correctness Analysis}
+% \castor{We need to be uniform about terminology. Are we going with ``misunderstanding rate analysis''? The problem is that it is not clear to me to which rate this refers.}
 
 \subsubsection*{Exploratory Data Analysis}
 
 As mentioned in Section~\ref{sec:meth:survey}, each participant in this study evaluated ten code snippets, from which five were in their confusing versions, whilst the other five contained clean versions of the code snippets (i.e., without the atom candidates). As in the repeated measures study, the participants should provide the expected outcomes of the code snippets. Differently from that study, in this one each participant only predicts the outcome of one version of each code snippet, either clean or obfuscated. As discussed, we collected information about \emph{correctness} (whether the participant correctly predicted the program's output) and \emph{time}. 
-Table~\ref{tab:difference-correctness} and Figure~\ref{fig:boxplotcorrectness} summarize the results of the survey w.r.t. correctness.
+Table~\ref{tab:difference-correctness} and Figure~\ref{fig:boxplotcorrectness} summarize the results of the correctness experiment.
 
 Considering Table~\ref{tab:difference-correctness}, the clean versions of six code snippets present at least a 15\% improvement in answer correctness when compared with the confusing versions. In particular, the presence of the \emph{Comma Operator} atom exhibits the highest impact on misunderstanding. 
 Frequently used constructs and idioms, such as \emph{Post Increment} and \emph{Omitted Curly Braces} (see Section~\ref{sec:msr-results}), also result in many mistakes. %introduce high degrees of confusion.
@@ -325,7 +325,7 @@ investigate the null hypothesis that developers
 spend the same amount of time to correctly
 predict the outcome of clean and confusing versions of a code snippet.
 %, regardless of evaluating the confusing or clean version of the code.
-The results of Table~\ref{tab:difference-time-taken}
+The results of Table~\ref{tab:hypothesis-testing}
 suggest that we should refute the null hypotheses for five atom candidates (Comma Operator, Implicit Predicate, Logic as Control Flow, Pre-Increment, and Arithmetic as Logic), after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. For the first three, the analysis suggests that the participants need more time to predict the outcome of the code snippet in the confusing code version. For the atom candidates Arithmetic as Logic and Pre-Increment, the participants take less time to predict the outcome of the code snippets in the confusing version. We also computed the effect size using Cliff's Delta statistic. In the table, negative effect sizes suggest that it took less time to correctly predict the output of clean versions of the snippets.  Considering the thresholds established by Romano et al.~\cite{Romano:2006:ASO} (0.147 $<$ $|$d$|$ $<$ 0.33 small, $|$d$|$ $<$ 0.474 medium, otherwise large), we found a large effect for the Comma Operator atom candidate; a medium effect size for Logic as Control Flow, and small effect sizes for Automatic Semicolon Insertion, Implicit Predicate, Arithmetic as Logic, Post-, and Pre-Increment. 
 
 
@@ -352,7 +352,7 @@ suggest that we should refute the null hypotheses for five atom candidates (Comm
 \section{Results of the Interview Study}
 \label{sec:interview-results}
 
-In this section we present the results of the interviews with the practitioners. We contrast the findings presented in Section~\ref{sec:survey-resuts} with the opinion of software developers about their preferences regarding the confusing or clean versions of the code snippets we used in our experiment. For the interview study, we only considered atoms that were analyzed in both the repeated measures (Section~\ref{sec:repeated}) and the latin square (Section~\ref{sec:latin}) studies. 
+In this section we present the results of the interviews with the practitioners. We contrast the findings presented in Section~\ref{sec:latin} and Section~\ref{sec:repeated} with the opinion of software developers about their preferences regarding the confusing or clean versions of the code snippets we used in our experiment. For the interview study, we only considered atoms that were analyzed in both the repeated measures (Section~\ref{sec:repeated}) and the latin square (Section~\ref{sec:latin}) studies. 
 
 %% \rb{acho que essa separa\c c\~{a}o em dois rounds est\'{a}
 %%   gerando uma complexidade desnecess\'{a}ria. vou tentar
@@ -467,9 +467,9 @@ The Pre-Increment atom candidate also caused such
 divide in one of the interviewees, who
 regarded the clean version as simpler to understand, but would still opt to write
 code with the atom. In contrast, %to such opinion,
-one of the participants found the version with the atom candidate more elegant, but recognized it was less readable, and was willing to sacrifice elegance for readability. In the repeated measures study, we found a significant difference in favor of the clean version, with a large effect size in its favor. In the latin square study, no difference could be observed in terms of correctness. However, there was a significant difference in terms of the time required predict the output correctly in favor of the obfuscated version. This highlights how factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}.
+one of the participants found the version with the atom candidate more elegant, but recognized it was less readable, and was willing to sacrifice elegance for readability. In the repeated measures study, we found a significant difference in favor of the clean version, with a large effect size in its favor. In the latin square study, no difference could be observed in terms of correctness. However, there was a significant difference in terms of the time required to predict the output correctly in favor of the obfuscated version. This highlights how factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}.
 \castor{Should the last sentence above be in the discussion?}
-
+\rb{Agree. We can move it to the discussion section.}
 %% \rb{pela discuss\~{a}o anterior, parece-me que alguns
 %%   desenvolvedores reconhecem que esses candidatos
 %%   a \'{a}tomos introduzem certa dificuldade de compreens\~{a}o;
@@ -659,7 +659,7 @@ Implicit Predicate & 100\% & 19.89 \\%&  intensively used \\
 
 
 Considering all JavaScript projects in our dataset, we found a total of \num{364873} atom candidates, though four atoms are responsible
-for 92.97\% of this total: Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces. The first two, based on the results of Section~\ref{sec:survey-resuts}, can be considered atoms of confusion. The remaining atom
+for 92.97\% of this total: Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces. The first two, based on the results of Section~\ref{sec:latin} and Section~\ref{sec:repeated}, can be considered atoms of confusion. The remaining atom
 candidates comprise \num{25621} occurrences combined, 7.03\% of the total number of occurrences.
 The Comma Operator and Arithmetic as Logic atoms are the ones that arise less
 frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
