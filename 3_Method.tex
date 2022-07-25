@@ -21,14 +21,16 @@ We also conduct a set of interviews with developers to contrast the quantitative
 \subsection{Repeated Measures Study}\label{sec:meth:replication}
 
 \castor{We must have introduced the atoms before.}
-The first experiment we perform uses a repeated measures, or within-subject, design~\cite{Keselman:2001:ARM}. This experiment is inspired by the work of Gopstein et. al~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, but targeting JavaScript instead of the C language, and including some methodological differences. It covers all the atom candidates analyzed in the work of Gopstein et al. that can be transposed to JavaScript and adds candidates that are specific to JavaScript. Overall, we select 24 atom candidates in the repeated measures study. 
+The first experiment we perform uses a repeated measures, or within-subject, design~\cite{Keselman:2001:ARM}. This experiment is inspired by the work of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, but targeting JavaScript instead of the C language, and including some methodological differences. It covers all the atom candidates analyzed in the work of Gopstein et al. that can be transposed to JavaScript and adds candidates that are specific to JavaScript.
+%Overall, we select 24 atom candidates in the repeated measures study. 
 
 \subsubsection*{Experimental design} 
 
 In this experiment, the control variable consists of a tiny program containing a single atom candidate and the treatment is a functionally-equivalent version that does not contain the atom. The main dependent variable is whether subjects are able to correctly determine the output of the programs. The other dependent variable is the time required to correctly vs. incorrectly determine the outputs, independently of the presence of atoms. We use the same null hypothesis as Gopstein et al.: \textit{``code from both control and treatment groups can be hand-evaluated with equal accuracy''} and the alternate hypothesis that \textit{``the existence of an atom of confusion causes more errors than other code in hand-evaluated outputs.''}. For each atom candidate, we built six programs, three versions including the atom candidate and three versions not including it. 
 %Each subject is exposed to four programs for every atom candidate, two including an atom and two not including an atom.  We have also built six programs for each atom candidate, three with and three without the atom. Considering the elements that can vary in a replication study, defined by Juristo and Gomez~\cite{Juristo2012}, in this study we employ the same experimental protocol and construct operationalizations. We have different population properties, experimenters, and a different site. In addition, since we focus on a different language, some atoms that exist in C cannot by construction exist in JavaScript programs. Conversely, JavaScript exhibits atom candidates that do not exist in C. 
 
-The design of the repeated measures study considers two treatments: the presence or absence of atom candidates within the programs. To identify atom candidates, we start out by selecting every atom candidate from Gopstein's study that can also happen in JavaScript. That excludes atoms related to pointers and preprocessor directives. Furthermore, we conduct an informal search of programming forums, solutions to Code Golf~\footnote{https://codegolf.stackexchange.com/} problems, code style guidelines, and expert knowledge to identify new atom candidates. Overall, the repeated measures analyzes 24 atoms, 15 from the original study and 9 that are new and specific to JavaScript. Table~\ref{tab:atoms_replication} presents the complete list. 
+% The design of the repeated measures study considers two treatments: the presence or absence of atom candidates within the programs.
+To identify atom candidates, we start out by selecting every atom candidate from Gopstein's study that can also happen in JavaScript. That excludes atoms related to pointers and preprocessor directives. Furthermore, we conduct an informal search of programming forums, solutions to Code Golf~\footnote{https://codegolf.stackexchange.com/} problems, code style guidelines, and expert knowledge to identify new atom candidates. Overall, the repeated measures analyzes 24 atoms, 15 from the original study and 9 that are new and specific to JavaScript. Table~\ref{tab:atoms_replication} presents the complete list. 
 
 For each atom candidate, we write six short programs, three including and three not including the atom candidate. The former are the control for the study, or the \textbf{obfuscated} versions of the programs. The alternative, atom-free, versions of the programs are the treatment, or \textbf{clean}, versions. Each subject is exposed to one obfuscated and one clean version of each atom, totalling 48 programs, and should determine their outputs. As mentioned before, we measure answer correctness and the time to answer questions correctly vs. incorrectly. We control for learning effects~\cite{Neely:1991:SPE} in three manners. First, by having multiple obfuscated and clean versions for each atom and presenting only one of each per subject. Second, by presenting the programs in a random order. Third, by presenting obfuscated and clean versions corresponding to the same atom candidate with at least 11 other programs in between, in  accordance to the original experimental protocol~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. 
 
@@ -38,7 +40,7 @@ The study is conducted by means of a web application. As part of this effort, we
 
 We organize the study in three sections. In the first one we present instructions and also a check button whose checking means users agree that all collected data will be used anonymously and solely for research purposes. The instructions explain how the survey works and asks them to dedicate their attention to it. We stress to participants the importance of not using any aids during the survey, such as online or console interpreters. 
 
-The second section presents the programs, one at a time. For each one, there is a text box where the answer should be written and a ``Next'' button. If the subject leaves the text box empty and presses ``Next'', this is treated as a wrong answer. To reduce the likelihood of a subject attempting to execute the programs, the web application verifies whether the subject tries to change tabs or windows and presents a pop-up message if that is the case. Furthermore, it presents the programs as images, instead of text, to demotivate respondents from resorting to external resources by copying and pasting the code into an interpreter. Upon submitting an answer for a particular program, the subject is automatically led to a similar page, containing the next one.
+The second section presents the programs, one at a time. For each one, there is a text box where the answer should be written and a ``Next'' button. If the subject leaves the text box empty and presses ``Next'', this is treated as a wrong answer. To reduce the likelihood of a subject attempting to execute the programs, the web application verifies whether the subject tries to change tabs or windows and presents a pop-up message if that is the case. Furthermore, it presents the programs as images, instead of text, to demotivate respondents from resorting to external resources by copying and pasting the code into an interpreter. Upon submitting an answer for a particular program, the subject is automatically led to a similar page, containing the next program.
 
 We do not provide feedback about the time subjects take to answer each question. We also do not tell them whether their answers are correct or not. This aims at avoiding introducing bias for future respondents. Since we posted the survey on social media platforms, possible threats could have arisen if we gave respondents instant feedback.
 
@@ -48,7 +50,7 @@ We do not provide feedback about the time subjects take to answer each question.
 We posted the survey on the authors' social media platforms, on Brazilian CS departments' mailing lists, and on two programming subreddits. We explained our research purposes and asked developers to take the survey only if they have some familiarity with JavaScript. We collected 70 responses. %The average survey respondent has a mean 26 months of experience in JavaScript, with a median of 12.\castor{We should not say this here unless we are able to do the same for the Latin square study. }
 
 
-\subsection{Latin Square Study Setting}\label{sec:meth:survey}
+\subsection{Latin Square Study}\label{sec:meth:survey}
 
 This experiment uses a different experimental design that makes it possible to control for the experience of the subjects. It employs a subset of the atom candidates used in the repeated measures study. More specifically, this study investigates ten of the atoms investigated in the repeated measures study: 
 %Since JavaScript and \clang have some constructs in common (Section~\ref{back}), we first 
@@ -103,8 +105,8 @@ We posted the survey on a JavaScript Reddit channel.\footnote{https://www.reddit
  
 \subsection{Interview Study Setting}
 
-To complement the two experiments, we perform semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding programs containing atoms of confusion (research question RQ2). We also ask each participant if they know of any other JavaScript-specific construct or idiom that they regard as being likely to make the code hard to understand.% (research question RQ3). 
-In this section we detail the protocol we followed to conduct the interviews and to analyze the results.
+To complement the two experiments, we perform semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding programs containing atoms of confusion (research question RQ2). We also ask each participant if they know of any other JavaScript-specific construct or idiom that they regard as being likely to make the code hard to understand. % (research question RQ3). 
+ In this section we detail the protocol we followed to conduct the interviews and to analyze the results.
 
 % Nós realizamos entrevistas semi-estruturas com o objetivo de identificar a percepção dos desenvolvedores com experiência em JavaScript sobre algumas questões relacionadas à compreensão de código em JavaScript. Assim, nesta Seção nós descrevemos os procedimentos adotados para selecionar os participantes para as entrevistas e detalhamos como as entrevistas foram conduzidas. Além disso, detalhamos como os resultados das entrevistas foram analisados.
 
@@ -112,7 +114,7 @@ In this section we detail the protocol we followed to conduct the interviews and
 %We conducted the interviews for a period of two weeks.
 
 
-\subsubsection*{Interview Process} We conduct semi-structured interviews using web conferencing software. We record all the interviews with the consent of the participants. On average, the interviews last 26.29 minutes, with the shortest one lasting 14.59 minutes and the longest one 43.06 minutes. Two of the researchers conduct the interviews, and a third one listens to all the recordings to cross-validate the collected data. The interviews have three main parts. In the first one, we ask the developers the following demographic information: name, email, gender, level of education, current job position, JavaScript experience in years, and other programming languages they have worked with. Table \ref{pinterview} summarizes this demographic information.
+\subsubsection*{Interview Process} We conduct semi-structured interviews using a web conferencing software. We record all the interviews with the consent of the participants. On average, the interviews last 26.29 minutes, with the shortest one lasting 14.59 minutes and the longest one 43.06 minutes. Two of the researchers conduct the interviews, and a third one listens to all the recordings to cross-validate the collected data. The interviews have three main parts. In the first one, we ask the developers the following demographic information: name, email, gender, level of education, current job position, JavaScript experience in years, and other programming languages they have worked with. Table \ref{pinterview} summarizes this demographic information.
 
 \begin{table}[htb!]
   \centering
@@ -175,7 +177,7 @@ We first transcribe each interview and then examine the broad distribution of th
 
 \subsection{Mining JavaScript Software Repositories Setting}
 
-To understand how often the analyzed atom candidates appear in open source projects, and thus answer our fourth research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mined a set of GitHub open source repositories. To this end, we first collected the most popular GitHub repositories that are primarily written in JavaScript. We measured popularity using the project's stargazers. This metric, available through the GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate a project's popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then selected the top 100 most popular repositories and removed projects that did not reach the first quartile of the distribution of lines of code.
+To understand how often the analyzed atom candidates appear in open source projects, and thus answer our third research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mined a set of GitHub open source repositories. To this end, we first collected the most popular GitHub repositories that are primarily written in JavaScript. We measured popularity using the project's stargazers. This metric, available through the GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate a project's popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then selected the top 100 most popular repositories and removed projects that did not reach the first quartile of the distribution of lines of code.
 
 After filtering out JavaScript project candidates, in the second step we built a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num{1244} forks and at least \num{23672} stars. We automated all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
 
@@ -186,14 +188,14 @@ We mined the occurrence of atom candidates from the repositories in our curated 
    \caption{Some descriptive statistics about the projects used in the MSR study}
   \begin{scriptsize}
  \begin{tabular}{rrrrr}
-   \hline
-                       & Min.             & Median        & Mean             & Max. \\ \hline
+   \toprule
+                       & Min.             & Median        & Mean             & Max. \\ \midrule
  Lines of Code         & \num{5543}       & \num{36161.5} & \num{111432.33}  & \num{1278405} \\
  Num. of Forks         & \num{1244}       & \num{6078}    & \num{8906.24}    & \num{68849} \\
  Num. of Contributors  & \num{6}          & \num{285.5}   & \num{533.44}     & \num{4047} \\
  Num. of Stars         & \num{23672}      & \num{34990}   & \num{46919.51}   & \num{310935} \\
  
-    \hline
+    \bottomrule
  \end{tabular}
  \end{scriptsize}
  \label{tab:projects-statistics} 
