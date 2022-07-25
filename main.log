@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.27)  25 JUL 2022 20:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.27)  25 JUL 2022 20:34
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -942,24 +942,19 @@ File: images/latin-square.pdf Graphic file (type pdf)
 <use images/latin-square.pdf>
 Package pdftex.def Info: images/latin-square.pdf  used on input line 69.
 (pdftex.def)             Requested size: 200.24763pt x 64.23984pt.
- [4] [5 </Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/images/latin-square.pdf>]) (/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/4_Result.tex [6]
-Underfull \vbox (badness 2237) has occurred while \output is active []
-
- [7]
+ [4] [5 </Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/images/latin-square.pdf>]) (/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/4_Result.tex [6] [7]
 <images/wrong-answers-plot-1.pdf, id=141, 371.3875pt x 187.70125pt>
 File: images/wrong-answers-plot-1.pdf Graphic file (type pdf)
 <use images/wrong-answers-plot-1.pdf>
 Package pdftex.def Info: images/wrong-answers-plot-1.pdf  used on input line 221.
 (pdftex.def)             Requested size: 252.0pt x 127.36594pt.
- [8]
-Underfull \vbox (badness 1460) has occurred while \output is active []
-
-<images/correctness-by-experience.pdf, id=145, 740.7675pt x 256.96pt>
+ [8 </Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/images/wrong-answers-plot-1.pdf>]
+<images/correctness-by-experience.pdf, id=152, 740.7675pt x 256.96pt>
 File: images/correctness-by-experience.pdf Graphic file (type pdf)
 <use images/correctness-by-experience.pdf>
 Package pdftex.def Info: images/correctness-by-experience.pdf  used on input line 244.
 (pdftex.def)             Requested size: 222.23196pt x 77.0886pt.
- [9 </Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/images/wrong-answers-plot-1.pdf> </Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/images/correctness-by-experience.pdf>]
+ [9 </Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/images/correctness-by-experience.pdf>]
 Underfull \vbox (badness 1038) has occurred while \output is active []
 
  [10]
@@ -984,21 +979,24 @@ Before submitting the final camera ready copy, remember to:
  uses only Type 1 fonts and that every step in the generation
  process uses the appropriate paper size.
 
-[14] (/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.aux)
+
+Overfull \vbox (1.29784pt too high) has occurred while \output is active []
+
+ [14] (/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 23205 strings out of 478994
- 463886 string characters out of 5858184
- 1033763 words of memory out of 5000000
- 40192 multiletter control sequences out of 15000+600000
+ 23199 strings out of 478994
+ 463702 string characters out of 5858184
+ 1032763 words of memory out of 5000000
+ 40186 multiletter control sequences out of 15000+600000
  449913 words of font info for 121 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  102i,13n,102p,1976b,1455s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2021/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmbi8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmr8a.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/urw/times/utmri8a.pfb>
-Output written on "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.pdf" (14 pages, 282260 bytes).
+Output written on "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.pdf" (14 pages, 282090 bytes).
 PDF statistics:
  231 PDF objects out of 1000 (max. 8388607)
  143 compressed objects within 2 object streams
