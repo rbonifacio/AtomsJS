@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% Understanding code is an expensive and important task. In real-world software development, it is commonplace for developers to spend more time understanding code than actually writing it~\cite{CitationRequired}.Figuring out what parts of an existing system do by reading its source code is necessary for important software development tasks such as testing, debugging, and adding new functionality to a system. 
 
-Developers are often confused while reading unfamiliar code. According to Hermans~\cite{ProgrammersBrain}, that confusion can stem from three sources: (i) lack of knowledge, i.e., not knowing what an element in the program does; (ii) lack of information, i.e., not knowing how a program element works; and (iii) lack of processing power, i.e., the inability to combine all the elements in a program and make sense of its execution in one's head. Even small pieces of code can be confusing for developers~\cite{Ajami:2017:SPI,DBLP:conf/sigsoft/GopsteinIYDZYC17} at first glance.
+Developers are often confused while reading unfamiliar code~\cite{Ebert:2021:ESC}. According to Hermans~\cite{ProgrammersBrain}, that confusion can stem from three sources: (i) lack of knowledge, i.e., not knowing what an element in the program does; (ii) lack of information, i.e., not knowing how a program element works; and (iii) lack of processing power, i.e., the inability to combine all the elements in a program and make sense of its execution in one's head. Even small pieces of code can be confusing for developers~\cite{Ajami:2017:SPI,DBLP:conf/sigsoft/GopsteinIYDZYC17} at first glance.
 
 For instance, consider the pair of JavaScript code snippets in Listing~\ref{fig:lst01} (adapted from \textsc{NervJS/taro}). The code snippet on the left-hand side is arguably harder to understand than the one on the right-hand side. The former uses the logical AND operator (\texttt{\&\&}) beyond its lexical meaning~\cite{castor2018} to determine the control flow of the program. Furthermore, the expression has a potential side effect, due to the use of the post-increment operator (\texttt{s++}). The snippet on the right-hand side uses an \texttt{if} statement for control flow and increments the value of variable \texttt{s} using an assignment, making it easier to understand. Notwithstanding, confusion is a direct consequence of the experience of the person who is reading the code. A developer who customarily employs the idiom on the left-hand side may find it easier to understand. 
 
@@ -72,24 +72,24 @@ our MSR effort reveals that atom candidates are frequent and used intensively in
 %% Our MSR effort reveals that atom candidates are frequent and used intensively in 72 popular open-source JavaScript systems. Four atom candidates appear in 90\% of the analyzed projects and two of them, Implicit Predicate and Ternary Operator, occur more than once for every 100 lines of code in the dataset. 
 %Indeed, four atom candidates are frequently used in JavaScript code---the Implicit Predicate atom, for instance, occurs 19.89 times per 1,000 lines of code.
 
-\castor{I would rather remove the following. We don't even talk about the "library and infrastructure".}
-Altogether, the main contributions of this paper are:
+%\castor{I would rather remove the following. We don't even talk about the "library and infrastructure".}
+%Altogether, the main contributions of this paper are:
 
-\begin{itemize}
+%\begin{itemize}
     
-\item A mixed-method research effort---based on two experiments, interviews, and a software
-  repository mining study---about the impact of atoms of confusion on JavaScript programs.
+%\item A mixed-method research effort---based on two experiments, interviews, and a software
+%  repository mining study---about the impact of atoms of confusion on JavaScript programs.
   % (a dynamic language), controlling for subject experience.
 
-  \item A comparison of the impact and prevalence of atoms of confusion in
-    JavaScript with what has been previously reported for other languages
-    (\clang, \cpplang, and Java).
-    \item A library and infrastructure to mine atoms of confusion using 
-    code queries (implemented in the .QL language). This library and 
-    infrastructure are publicly available and might help researchers and 
-    practitioners to automate program analysis at a large scale.
+%  \item A comparison of the impact and prevalence of atoms of confusion in
+%    JavaScript with what has been previously reported for other languages
+%    (\clang, \cpplang, and Java).
+%    \item A library and infrastructure to mine atoms of confusion using 
+%    code queries (implemented in the .QL language). This library and 
+%    infrastructure are publicly available and might help researchers and 
+%    practitioners to automate program analysis at a large scale.
 
-\end{itemize}
+%\end{itemize}
 
 %As implications, our results can help researchers and practitioners to better understand atoms of confusion in JavaScript. For example, our findings might alert the JavaScript community to avoid writing code with certain atoms of confusion. Moreover, our mixed study might help researchers and practitioners to design program transformation tools to remove atoms of confusion in JavaScript.
 
