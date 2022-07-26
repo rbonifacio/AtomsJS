@@ -5,3 +5,6 @@ The part about the binomial generalized logistic regression includes no numbers.
 The repeated measures and latin square studies should be called "experiments", not surveys. I'll have to review this in the entire results section. 
 
 ------------------//------------------
+"experiment", instead of study, in the entire paper.
+
+Discussion section.

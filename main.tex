@@ -1,20 +1,20 @@
-\documentclass[10pt,conference,blind]{IEEEtran}
+\documentclass[preprint,12pt]{elsarticle}
 
-\IEEEoverridecommandlockouts
 
 % The preceding line is only needed to identify funding in the first footnote. If that is unneeded, please comment it out.
 
 
-
+%\usepackage{natbib}
 %\usepackage[english]{babel}
 \usepackage{enumerate}
 \usepackage{balance}
 \usepackage{caption}
-\usepackage{cite}
+%\usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
+%\usepackage[backend=bibtex]{biblatex}
 \usepackage{graphicx}
-\usepackage{supertabular}
+%\usepackage{supertabular}
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{colortbl}
@@ -28,8 +28,8 @@
 \usepackage{xspace}
 \usepackage{todonotes}
 \usepackage{booktabs}
-\usepackage{longtable}
-\usepackage{tabularx} 
+%\usepackage{longtable}
+%\usepackage{tabularx} 
 \usepackage{multicol}
 \usepackage{listings}
 \usepackage{xspace}
@@ -139,12 +139,38 @@
 \newcommand{\na}{10\xspace}
 
 \begin{document}
+
+\begin{frontmatter}
 \input{atom-mdframe-config}
 
 \title{On The Impact of Atoms of Confusion in JavaScript
 Code}
 
-\author{\IEEEauthorblockN{Anonymous}}
+% Taken from another article. To be corrected.
+%\author[ufpe,ifpe]{Delano Oliveira\corref{contrib}}
+%\ead{dho@cin.ufpe.br}
+%\author[ufpe]{Reydne Bruno\corref{contrib}}
+%\ead{reydne.bruno@gmail.com}
+%\author[kth]{Fernanda Madeiral}
+%\ead{fer.madeiral@gmail.com}
+%\author[tokyo]{Hidehiko Masuhara}
+%\ead{masuhara@acm.org}
+%\author[utrecht]{Fernando Castor}
+%\ead{f.j.castordelimafilho@uu.nl}
+
+%\cortext[contrib]{Authors contributed equally.}
+
+%\affiliation[ufpe]{organization={Federal University of Pernambuco}, city={Recife}, country={Brazil}}
+%\affiliation[ifpe]{organization={Federal Institute of Pernambuco}, city={Recife},  country={Brazil}}
+%\affiliation[kth]{organization={KTH Royal Institute of Technology},
+%        city={Stockholm},
+%        country={Sweden}}
+%\affiliation[tokyo]{organization={Tokyo Institute of Technology},
+%        city={Tokyo},
+%        country={Japan}}
+%\affiliation[utrecht]{organization={Utrecht University},
+%        city={Utrecht},
+%        country={Netherlands}}
 
 
 %% \author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
@@ -184,12 +210,10 @@ Code}
 %% email address or ORCID}
 %% }
 
-\maketitle
-
 % Número das páginas. Remover para camera-ready
 % útil para nós e Program Chair que pode ver o total de páginas facilmente
-\thispagestyle{plain}
-\pagestyle{plain}
+%\thispagestyle{plain}
+%\pagestyle{plain}
 
 \begin{abstract}
 \castor{This is still too big.}
@@ -198,6 +222,7 @@ In this work, we fill this research gap by presenting the results of a mixed-met
 Both our experiments suggest that two code patterns that have been previously observed to confuse C programmers also confuse JavaScript programmers (with statistical significance, after correction): the comma operator and assignments being used as values. In addition, pre- and post-increment operators, when used as values, omitted curly braces, changes of literal encoding, and type conversions have led to confusion in at least one of the two experiments. For all these cases effect sizes were either medium or high. In addition, we have discovered that object destructuring and automatic semicolon insertion are potential JavaScript-specific atoms that have not been discussed in previous work. The interviews we conducted reinforce some of these findings while pointing to other constructs and idioms that merit investigation in the future. In addition, our MSR effort reveals that atom candidates are frequent and used intensively in 72 popular open-source JavaScript systems. Four atom candidates appear in 90\% of the analyzed projects, and two of them occur more than once for every 100 lines of code in the dataset.
 Our findings provide significant evidence that some code patterns should be avoided if code is expected to be understood by a wide audience. Furthermore, they motivate the creation of program transformation tools and the extension of linters to address these potentially harmful idioms in JavaScript codebases.
 \end{abstract}
+\end{frontmatter}
 
 %\begin{IEEEkeywords}
 %code readability, program comprehension, program understanding, atoms of confusion, JavaScript code
@@ -214,10 +239,8 @@ Our findings provide significant evidence that some code patterns should be avoi
 % \input{7_Atoms}
 
 % \section*{Acknowledgment}
-
-\balance
-\bibliographystyle{IEEEtran}
+{\small
+\bibliographystyle{elsarticle-num-names} 
 \bibliography{reference}
-
-\vspace{12pt}
+}
 \end{document}

@@ -24,11 +24,11 @@ For each of the 24 atom candidates, the participants predicted the outputs of tw
 
 Table~\ref{tab:diff-correctness-repeated} presents the number of correct predictions for the clean and obfuscated versions of each atom candidate, as well as the percentage difference. In only three cases the participants predicted results correctly more often for the obfuscated versions, Arithmetic as Logic, Logic as Control Flow, and Property Access. The former two were empirically validated as atoms of confusion in the study of Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. For seven of the atom candidates, the number of correct predictions for the clean versions is more than twice the corresponding number for the obfuscated versions.  Some of these atoms are common programming patterns in JavaScript programs, such as pre- and post-increments and object destructuring. The difference was even greater for Type Conversion (+440\%) and Change of Literal Encoding (+300\%). 
 
-\begin{table}[tb]
+\begin{table}[t!]
 \caption{Summary of the correctness analysis.}
 \label{tab:diff-correctness-repeated}
 \centering{
-\begin{scriptsize}
+  \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
   Atom & Obfuscated & Clean & $\Delta$(\%)  \\ \midrule
 Type Conversion           &            5 &      27 &                 +440 \\
@@ -72,9 +72,10 @@ We leverage the odds ratio (OR) as a measure of effect size, to quantify the mea
 
 According to the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR = 1.68 small, 3.47 medium, and 6.71 large), for most of the atoms where there is a statistically significant difference the odds ratio can be considered high. The value of the odds ratio for Object Destructuring is $\infty$ because no participant correctly guessed the output for the obfuscated version while incorrectly guessing the output for the clean one, which results in a denominator of 0. Omitted Curly Braces exhibits an OR of 6.3, which is borderline between medium and high~\cite{Chen:2010:HBB}. Array Destructuring and Post-Increment are two atom candidates that deserve a special note. The difference in the performance of participants examining clean and obfuscated versions of these atoms was not statistically significant, after correction. Notwithstanding, effect sizes were large and medium, respectively. This is a result that hints at practical relevance in spite of the p-values~\cite{Ellis:2010:EGE}. Further investigation is required for these two atom candidates.
 
-\begin{table}[tb]
+\begin{table}[th!]
 \caption{Hypotheses Testing (correctness). Asterisks ($^{*}$) indicate a statistically significant difference. Using Bonferroni correction, a p-value is considered statistically significant if it is lower than 0.0021.}
  \centering
+ {\scriptsize 
  \begin{tabular}{lrr}
    \toprule
 Atom candidate & McNemar test &      odds ratio \\
@@ -105,6 +106,7 @@ Dead Unreachable Repeated &  1.0000 &     1.5 \\
 Repurposed Variables      &   1.0000 &     1.0 \\
 \bottomrule
 \end{tabular}
+}
 \label{tab:repeated:misunderstanding}
 \end{table}
 
@@ -122,6 +124,7 @@ Table~\ref{tab:repeated:time} presents the mean and median times required by the
 \begin{table}[tb]
   \caption{Time in seconds required by the participants to correctly and incorrectly predict the outcomes of the programs.}\label{tab:repeated:time}
   \centering
+  {\scriptsize 
   \begin{tabular}{lrrr}
     \toprule  
              & Mean  & Median & Std. Dev. \\
@@ -130,6 +133,7 @@ Table~\ref{tab:repeated:time} presents the mean and median times required by the
   Incorrect & 44.50 & 29.29  & 62.48    \\
   \bottomrule
   \end{tabular}
+}
   \end{table}
 
 \subsubsection*{Statistical Analysis}
@@ -185,7 +189,8 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrea
 \caption{Summary of the correctness analysis}
 \label{tab:difference-correctness}
 \centering{
-\begin{scriptsize}
+  {\scriptsize
+  \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
   Atom & Obfuscated & Clean & $\Delta$(\%)  \\ \midrule
   Comma Operator                &  28 &  65 & +132   \\ 
@@ -201,7 +206,7 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrea
   
 \end{tabular}
 \end{scriptsize}
-}
+}}
 \end{table}
 
  %% Comma Operator          & 40 & 93  & +132 \\
@@ -230,7 +235,8 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrea
 We first use the \emph{Pearson's Chi-squared test}
 to investigate if there is a statistically significant difference in the frequency of correct and incorrect answers---due to the versions of the code snippets (obfuscated and clean code). The p-values for these tests are reported in the ``Chi-square test'' column of Table~\ref{tab:hypothesis-testing}. The results indicate that for five atom candidates (Comma Operator, Automatic Semicolon Insertion, Post-Increment, Assignment as Value, Implicit Predicate) the obfuscated versions of the code snippets have a negative impact on code understanding (p-value $< 0.05$). This result holds even after applying the Benjamini-Hochberg correction with a false discovery rate of 5\%. 
 
-We measure the effect size of the clean version of the code snippets into the answers' correctness using the \emph{Odds Ratio} (OR). The results are reported in the ``Odds Ratio'' column of Table~\ref{tab:hypothesis-testing}. In the table, we also report the confidence interval (CI) for the OR in the ``CI'' column. Although many of the intervals are wide, for six of the atom candidates the lower bound of the confidence interval is greater than or equal to 1. This indicates that, at a 95\% confidence level, a developer is likely to commit less mistakes when using the clean versions. 
+We measure the effect size of the clean version of the code snippets into the answers' correctness using the \emph{Odds Ratio} (OR). The results are reported in the ``Odds Ratio'' column of Table~\ref{tab:hypothesis-testing}. 
+In the table, we also report the confidence interval (CI) for the OR in the ``CI'' column. Although many of the intervals are wide, for six of the atom candidates the lower bound of the confidence interval is greater than or equal to 1. This indicates that, at a 95\% confidence level, a developer is likely to commit less mistakes when using the clean versions. 
 %Considering only the atoms for which there was a significant difference in correctness for confusing and clean versions and u
 %Using the thresholds established by Chen and colleagues~\cite{Chen:2010:HBB} (OR = 1.68 small, 3.47 medium, and 6.71 large), 
 For four of the atoms, Comma Operator, Automatic Semicolon Insertion, Assignment as Value, and Implicit Predicate, effect size can be considered large. For Implicit Predicate, it is medium. 
@@ -273,7 +279,8 @@ Not all atom candidates, though, require less time for the participants to predi
 \begin{table}[htbp]
 \caption{Time in seconds to submit a correct answer}
 \centering{
-\begin{scriptsize}
+  {\scriptsize
+  \begin{scriptsize}
 \begin{tabular}{lccc} \toprule
 Atom & Obfuscated  & Clean & $\Delta$(\%) \\ \midrule
 Comma Operator & 87.67 & 20.84 & -76.23 \\ 
@@ -289,31 +296,31 @@ Arithmetic as Logic & 28.82 & 37.20 & 29.06 \\ \bottomrule
 \end{tabular}
 \label{tab:difference-time-taken}
 \end{scriptsize}
-}
+}}
 \end{table}
 
  % latex table generated in R 4.0.4 by xtable 1.8-4 package
  % Thu Apr 22 07:58:21 2021
  \begin{table*}[ht]
 \caption{Hypotheses Testing (misunderstanding and time). Asterisks ($^{*}$) indicate a statistically significant difference.}
-
  \centering
+ {\scriptsize
  \begin{tabular}{lccc|cc}
    \toprule
-Atom  & Chi-square test & Odds Ratio          & CI & Mann-Whitey U test & Cliff's Delta \\ 
-     &         & (misunderstanding)  &                    & (workload)             & \\ \midrule
-Comma Operator & 1.1727e-10$^{*}$ & 19.02 & (6.60, 68.22) & 5.8249e-08$^{*}$ & -0.53 \\ 
-Automatic Semicolon Insertion & 5.8352e-11$^{*}$ & 39.33 & (9.21, 356.62) & 0.09802 & -0.16 \\ 
-Post-Increment & 0.0015279$^{*}$ & 4.83 & (1.73, 15.74) & 0.12006 & 0.15 \\ 
-Omitted Curly Braces & 0.050962 & 2.35 & (1.00, 5.77) & 0.92529 & -0.01 \\ 
-Assignment as Value & 0.0034775$^{*}$ & 8.39 & (1.81, 79.12) & 0.82681 & 0.02 \\ 
-Implicit Predicate & 0.01123$^{*}$ & 6.95 & (1.46, 66.56) & 0.0029039$^{*}$ & -0.29 \\ 
-Logic as Control Flow & 0.292 & 1.54 & (0.73, 3.28) & 7.5862e-05$^{*}$ & -0.39 \\ 
-Conditional Operator & 0.15896 & 2.73 & (0.74, 12.57) & 0.24073 & -0.12 \\ 
-Pre-Increment & 0.70147 & 1.25 & (0.55, 2.85) & 0.0062981$^{*}$ & 0.27 \\ 
-Arithmetic as Logic & 1 & 0.84 & (0.22, 3.12) & 0.01723$^{*}$ & 0.23 \\ 
+Atom  & Chi-square & Odds          & CI & Mann-Whitey& Cliff's\\ 
+ &  test &Ratio          & CI &  U test & Delta \\  \midrule
+Comma Operator & \textbf{$<$ 0.0001*} & 19.02 & (6.60, 68.22) & \textbf{$<$ 0.0001*} & -0.53 \\ 
+Automatic Semicolon Insertion & \textbf{$<$ 0.0001*} & 39.33 & (9.21, 356.62) & 0.0980 & -0.16 \\ 
+Post-Increment & \textbf{0.0015*} & 4.83 & (1.73, 15.74) & 0.1201 & 0.15 \\ 
+Omitted Curly Braces & 0.0510 & 2.35 & (1.00, 5.77) & 0.9253 & -0.01 \\ 
+Assignment as Value & \textbf{0.0035*} & 8.39 & (1.81, 79.12) & 0.8268 & 0.02 \\ 
+Implicit Predicate & \textbf{0.0112*} & 6.95 & (1.46, 66.56) & \textbf{0.0029*} & -0.29 \\ 
+Logic as Control Flow & 0.2920 & 1.54 & (0.73, 3.28) & \textbf{$<$ 0.0001*} & -0.39 \\ 
+Conditional Operator & 0.1590 & 2.73 & (0.74, 12.57) & 0.2407 & -0.12 \\ 
+Pre-Increment & 0.7015 & 1.25 & (0.55, 2.85) & \textbf{0.0062*} & 0.27 \\ 
+Arithmetic as Logic & 1 & 0.84 & (0.22, 3.12) & \textbf{0.0172*} & 0.23 \\ 
     \bottomrule
- \end{tabular}
+ \end{tabular}}
  \label{tab:hypothesis-testing}
  \end{table*}
 
@@ -370,6 +377,7 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
 
 \begin{table}[!htb]
     \centering
+    {\scriptsize
     \caption{Summary of participants' preferences for code snippets \emph{with} and
       \emph{without} atom candidates. The participants were only presented the code snippets, without any indication about whether one was confusing or not. 
       Participants were also allowed to choose Neutral when they thought both sides were equally readable.}
@@ -392,6 +400,7 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
          \textsc{overall}                & 18 & 71.33  & 8.64  \\
          \bottomrule
     \end{tabular}
+    }
     \label{tab:interview-results1}
 \end{table}
   
@@ -636,7 +645,8 @@ while Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:oc
 % latex table generated in R 4.0.3 by xtable 1.8-4 package
 % Tue Apr 13 09:34:35 2021
 \begin{table}[ht]
-\centering
+  \centering
+  {\scriptsize 
 \caption{Summary of atom candidate occurrences in our dataset.}
 \setlength\tabcolsep{2pt} % default value: 6pt
 \begin{tabular}{lrc}%c}
@@ -655,6 +665,7 @@ Implicit Predicate & 100\% & 19.89 \\%&  intensively used \\
   Comma Operator & 15.28\% & 0.03 \\%& rarely used \\
    \bottomrule
 \end{tabular}
+  }
 \label{tab:occurrences-summary}
 \end{table}
 
