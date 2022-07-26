@@ -9,6 +9,8 @@
 \usepackage{enumerate}
 \usepackage{balance}
 \usepackage{caption}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
 %\usepackage{cite}
 \usepackage{amsmath,amssymb,amsfonts}
 \usepackage{algorithmic}
@@ -28,7 +30,7 @@
 \usepackage{xspace}
 \usepackage{todonotes}
 \usepackage{booktabs}
-%\usepackage{longtable}
+\usepackage{longtable}
 %\usepackage{tabularx} 
 \usepackage{multicol}
 \usepackage{listings}
@@ -106,6 +108,7 @@
 
 % TODO: Completar
 \newcommand{\minedprojects}{72\xspace}
+
 
 \newcommand{\rb}[1]{\todo[inline]{{\bf (rb note) }#1}}
 \newcommand{\diego}[1]{\todo[inline,color=green]{{\bf (diego note) }#1}}
@@ -231,12 +234,12 @@ Our findings provide significant evidence that some code patterns should be avoi
 
 \input{1_Introduction_alt}
 \input{2_Background}
+%\input{7_Atoms}
 \input{3_Method}
 \input{4_Result}
 \input{discussion}
 \input{5_Threats}
 \input{6_Conclusion}
-% \input{7_Atoms}
 
 % \section*{Acknowledgment}
 {\small

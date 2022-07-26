@@ -1,4 +1,4 @@
-\begin{thebibliography}{26}
+\begin{thebibliography}{28}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -11,6 +11,14 @@
 \providecommand{\Pubmed}[1]{\href{pmid:#1}{\path{#1}}}
 \providecommand{\bibinfo}[2]{#2}
 \ifx\xfnm\relax \def\xfnm[#1]{\unskip,\space#1}\fi
+%Type = Article
+\bibitem[{Ebert et~al.(2021)Ebert, Castor, Novielli, and
+  Serebrenik}]{Ebert:2021:ESC}
+\bibinfo{author}{F.~Ebert}, \bibinfo{author}{F.~Castor},
+  \bibinfo{author}{N.~Novielli}, \bibinfo{author}{A.~Serebrenik},
+\newblock \bibinfo{title}{An exploratory study on confusion in code reviews},
+\newblock \bibinfo{journal}{Empir. Softw. Eng.} \bibinfo{volume}{26}
+  (\bibinfo{year}{2021}) \bibinfo{pages}{12}.
 %Type = Book
 \bibitem[{Hermans(2021)}]{ProgrammersBrain}
 \bibinfo{author}{F.~Hermans}, \bibinfo{title}{The Programmer's Brain: What
@@ -138,6 +146,16 @@
   \bibinfo{pages}{605–616}. \URLprefix
   \url{https://doi.org/10.1145/3368089.3409714}.
   \DOIprefix\doi{10.1145/3368089.3409714}.
+%Type = Article
+\bibitem[{Alves et~al.(2022)Alves, Oliveira, Madeiral, and
+  Castor}]{Alves:2022:BPS}
+\bibinfo{author}{F.~Alves}, \bibinfo{author}{D.~Oliveira},
+  \bibinfo{author}{F.~Madeiral}, \bibinfo{author}{F.~Castor},
+\newblock \bibinfo{title}{On the bug-proneness of structures inspired by
+  functional programming in javascript projects},
+\newblock \bibinfo{journal}{CoRR} \bibinfo{volume}{abs/2206.08849}
+  (\bibinfo{year}{2022}). \URLprefix
+  \url{https://doi.org/10.48550/arXiv.2206.08849}.
 %Type = Inbook
 \bibitem[{Neely(1991)}]{Neely:1991:SPE}
 \bibinfo{author}{J.~H. Neely}, \bibinfo{title}{Semantic priming effects in
