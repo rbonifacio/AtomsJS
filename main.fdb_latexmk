@@ -1,14 +1,14 @@
 # Fdb version 3
-["bibtex main"] 1658904104 "main.aux" "main.bbl" "main" 1658904107
+["bibtex main"] 1658904170 "main.aux" "main.bbl" "main" 1658904172
   "/usr/local/texlive/2021/texmf-dist/bibtex/bst/elsarticle/elsarticle-num-names.bst" 1606256092 28896 7a30bf729a4503bf3d6be1e1e9480509 ""
-  "main.aux" 1658904106 16450 c43e817f57dd29ebb057180c625d912a "pdflatex"
+  "main.aux" 1658904172 16293 1f21bf276f69e98cd101ee8ced2e9f51 "pdflatex"
   "reference.bib" 1658866554 17290 8b920fe2227e22335fddd0527dff302d ""
   (generated)
-  "main.bbl"
   "main.blg"
-["pdflatex"] 1658904105 "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.tex" "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.pdf" "main" 1658904107
-  "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.aux" 1658904106 16450 c43e817f57dd29ebb057180c625d912a ""
-  "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.tex" 1658903526 10651 551455564a241dd33f408fba7ac1ae1e ""
+  "main.bbl"
+["pdflatex"] 1658904170 "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.tex" "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.pdf" "main" 1658904172
+  "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.aux" 1658904172 16293 1f21bf276f69e98cd101ee8ced2e9f51 ""
+  "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.tex" 1658904164 5418 8d1c5b518d05d1559031036690516ecc ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/adobe/zapfding/pzdr.tfm" 1136768653 1528 f853c4d1b4e0550255e02831fdc8496f ""
@@ -236,7 +236,8 @@
   "/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map" 1616695603 5169178 a2ce6e2d73f603b690db6777d06dbccb ""
   "/usr/local/texlive/2021/texmf-var/web2c/pdftex/pdflatex.fmt" 1632775952 2724742 1a5b4da5e39b776643d16f0d767a537a ""
   "/usr/local/texlive/2021/texmf.cnf" 1616695596 577 4c1911a7228e554c6032256d3cf5567d ""
-  "1_Introduction_alt.tex" 1658838332 26559 e9dc9ba56b267d6e597ba55b15bb5040 ""
+  "0_Abstract.tex" 1658904164 2205 d24281c98d36eab613aa0357ae8f306a ""
+  "1_Introduction_alt.tex" 1658904164 26558 2f8afe3065d04ea88dba634688a903cb ""
   "2_Background.tex" 1635193925 12632 d36213c0fb8916dc54e86d42bae9a22b ""
   "3_Method.tex" 1658904026 26225 620c313437e6bf7071fc64e3e19d563e ""
   "4_Result.tex" 1658835061 53181 7d37b02cddd87196a2840b601f215446 ""
@@ -249,14 +250,14 @@
   "images/correctness-by-experience.pdf" 1635193925 20461 b0ef51c8e994c3d18275c5fe176e4af5 ""
   "images/latin-square.pdf" 1632775044 31581 7047a725fa701d08e8e092525ecb0305 ""
   "images/wrong-answers-plot-1.pdf" 1635193925 5278 3912cf9d8f87ac692a1b1215eb33cda9 ""
-  "main.aux" 1658904106 16450 c43e817f57dd29ebb057180c625d912a "pdflatex"
-  "main.bbl" 1658904105 14484 4dc1d9983d1ecd48fc8683604d4a087c "bibtex main"
-  "main.spl" 1658904105 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
-  "main.tex" 1658903526 10651 551455564a241dd33f408fba7ac1ae1e ""
+  "main.aux" 1658904172 16293 1f21bf276f69e98cd101ee8ced2e9f51 "pdflatex"
+  "main.bbl" 1658904170 14484 4dc1d9983d1ecd48fc8683604d4a087c "bibtex main"
+  "main.spl" 1658904171 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.tex" 1658904164 5418 8d1c5b518d05d1559031036690516ecc ""
   (generated)
+  "main.log"
+  "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.pdf"
   "main.aux"
   "main.spl"
-  "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.pdf"
-  "main.pdf"
-  "main.log"
   "/Users/fernando/Meu Drive/ac/papers/saner_2022/icpc2021/main.log"
+  "main.pdf"

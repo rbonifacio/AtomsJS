@@ -148,85 +148,10 @@
 \begin{frontmatter}
 \input{atom-mdframe-config}
 
-\title{On The Impact of Atoms of Confusion in JavaScript
-Code}
+\title{On The Impact of Atoms of Confusion in JavaScriptCode}
 
-% Taken from another article. To be corrected.
-%\author[ufpe,ifpe]{Delano Oliveira\corref{contrib}}
-%\ead{dho@cin.ufpe.br}
-%\author[ufpe]{Reydne Bruno\corref{contrib}}
-%\ead{reydne.bruno@gmail.com}
-%\author[kth]{Fernanda Madeiral}
-%\ead{fer.madeiral@gmail.com}
-%\author[tokyo]{Hidehiko Masuhara}
-%\ead{masuhara@acm.org}
-%\author[utrecht]{Fernando Castor}
-%\ead{f.j.castordelimafilho@uu.nl}
+\input{0_Abstract}
 
-%\cortext[contrib]{Authors contributed equally.}
-
-%\affiliation[ufpe]{organization={Federal University of Pernambuco}, city={Recife}, country={Brazil}}
-%\affiliation[ifpe]{organization={Federal Institute of Pernambuco}, city={Recife},  country={Brazil}}
-%\affiliation[kth]{organization={KTH Royal Institute of Technology},
-%        city={Stockholm},
-%        country={Sweden}}
-%\affiliation[tokyo]{organization={Tokyo Institute of Technology},
-%        city={Tokyo},
-%        country={Japan}}
-%\affiliation[utrecht]{organization={Utrecht University},
-%        city={Utrecht},
-%        country={Netherlands}}
-
-
-%% \author{\IEEEauthorblockN{1\textsuperscript{st} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{2\textsuperscript{nd} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{3\textsuperscript{rd} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{4\textsuperscript{th} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{5\textsuperscript{th} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% \and
-%% \IEEEauthorblockN{6\textsuperscript{th} Given Name Surname}
-%% \IEEEauthorblockA{\textit{dept. name of organization (of Aff.)} \\
-%% \textit{name of organization (of Aff.)}\\
-%% City, Country \\
-%% email address or ORCID}
-%% }
-
-% Número das páginas. Remover para camera-ready
-% útil para nós e Program Chair que pode ver o total de páginas facilmente
-%\thispagestyle{plain}
-%\pagestyle{plain}
-
-\begin{abstract}
-\castor{This is still too big.}
-Evolving software is a challenging task, particularly when the code has been poorly written or uses confusing idioms and language constructs, which might increase maintenance effort and impose a significant cognitive load on developers. For this reason, researchers have investigated possible sources of confusion in codebases, including the impact of small code patterns (hereafter atoms of confusion) that contribute to misunderstanding the source code written in languages such as \clang, \cpplang, and Java. However, different languages have different features, developer communities, and development cultures. This justifies the exploration of other languages to verify whether they also exhibit confusion-inducing patterns. 
-In this work, we fill this research gap by presenting the results of a mixed-methods research comprising two experiments, a set of interviews with practitioners, and a mining software repositories (MSR) effort. Our goal is to investigate the impact of atoms of confusion on understanding JavaScript code---a dynamically typed language whose popularity is growing in diverse application domains, e.g., web, backend, mobile, and IOT development.
-Both our experiments suggest that two code patterns that have been previously observed to confuse C programmers also confuse JavaScript programmers (with statistical significance, after correction): the comma operator and assignments being used as values. In addition, pre- and post-increment operators, when used as values, omitted curly braces, changes of literal encoding, and type conversions have led to confusion in at least one of the two experiments. For all these cases effect sizes were either medium or high. In addition, we have discovered that object destructuring and automatic semicolon insertion are potential JavaScript-specific atoms that have not been discussed in previous work. The interviews we conducted reinforce some of these findings while pointing to other constructs and idioms that merit investigation in the future. In addition, our MSR effort reveals that atom candidates are frequent and used intensively in 72 popular open-source JavaScript systems. Four atom candidates appear in 90\% of the analyzed projects, and two of them occur more than once for every 100 lines of code in the dataset.
-Our findings provide significant evidence that some code patterns should be avoided if code is expected to be understood by a wide audience. Furthermore, they motivate the creation of program transformation tools and the extension of linters to address these potentially harmful idioms in JavaScript codebases.
-\end{abstract}
 \end{frontmatter}
 
 %\begin{IEEEkeywords}

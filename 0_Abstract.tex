@@ -1,50 +1,24 @@
 \begin{abstract}
-{\bf Context.} Engineering maintainable software is essential and must take into account \emph{how understandable the code is} from a human perspective, and spending much cognitive effort might discourage a developer when trying to familiarize herself with a legacy codebase. 
-\noindent{\bf Problem.} 
-%Besides lack of experience and other factors, 
-Previous research has discussed the impact of small code patterns, called atoms of confusion, that contribute to misunderstanding the source code and for which there are functionally equivalent alternatives. These prior studies have focused on the C and Java languages. However, different languages have different features, developer communities, and development cultures. This justifies the exploration other languages to verify whether they also exhibit confusion-inducing patterns. 
-\noindent{\bf Research Method and Goal.} In this work, we fill this research gap by presenting the results of a mixed-methods research: two experiments, a set of interviews with practitioners, and a mining software repositories (MSR) effort. Our goal is to investigate the impact of atoms of confusion on understanding JavaScript code---a dynamically typed language whose popularity is growing in the most different application domains (from web programming to backend and IOT development).
-\noindent{\bf Results.} Both our experiments suggest that two code patterns that have been observed to confused C programmers also confuse JavaScript programmers (with statistical significance, after correction): the comma operator and assignments being used as values. In addition, 
-pre- and post-increment operator, when used as values, ommitted curly braces, changes of literal encoding, and type conversions have led to confusion in at least one of the two experiments. For all these cases effect sizes were either medium or high. In addition, we have discovered the object destructuring and automatic semicolon insertion are potentially JavaScript-specific atoms that have not been discussed before. The interviews we conducted reinforce some of these findings while pointing to other constructs and idioms that merit investigation in the future. 
-
-%From our experiments and interviews, we confirm that atoms of confusion lead to code that is hard to understand. 
-%removing the atoms of confusion lead to an improvement above 15\% in 6 out of 9 atoms we consider in our study when developers try to predict the outcomes of code examples. 
-%developers correctly predict the outcome of at least 15\% more when an atom of confusion is not present for 9 out of 10 atoms. For 5 of these atoms, the difference is statistically significant (accounting for p-value correction) and effect size is large for 4 and medium for 1 of them. 
-Also, the results of our MSR effort reveal that atoms of confusion frequently arise in open-source JavaScript systems: the \texttt{comma operator} is present in 11\% of the projects in our dataset; while five other atoms appear in more than 60\% of the projects---including the atoms \texttt{assignment as value} and \texttt{omitted curly braces}, which appear \num{8253} and \num{53357} times, respectively. Our investigation also reveals additional JavaScript constructs and idioms that might hinder developers from understanding JavaScript code. For instance, even experienced JavaScript developers agree that it is hard to understand code that uses callback functions, even though we found widespread use of \texttt{callbacks} in our projects dataset.  
-\noindent{\bf Implications.} Altogether, our findings could help developers write cleaner JavaScript code and contribute to the design of new program transformation tools that aim to simplify JavaScript code. 
+Evolving software is particularly challenging when the code has been poorly written or
+uses confusing idioms and language constructs, which might increase maintenance efforts
+and impose a significant cognitive load on developers. For this reason, researchers have
+investigated possible sources of confusion in codebases, including the impact of small code
+patterns (hereafter atoms of confusion) that contribute to misunderstanding the source code.
+Although researchers have explored atoms of confusion in code written in \clang, \cpplang,
+and Java, different languages have different features, developer communities, and development cultures. This
+justifies the exploration of other languages to verify whether they also exhibit confusion-inducing patterns. 
+In this paper we investigate the impact of atoms of confusion on understanding JavaScript code---a
+dynamically typed language whose popularity is growing in the most diverse application domains. To this end,
+we carry out a mixed-methods research comprising two experiments, a set of interviews with practitioners,
+and a mining software repositories (MSR) effort. 
+The results of both experiments suggest that two code patterns that have been previously observed to confuse \clang
+programmers also confuse JavaScript programmers: the comma operator and assignments
+being used as values. In addition, pre- and post-increment operators, when used as values,
+omitted curly braces, changes of literal encoding, and type conversions have led to confusion in at least one
+of the two experiments. For all these cases effect sizes were either medium or high. The interviews we conducted
+reinforce some of these findings while pointing to other constructs and idioms that merit investigation in the future;
+while our MSR effort reveals that atom candidates are frequent and used intensively in 72 popular open-source JavaScript systems:
+four atom candidates appear in 90\% of the analyzed projects, and two of them occur more than once for every 100 lines of code
+in the dataset.
+%Our findings provide significant evidence that some code patterns should be avoided if code is expected to be understood by a wide audience. 
 \end{abstract}
-
-\begin{CCSXML}
-<ccs2012>
- <concept>
-  <concept_id>10010520.10010553.10010562</concept_id>
-  <concept_desc>Computer systems organization~Embedded systems</concept_desc>
-  <concept_significance>500</concept_significance>
- </concept>
- <concept>
-  <concept_id>10010520.10010575.10010755</concept_id>
-  <concept_desc>Computer systems organization~Redundancy</concept_desc>
-  <concept_significance>300</concept_significance>
- </concept>
- <concept>
-  <concept_id>10010520.10010553.10010554</concept_id>
-  <concept_desc>Computer systems organization~Robotics</concept_desc>
-  <concept_significance>100</concept_significance>
- </concept>
- <concept>
-  <concept_id>10003033.10003083.10003095</concept_id>
-  <concept_desc>Networks~Network reliability</concept_desc>
-  <concept_significance>100</concept_significance>
- </concept>
-</ccs2012>
-\end{CCSXML}
-
-\ccsdesc[500]{Computer systems organization~Embedded systems}
-\ccsdesc[300]{Computer systems organization~Redundancy}
-\ccsdesc{Computer systems organization~Robotics}
-\ccsdesc[100]{Networks~Network reliability}
-
-%%
-%% Keywords. The author(s) should pick words that accurately describe
-%% the work being presented. Separate the keywords with commas.
-\keywords{datasets, neural networks, gaze detection, text tagging}
