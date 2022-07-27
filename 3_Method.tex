@@ -7,20 +7,18 @@ The main goal of this research is to investigate the impact of atoms of confusio
 \item \rqa 
 \item \rqb
 % \item \rqc  
-\item \rqd\castor{This one will probably be removed.}
+\item \rqd
 \end{enumerate}
 
 By answering these research questions, we can either generalize or refute the findings about atoms of confusion already discussed in the literature (goal of research questions (RQ1) and (RQ2)). 
-\castor{The following pertains to the third RQ.}
-In addition, answering the third question allows us to enrich existing catalogs about atoms of confusion and discuss how often they occur in practice\castor{This should probably be removed.}. Answering these research questions also lays the foundations for the implementation of tools that can automatically transform code into cleaner versions.
+In addition, answering the third question allows us to enrich existing catalogs about atoms of confusion and discuss how often they occur in practice. Answering these research questions also lays the foundations for the implementation of tools that can automatically transform code into cleaner versions.
 %---though we postpone these results to future research work.
 We conduct a mixed-methods study to answer these questions. 
-It includes two independently designed and conducted experiments: a repeated measures/within subjects study and one using a Latin square, counterbalancing experimental design to control for subject experience. By using two different experiments, designed by different researchers, with different designs, and conducted with different participants, we hope to rigorously verify the impact of atoms of confusion in code comprehension activities. These two experiments explore the impact of atom candidates on understanding JavaScript code (goal of research question RQ1). They investigate whether or not programs that contain atom candidates tend to produce more misunderstanding for programmers trying to predict their outcome.% We leverage two independently-developed and conducted experiments with different designs to more  
-We also conduct a set of interviews with developers to contrast the quantitative results of the experiments with their preferences and opinions (thus addressing RQ2). 
+It includes two independently designed and conducted experiments: a repeated measures/within subjects study (Section~\ref{sec:meth:replication}) and one using a Latin square, counterbalancing experimental design to control for subject experience (Section~\ref{sec:meth:survey}). By using two different experiments, designed by different researchers, with different designs, and conducted with different participants, we hope to rigorously verify the impact of atoms of confusion in code comprehension activities. These two experiments explore the impact of atom candidates on understanding JavaScript code (goal of research question RQ1). They investigate whether or not programs that contain atom candidates tend to produce more misunderstanding for programmers trying to predict their outcome.% We leverage two independently-developed and conducted experiments with different designs to more  
+We also conduct a set of interviews with developers (Section~\ref{sec:method:interview}) to contrast the quantitative results of the experiments with their preferences and opinions (thus addressing RQ2). Finally, we perform a repository mining study (Section~\ref{sec:method:msr}) that investigates the prevalence of some of these atom candidates in large scale, professionally-developed JavaScript software.
 
 \subsection{Repeated Measures Study}\label{sec:meth:replication}
 
-\castor{We must have introduced the atoms before.}
 The first experiment we perform uses a repeated measures, or within-subject, design~\cite{Keselman:2001:ARM}. This experiment is inspired by the work of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, but targeting JavaScript instead of the C language, and including some methodological differences. It covers all the atom candidates analyzed in the work of Gopstein et al. that can be transposed to JavaScript and adds candidates that are specific to this language.
 %Overall, we select 24 atom candidates in the repeated measures study. 
 
@@ -105,7 +103,7 @@ We posted the invitation to take part in the study on a JavaScript Reddit channe
 %Since we had a large enough number of samples, the squares we had to discard did not impact our analysis.
 
  
-\subsection{Interview Study Setting}
+\subsection{Interview Study Setting}\label{sec:method:interview}
 
 To complement the two experiments, we perform semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding programs containing atoms of confusion (research question RQ2). We also ask each participant if they know of any other JavaScript-specific construct or idiom they think is likely to make the code hard to understand. % (research question RQ3). 
 In this section we detail the protocol we followed to conduct the interviews and to analyze the results.
@@ -178,7 +176,7 @@ We first transcribe each interview and then examine the broad distribution of th
 %  rodada das entrevistas, explorando os \'{a}tomos adicionais}
 
 
-\subsection{Mining JavaScript Software Repositories Setting}
+\subsection{Mining JavaScript Software Repositories Setting}\label{sec:method:msr}
 
 To understand how often the analyzed atom candidates appear in open source projects, and thus answer our third research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mine a set of GitHub open source repositories. To this end, we first collect the most popular GitHub repositories that are primarily written in JavaScript. We measure popularity using the project's stargazers. This metric, available through the GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate a project's popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then select the top 100 most popular repositories and remove projects that do not reach the first quartile of the distribution of lines of code.
 

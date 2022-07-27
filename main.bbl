@@ -250,15 +250,6 @@
   Florida Association of Institutional Research}, \bibinfo{year}{2006}, pp.
   \bibinfo{pages}{1--3}.
 %Type = Inproceedings
-\bibitem[{Feitelson(2021)}]{Feitelson:2021:CPC}
-\bibinfo{author}{D.~G. Feitelson},
-\newblock \bibinfo{title}{Considerations and pitfalls in controlled experiments
-  on code comprehension},
-\newblock in: \bibinfo{booktitle}{29th {IEEE/ACM} International Conference on
-  Program Comprehension}, \bibinfo{publisher}{{IEEE}},
-  \bibinfo{address}{Madrid, Spain}, \bibinfo{year}{2021}, pp.
-  \bibinfo{pages}{106--117}.
-%Type = Inproceedings
 \bibitem[{Oliveira et~al.(2020)Oliveira, Bruno, Madeiral, and
   Castor}]{Oliveira:2020:ECR}
 \bibinfo{author}{D.~Oliveira}, \bibinfo{author}{R.~Bruno},
@@ -269,5 +260,14 @@
   Conference on Software Maintenance and Evolution},
   \bibinfo{publisher}{{IEEE}}, \bibinfo{address}{Adelaide, Australia},
   \bibinfo{year}{2020}, pp. \bibinfo{pages}{348--359}.
+%Type = Inproceedings
+\bibitem[{Feitelson(2021)}]{Feitelson:2021:CPC}
+\bibinfo{author}{D.~G. Feitelson},
+\newblock \bibinfo{title}{Considerations and pitfalls in controlled experiments
+  on code comprehension},
+\newblock in: \bibinfo{booktitle}{29th {IEEE/ACM} International Conference on
+  Program Comprehension}, \bibinfo{publisher}{{IEEE}},
+  \bibinfo{address}{Madrid, Spain}, \bibinfo{year}{2021}, pp.
+  \bibinfo{pages}{106--117}.
 
 \end{thebibliography}

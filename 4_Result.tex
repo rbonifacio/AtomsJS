@@ -29,7 +29,7 @@ Table~\ref{tab:diff-correctness-repeated} presents the number of correct predict
 \label{tab:diff-correctness-repeated}
 \centering{
   \begin{scriptsize}
-\begin{tabular}{lccc} \toprule
+\begin{tabular}{lrrr} \toprule
   Atom & Obfuscated & Clean & $\Delta$(\%)  \\ \midrule
 Type Conversion           &            5 &      27 &                 +440 \\
 Change of Literal Encoding &           9 &      36 &                 +300 \\
@@ -39,7 +39,7 @@ Assignment As Value       &           18 &      43 &                 +139 \\
 Pre-Increment             &           13 &      28 &                 +115 \\
 Post-Increment            &            8 &      17 &                 +112 \\
 Array Destructuring       &           15 &      28 &                 +87 \\
-Indentation no Braces     &           30 &      50 &                 +67 \\
+Lack of Indentation no Braces     &           30 &      50 &                 +67 \\
 Omitted Curly Braces      &           35 &      51 &                 +46 \\
 Object Spread             &           21 &      30 &                 +43 \\
 Array Spread              &           22 &      31 &                 +41 \\
@@ -47,7 +47,7 @@ Automatic Semicolon Insertion &       15 &      21 &                 +40 \\
 Infix Operator Precedence &           47 &      53 &                 +13 \\
 Arrow Function            &           54 &      58 &                  +7 \\
 Implicit Predicate        &           41 &      44 &                  +7 \\
-Indentation With Braces   &           53 &      55 &                  +4 \\
+Lack of Indentation With Braces   &           53 &      55 &                  +4 \\
 Conditional Operator      &           60 &      62 &                  +3 \\
 Constant Variables        &           59 &      61 &                  +3 \\
 Dead Unreachable Repeated &           63 &      64 &                  +2 \\
@@ -66,7 +66,9 @@ Property Access           &           51 &      42 &                 -18 \\
 
 Since this study uses a within-subject design, the data is paired and dependent. Our goal is to verify whether there is a significant difference in the performance of the same participants when examining clean and obfuscated versions of programs. The analyzed data is also dichotomous, since each participant either correctly predicts the output of a program or does not. Considering this scenario, we employ McNemar's test~\cite{McNemar:1947:NSE}, which is aimed at \textit{``judging the significance of the difference between correlated proportions''}.
 
-The ``McNemar test'' column of Table~\ref{tab:repeated:misunderstanding} indicates the p-values for the tests. These p-values are compared against an alpha of 0.0021, after applying Bonferroni correction (0.05/24). One of the atom candidates, Constant Variables, is omitted from the table because, due to the very low number of mistakes, it is not possible to perform the test. The table shows that eight of the 24 analyzed atom candidates can be considered atoms of confusion based on the results of our study, Object Destructuring, Type Conversion, Change of Literal Encoding, Comma Operator, Indentation No Braces, Assignment as Value, Pre-Increment, and Ommitted Curly Braces. Among these eight, only Object Destructuring is JavaScript-specific. Six of the other atoms have been previously reported for the C language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and five for Java~\cite{Langhout:2021:ACJ}. Indentation No Braces is not specific to JavaScript, but has not been studied previously. For some candidates that have been previously identified as atoms, there was not a statistically significant difference. This is the case for Repurposed Variables, Logic as Control Flow, Implicit Predicate, and Conditional Operator. 
+The ``McNemar test'' column of Table~\ref{tab:repeated:misunderstanding} indicates the p-values for the tests. These p-values are compared against an alpha of 0.0021, after applying Bonferroni correction (0.05/24). One of the atom candidates, Constant Variables, is omitted from the table because, due to the very low number of mistakes, it is not possible to perform the test. The table shows that eight of the 24 analyzed atom candidates can be considered atoms of confusion based on the results of our study, Object Destructuring, Type Conversion, Change of Literal Encoding, Comma Operator, Lack of Indentation No Braces, Assignment as Value, Pre-Increment, and Ommitted Curly Braces. Among these eight, only Object Destructuring is JavaScript-specific. Six of the other atoms have been previously reported for the C language~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and six for Java~\cite{Langhout:2021:ACJ}.
+% Lack of Indentation No Braces is not specific to JavaScript and has also been studied by Langhout and Aniche~\cite{Langhout:2021:ACJ}. 
+For some candidates that have been previously identified as atoms, there was not a statistically significant difference. This is the case for Repurposed Variables, Logic as Control Flow, Implicit Predicate, and Conditional Operator. We examine this in Section~\ref{sec:discussion}.
 
 We leverage the odds ratio (OR) as a measure of effect size, to quantify the meaningfulness~\cite{Ellis:2010:EGE} of these results. The odds ratio is an appropriate measure of effect size for scenarios where McNemar's test is applicable~\cite{Mangiafico:2016:SAE}. For example, the odds ratio for Type Conversion is 12. This suggests that the odds of a participant correctly predicting the output of a clean version while incorrectly predicting the output of the corresponding obfuscated version is 12 times higher than the odds of correctly predicting the output of the obfuscated version and incorrectly predicting the output of the correct one. 
 
@@ -78,13 +80,13 @@ According to the thresholds established by Chen and colleagues~\cite{Chen:2010:H
  {\scriptsize 
  \begin{tabular}{lrr}
    \toprule
-Atom candidate & McNemar test &      odds ratio \\
+Atom candidate & McNemar test &      Odds Ratio \\
 \midrule
 Object Destructuring      &   \textbf{$<$ 0.0001*} & $\infty$ \\
 Type Conversion           &   \textbf{$<$ 0.0001*} & 12.0 \\
 Change of Literal Encoding   &   \textbf{$<$ 0.0001*} & 28.0 \\
 Comma Operator            &   \textbf{$<$ 0.0001*} & 11.5 \\
-Indentation No Braces     &   \textbf{$<$ 0.0001*} &  11.0 \\
+Lack of Indentation No Braces     &   \textbf{$<$ 0.0001*} &  11.0 \\
 Assignment As Value       &   \textbf{$<$ 0.0001*} &  9.3 \\
 Pre-Increment              &  \textbf{0.0003*} &    16.0 \\
 Omitted Curly Braces      &  \textbf{0.0009*} &  6.3 \\
@@ -100,7 +102,7 @@ Automated Semicolon Insertion  &  0.3915 &  1.4 \\
 Logic As Control Flow     &  0.4421 &  1.5 \\
 %Constant Variables        &  0.5000 &     0.0 \\
 Implicit Predicate        &  0.6900 &  1.3 \\
-Indentation With Braces   &  0.7266 &  1.7 \\
+Lack of Indentation With Braces   &  0.7266 &  1.7 \\
 Conditional Operator      &  0.7905 &  1.3 \\
 Dead Unreachable Repeated &  1.0000 &     1.5 \\
 Repurposed Variables      &   1.0000 &     1.0 \\
@@ -191,7 +193,7 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrea
 \centering{
   {\scriptsize
   \begin{scriptsize}
-\begin{tabular}{lccc} \toprule
+\begin{tabular}{lrrr} \toprule
   Atom & Obfuscated & Clean & $\Delta$(\%)  \\ \midrule
   Comma Operator                &  28 &  65 & +132   \\ 
   Automatic Semicolon Insertion &  32 &  68 & +112   \\ 
@@ -223,7 +225,7 @@ The boxplot of Figure~\ref{fig:boxplotcorrectness} shows a non-negligible decrea
 \begin{figure}[b!]
 \noindent
  \centering
- \includegraphics[width=\columnwidth]{images/wrong-answers-plot-1.pdf}
+ \includegraphics[width=0.6\columnwidth]{images/wrong-answers-plot-1.pdf}
  \caption{Number of wrong answers of each subject.}
  \label{fig:boxplotcorrectness}
  \end{figure}% \castor{Fiz de tudo para ajeitar a figura porque o texto embaixo deveria ser "Clean versions" e "Confusing versions" mas não sei porque não funcionou. Até mudei a figura. Não sei o que está havendo.}
@@ -247,6 +249,7 @@ For instance, when comparing clean and obfuscated code snippets pertaining to th
 Finally, we also use a \emph{Binomial Generalized Logistic Regression} analysis to investigate if either \emph{participant education} or \emph{participant experience} impacts correctness. The findings suggest that \emph{participant experience} impacts the results related to correctness (Figure~\ref{fig:correctness-over-experience}). Even though the presence of atoms of confusion reduces the number of correct answers for all \emph{experience groups}, this effect is not uniform. For instance, novice developers (under one year of experience) provide a higher number of wrong answers for the obfuscated version of the code (57.8\%), while developers with more than four years of experience provide more than 70\% of correct answers even when evaluating the obfuscated version of the code snippets. It is also important to note that, independently of the \emph{experience group}, developers tend to provide more than 84\% of correct answers while predicting the outputs for the clean versions of the code. We replicate the \emph{Pearson's Chi-squared test} for each experience group and find that the statistical difference is less significant for those developers with more than ten years of experience. Differently from \emph{participant experience}, the factor \emph{participant education} does not significantly change the correctness of the answers.
 \castor{I'd like to have the numbers for the results above. What are the p-values, regression coefficients, etc.?}
 \begin{figure}
+  \centering
   \includegraphics[scale=0.3]{images/correctness-by-experience}
   \caption{Impact of atoms of confusion on the correctness (over the four participant experience groups)}
   \label{fig:correctness-over-experience}
@@ -281,7 +284,7 @@ Not all atom candidates, though, require less time for the participants to predi
 \centering{
   {\scriptsize
   \begin{scriptsize}
-\begin{tabular}{lccc} \toprule
+\begin{tabular}{lrrr} \toprule
 Atom & Obfuscated  & Clean & $\Delta$(\%) \\ \midrule
 Comma Operator & 87.67 & 20.84 & -76.23 \\ 
 Automatic Semicolon Insertion & 46.08 & 22.04 & -52.17 \\ 
@@ -305,10 +308,10 @@ Arithmetic as Logic & 28.82 & 37.20 & 29.06 \\ \bottomrule
 \caption{Hypotheses Testing (misunderstanding and time). Asterisks ($^{*}$) indicate a statistically significant difference.}
  \centering
  {\scriptsize
- \begin{tabular}{lccc|cc}
+ \begin{tabular}{lrrr|rr}
    \toprule
-Atom  & Chi-square & Odds          & CI & Mann-Whitey& Cliff's\\ 
- &  test &Ratio          & CI &  U test & Delta \\  \midrule
+Atom  & Chi-square & Odds          & Confidence & Mann-Whitey& Cliff's\\ 
+ &  test &Ratio          & Interval &  U test & Delta \\  \midrule
 Comma Operator & \textbf{$<$ 0.0001*} & 19.02 & (6.60, 68.22) & \textbf{$<$ 0.0001*} & -0.53 \\ 
 Automatic Semicolon Insertion & \textbf{$<$ 0.0001*} & 39.33 & (9.21, 356.62) & 0.0980 & -0.16 \\ 
 Post-Increment & \textbf{0.0015*} & 4.83 & (1.73, 15.74) & 0.1201 & 0.15 \\ 
@@ -380,7 +383,7 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
     {\scriptsize
     \caption{Summary of participants' preferences for code snippets \emph{with} and
       \emph{without} atom candidates. The participants were only presented the code snippets, without any indication about whether one was confusing or not. 
-      Participants were also allowed to choose Neutral when they thought both sides were equally readable.}
+      Participants were also allowed to choose Neutral when they thought both sides were equally readable.}\label{tab:interview-results1}
     \begin{tabular}{lrrr}\toprule
       & \multicolumn{3}{c}{\textsc{Preference (\%)}} \\
       \cmidrule(lr){2-4}
@@ -401,9 +404,9 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
          \bottomrule
     \end{tabular}
     }
-    \label{tab:interview-results1}
+
 \end{table}
-  
+
 \subsubsection*{The Participants' perceptions of the atom candidates} 
 
 Supporting the results of Sections~\ref{sec:repeated} and~\ref{sec:latin}, Table~\ref{tab:interview-results1}
@@ -475,9 +478,7 @@ The Pre-Increment atom candidate also caused a
 conflict in one of the interviewees, who
 regarded the clean version as simpler to understand, but would still opt to write
 code with the atom. In contrast, %to such opinion,
-one of the participants found the version with the atom candidate more elegant, but recognized it was less readable, and was willing to sacrifice elegance for readability. In the repeated measures study, we found a significant difference in favor of the clean version, with a large effect size in its favor. In the latin square study, no difference could be observed in terms of correctness. However, there was a significant difference in terms of the time required to predict the output correctly in favor of the obfuscated version. This highlights how factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}.
-\castor{Should the last sentence above be in the discussion?}
-\rb{Agree. We can move it to the discussion section.}
+one of the participants found the version with the atom candidate more elegant, but recognized it was less readable, and was willing to sacrifice elegance for readability. In the repeated measures study, we found a significant difference in favor of the clean version, with a large effect size in its favor. In the latin square study, no difference could be observed in terms of correctness. However, there was a significant difference in terms of the time required to predict the output correctly in favor of the obfuscated version. 
 %% \rb{pela discuss\~{a}o anterior, parece-me que alguns
 %%   desenvolvedores reconhecem que esses candidatos
 %%   a \'{a}tomos introduzem certa dificuldade de compreens\~{a}o;
@@ -649,7 +650,7 @@ while Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:oc
   {\scriptsize 
 \caption{Summary of atom candidate occurrences in our dataset.}
 \setlength\tabcolsep{2pt} % default value: 6pt
-\begin{tabular}{lrc}%c}
+\begin{tabular}{lrr}%c}
   \toprule
 Atom & Projects & Occurr./KLOC \\%& Frequency \\ 
   \midrule

@@ -1,50 +1,21 @@
 \section{Discussion}
 \label{sec:discussion}
 
+The results of the multiple studies we have conducted, combined and contrasted with previous work on atoms of confusion, provide an in-depth perspective on which code patterns tend to lead to confusion and which ones may require additional investigation. Across different studies, targeting different languages and groups of participants, these patterns have produced confusion, even in constrained scenarios without other interfering factors. 
+Existing studies judge whether a code pattern is an atom of confusion or not by evaluating whether participants incorrectly predict the behavior of programs including that pattern significantly more often than the behavior of functionally equivalent programs that do not include it. According to this criterion, there are five atoms of confusion that have been confirmed in the studies of Langhout and Aniche~\cite{Langhout:2021:ACJ}, Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, and at least one of the experiments we conducted, \textbf{Type Conversion}, \textbf{Change of Literal Encoding}, \textbf{Omitted Curly Braces}, \textbf{Pre-Increment}, and \textbf{Post-Increment}. They are small code patterns that have been shown to cause confusion for different samples, in programs written in different languages (Java, C, and JavaScript). In addition, \textbf{Comma Operator}, and \textbf{Assignment as Value} have been shown to be atoms in both of our experiments and in the study of Gopstein et al.\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. 
+Two code patterns have caused confusion in the participants of one of our experiments and also in one prior study, \textbf{Indentation No Braces}~\cite{Langhout:2021:ACJ} and \textbf{Implicit Predicate}~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. 
 
-% From the paper. I think it makes more sense to discuss this in the context of teh two studies. 
-Comparing the results of the latin square study to previous research, three 
-atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed
-for \clang and \cpplang do not lead to a statistically significant impact
-on correctness in our study: Logic as Control Flow,
-Conditional Operator, and Pre-Increment. Our results
-support the Gopstein et al. findings for the remaining
-atoms. The work of Langhout and Aniche~\cite{Langhout:2021:ACJ} investigates six atom candidates for Java that we also explore here for JavaScript. Among these atom
-candidates, we achieve similar conclusions to their
-study for four atom candidates: Post Increment,
-Conditional Operator, Arithmetic as Logic, and
-Omitted Curly Braces---both studies confirmed only the former
-as an atom of confusion. Our findings diverged from
-the work of Langhout and Aniche for two atoms: Pre Increment and
-Logic as Control Flow.
+Our interviews and the study of Langhout and Aniche~\cite{Langhout:2021:ACJ} have also analyzed the propensity of some of the atoms to induce confusion from a qualitative perspective, by asking developers about their preferences. In both cases, the obfuscated versions of \textbf{Omitted Curly Braces}, \textbf{Pre-Increment}, \textbf{Post-Increment}, \textbf{Implicit Predicate} were considered more confusing than their clean counterparts. Furthermore, the interview results are aligned with the experimental results: the clean versions were consistently considered less confusing than the obfuscated ones, except for one code pattern, Conditional Operator, which has not been confirmed as an atom by either of our experiments. 
 
-\castor{Which atoms are JavaScript specific? Semicolons. Destructuring of objects and arrays.}
+Considering the accumulated evidence for the aforementioned atoms, not only in terms of statistical significance but also effect sizes, it is reasonable to suggest that coding style guides avoid them if they aim to cater to a wide range of developer experience levels. These guides usually exist in contexts where multiple developers need to maintain the same codebase and they aim to promote uniformity\footnote{https://google.github.io/styleguide/} and readability\footnote{https://github.com/airbnb/javascript}. Although personal preference and development experience have an impact on individual developers' ability to understand these code patterns, this is arguably not the audience that coding style guides should target. 
 
-\castor{Which atom candidates are atoms, considering these studies and the previous ones? Is a case where correctness exhibits no statistically significant difference but time does sufficient? The weight of experience. Statistical significance vs. practical relevance. Most of them, with the exception of Comma Operator and Object Destructuring, have also been observed for Java programs~\cite{Langhout:2021:ACJ}.
+In the repeated measures study, we identified one JavaScript-specific atom, Object Destructuring. In the Latin square study, Automatic Semicolon Insertion was identified as another JavaScript-specific atom. For both cases, p-values were much lower than the threshold and effect sizes were high. However, in the repeated measures study obfuscated versions of Automatic Semicolon Insertion were not significantly different from their clean counterparts. Our interviewees favored the use of semicolon over Automatic Semicolon Insertion. Finally, as discussed in Section~\ref{sec:repeated:correct}, Array Destructuring exhibited a large effect size, in spite of the non-statistically significant difference (after correction). As discussed elsehwere~\cite{Ellis:2010:EGE}, this is a scenario that hints at practical relevance, specially considering the very low p-value ($< 0.003$). Further studies investigating these code patterns, potentially using different response variables~\cite{Oliveira:2020:ECR,Feitelson:2021:CPC}, are left for future work. 
 
-In addition, many of the coding idioms that have been previously identified as atoms of confusion in previous work~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17,Langhout:2021:ACJ}, such as Logic as Control Flow
+Some code patterns that have been identified as atoms in previous work were not confirmed in our experiments, at least from a correctness perspective. Comparing the results of the Latin square study to previous research, two atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed for \clang and \cpplang do not lead to a statistically significant impact on correctness in our study, Logic as Control Flow, and Conditional Operator. Conditional Operator was the only atom candidate in our interviews whose obfuscated version was considered less confusing than the corresponding clean version. 
 
-Differences among the two studies, for example, post increment was not significant in the first one but it was significant in the second.
-}
+Logic as Control Flow is a more interesting case. Considering the correctness perspective, none of our experiments has identified Logic as Control Flow as an atom of confusion. However, in the Latin square study there was a significant difference in the time required to make a correct prediction in favor of the clean version of this atom candidate, with a medium effect size. Furthermore, both Langhout and Aniche~\cite{Langhout:2021:ACJ} and Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} have identified it as an atom. Two other atoms have exhibited a statistically significant difference in time, in favor of their obfuscated versions (with a small effect size). One of them, Pre-Increment, has been confirmed as an atom of confusion in multiple experiments, i.e., participants are less confused by the clean versions. These conflicting results reinforce the importance of conducting experiments that consider multiple response variables~\cite{Oliveira:2020:ECR}. In addition, it is clear that factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}.
 
-Our work has several implications.
-First, it adds external validity to the
-work of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17},
-which investigates
-the impact of atom candidates on
-understanding \clang,\cpplang code. That is,
-similarly to their work, the atom candidates
-Comma Operator, Post/Pre Increment, Omitted Curly Braces,
-Assignment as Value, Implicit Predicate, and Logic as
-Control Flow seem to make 
-JavaScript code harder to understand. For five of them, the difference is statistically significant, with a large effect size for four atoms. Our results also 
-refute the hypothesis that Arithmetic as Logic is an atom of confusion (i.e., a source of misunderstanding).
-In comparison to the original
-work of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, 
-our study
-led to some differences in the effect size
-of the atom candidates.
-Altogether, we answer our first research question.
+Altogether, we answer our first research question as follows. 
 
 \begin{mh}
   {\bf Answer to RQ1:} Our experiments using repeated measures and the Latin square designs give evidence that some of the atom candidates in \clang and \cpplang programs that also exist in JavaScript correspond to a source of misunderstanding in
