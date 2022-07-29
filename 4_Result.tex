@@ -652,6 +652,7 @@ while Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:oc
   \centering
   {\scriptsize 
 \caption{Summary of atom candidate occurrences in our dataset.}
+\label{tab:occurrences-summary}
 \setlength\tabcolsep{2pt} % default value: 6pt
 \begin{tabular}{lrr}%c}
   \toprule
@@ -670,12 +671,11 @@ Implicit Predicate & 100\% & 19.89 \\%&  intensively used \\
    \bottomrule
 \end{tabular}
   }
-\label{tab:occurrences-summary}
 \end{table}
 
 
 Considering all JavaScript projects in our dataset, we found a total of \num{364873} atom candidates, though four atoms are responsible
-for 92.97\% of this total: Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces. The first two, based on the results of Section~\ref{sec:latin} and Section~\ref{sec:repeated}, can be considered atoms of confusion. The remaining atom
+for 92.97\% of this total: Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces. The first two, based on the results of Section~\ref{sec:repeated} and Section~\ref{sec:latin}, can be considered atoms of confusion. The remaining atom
 candidates comprise \num{25621} occurrences combined, 7.03\% of the total number of occurrences.
 The Comma Operator and Arithmetic as Logic atoms are the ones that arise less
 frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
