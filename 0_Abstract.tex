@@ -1,24 +1,28 @@
 \begin{abstract}
 Evolving software is particularly challenging when the code has been poorly written or
 uses confusing idioms and language constructs, which might increase maintenance efforts
-and impose a significant cognitive load on developers. For this reason, researchers have
-investigated possible sources of confusion in codebases, including the impact of small code
+and impose a significant cognitive load on developers. Previous research has
+investigated possible sources of confusion in programs, including the impact of small code
 patterns (hereafter atoms of confusion) that contribute to misunderstanding the source code.
 Although researchers have explored atoms of confusion in code written in \clang, \cpplang,
 and Java, different languages have different features, developer communities, and development cultures. This
 justifies the exploration of other languages to verify whether they also exhibit confusion-inducing patterns. 
 In this paper we investigate the impact of atoms of confusion on understanding JavaScript code---a
-dynamically typed language whose popularity is growing in the most diverse application domains. To this end,
-we carry out a mixed-methods research comprising two experiments, a set of interviews with practitioners,
-and a mining software repositories (MSR) effort. 
+dynamically typed language whose popularity is growing in the most diverse application domains. In this paper
+we report the results of a mixed-methods research comprising two experiments, a set of interviews with practitioners,
+and a mining software repository (MSR) effort. 
 The results of both experiments suggest that two code patterns that have been previously observed to confuse \clang
 programmers also confuse JavaScript programmers: the comma operator and assignments
 being used as values. In addition, pre- and post-increment operators, when used as values,
-omitted curly braces, changes of literal encoding, and type conversions have led to confusion in at least one
+omitted curly braces, changes of literal encoding, and type conversions have been confirmed as confuse in at least one
 of the two experiments. For all these cases effect sizes were either medium or high. The interviews we conducted
 reinforce some of these findings while pointing to other constructs and idioms that merit investigation in the future;
-while our MSR effort reveals that atom candidates are frequent and used intensively in 72 popular open-source JavaScript systems:
+while our MSR effort reveals that the small code patterns we explore here are frequent and used intensively in 72 popular open-source JavaScript systems:
 four atom candidates appear in 90\% of the analyzed projects, and two of them occur more than once for every 100 lines of code
 in the dataset.
 %Our findings provide significant evidence that some code patterns should be avoided if code is expected to be understood by a wide audience. 
 \end{abstract}
+
+\begin{keyword}
+software maintenance, program comprehension, program understanding, atoms of confusion, JavaScript code
+\end{keyword}
