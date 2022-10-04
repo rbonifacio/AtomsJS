@@ -1,4 +1,4 @@
-\begin{thebibliography}{28}
+\begin{thebibliography}{29}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -146,6 +146,16 @@
   \bibinfo{pages}{605–616}. \URLprefix
   \url{https://doi.org/10.1145/3368089.3409714}.
   \DOIprefix\doi{10.1145/3368089.3409714}.
+%Type = Article
+\bibitem[{Weggemans et~al.(2001)Weggemans, Zock, and
+  Katan}]{Weggemans:2001:DCE}
+\bibinfo{author}{R.~M. Weggemans}, \bibinfo{author}{P.~L. Zock},
+  \bibinfo{author}{M.~B. Katan},
+\newblock \bibinfo{title}{{Dietary cholesterol from eggs increases the ratio of
+  total cholesterol to high-density lipoprotein cholesterol in humans: a
+  meta-analysis}},
+\newblock \bibinfo{journal}{The American Journal of Clinical Nutrition}
+  \bibinfo{volume}{73} (\bibinfo{year}{2001}) \bibinfo{pages}{885--891}.
 %Type = Article
 \bibitem[{Alves et~al.(2022)Alves, Oliveira, Madeiral, and
   Castor}]{Alves:2022:BPS}

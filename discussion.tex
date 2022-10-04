@@ -1,10 +1,15 @@
 \section{Discussion}
 \label{sec:discussion}
 
+In this section we discuss the results of the studies in combination. 
+
+%----------------------------------------------------------------------
+\subsection{\revised{Contrasting the results of the studies}}\label{sec:contrast}
+
 The results of the multiple studies we have conducted, combined and contrasted with previous work on atoms of confusion, provide an in-depth perspective on which code patterns tend to lead to confusion and which ones may require additional investigation. Across different studies, targeting different languages and groups of participants, these patterns have produced confusion, even in constrained scenarios without other interfering factors. 
 Existing studies judge whether a code pattern is an atom of confusion or not by evaluating whether participants incorrectly predict the behavior of programs including that pattern significantly more often than the behavior of functionally equivalent programs that do not include it. According to this criterion, there are five atoms of confusion that have been confirmed in the studies of Langhout and Aniche~\cite{Langhout:2021:ACJ}, Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, and at least one of the experiments we conducted, \textbf{Type Conversion}, \textbf{Change of Literal Encoding}, \textbf{Omitted Curly Braces}, \textbf{Pre-Increment}, and \textbf{Post-Increment}. They are small code patterns that have been shown to cause confusion for different samples, in programs written in different languages (Java, C, and JavaScript). In addition, \textbf{Comma Operator}, and \textbf{Assignment as Value} have been shown to be atoms in both of our experiments and in the study of Gopstein et al.\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. 
 Two code patterns have caused confusion in the participants of one of our experiments and also in one prior study, \textbf{Indentation No Braces}~\cite{Langhout:2021:ACJ} and \textbf{Implicit Predicate}~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}. 
-
+   
 Our interviews and the study of Langhout and Aniche~\cite{Langhout:2021:ACJ} have also analyzed the propensity of some of the atoms to induce confusion from a qualitative perspective, by asking developers about their preferences. In both cases, the obfuscated versions of \textbf{Omitted Curly Braces}, \textbf{Pre-Increment}, \textbf{Post-Increment}, \textbf{Implicit Predicate} were considered more confusing than their clean counterparts. Furthermore, the interview results are aligned with the experimental results: the clean versions were consistently considered less confusing than the obfuscated ones, except for one code pattern, Conditional Operator, which has not been confirmed as an atom by either of our experiments. 
 
 Considering the accumulated evidence for the aforementioned atoms, not only in terms of statistical significance but also effect sizes, it is reasonable to suggest that coding style guides avoid them if they aim to cater to a wide range of developer experience levels. These guides usually exist in contexts where multiple developers need to maintain the same codebase and they aim to promote uniformity\footnote{https://google.github.io/styleguide/} and readability\footnote{https://github.com/airbnb/javascript}. Although personal preference and development experience have an impact on individual developers' ability to understand these code patterns, this is arguably not the audience that coding style guides should target. 
@@ -14,6 +19,9 @@ In the repeated measures study, we identified one JavaScript-specific atom, Obje
 Some code patterns that have been identified as atoms in previous work were not confirmed in our experiments, at least from a correctness perspective. Comparing the results of the Latin square study to previous research, two atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed for \clang and \cpplang do not lead to a statistically significant impact on correctness in our study, Logic as Control Flow, and Conditional Operator. Conditional Operator was the only atom candidate in our interviews whose obfuscated version was considered less confusing than the corresponding clean version. 
 
 Logic as Control Flow is a more interesting case. Considering the correctness perspective, none of our experiments has identified Logic as Control Flow as an atom of confusion. However, in the Latin square study there was a significant difference in the time required to make a correct prediction in favor of the clean version of this atom candidate, with a medium effect size. Furthermore, both Langhout and Aniche~\cite{Langhout:2021:ACJ} and Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} have identified it as an atom. Two other atoms have exhibited a statistically significant difference in time, in favor of their obfuscated versions (with a small effect size). One of them, Pre-Increment, has been confirmed as an atom of confusion in multiple experiments, i.e., participants are less confused by the clean versions. These conflicting results reinforce the importance of conducting experiments that consider multiple response variables~\cite{Oliveira:2020:ECR}. In addition, it is clear that factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}.
+
+%----------------------------------------------------------------------
+\subsection{\revised{Addressing the research questions}}
 
 Altogether, we answer our first research question as follows. 
 
@@ -64,6 +72,47 @@ question.
 \end{mh}
 
 
+%----------------------------------------------------------------------
+\subsection{\revised{Why multiple studies?}}\label{sec:whytwo}
+
+\revised{It is not reasonable to consider something a scientific fact in an area as inexact as Software Engineering based on a single experiment. We present two independently-designed and conducted studies, with diverse code snippets, samples, and experimental designs, to provide stronger evidence. We believe that atom candidates confirmed to be atoms of confusion by both experiments arguably provide more reliable evidence of the potential to cause confusion of these code patterns for a wide range of developers, in diverse scenarios. That is the case for the Comma Operator and Assignment as Value atoms. Considering our work and others', there is little doubt that these are code patterns that lead to confusion. Furthermore, we complement the two experiments with interviews with 15 developers. Generally, in more mature areas of science, conducting multiple independent studies, potentially with different experimental designs, e.g., controlled vs. free-living experiments in the medical sciences~\cite{Weggemans:2001:DCE}, and examining their results in combination is the most reliable way of establishing truth.}
+
+\castor{For the pros and cons of each approach, do you prefer lists of items or regular text paragraphs?}
+\revised{The experimental designs we have employed in the two experiments have different trade-offs. The main advantages of having a repeated measures (or within subjects) study are the following: 
+\begin{itemize}
+  \item[+] They are better able to detect an effect size, given that one exists, since it is possible to collect data about both treatments from each participant. 
+  \item[+] There tends to be less variance between groups, since the same participant is subject to both treatments
+  \item[+] Individual differences between participants are controlled for because each participant acts as their own control
+\end{itemize}
+}
+\revised{
+\noindent
+Conversely, the main limitations of a repeated measures study are the following: 
+\begin{itemize}
+\item[--] Data is not independent. This precludes the use of some statistical techniques and tests. 
+\item [--] There is a potential learning/practice effect, since going through multiple examples may make the participants able to predict results of subsequent cases. This can be mitigated by separating examples pertaining to the same atom candidate, but not eliminated. 
+\item [--] Fatigue effect, since participants have to examine more code snippets. This was exacerbated in our case, due to the larger number of atom candidates.
+\end{itemize}}
+\revised{
+The Latin square study is an example of a between subjects study. In a way, its main advantages are precisely the absence (or a reduction) of the disadvantages of the repeated measures study and its main disadvantages are related to the advantages of a repeated measures study: 
+\begin{itemize}
+\item[+] Data is independent. 
+\item[+] There is no possibility of learning/practice effect because each participant is only exposed to one treatment. 
+\item[+] Fatigue effect is reduced, since each participant is only exposed to code snippets related to one of the treatments. 
+\end{itemize}}
+\revised{
+\noindent
+The main disadvantages of a between subjects study are the following:
+\begin{itemize}
+  \item[-] Effect sizes tend to be lower. 
+  \item[-] Potentially more variance between groups since each participant is only required to be exposed to one treatment. 
+  \item[-] Does not account for variance within groups.
+\end{itemize}
+The use of a Latin square mitigates some of the disadvantages intrinsic to a between subjects design. For example, since less work is required from participants, it was possible to obtain more data for the latin square study than we could get for the repeated measures study. This increases its statistical power, making it possible to detect smaller effect sizes.}
+
+\revised{
+In addition, to capture aspects that none of these studies can capture, e.g., personal impressions, we also leverage the interview study. Section~\ref{sec:contrast} highlights that some atoms that are perceived as confusing did not cause participants of the experiments to commit mistakes, e.g., Arithmetic as Logic. This combination of three different studies, with different samples and designs provides a more in-depth perspective on the extent to which these code patterns confuse JavaScript developers than we could obtain by having a single study. 
+}
 
 %% We conducted a non-exact replication of the three
 %% studies (survey, interview, and mining software repositories)

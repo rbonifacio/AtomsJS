@@ -7,45 +7,45 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Warning--empty pages in Langhout:2021:ACJ
 Warning--empty booktitle in ThinkingAloud
 Warning--can't use both author and editor fields in Neely:1991:SPE
-You've used 28 entries,
+You've used 29 entries,
             2918 wiz_defined-function locations,
-            832 strings with 12287 characters,
-and the built_in function-call counts, 20714 in all, are:
-= -- 1458
-> -- 870
+            841 strings with 12574 characters,
+and the built_in function-call counts, 21378 in all, are:
+= -- 1506
+> -- 897
 < -- 25
-+ -- 339
-- -- 297
-* -- 2346
-:= -- 2801
-add.period$ -- 40
-call.type$ -- 28
-change.case$ -- 238
-chr.to.int$ -- 28
-cite$ -- 31
-duplicate$ -- 1608
-empty$ -- 1553
-format.name$ -- 372
-if$ -- 3973
++ -- 349
+- -- 306
+* -- 2427
+:= -- 2895
+add.period$ -- 41
+call.type$ -- 29
+change.case$ -- 246
+chr.to.int$ -- 29
+cite$ -- 32
+duplicate$ -- 1657
+empty$ -- 1602
+format.name$ -- 384
+if$ -- 4096
 int.to.chr$ -- 1
 int.to.str$ -- 1
-missing$ -- 309
-newline$ -- 141
-num.names$ -- 114
-pop$ -- 585
+missing$ -- 319
+newline$ -- 146
+num.names$ -- 118
+pop$ -- 602
 preamble$ -- 1
-purify$ -- 238
+purify$ -- 246
 quote$ -- 0
-skip$ -- 513
+skip$ -- 523
 stack$ -- 0
-substring$ -- 817
-swap$ -- 1205
+substring$ -- 850
+swap$ -- 1242
 text.length$ -- 14
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 237
+type$ -- 246
 warning$ -- 3
-while$ -- 126
+while$ -- 130
 width$ -- 0
-write$ -- 402
+write$ -- 415
 (There were 3 warnings)
