@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.27)  4 OCT 2022 13:44
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2021) (preloaded format=pdflatex 2021.9.27)  31 OCT 2022 19:21
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.tex"
+**"/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main"
 (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.tex
 LaTeX2e <2020-10-01> patch level 4
-L3 programming layer <2021-02-18> (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/elsarticle.cls
+L3 programming layer <2021-02-18> (./elsarticle.cls
 Document Class: elsarticle 2020/11/20, 3.3: Elsevier Ltd
 (/usr/local/texlive/2021/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2021-02-18 L3 programming layer (loader) 
@@ -73,7 +73,7 @@ File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 \@enLab=\toks17
 \@sep=\skip49
 \@@sep=\skip50
- (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.spl) (/usr/local/texlive/2021/texmf-dist/tex/latex/natbib/natbib.sty
+ (./main.spl) (/usr/local/texlive/2021/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip51
 \bibsep=\skip52
@@ -826,7 +826,7 @@ File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
 )
 Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... none found.
- (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.aux)
+ (./main.aux)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
@@ -886,7 +886,7 @@ File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 LaTeX Font Info:    Trying to load font information for U+msb on input line 149.
  (/usr/local/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/atom-mdframe-config.tex) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/0_Abstract.tex)
+) (./atom-mdframe-config.tex) (./0_Abstract.tex)
 Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 [] 
  []
@@ -894,10 +894,10 @@ Overfull \hbox (2.61108pt too wide) has occurred while \output is active
 [1
 
 
-{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/1_Introduction_alt.tex
+{/usr/local/texlive/2021/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] (./1_Introduction_alt.tex
 LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 25.
- [2] [3]) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/2_Background.tex [4] [5]) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/3_Method.tex [6] [7] (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/atom_descriptions.tex
+ [2] [3]) (./2_Background.tex [4] [5]) (./3_Method.tex [6] [7] (./atom_descriptions.tex
 
 LaTeX Warning: No positions in optional float specifier.
                Default added (so using `tbp') on input line 5.
@@ -935,52 +935,52 @@ File: images/latin-square.pdf Graphic file (type pdf)
 <use images/latin-square.pdf>
 Package pdftex.def Info: images/latin-square.pdf  used on input line 71.
 (pdftex.def)             Requested size: 200.24763pt x 64.23984pt.
- [12 </Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/images/latin-square.pdf>] [13] [14] [15]) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/4_Result.tex [16] [17] [18] [19] [20] [21]
+ [12] [13 <./images/latin-square.pdf>] [14] [15] [16]) (./4_Result.tex [17] [18] [19] [20] [21]
 <images/wrong-answers-plot-1.pdf, id=193, 371.3875pt x 187.70125pt>
 File: images/wrong-answers-plot-1.pdf Graphic file (type pdf)
 <use images/wrong-answers-plot-1.pdf>
 Package pdftex.def Info: images/wrong-answers-plot-1.pdf  used on input line 228.
 (pdftex.def)             Requested size: 234.00238pt x 118.26959pt.
- [22] [23 </Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/images/wrong-answers-plot-1.pdf>]
+ [22] [23 <./images/wrong-answers-plot-1.pdf>]
 <images/correctness-by-experience.pdf, id=208, 740.7675pt x 256.96pt>
 File: images/correctness-by-experience.pdf Graphic file (type pdf)
 <use images/correctness-by-experience.pdf>
 Package pdftex.def Info: images/correctness-by-experience.pdf  used on input line 256.
 (pdftex.def)             Requested size: 370.38284pt x 128.47968pt.
- [24 </Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/images/correctness-by-experience.pdf>] [25] [26] [27] [28] [29] [30]) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/discussion.tex [31] [32] [33] [34] [35] [36]) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/5_Threats.tex [37]) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/6_Conclusion.tex [38]) (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.bbl [39]
-Underfull \hbox (badness 10000) in paragraph at lines 103--108
+ [24] [25 <./images/correctness-by-experience.pdf>] [26] [27] [28] [29] [30] [31]) (./discussion.tex [32] [33] [34] [35] [36]) (./5_Threats.tex [37] [38]) (./6_Conclusion.tex) (./main.bbl [39]
+Underfull \hbox (badness 10000) in paragraph at lines 103--107
 []\OT1/cmr/m/n/10.95 B. Eich, A brief his-tory of JavaScript, 2018. Avail-able at
  []
 
 
-Underfull \hbox (badness 5316) in paragraph at lines 103--108
+Underfull \hbox (badness 5316) in paragraph at lines 103--107
 \OT1/cmr/m/n/10.95 https://www.youtube.com/watch?v=GxouWy-ZE80. Last ac-cess: July
  []
 
-
-Underfull \hbox (badness 3148) in paragraph at lines 124--131
+[40]
+Underfull \hbox (badness 3148) in paragraph at lines 144--151
 []\OT1/cmr/m/n/10.95 S. R. Tilley, D. B. Smith, S. Paul,  To-wards a frame-work for
  []
 
 
-Underfull \hbox (badness 1895) in paragraph at lines 124--131
+Underfull \hbox (badness 1895) in paragraph at lines 144--151
 \OT1/cmr/m/n/10.95 pro-gram un-der-stand-ing,  in: WPC, IEEE Com-puter So-ci-ety, DOI:
  []
 
-[40] [41]) [42] (/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.aux) ) 
+[41] [42]) [43] (./main.aux) ) 
 Here is how much of TeX's memory you used:
- 23936 strings out of 478994
- 472344 string characters out of 5858184
- 1002958 words of memory out of 5000000
- 40888 multiletter control sequences out of 15000+600000
+ 23942 strings out of 478994
+ 470586 string characters out of 5858184
+ 1003958 words of memory out of 5000000
+ 40894 multiletter control sequences out of 15000+600000
  419275 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 102i,26n,117p,1980b,1484s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 102i,26n,117p,1976b,1484s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy6.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmti7.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2021/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.pdf" (42 pages, 431563 bytes).
+Output written on main.pdf (43 pages, 434155 bytes).
 PDF statistics:
- 349 PDF objects out of 1000 (max. 8388607)
- 225 compressed objects within 3 object streams
+ 353 PDF objects out of 1000 (max. 8388607)
+ 228 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
  124 words of extra memory for PDF output out of 10000 (max. 10000000)
 

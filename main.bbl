@@ -1,4 +1,4 @@
-\begin{thebibliography}{29}
+\begin{thebibliography}{31}
 \expandafter\ifx\csname natexlab\endcsname\relax\def\natexlab#1{#1}\fi
 \providecommand{\url}[1]{\texttt{#1}}
 \providecommand{\href}[2]{#2}
@@ -103,6 +103,26 @@
 \bibinfo{author}{B.~Eich}, \bibinfo{title}{A brief history of {JavaScript}},
   \bibinfo{year}{2018}. \bibinfo{note}{Available at
   https://www.youtube.com/watch?v=GxouWy-ZE80. Last access: July 25th 2022.}
+%Type = Inproceedings
+\bibitem[{Cabral and Marques(2007)}]{Cabral:2007:EHF}
+\bibinfo{author}{B.~Cabral}, \bibinfo{author}{P.~Marques},
+\newblock \bibinfo{title}{Exception handling: {A} field study in java and
+  .net},
+\newblock in: \bibinfo{editor}{E.~Ernst} (Ed.), \bibinfo{booktitle}{{ECOOP}
+  2007 - Object-Oriented Programming, 21st European Conference, Berlin,
+  Germany, July 30 - August 3, 2007, Proceedings}, volume
+  \bibinfo{volume}{4609} of \textit{\bibinfo{series}{Lecture Notes in Computer
+  Science}}, \bibinfo{publisher}{Springer}, \bibinfo{year}{2007}, pp.
+  \bibinfo{pages}{151--175}.
+%Type = Article
+\bibitem[{Ebad and Manzoor(2016)}]{Ebad:2016:ECJ}
+\bibinfo{author}{S.~A. Ebad}, \bibinfo{author}{D.~Manzoor},
+\newblock \bibinfo{title}{An empirical comparison of java and c{\#} programs in
+  following naming conventions},
+\newblock \bibinfo{journal}{Int. J. People Oriented Program.}
+  \bibinfo{volume}{5} (\bibinfo{year}{2016}) \bibinfo{pages}{39--60}.
+  \URLprefix \url{https://doi.org/10.4018/IJPOP.2016010103}.
+  \DOIprefix\doi{10.4018/IJPOP.2016010103}.
 %Type = Article
 \bibitem[{Keselman et~al.(2001)Keselman, Algina, and
   Kowalchuk}]{Keselman:2001:ARM}
