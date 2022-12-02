@@ -1,0 +1,22 @@
+\section{Conclusions}
+\label{conclusion}
+
+This paper reports the results of a mixed-method research effort that allowed us to better understand the impact of atoms of confusion in JavaScript code. First, we conducted two independent experiments, which involve 210 JavaScript developers in total, asking them to predict the output of some code snippets (with and without atoms candidates). In at least one of the experiments, five atom candidates (Type Conversion, Change of Literal Encoding, Omitted Curly Braces, Pre-Increment, and Post- Increment) significantly impact program comprehension activities and can be considered atoms of confusion.
+%% : Comma Operator, Automatic Semicolon Insertion, Post Increment, Assignment as Value, and Implicit Predicate. 
+%% We also interviewed 15 professional developers. In general, they considered code without atom candidates easier to understand and highlighted other JavaScript constructs and idioms that might also introduce misunderstanding. 
+%Last, but not least,
+%Finally, we conducted a mining software repositories study. We found four atom candidates frequently used in JavaScript code, i.e., Implicit Predicate, Post Increment, Ternary Operator, and Omitted Curly Braces.  %The first two can be considered atoms of confusion. 
+Our efforts have two implications for practice. First, we present evidence that not all atoms of confusion validated to \clang, \cpplang, or Java led to a statistically significant impact on program understanding for JavaScript. Besides that, our findings might be used to alert developers to avoid writing JavaScript code with certain atoms of confusion (e.g., Comma Operator, Automatic Semicolon Insertion, Post Increment/Decrement, Assignment as Value, and Implicit Predicate). Finally, our results might help tool developers to create program transformation tools for removing atoms that frequently appear in software. 
+%They might firstly focus, for instance, on the atoms we found to be more confusing and at the same time more common in practice (e.g., Omitted Curly Braces and Post Increment).
+%Promising candidates may be the atoms we found to be most confusing and, at the same time, common in practice (e.g., Implicit Predicate and Post Increment).
+%As mentioned, the results of the interviews
+Our research also pointed out additional JavaScript constructs and idioms 
+that might introduce misunderstanding. These include nested callbacks, % and prototype-based inheritance (which might not have a counterpart version), but also idioms such
+%as 
+\emph{property access}, and \emph{arrow functions}. As future work, we intend to
+reproduce our survey to validate whether or not these additional
+idioms 
+%, which the interviewees pointed out, 
+truly affect
+the understanding of JavaScript code. 
+

@@ -1,0 +1,246 @@
+\section{Interview Study}\label{sec:method:interview}
+
+To complement the two experiments, we perform semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding programs containing atoms of confusion (research question RQ2). We also ask each participant if they know of any other JavaScript-specific construct or idiom they think is likely to make the code hard to understand. % (research question RQ3). 
+In this section we detail the protocol we followed to conduct the interviews and to analyze the results.
+
+% Nós realizamos entrevistas semi-estruturas com o objetivo de identificar a percepção dos desenvolvedores com experiência em JavaScript sobre algumas questões relacionadas à compreensão de código em JavaScript. Assim, nesta Seção nós descrevemos os procedimentos adotados para selecionar os participantes para as entrevistas e detalhamos como as entrevistas foram conduzidas. Além disso, detalhamos como os resultados das entrevistas foram analisados.
+
+\subsection{Participant Selection} We invite the participants of the interviews using a snowballing technique. That is, starting from our network of contacts, we invite an initial set of candidates to take part in our experiments. From this initial list, we ask for an indication of additional candidates. Our main selection criterion is that all participants should have been working with JavaScript in their daily professional activities. We invited a total of 17 developers, and 15 of them agreed to participate.   
+%We conducted the interviews for a period of two weeks.
+
+
+\subsection{Interview Process} We conduct semi-structured interviews using web conferencing software. We record all the interviews with the consent of the participants. On average, the interviews last 26.29 minutes, with the shortest one lasting 14.59 minutes and the longest one 43.06 minutes. Two of the researchers conduct the interviews, and a third one listens to all the recordings to cross-validate the collected data. The interviews have three main parts. In the first one, we ask the developers the following demographic information: name, email, gender, level of education, current job position, JavaScript experience in years, and other programming languages they have worked with. Table \ref{pinterview} summarizes this demographic information.
+
+\begin{table}[htb!]
+  
+  \centering
+  \caption{Demographic information of the participants}
+\begin{scriptsize}  
+\begin{tabular}{clcl}
+\toprule
+ID & Education & JS Experience & Other Languages \\ \midrule 
+P1 & BSc Degree & 9 years & Java, PHP, C, Go  
+\\ 
+P2 & HS Degree & 3 years & Python, Go, Dart, Lua, C++, C\#
+\\ 
+P3 & BSc Degree & 4 years & Java, C
+\\ 
+P4 & Undergraduate & 3 years & Python, C, C++, Java, Go
+\\ 
+P5 & Master Student & 3 years & Python, SQL
+\\ 
+P6 & Bsc Degree & 15  years  & Java, PHP, C, Python , Ruby, C\#
+\\ 
+P7 & BSc Degree  & 6 years & C, C++, Java, Assembly, Kotlin
+\\ 
+P8 & PhD Degree & 2 years & Java, Python
+\\ 
+P9 & BSc Degree  & 5 years & PHP
+\\ 
+P10 & Master Student & 4 years & Java, C\# and Python
+\\ 
+P11 & Master Student & 4 years & Java, Erlang, C\#, Cobol
+\\ 
+P12 & Master Degree & 1 year & C
+\\ 
+P13 & Master Degree & 13 years & Java, PHP
+\\ 
+P14 & Master Student & 3 years & C, Python, Ruby
+\\ 
+P15 &  BSc degree  & 2 years & Java, PHP
+\\ \bottomrule
+\end{tabular}
+\end{scriptsize}
+    \label{pinterview}
+\end{table}
+
+In the second part of the interview our aim is to allow the subjects to describe their JavaScript experience, as well as to allow them to reveal any JavaScript constructs they regard as innately confusing. This allows us to identify potential atom candidates that are more specific to the JavaScript language. Examples of questions we explore in this section include: \emph{Does JavaScript favor developers to produce code that is hard to understand?} and \emph{Do you regard any particular construct or idiom of the language as especially confusing?}
+
+In the third part of the interview, participants are shown pairs of programs that were used in the experiments, where each pair contains a clean and an obfuscated version of the same atom candidate. For this part we only use atoms that appear in both experiments. The participants 
+are asked to evaluate which version of the code is easier to understand. To avoid introducing bias in the answers, the interviewers do not explain that one of the versions in each pair contains the atom under investigation. Subjects are just presented the pairs of programs and allowed to take the necessary time to decide on the most readable one.
+
+\subsection{Interview Analysis}
+
+We first transcribe each interview and then examine the broad distribution of the answers. Our goal is to build an initial understanding of the participants' perceptions with regards to the challenges to understand JavaScript code in general and JavaScript code with atoms of confusion in particular. We follow-up with an open-coding procedure, highlighting the main themes and quoting the answers of the participants. We present these results in Section~\ref{sec:interview-results}. 
+
+
+\subsection{Results}\label{sec:interview-results}
+
+In this section we present the results of the interviews with the practitioners. We contrast the findings of the experiments of Sections~\ref{sec:repeated} and~\ref{sec:latin} with the opinion of software developers about their preferences regarding the obfuscated or clean versions of the code snippets. For the interview study, we only considered atoms that were analyzed in both the repeated measures (Section~\ref{sec:repeated}) and the latin square (Section~\ref{sec:latin}) studies. 
+
+A total of 15 practitioners took part of the interviews.
+We collected information regarding programming
+experience, familiarity with JavaScript, and their opinion about the \na atom candidates we explored in the both experiments. We first presented them pairs of clean and obfuscated code snippets and then asked them to discuss their preferences towards one version. We did not indicate in any way whether any version was assumed to be confusing or not. 
+
+\begin{table}[!htb]
+    \centering
+    {\scriptsize
+    \caption{Summary of participants' preferences for code snippets \emph{with} and
+      \emph{without} atom candidates. The participants were only presented the code snippets, without any indication about whether one was confusing or not. 
+      Participants were also allowed to choose Neutral when they thought both sides were equally readable.}\label{tab:interview-results1}
+    \begin{tabular}{lrrr}\toprule
+      & \multicolumn{3}{c}{\textsc{Preference (\%)}} \\
+      \cmidrule(lr){2-4}
+         Atom           & \multicolumn{1}{c}{Obfuscated}
+                                      &  \multicolumn{1}{c}{Clean}
+                                               & \multicolumn{1}{c}{Neutral} \\ \midrule
+         Comma Operator                  & 0  & 100    & 0     \\
+         Automatic Semicolon Insertion  & 0  & 80     & 0     \\
+         Post-Increment                  & 20 & 73.33  & 6.67  \\
+         Omitted Curly Braces            & 0  & 100    & 0     \\
+         Assignment as Value             & 20 & 60     & 20    \\
+         Implicit Predicate              & 20 & 73.33  & 6.67  \\
+         Logic as Control Flow           & 20 & 60     & 20    \\
+         Conditional Operator                & 60 & 26.67  & 13.3  \\
+         Pre-Increment                   & 40 & 46.67  & 13.33 \\ 
+         Arithmetic as Logic             & 0  & 93.33  & 6.67  \\ \midrule
+         \textsc{overall}                & 18 & 71.33  & 8.64  \\
+         \bottomrule
+    \end{tabular}
+    }
+
+\end{table}
+
+\subsubsection{The Participants' perceptions of the atom candidates} 
+
+Supporting the results of Sections~\ref{sec:repeated} and~\ref{sec:latin}, Table~\ref{tab:interview-results1}
+ shows that for eight out of the
+10 scenarios surveyed, the majority of the respondents prefer the version of the
+code without the atom candidate.
+In no case the \emph{neutral}
+ratio was higher than the option for the clean version.
+%% An example entry is contained in Appendix~\ref{}. 
+%% For a full listing of the code snippets, visit the paper repository. 
+Only for the Conditional Operator atom candidate the participants preferred the obfuscated version, instead of the clean one. Figure~\ref{code:ternary} shows the code snippets for the corresponding obfuscated and clean versions. For this atom candidate, some participants who preferred the left-hand side version (obfuscated) still believed that the right-hand side version (clean) was more readable. The following quotes were extracted from the transcripts with
+% three interviewees:
+two interviewees:
+
+\begin{figure*}
+
+\noindent\begin{minipage}{.45\textwidth}
+\begin{lstlisting}[language=JavaScript, caption=\emph{Left-hand side} (using the \emph{Conditional Operator} atom).]
+let config = {size: 3, isActive: false};
+const_config = config.isActive === true 
+             ? config 
+             : {size: 10};
+console.log(_config.size);
+\end{lstlisting}
+\end{minipage}\hfill
+\begin{minipage}{.45\textwidth}
+\begin{lstlisting}[language=JavaScript, caption=\emph{Right-hand side} (without the atom).]
+let config = {size: 3, isActive: false}
+let _config;
+if(config.isActive === true) {
+  _config = config;
+}
+else{
+   _config = {size: 10};
+}
+console.log(_config.size);
+\end{lstlisting}
+\end{minipage}
+\caption{Example of a pair of code snippets used in the interview pertaining to the \emph{Conditional Operator} atom candidate}
+\label{code:ternary}
+\vspace{-0.2cm}
+\end{figure*}
+
+\begin{mq}
+\emph{``I prefer to write [code using the \lhs version], but I think [the \rhs version] is easier to read, especially for newer programmers''}.
+\end{mq}
+
+\begin{mq}
+\emph{``When I am programming, I write code with the conditional operator, [...], but, to be honest, I still think that 
+[the code using the \rhs version] 
+is easier to understand''}.
+\end{mq}
+
+%% \begin{mq}
+%% \emph{``I think [the \lhs version] is easier to understand, but [the \rhs version] is what I would write"}
+%% \end{mq}
+
+%% The atom candidate Ternary Operator also opens up
+%% the possibility for a derivative construct that JavaScript
+%% allows which can be rather confusing, and that is the nested
+%% ternaries construct, in which the right-hand side of the a
+%% ternary operator can be another ternary construct.
+%% While nested ternaries remove the number of lines that
+%% would be necessary to construct using nested if-then-else statements,
+%% they can become quite taxing to understand.
+%% Nested ternaries are a choice of atoms to be analyzed in future work.
+
+The Pre-Increment atom candidate also caused a
+conflict in one of the interviewees, who
+regarded the clean version as simpler to understand, but would still opt to write
+code with the atom. In contrast, %to such opinion,
+one of the participants found the version with the atom candidate more elegant, but recognized it was less readable, and was willing to sacrifice elegance for readability. In the repeated measures study, we found a significant difference in favor of the clean version, with a large effect size in its favor. In the latin square study, no difference could be observed in terms of correctness. However, there was a significant difference in terms of the time required to predict the output correctly in favor of the obfuscated version. 
+%% \rb{pela discuss\~{a}o anterior, parece-me que alguns
+%%   desenvolvedores reconhecem que esses candidatos
+%%   a \'{a}tomos introduzem certa dificuldade de compreens\~{a}o;
+%%   mas mesmo assim optam por usar a constru\c c\~{a}o correspondente.
+%%   Acho que cabe um box aqui com essa discuss\~{a}o sobre isso.}
+
+When analyzing the Logic as Control Flow atom candidate, one of the interviewees gave an example of personal experience that might motivate one to avoid writing code using this construct:
+
+\begin{mq}
+  \emph{``This one is interesting, because I have written code that looks like the left-hand side [obfuscated version], and my colleagues complained that it was difficult to understand. Nowadays I prefer to write code using the version on the right-hand side [clean version]''}.
+\end{mq}
+\noindent
+None of the two studies found a significant difference in correctness between clean and obfuscated versions of snippets related to this atom candidate. However, in the latin square study the participants analyzing clean versions of the snippets required significantly less time. 
+
+For two of the atom candidates, the interviewees were unanimous in their preference for the clean version: Comma Operator and Omitted Curly Braces. Not coincidentally, in both experiments there were significant differences in correctness in favor of the clean versions for both atoms. Regarding the first one, we could often notice during the interviews that the \emph{\lhs} (with the atom of confusion) caused significant confusion among the participants. One remark about the \emph{Comma Operator} atom of confusion is listed below:
+
+%% \begin{mq}
+%% \emph{``I just learned that [the \lhs version of this code] is possible. I did not even know it worked''}
+%% \end{mq}
+
+\begin{mq}
+\emph{``The code in [the \lhs version] is unlikely to be understood unless the programmer knows \clang or \cpplang''}.
+\end{mq}
+
+As for the atom candidate Omitted Curly Braces, one of the interviewees mentioned that, although they understand why one would opt not to use braces for simple if-then-else statements, they still advised against it, on grounds that:
+
+\begin{mq}
+\emph{``[I prefer the \rhs version of the code \ldots]
+If I want to see well-written, easily understandable code, then I also have to do my job. Therefore I believe that, since I do not know who is on the other end maintaining this code, and it could be any person with any level of expertise, then I try to write readable, easy-to-understand code''}.
+\end{mq}
+
+%This is an interesting perspective, because such a perhaps simple decision,  might hinder novice developers in the task of maintaining code; and one cannot make any assumption about the programmers' experience of who is going to maintain a code in a long run.
+
+%This is an interesting perspective because such a simple decision might hinder novice developers in maintaining code; one cannot assume the programmers' experience of who will maintain a code in the long run.
+
+
+
+\subsubsection{Confusion in JavaScript Code} 
+
+% The final remarks that were drawn from the interviews are related to potentially confusing constructs that were suggested by the participants, as well as their perspective on JavaScript as a language, from which we can also uncover some other forms in which the language itself might contribute to writing confusing code.
+
+The final remarks drawn from the interviews are related to potentially confusing constructs suggested by the participants and their perspectives on JavaScript as a language. From the latter, we can also uncover some other forms in which the language itself might contribute to writing confusing code.
+
+One of the participants mentioned that the use of JavaScript's prototype-based inheritance can make it difficult to understand code, particularly when involving deep prototype chains.
+%This is a core feature of the language, and most high-level tools and frameworks abstract it away.
+%Although this was only mentioned by one practitioner, this is an important remark, as true understanding of JavaScript software necessarily involves understanding the concept of prototypes.
+% When asked about particular JavaScript constructs or patterns that can make code difficult to understand, three participants cited the callback pattern, which can lead to several levels of nested function calls, as extremely difficult to assimilate.
+When asked about particular JavaScript constructs or patterns that can make code difficult to understand, three participants cited the callback pattern---potentially leading to several levels of nested function calls---as extremely difficult to assimilate. One of the respondents stated:
+
+\begin{mq}
+\emph{``Nested callbacks are very confusing. Even writing them can be confusing, let alone understanding them.''}
+\end{mq}
+
+Two other developers implicitly touched upon the callback pattern, mentioning that it can be difficult to understand \emph{asynchronous} programming in JavaScript.
+%Since what is really happening at a lower level is that the JavaScript engine creates a callback stack that is separate from the main execution stack, and that callback functions are only executed when the main execution stack is empty, the concepts of asynchronous events and callbacks are inseparable in the language, and any abstractions for callback functions, such as promises and async/await syntax only hide the pattern.
+We also found other idioms that are JavaScript atom candidates, including
+\emph{property access} via array subscription (\lstinline[language=javascript]{V1['P1']} instead of \lstinline[language=javascript]{V1.P1}) and \emph{arrow functions} (see listings~\ref{arr1} and~\ref{arr2}). The former was investigated in the repeated measures study but we did not find a significant difference between clean and obfuscated versions. As future work, we aim at investigating whether or not these atom candidates are more likely to introduce confusion in JavaScript code.
+
+\begin{figure}
+\begin{small}
+\begin{lstlisting}[language=JavaScript,caption=Example of arrow function.,label=arr1]
+let inc = (x) => x + 1;
+\end{lstlisting}
+\begin{lstlisting}[language=JavaScript,caption=Alternative version without arrow function.,label=arr2]
+let inc = function(x) {
+  return x + 1
+}
+\end{lstlisting}
+\vspace*{-0.6cm}
+\end{small}
+\end{figure}
