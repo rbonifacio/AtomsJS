@@ -1,0 +1,49 @@
+id,description
+1,Implicit Predicate
+2,Infix Operator Precedence
+3,Post Increment
+4,Pre Increment
+5,Constant Variables
+6,Indentation No Braces
+7,Ternary Operator
+8,Arithmetic As Logic
+9,Comma Operator
+10,Assignment As Value
+11,Logic As Control Flow
+12,Repurposed Variables
+13,Dead Unreachable Repeated
+14,Change Literal Encoding
+15,Ommited Curly Braces
+16,Type Conversion
+17,Indentation With Braces
+18,Automatic Semicolon Insertion
+19,Property Access
+20,Arrow Function
+21,Array Spread
+22,Object Spread
+23,Array Destructuring
+24,Object Destructuring
+25,Implicit Predicate
+26,Infix Operator Precedence
+27,Post Increment
+28,Pre Increment
+29,Constant Variables
+30,Indentation No Braces
+31,Ternary Operator
+32,Arithmetic As Logic
+33,Comma Operator
+34,Assignment As Value
+35,Logic As Control Flow
+36,Repurposed Variables
+37,Dead Unreachable Repeated
+38,Change Literal Encoding
+39,Ommited Curly Braces
+40,Type Conversion
+41,Indentation With Braces
+42,Automatic Semicolon Insertion
+43,Property Access
+44,Arrow Function
+45,Array Spread
+46,Object Spread
+47,Array Destructuring
+48,Object Destructuring
