@@ -1,0 +1,79 @@
+---
+title: "Atoms JS - Prevalence Study"
+author: "Rodrigo Bonifácio et al."
+date: '2022-12-13'
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd(".")
+require(sqldf)
+```
+
+## R Markdown
+
+This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+
+When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+
+```{r cars}
+prevalence <- read.csv("dataset.csv")
+repositories <- read.csv("repositories.csv")
+
+##  [1] "language"         "id"               "full_name"        "name"            
+##  [5] "size"             "stargazers_count" "forks"            "created_at"      
+##  [9] "git_url"          "num_lines"        "num_contributors"
+
+colnames(repositories)
+colnames(prevalence)
+nrow(prevalence)
+
+
+## [1] "atom"      "atom_name" "full_name" "location"  "url"
+
+sqldf("select atom_name, count(*) 
+       from prevalence 
+       group by atom_name 
+      order by 2 desc")
+
+sqldf("select count(distinct full_name) 
+       from prevalence")
+
+sqldf("select atom_name, count(distinct full_name) * 100 / 72.00 as Prevalence
+      from prevalence 
+       group by atom_name 
+       order by 2 desc")
+
+
+summary(repositories$num_lines)
+
+full_ds <- sqldf("select r.name, r.size, r.num_lines, p.* 
+                  from repositories r, prevalence p 
+                  where r.full_name = p.full_name")
+
+sqldf("select count(distinct name) from full_ds")
+
+sqldf("select name, size, num_lines, count(distinct atom_name), count(*)
+       from full_ds 
+       group by name, size, num_lines 
+       order by 3 desc")
+
+
+##                      atom_name Prevalence
+## 1              TernaryOperator  100.00000
+## 2            ImplicitPredicate  100.00000
+## 3           OmittedCurlyBraces   91.66667
+## 4      PostIncrementExpression   90.27778
+## 5        PreIncremenExpression   83.33333
+## 6            AssignmentasValue   81.94444
+## 7           LogicasControlFlow   56.94444
+## 8  AutomaticSemicolonInsertion   33.33333
+## 9            ArithmeticasLogic   23.61111
+## 10               CommaOperator   15.27778
+
+sqldf("select * from 
+       full_ds where  name = 'carbon' and atom_name = 'ImplicitPredicate'
+       order by RANDOM() 
+       LIMIT 100")
+```
