@@ -1,19 +1,22 @@
 \section{Prevalence Study}\label{sec:s04}
 
-To understand how often the analyzed atom candidates appear in open source projects, and thus answer our third research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mine a set of GitHub open source repositories and compute the prevalence of atom candidates.
+To understand how often the analyzed atom candidates appear in open source JavaScript projects, and thus answer our third research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mine a set of GitHub open source repositories and compute the prevalence of atom candidates.
 
 \subsection{Study Settings}
 
-We first collect the most popular GitHub repositories that are primarily written in JavaScript. We measure popularity using the project's stargazers. This metric, available through the GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate a project's popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then select the top 100 most popular repositories and remove projects that do not reach the first quartile of the distribution of lines of code.
+We first collect the most popular GitHub repositories that are primarily written in JavaScript. We measure popularity using the project's stargazers. This metric, available through the GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate projects' popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then select the top 100 most popular repositories and remove projects that do not reach the first quartile of the distribution of lines of code (excluding from our dataset small projects). 
 
 After filtering out JavaScript project candidates, we build a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num{1244} forks and at least \num{23672} stars. We automate all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
 
-We mine the occurrence of atom candidates from the repositories in our curated dataset using source code queries that we wrote using the CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). We also automate the process of running the queries and exporting the results to a format that simplifies our analysis (and also the reproduction of this study). Finally, we compute some descriptive statistics to measure the prevalence of atoms of confusion in practice. 
+We mine the occurrence of atom candidates from the repositories in our curated dataset using source code queries that we specified using the Semmle's CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). All CodeQL queries deal with a specific atom candidate, and collect the exact location in the source code where the atoms appear. Figure~\ref{lst:codeql} shows an example of a CodeQL query that mine occurrences of the conditional operator.
+
+Although most of our queries are simple, we have to circumvent a few corner cases to avoid false positives. For instance, we do not consider atom candidates the pre-increment occurrences that appear within
+\texttt{for statement} definitions.  We automate the process of running the queries and exporting the results to a format that simplifies our analysis (and also the reproduction of this study). Finally, we compute some descriptive statistics to measure the prevalence of atoms of confusion in practice. 
 
 \begin{table}[ht]
   \centering
    \caption{Some descriptive statistics about the projects used in the MSR study}
-  \begin{scriptsize}
+%  \begin{scriptsize}
  \begin{tabular}{rrrrr}
    \toprule
                        & Min.             & Median        & Mean             & Max. \\ \midrule
@@ -24,10 +27,32 @@ We mine the occurrence of atom candidates from the repositories in our curated d
  
     \bottomrule
  \end{tabular}
- \end{scriptsize}
+ %\end{scriptsize}
  \label{tab:projects-statistics} 
 \end{table}
 
+\begin{figure}
+\begin{lstlisting}[language=CodeQL]
+import javascript
+
+from ConditionalExpr e
+where not e.getTopLevel().isMinified() 
+select e, e.getLocation().getStartLine() as Location,e.getLocation().getFile()
+\end{lstlisting}
+\caption{CodeQL query that searches for Conditional Expressions.}
+\label{lst:codeql}
+\end{figure}
+
+%% \begin{lstlisting}[language=CodeQL]
+%% import javascript
+
+%% from ControlStmt c
+%% where not c.getTopLevel().isMinified() and
+%%  (c instanceof IfStmt and not c.(IfStmt).getCondition().mayHaveBooleanValue(true)) or
+%%  (c instanceof LoopStmt and  not c.(LoopStmt).getTest().mayHaveBooleanValue(true) ) or 
+%%  (c instanceof WithStmt and not  c.(WithStmt).getExpr().mayHaveBooleanValue(true))  
+%% select c, c.getLocation().getStartLine() as Location,c.getLocation().getFile()
+%% \end{lstlisting}  
 
 \subsection{Results}
 \label{sec:msr-results} 
@@ -35,14 +60,60 @@ We mine the occurrence of atom candidates from the repositories in our curated d
 In this section we present the results of the  software repository
 mining effort, whose goal is to reveal how prevalent atom candidates are in open source JavaScript projects. 
 We mined \minedprojects open source JavaScript repositories to understand how
-often atoms arise in real software. As in the interview study, this study focused on atoms that were investigated in both experiments.  
+often atoms arise in real software. As in the interview study, this study focused on atoms that were investigated in both
+experiments (detailed in Section~\ref{sec:s01} and Section~\ref{sec:s02}).  
 
 
 Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19} which investigate
 the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion
 frequently arise in JavaScript open source systems. For instance, the six most frequently found atoms
-occur in at least 80\% of the projects. Considering the extremes, atom candidates Conditional Operator and Implicit Predicate were found in all repositories we mined,
-while Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:occurrences-summary}).
+occur in at least 80\% of the projects. Considering the extremes, atom candidates Conditional Operator and
+Implicit Predicate were found in all repositories we mined (see examples in Figure~\ref{lst:conditional-operator-sample}
+and Figure~\ref{lst:implicit-predicate-sample}), while Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:occurrences-summary}).
+Figure~\ref{lst:comma-operator-sample} shows an example of the use of the Comma Operator in the \texttt{styled-components}
+project.
+
+\begin{figure}[htb]
+  \begin{lstlisting}[language=JavaScript]
+function prependModifierMarker (symbol, name, dynamic) {
+  return dynamic
+  ? ("_p(" + name + ",\"" + symbol + "\")")
+  : symbol + name // mark the event as captured
+}
+
+function concat (a, b) {
+  return a ? b ? (a + ' ' + b) : a : (b || '')
+}
+  \end{lstlisting}
+  \caption{Examples of the Conditional Operator atom present in the \texttt{vue} project (urls: shorturl.at/bJPS4 and shorturl.at/tJOS8)}
+   \label{lst:conditional-operator-sample}
+\end{figure}
+
+\begin{figure}[htb]
+  \begin{lstlisting}[language=JavaScript]
+React.useEffect(() => {
+  if (props.config.selectedLines) { // Implicit Predicate
+    dispatch({
+      type: 'MULTILINE',
+      selectedLines: props.config.selectedLines,
+    })
+  }
+}, [props.config.selectedLines])
+  \end{lstlisting}
+  \caption{Example of the Implicit Predicate atom present in the \texttt{carbon} project (url: shorturl.at/aloqU)}
+  \label{lst:implicit-predicate-sample}
+\end{figure}
+
+\begin{figure}[htb]
+  \begin{lstlisting}[language=JavaScript]
+var props = ((_props = {}),
+ (_props[SC_ATTR] = stringifyNames(names)),
+ (_props[SC_VERSION_ATTR] = '4.3.1'),
+ _props);
+  \end{lstlisting}
+  \caption{Example of the Comma Operator atom present in the \texttt{styled-components} project (url: shorturl.at/sCKM0)}
+  \label{lst:comma-operator-sample}
+\end{figure}
 
 % Figure~\ref{fig:rate} summarizes this finding, showing that the occurrence of atoms of confusion in JavaScript systems range from 11.34\% (Comma Operator) to 89.69\% (Ternary Operator).
 
@@ -78,7 +149,6 @@ while Comma Operator occurred in only 15\% of them (as seen in Table~\ref{tab:oc
 % Tue Apr 13 09:34:35 2021
 \begin{table}[ht]
   \centering
-  {\scriptsize 
 \caption{Summary of atom candidate occurrences in our dataset.}
 \label{tab:occurrences-summary}
 \setlength\tabcolsep{2pt} % default value: 6pt
@@ -98,7 +168,7 @@ Implicit Predicate & 100\% & 19.89 \\%&  intensively used \\
   Comma Operator & 15.28\% & 0.03 \\%& rarely used \\
    \bottomrule
 \end{tabular}
-  }
+  
 \end{table}
 
 

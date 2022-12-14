@@ -139,11 +139,14 @@
 \newcommand{\rhs}{right-hand side\xspace}
 
 \lstdefinelanguage{JavaScript}[]{Java}{
-  morekeywords={let, console.log},
+  morekeywords={var, let, console.log},
   moredelim=[is][\textcolor{darkgray}]{\%\%}{\%\%},
   moredelim=[il][\textcolor{darkgray}]{§§}
 }
 
+\lstdefinelanguage{CodeQL}[]{Java}{
+  morekeywords={select, from, where, not, and}
+}
 \newcommand{\na}{10\xspace}
 
 \begin{document}
