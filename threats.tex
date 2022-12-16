@@ -25,7 +25,50 @@ In the context of our survey study, we apply different non-parametric statistica
 
 %External validity is linked to whether it is possible to extrapolate the results of the study. 
 
-\textbf{External validity.} Our results suggest that the selected idioms and code constructs may lead to confusion for small code snippets, but it is not clear if that result extrapolates to other scenarios. Even though it is likely that in larger code bases the confusion induced by these constructs may be even greater, the existence of additional context may mitigate this effect. Another possible threat to the generalizability of our results, in particular for the survey and interviews, lies in the fact that the analyzed atoms may rarely occur in real JavaScript code bases. To mitigate that threat, we have analyzed 72 popular open source JavaScript repositories and found out that most of them are common, occurring at least once per 1,000 lines of code. Only Arithmetic as Logic and Comma Operator occur less frequently than once per 10,000 lines of code. 
+\textbf{External validity.} Our results suggest that the selected idioms and code constructs may lead to confusion for small code snippets, but it is not clear if that result extrapolates to other scenarios. Even though it is likely that in larger code bases the confusion induced by these constructs may be even greater, the existence of additional context may mitigate this effect. Another possible threat to the generalizability of our results, in particular for the survey and interviews, lies in the fact that the analyzed atoms may rarely occur in real JavaScript code bases. To mitigate that threat, we have analyzed 72 popular open source JavaScript repositories and found out that most of them are common, occurring at least once per 1,000 lines of code. Only Arithmetic as Logic and Comma Operator occur less frequently than once per 10,000 lines of code.
+
+\revised{\textbf{Precision of our CodeQL queries.}
+  We relied on existing CodeQL JavaScript predicates to implement most of our source code queries. However,
+  we still had to implement our own predicates for three specific queries: the queries that search for the atoms Automatic Semicolon Insertion, Comma Operator, and Omitted Curly Braces.
+  Figure~\ref{lst:codeql-automatic} shows examples of predicates we have implemented. Our test cases and manual assessments revealed that our queries correctly identified the
+  atoms in the source code. Unfortunately, we observed that a predefined CodeQL predicate (named mayHaveBooleanValue) we used to mine the Implicit Predicate atom might have
+  produced many false positives. That is, there are situations where this predicate wrongly states that an expression does not have a boolean value.
+  This issue might have inflated the number of Implicit Predicate occurrences we reported in Section~\ref{sec:s04}}.
+
+\begin{figure}[htb]
+\begin{lstlisting}[language=CodeQL, basicstyle=\scriptsize]
+import javascript
+
+predicate hasTokenAfter(ReturnStmt r) {
+  r.getLastToken().getNextToken().getValue() != "}"
+}
+
+
+predicate isNextTokenVariable(ReturnStmt r) {
+  r.getLastToken().getNextToken() instanceof IdentifierToken and 
+  r.getLastToken().getNextToken().getNextToken().getValue() != "="
+}
+
+
+predicate isNextTokenLiteral(ReturnStmt r) {
+  ( r.getLastToken().getNextToken() instanceof StringLiteralToken or
+    r.getLastToken().getNextToken() instanceof NumericLiteralToken ) and 
+  r.getLastToken().getNextToken().getNextToken().getValue() != "="
+ }
+
+from ReturnStmt r
+where not r.getTopLevel().isMinified() and
+ r.isSubjectToSemicolonInsertion() and 
+ r.getNumChildStmt() = 0 and
+ r.getNumChildExpr() = 0 and
+ not r.toString().matches("%;") and
+ hasTokenAfter(r) 
+select r, r.getLocation().getStartLine(), r.getLocation().getFile()
+\end{lstlisting}
+  \caption{CodeQL query that searches for the atom Automatic Semicolon Insertion. Note that, for this query,
+    we had to implement three CodeQL predicates.}
+  \label{lst:codeql-automatic}
+\end{figure}
 % \castor{A forma como os átomos foram detectados é uma ameaça que não discutimos.}
 
 
