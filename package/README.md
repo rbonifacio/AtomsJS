@@ -17,14 +17,14 @@ Evolving software is particularly challenging when the code has been poorly writ
 ### Latin Square Experiment
   * [Atoms](https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/atoms.pdf)
   * [Dataset](https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/survey-results.csv)
-  * [R Script for Analysis]((https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/analysis.Rmd))
+  * [R Script for Analysis](https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/analysis.Rmd)
   
 ### Survey Study
 
   * [Atoms](https://github.com/rbonifacio/AtomsJS/blob/main/package/s03/atoms.pdf)
   * [Dataset](https://github.com/rbonifacio/AtomsJS/blob/main/package/s03/dataset.csv)
   * [Transcriptions](https://github.com/rbonifacio/AtomsJS/blob/main/package/s03/transcriptions)
-  * [R Script for Analysis]((https://github.com/rbonifacio/AtomsJS/blob/main/package/s03/analysis.Rmd))
+  * [R Script for Analysis](https://github.com/rbonifacio/AtomsJS/blob/main/package/s03/analysis.Rmd)
 
 ### Prevalence  Study
 
