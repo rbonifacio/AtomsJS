@@ -1,0 +1,34 @@
+---
+title: "survey-analysis-final"
+output:
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=6, fig.height=4, fig.path='images/', dev=c('png', 'pdf'))
+
+library(questionr)
+library(fmsb)
+library(sqldf)
+library(xtable)
+library(effsize)
+setwd(".")
+
+```
+
+## Load the datasets
+
+```{r}
+ds <- read.csv("interview-summary.csv", head=T, sep=";")
+
+meanValues = c("", mean(ds$Left), mean(ds$Right), mean(ds$Neutral))
+
+colnames(ds) <- c("Atom", "LHS (without AOC)", "RHS (with AOC", "Neutral") 
+
+ds <- rbind(ds, meanValues)
+ds
+
+xtable(ds)
+```
