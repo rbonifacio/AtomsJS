@@ -1,0 +1,128 @@
+5751137
+
+---
+title: "Atoms"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+setwd(".")
+```
+
+```{r}
+dados <- read.csv("survey-results.csv")
+```
+
+
+```{r,echo=FALSE}
+##Considerando todos os dados... Refeito apos a selecao dos quadrados completos
+# prop.table(table(dados$correct,dados$atom),margin = 2)
+# chisq.test(dados$correct,dados$atom)
+# dim(dados)
+# length(unique(dados$rid))
+# length(unique(dados$sid))
+# length(unique(dados$qid))
+# table(dados$qid,dados$atom)
+# summary(as.factor(dados$qid))
+# zeroum <- ifelse(dados$correct=="CORRECT",1,0)
+# mod <- glm(zeroum~dados$atom+dados$experience+dados$education,family = "binomial")
+# mod <- glm(zeroum~dados$atom+dados$education,family = "binomial")
+# ?glm
+# summary(mod)
+# table(predict(mod,type="response")>.5, dados$correct)
+# 
+# 
+# for(i in 1:4){
+#   print(paste("experiencia ", i ))
+#   print(prop.table(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i]),margin=2))
+#   print(chisq.test(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i])))
+# }
+# 
+# for(i in 1:4){
+#   print(paste("experiencia ", i ))
+#   print(prop.table(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i]),margin=2))
+#   print(chisq.test(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i])))
+# }
+# 
+# 
+# for(i in 1:5){
+#   print(paste("educacao ", i ))
+#   print(prop.table(table(final$correct[dados$education==i],dados$atom[dados$education==i]),margin=2))
+#   print(chisq.test(table(dados$correct[dados$education==i],dados$atom[dados$education==i])))
+# }
+```
+
+
+Fazer a limpeza para ficar só os casos completos
+
+```{r}
+subred <- dados[dados$ref=="reddit" & dados$total == "YES",]
+summary(subred$total)
+contagem <- tapply(subred$time,subred$rid,length)
+casoscompletos <- names(contagem)[contagem==20]
+final <- subred[is.element(el = subred$rid, set = casoscompletos),]
+dim(final)
+```
+
+
+Refazendo a análise considerando apenas os casos completos
+
+
+```{r}
+prop.table(table(final$correct,final$atom),margin = 2)
+chisq.test(final$correct,final$atom)
+```
+```{r}
+teste <- as.factor(final$experience)
+contrr<-matrix(c(rep(1,4),c(1/2,1/2,-1/2,-1/2),c(1,-1,0,0),c(0,0,1,-1)),byrow=TRUE,nrow=4)
+contrasts(teste)<-solve(contrr)[,2:4]
+
+mod <- glm(final$correct~final$atom+teste+as.factor(final$education),family = "binomial")
+
+#mod <- glm(zeroum~final$atom+final$education,family = "binomial")
+summary(mod)
+
+
+for(i in 1:4){
+  print(paste("experiencia ", i ))
+  print(prop.table(table(final$correct[final$experience==i],final$atom[final$experience==i]),margin=2))
+  print(chisq.test(table(final$correct[final$experience==i],final$atom[final$experience==i])))
+}
+
+
+
+
+for(i in 1:5){
+  print(paste("educacao ", i ))
+  print(prop.table(table(final$correct[final$education==i],final$atom[final$education==i]),margin=2))
+  print(chisq.test(table(final$correct[final$education==i],final$atom[final$education==i])))
+}
+```
+
+
+## Fazendo a análise por questão, juntando pares de questão com atomo e sem atomo
+
+
+
+```{r}
+valoresqui <- c()
+for(i in 1:10){
+  subconjunto <- final[is.element(el = final$qid, set = c(i,i+10)),]
+  print(paste("Questão ", i))
+  print(table(subconjunto$correct,subconjunto$atom))
+  teste <- chisq.test(table(subconjunto$correct,subconjunto$atom))
+  print(teste)
+  valoresqui[i] <- teste$p.value
+  experiencia <- as.factor(subconjunto$experience)
+  contrr<-matrix(c(rep(1,4),c(1/2,1/2,-1/2,-1/2),c(1,-1,0,0),c(0,0,1,-1)),byrow=TRUE,nrow=4)
+  contrasts(experiencia)<-solve(contrr)[,2:4]
+  mod <- glm(subconjunto$correct ~ subconjunto$atom +  experiencia,family="binomial")
+  print(summary(mod))
+  print(prop.table(table(subconjunto$correct,subconjunto$experience),margin = 2))
+}
+
+```
+
+
+
