@@ -21,16 +21,14 @@ Evolving software is particularly challenging when the code has been poorly writ
 
 
 #### Repeated Measures Experiment
-
-* Atoms
+  * [Atoms](https://docs.google.com/spreadsheets/d/1A7Y605WK1fttCUmG9I-I2aTG9C95PVSjBRa3KNUlYn4/edit?usp=sharing)
   * Datasets
   * Analysis
   
 ### Latin Square Experiment
-
-  * Atoms
-  * Dataset
-  * Analysis
+  * [Atoms](https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/atoms.pdf)
+  * [Dataset]()
+  * [Analysis]()
   
 ### Survey Study
 
@@ -39,6 +37,6 @@ Evolving software is particularly challenging when the code has been poorly writ
 
 ### Prevalence  Study
 
-   * CodeQL queries
-   * Results
-   * Analysis
+   * [CodeQL queries](https://github.com/rbonifacio/AtomsJS/tree/main/package/s04/queries)
+   * [Results](https://github.com/rbonifacio/AtomsJS/blob/main/package/s04/dataset.csv) 
+   * [R Sript for Analysis](https://github.com/rbonifacio/AtomsJS/blob/main/package/s04/analysis.Rmd)
