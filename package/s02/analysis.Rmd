@@ -1,128 +1,272 @@
-5751137
-
 ---
-title: "Atoms"
-output: pdf_document
+title: "Survey Analysis"
+output:
+  html_document: default
+  pdf_document: default
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(fig.width=6, fig.height=4, fig.path='images/', dev=c('png', 'pdf'))
+
+library(questionr)
+library(fmsb)
+library(sqldf)
+library(xtable)
+library(effsize)
 setwd(".")
 ```
 
-```{r}
-dados <- read.csv("survey-results.csv")
+## (1) Load the datasets
+
+
+```{r cars}
+ds <- read.csv("survey-results.csv")
+nrow(ds)
+colnames(ds)
+
+atomId <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 0) 
+atomDescription <- c("Arithmetic as Logic", "Assignment as Value", 
+            "Automatic Semicolon Insertion",
+           "Comma Operator", "Ternary Operator", "Implict Predicate", 
+           "Logic as Control Flow", "Ommitted Curly Braces", "Post Increment", 
+           "Pre Increment")
+
+atom_ds <- data.frame(atomId, atomDescription)
 ```
 
 
-```{r,echo=FALSE}
-##Considerando todos os dados... Refeito apos a selecao dos quadrados completos
-# prop.table(table(dados$correct,dados$atom),margin = 2)
-# chisq.test(dados$correct,dados$atom)
-# dim(dados)
-# length(unique(dados$rid))
-# length(unique(dados$sid))
-# length(unique(dados$qid))
-# table(dados$qid,dados$atom)
-# summary(as.factor(dados$qid))
-# zeroum <- ifelse(dados$correct=="CORRECT",1,0)
-# mod <- glm(zeroum~dados$atom+dados$experience+dados$education,family = "binomial")
-# mod <- glm(zeroum~dados$atom+dados$education,family = "binomial")
-# ?glm
-# summary(mod)
-# table(predict(mod,type="response")>.5, dados$correct)
-# 
-# 
-# for(i in 1:4){
-#   print(paste("experiencia ", i ))
-#   print(prop.table(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i]),margin=2))
-#   print(chisq.test(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i])))
-# }
-# 
-# for(i in 1:4){
-#   print(paste("experiencia ", i ))
-#   print(prop.table(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i]),margin=2))
-#   print(chisq.test(table(dados$correct[dados$experience==i],dados$atom[dados$experience==i])))
-# }
-# 
-# 
-# for(i in 1:5){
-#   print(paste("educacao ", i ))
-#   print(prop.table(table(final$correct[dados$education==i],dados$atom[dados$education==i]),margin=2))
-#   print(chisq.test(table(dados$correct[dados$education==i],dados$atom[dados$education==i])))
-# }
+## (2) Filter the datasets
+
+```{r}
+subSet <- ds[ds$ref=="reddit" & ds$total == "YES",]
+summary(subSet$total)
+squareLengths <- tapply(subSet$time,subSet$rid,length)
+completeCases <- names(squareLengths)[squareLengths==20]
+ds <- ds[is.element(el = ds$rid, set = completeCases),]
+dim(ds)
+```
+
+## (3) Exploratory Data Analysis
+
+### Demographics 
+
+#### Education
+
+```{r dem-education}
+educationLevelIds <- c(1, 2, 3, 4, 5)
+educationLevelLabels <- c("High school degree or equivalent", 
+                          "Some university course but not a degree", 
+                          "Bacharelor degree", "Master degree", 
+                          "Doctor degree")
+
+education_ds <- data.frame(educationLevelIds, educationLevelLabels)
+colnames(education_ds) <- c("id", "description")
+
+tmp <- sqldf("select distinct sid, education from ds")
+
+demEducation <- sqldf("select b.description, count(*) total 
+                      from tmp a, education_ds b
+                      where a.education = b.id
+                      group by b.description 
+                      order by 2 desc")
+
+demEducation
+
+barplot(demEducation$total, col=topo.colors(5), 
+        ylim = c(0, 70), cex=0.7, cex.lab = 0.7, cex.axis=0.7, 
+        ylab="Number of participants")
+
+legend("topright", legend=demEducation$description, fill=topo.colors(5), cex=0.6)
 ```
 
 
-Fazer a limpeza para ficar só os casos completos
+#### Experience
 
-```{r}
-subred <- dados[dados$ref=="reddit" & dados$total == "YES",]
-summary(subred$total)
-contagem <- tapply(subred$time,subred$rid,length)
-casoscompletos <- names(contagem)[contagem==20]
-final <- subred[is.element(el = subred$rid, set = casoscompletos),]
-dim(final)
+```{r dem-experience}
+experienceLevelIds <- c(1, 2, 3, 4)
+experienceLevelLabels <- c("Under one year of experience", 
+                           "One year and under four years of experience", 
+                           "Four years and under ten years of experience",
+                           "More than ten years of experience")
+
+experience_ds <- data.frame(experienceLevelIds, experienceLevelLabels)
+
+colnames(experience_ds) <- c("id", "description")
+
+tmp <- sqldf("select distinct sid, experience from ds")
+demExperience <- sqldf("select experience, count(*) total 
+                       from tmp group by experience order by 1")
+
+demExperience <- sqldf("select a.experience, b.description, a.total
+                        from demExperience a, experience_ds b
+                        where a.experience = b.id 
+                        order by 3 desc")
+demExperience
+
+barplot(demExperience$total, col=topo.colors(4), 
+        ylim = c(0, 60), cex=0.7, cex.lab = 0.7, cex.axis=0.7, 
+        ylab="Number of participants")
+
+legend("topright", legend=demExperience$description, fill=topo.colors(4), cex=0.6)
+```
+
+### Total number of correct answers (Table III)
+
+```{r correct-answers}
+codeWithAtoms <- sqldf("select qid, count(*) confuseCode, avg(time) timeConfuseCode
+                        from ds 
+                        where atom == 'YES' and correct = 'CORRECT'
+                        group by qid")
+
+codeWithoutAtoms <- sqldf("select qid, count(*) cleanCode, avg(time) timeCleanCode
+                        from ds 
+                        where atom == 'NO' and correct = 'CORRECT'
+                        group by qid")
+
+codeWithAtoms["atomId"] = codeWithAtoms$qid %% 10
+codeWithoutAtoms["atomId"] = codeWithoutAtoms$qid %% 10
+
+merged <- sqldf("select c.atomDescription as Atom, 
+                        a.confuseCode as 'Confuse Code', 
+                        b.cleanCode as 'Clean Code',  
+                        (b.cleanCode * 100 / a.confuseCode) -100 as 'Delta (%)'
+                 from codeWithAtoms a, codeWithoutAtoms b, atom_ds c
+                 where a.atomId = b.atomId and a.atomId = c.atomId
+                 order by 4 desc")  
+
+xtable(merged)
+```
+
+```{r wrong-answers-plot}
+wrongAnswers = ds[ds$correct == 'WRONG', ]
+
+wrongAnswersByStudentTreatment <- aggregate(rid~sid+atom, 
+                                            data = wrongAnswers, 
+                                            FUN=length)
+
+boxplot(wrongAnswersByStudentTreatment$rid ~ wrongAnswersByStudentTreatment$atom
+        , ylab = "", xlab = "", main = "", 
+        names = c("Clean Code", "Confuse Code"))
 ```
 
 
-Refazendo a análise considerando apenas os casos completos
+### Average time for correct answers (Table IV)
+
+```{r time}
+merged <- sqldf("select c.atomDescription as Atom, 
+                        a.timeConfuseCode as 'Confuse Code', 
+                        b.timeCleanCode as 'Clean Code',
+                        (b.timeCleanCode * 100 / a.timeConfuseCode) -100 as 'Delta (%)'
+                 from codeWithAtoms a, codeWithoutAtoms b, atom_ds c
+                 where a.atomId = b.atomId and a.atomId = c.atomId
+                 order by 4")  
+xtable(merged)
+
+correctAnswers = ds[ds$correct == 'CORRECT', ]
+
+correctAnswersByStudentTreatment <- aggregate(time~sid+atom, 
+                                            data = correctAnswers, 
+                                            FUN=mean)
+
+boxplot(log(correctAnswersByStudentTreatment$time) ~ correctAnswersByStudentTreatment$atom
+        , ylab = "", xlab = "", main = "Number of wrong answers of each participant", 
+        names = c("Clean Code", "Confuse Code"))
 
 
-```{r}
-prop.table(table(final$correct,final$atom),margin = 2)
-chisq.test(final$correct,final$atom)
 ```
+
+
 ```{r}
-teste <- as.factor(final$experience)
+prop.table(table(ds$correct,ds$atom),margin = 2)
+chisq.test(ds$correct,ds$atom)
+```
+
+## (4) Regression Analysis (correctness~atom + experience + education)
+
+```{r}
+experience <- as.factor(ds$experience)
+education <- as.factor(ds$education) 
 contrr<-matrix(c(rep(1,4),c(1/2,1/2,-1/2,-1/2),c(1,-1,0,0),c(0,0,1,-1)),byrow=TRUE,nrow=4)
-contrasts(teste)<-solve(contrr)[,2:4]
+contrasts(experience)<-solve(contrr)[,2:4]
 
-mod <- glm(final$correct~final$atom+teste+as.factor(final$education),family = "binomial")
+ds$atom <- as.factor(ds$atom)
+ds$correct <- as.factor(ds$correct)
 
-#mod <- glm(zeroum~final$atom+final$education,family = "binomial")
+mod <- glm(ds$correct~ds$atom+experience+education,family = "binomial")
 summary(mod)
+```
 
+### Impact considering Developer Experience 
 
+```{r experience}
 for(i in 1:4){
-  print(paste("experiencia ", i ))
-  print(prop.table(table(final$correct[final$experience==i],final$atom[final$experience==i]),margin=2))
-  print(chisq.test(table(final$correct[final$experience==i],final$atom[final$experience==i])))
-}
-
-
-
-
-for(i in 1:5){
-  print(paste("educacao ", i ))
-  print(prop.table(table(final$correct[final$education==i],final$atom[final$education==i]),margin=2))
-  print(chisq.test(table(final$correct[final$education==i],final$atom[final$education==i])))
+  print(paste("Experience ", i ))
+  print(prop.table(table(ds$correct[ds$experience==i],ds$atom[ds$experience==i]),margin=2))
+  print(chisq.test(table(ds$correct[ds$experience==i],ds$atom[ds$experience==i])))
 }
 ```
 
+### Impact considering Developer Education 
 
-## Fazendo a análise por questão, juntando pares de questão com atomo e sem atomo
+```{r education}
+for(i in 1:5){
+  print(paste("Education ", i ))
+  print(prop.table(table(ds$correct[ds$education==i],ds$atom[ds$education==i]),margin=2))
+  print(chisq.test(table(ds$correct[ds$education==i],ds$atom[ds$education==i])))
+}
+```
 
-
+## Impact of Individual Atoms and Hypotheses Testing
 
 ```{r}
-valoresqui <- c()
+chiTest <- c()
+oddsRatio <- c()
+oddsRatioTest <- c()
+ci25 <- c()
+ci975 <- c()
+mannWhitneyTest <- c()
+cliffDelta <- c()
 for(i in 1:10){
-  subconjunto <- final[is.element(el = final$qid, set = c(i,i+10)),]
-  print(paste("Questão ", i))
-  print(table(subconjunto$correct,subconjunto$atom))
-  teste <- chisq.test(table(subconjunto$correct,subconjunto$atom))
-  print(teste)
-  valoresqui[i] <- teste$p.value
-  experiencia <- as.factor(subconjunto$experience)
+  subSet <- ds[is.element(el = ds$qid, set = c(i,i+10)),]
+  print(atomDescription[i])
+  
+  tableCorrectness <- table(subSet$correct,subSet$atom)
+  tableTime <- aggregate(ds$time, by=list(atom=ds$atom), FUN=sum)
+  
+  print(tableCorrectness)
+  print(tableTime)
+  
+  test <- chisq.test(tableCorrectness)
+  print(test)
+  
+  chiTest[i] <- format.pval(test$p.value) 
+  oddsRatio[i] <- odds.ratio(tableCorrectness)$OR
+  oddsRatioTest[i] <- format.pval(odds.ratio(tableCorrectness)$p)
+  ci25[i] <- odds.ratio(tableCorrectness, level=0.95)$"2.5 %"
+  ci975[i] <- odds.ratio(tableCorrectness, level=0.95)$"97.5 %"
+  
+  mannWhitneyTest[i] <- format.pval(wilcox.test(subSet$time~as.factor(subSet$atom))$p.value)
+  cliffDelta[i] <- cliff.delta(subSet$time~as.factor(subSet$atom))$estimate
+  
+  experience <- as.factor(subSet$experience)
   contrr<-matrix(c(rep(1,4),c(1/2,1/2,-1/2,-1/2),c(1,-1,0,0),c(0,0,1,-1)),byrow=TRUE,nrow=4)
-  contrasts(experiencia)<-solve(contrr)[,2:4]
-  mod <- glm(subconjunto$correct ~ subconjunto$atom +  experiencia,family="binomial")
+  contrasts(experience)<-solve(contrr)[,2:4]
+  
+  mod <- glm(subSet$correct ~ subSet$atom +  experience,family="binomial")
   print(summary(mod))
-  print(prop.table(table(subconjunto$correct,subconjunto$experience),margin = 2))
+  print(prop.table(table(subSet$correct,subSet$experience),margin = 2))
 }
+analysis_df <- data.frame(atomDescription, chiTest, oddsRatio, 
+                          oddsRatioTest, ci25, ci975, mannWhitneyTest, cliffDelta)
 
+analysis_df <- analysis_df[order(-oddsRatio),]
+
+colnames(analysis_df) <- c("Atom", "ChiTest", 
+                           "Odds Ratio Correctness", 
+                           "p-value", "CI 2.5%", "CI 97.5%", 
+                           "Wilcox Test (Time)", 
+                           "Cliff Delta")
+
+xtable(analysis_df)
 ```
-
-
-

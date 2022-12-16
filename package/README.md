@@ -23,7 +23,7 @@ Evolving software is particularly challenging when the code has been poorly writ
 
   * [Atoms](https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/atoms.pdf)
   * [Answers]()
-  * [Transcriptions](https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/transcriptions)
+  * [Transcriptions](https://github.com/rbonifacio/AtomsJS/blob/main/package/s03/transcriptions)
   * [R Script for Analysis]
 
 ### Prevalence  Study
