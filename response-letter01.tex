@@ -9,22 +9,26 @@
 
 \begin{letter}{Journal of Systems and Software Editors-in-Chief}
   
-\opening{Dear Profs. P. Avgeriou and D. Shepherd} 
+  \opening{Dear JSS editors and reviewers}
 
-First of all, we would like to thank the anonymous reviewers of
-our paper.
+  We thank the associate editor and reviewers
+  for their detailed, constructive comments. We took great care to address all points raised
+  with a thorough revision of the manuscript. In this response, we detail the changes we introduced for major
+  review comments. We hope you will find the revised version of the manuscript satisfactory,
+  and we look forward to any further comments.
+
 
 {\bf R1 concern about the paper's structure}
 
-We changed the structure of the paper. In the previous version,
+We changed the whole structure of the paper. In the previous version,
 we organized the paper in terms of Study Settings, Results, and Discussion.
-Each one of those sections present information of the four studies.
-We now orgnized the paper in terms of one section per study, and each
-one of these sections detail the Study Settings and Results. We
-hope that this new structure might have improved the paper understanding.
-This new structure also makes easier to change the order of the
+Each one of those sections presented detailed information of the four studies.
+We now organized the paper in terms of one section per study, and each
+one of these sections details specific Study Settings and Results. We
+hope that this new structure might have improved the paper readability.
+This new structure also makes it easier to change the order of the
 studies' presentation. So, if the reviewers agree that we should
-present our fourth study first (as R1 suggested), we can easily
+present our Prevalence Study first (as R1 suggested), we can easily
 apply this change. Thanks for the comment. 
 
 {\bf R1 concern about using effect size}
@@ -32,7 +36,7 @@ apply this change. Thanks for the comment.
 We are computing effect size even when the differences are
 not statistically relevant because this might reveal practical
 relevance, in particular in border lines scenarios---as is the case
-that we show in the paper. If the reviewers do not agree with our
+that we show in the paper. If the reviewers disagree with our
 decision, we can remove these calculations from the paper in the
 final version. Thanks for the comment. 
 
@@ -43,29 +47,28 @@ changes are in {\color{blue}blue}. Thanks for the comment.
 
 {\bf R2 concern about the procedures we use to identify atom candidates}
 
-We clarified this point on the current section 4.1 of the paper (page 10). The changes are in
+We clarified this point in the current Section 4.1 of the paper (page 10). The changes are in
 {\color{blue}blue}. Thanks for the comment.
 
 
-{\bf R3 concern about the lengthy of the MSR study}
+{\bf R3 concern about the length of the MSR study}
 
-Considering the new organization of the paper, we have actually devoted almost 5 pages
-of the paper to the MSR study on Prevalence (excluding the discussion section). This is comparable to the
-other three studies. Nonetheless, if the reviewers agree that we should put more emphasis
-on specific parts of this study, we can enrich this section in the final
-version of the paper. Thanks for the comment. 
+Considering the paper's new organization, we have devoted almost five pages of the paper to the MSR study on
+Prevalence (excluding the discussion section). This length is comparable to the other three studies.
+Nonetheless, if the reviewers agree that we should emphasize specific parts of this study,
+we can enrich this section in the final version of the paper. Thanks for the comment.
 
 {\bf R3 concerns about the lack of replication package}
 
 We are sharing our replication \href{https://github.com/rbonifacio/AtomsJS/tree/main/package}{package at GitHub}.
 We totally agree that we should have shared it before. We hope that our package might
-help understand our work better. We have included examples of the CodeQL queries we used
+help a reader to understand our work better. We have included examples of the CodeQL queries we used
 to search for atoms of confusion in open source JavaScript projects---both in the paper
 as well as in the replication package. The replication package also contains all atoms of
-confusion we collected using the CodeQL queris (MSR study) and the atoms candidates
+confusion we collected using the CodeQL queries (MSR study) and the atom candidates
 we explored in the survey and experiments. Some of our queries might lead to
 either false positives and false negatives, although we worked hard to improve
-accuracy. We include a new threat to validity regarding this issue, that might threaten
+accuracy. We included a new threat to validity regarding this issue that might threaten
 any comparison of atoms prevalence in JavaScript and C/C++. Thanks again for this comment.
 
 {\bf R3 concerns about the presentation of both experiments (RM/LS)}
@@ -74,7 +77,7 @@ We justify better the report of both experiments in Section 3 (page 7). The chan
 are in {\color{blue}blue}. We revisited this issue again on Section 8.3 (pages 36, 37, and
 38). The changes are in {\color{blue}blue}.
 
-Unfortunatly, we cannot use the same test (Chi-square) for both experiments. The McNemar test targets paired,
+Unfortunately, we cannot use the same test (Chi-square) for both experiments (as R3 suggested). The McNemar test targets paired,
 dependent samples (\url{https://en.wikipedia.org/wiki/McNemar_test}). This is the case of the repeated measures study.
 Chi-square is for independent samples. The Chi-square test assumes that the groups are not related
 (\url{https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3900058/}). This is precisely what happens in the Latin square study,
@@ -82,7 +85,7 @@ where each participant is exposed to a single treatment. This is not the case in
 where the same subjects receive both treatments. 
 
 
-We have also fixed all minor issues the reviewers reported. Thanks one more time.
+We have also fixed all other minor issues the reviewers reported. Thanks one more time.
 
 \closing{Yours Faithfully,}
 
