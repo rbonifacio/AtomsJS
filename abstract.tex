@@ -9,8 +9,9 @@ and Java, different languages have different features, developer communities, an
 justifies the exploration of other languages to verify whether they also exhibit confusion-inducing patterns. 
 In this paper we investigate the impact of atoms of confusion on understanding JavaScript code---a
 dynamically typed language whose popularity is growing in the most diverse application domains. In this paper
-we report the results of a mixed-methods research comprising two experiments, a set of interviews with practitioners,
-and a mining software repository (MSR) effort. 
+we report the results of a mixed-methods research comprising a mining software repositories (MSR) study, two experiments, and a set of interviews with practitioners.  
+Our MSR effort shows that atom candidastes are frequent and used intensively in 72 popular open-source JavaScript projects:
+four atom candidates appear in 90\% of them and two of them occur more than once for every 100 lines of code. This helps motivate the other three studies. 
 The results of both experiments suggest that two code patterns that have been previously observed to confuse \clang
 programmers also confuse JavaScript programmers: the comma operator and assignments
 being used as values. In addition, some code patterns, such as omitted curly braces and change of literal encoding, have caused confusion in participants in one of the experiments. We discover that some JavaScript-specific elements, such as automatic semicolon insertion and object destructuring, also have the potential to cause confusion. 
@@ -19,8 +20,7 @@ being used as values. In addition, some code patterns, such as omitted curly bra
 %of the two experiments. 
 For all these cases effect sizes were either medium or high. The interviews we conducted
 %reinforce some of these findings while pointing to
-indicate other constructs and idioms that merit investigation in the future. Finally, our MSR effort reveals that the examined code patterns are frequent and used intensively in 72 popular open-source JavaScript projects:
-four atom candidates appear in 90\% of them and two of them occur more than once for every 100 lines of code.
+indicate other constructs and idioms that merit investigation in the future. 
 %Our findings provide significant evidence that some code patterns should be avoided if code is expected to be understood by a wide audience. 
 \end{abstract}
 

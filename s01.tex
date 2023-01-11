@@ -1,5 +1,7 @@
 \section{Repeated Measures Study}\label{sec:s01}
 
+\revised{The results of the repository mining study show that some of the atom candidates we aim to study occur very frequently. Taking that as a starting point, we conduct two experiments and an interview study to gauge their potential to cause confusion. Furthermore, since we are focusing on JavaScript code, we also analyze a number of atom candidates that are specific to this language in one of the experiments.}
+
 The first experiment we perform uses a repeated measures, or within-subject, design~\cite{Keselman:2001:ARM}. This experiment is inspired by the work of Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17}, but targeting JavaScript instead of the C language, and including some methodological differences. It covers all the atom candidates analyzed in the work of Gopstein et al. that can be transposed to JavaScript and adds candidates that are specific to this language.
 %Overall, we select 24 atom candidates in the repeated measures study. 
 
@@ -101,29 +103,29 @@ According to the thresholds established by Chen and colleagues~\cite{Chen:2010:H
 Atom candidate & McNemar test &      Odds Ratio \\
 \midrule
 Object Destructuring      &   \textbf{$<$ 0.0001*} & $\infty$ \\
-Type Conversion           &   \textbf{$<$ 0.0001*} & 12.0 \\
-Change of Literal Encoding   &   \textbf{$<$ 0.0001*} & 28.0 \\
-Comma Operator            &   \textbf{$<$ 0.0001*} & 11.5 \\
+Type Conversion           &   \textbf{$<$ 0.0001*} & 12.00 \\
+Change of Literal Encoding   &   \textbf{$<$ 0.0001*} & 28.00 \\
+Comma Operator            &   \textbf{$<$ 0.0001*} & 11.50 \\
 Lack of Indentation No Braces     &   \textbf{$<$ 0.0001*} &  11.0 \\
-Assignment As Value       &   \textbf{$<$ 0.0001*} &  9.3 \\
-Pre-Increment              &  \textbf{0.0003*} &    16.0 \\
-Omitted Curly Braces      &  \textbf{0.0009*} &  6.3 \\
-Array Destructuring       &  0.0023 &     7.5 \\
-Post-Increment              &  0.0225 &     5.5 \\
-Array Spread              &  0.0490 &    3.3 \\
-Object Spread             &  0.0636 &     2.8 \\
-Property Access           &  0.0636 &     2.8 \\
-Infix Operator Precedence &  0.1796 &     2.5 \\
-Arrow Function            &  0.2891 &     3.0 \\
-Arithmetic As Logic       &  0.3323 &  1.8 \\
-Automated Semicolon Insertion  &  0.3915 &  1.4 \\
-Logic As Control Flow     &  0.4421 &  1.5 \\
+Assignment As Value       &   \textbf{$<$ 0.0001*} &  9.30 \\
+Pre-Increment              &  \textbf{0.0003*} &    16.00 \\
+Omitted Curly Braces      &  \textbf{0.0009*} &  6.30 \\
+Array Destructuring       &  0.0023 &     7.50 \\
+Post-Increment              &  0.0225 &     5.50 \\
+Array Spread              &  0.0490 &    3.30 \\
+Object Spread             &  0.0636 &     2.80 \\
+Property Access           &  0.0636 &     2.80 \\
+Infix Operator Precedence &  0.1796 &     2.50 \\
+Arrow Function            &  0.2891 &     3.00 \\
+Arithmetic As Logic       &  0.3323 &  1.80 \\
+Automated Semicolon Insertion  &  0.3915 &  1.40 \\
+Logic As Control Flow     &  0.4421 &  1.50 \\
 %Constant Variables        &  0.5000 &     0.0 \\
-Implicit Predicate        &  0.6900 &  1.3 \\
-Lack of Indentation With Braces   &  0.7266 &  1.7 \\
-Conditional Operator      &  0.7905 &  1.3 \\
-Dead Unreachable Repeated &  1.0000 &     1.5 \\
-Repurposed Variables      &   1.0000 &     1.0 \\
+Implicit Predicate        &  0.6900 &  1.30 \\
+Lack of Indentation With Braces   &  0.7266 &  1.70 \\
+Conditional Operator      &  0.7905 &  1.30 \\
+Dead Unreachable Repeated &  1.0000 &     1.50 \\
+Repurposed Variables      &   1.0000 &     1.00 \\
 \bottomrule
 \end{tabular}
 }

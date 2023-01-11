@@ -1,12 +1,14 @@
 \section{Prevalence Study}\label{sec:s04}
 
-To understand how often the analyzed atom candidates appear in open source JavaScript projects, and thus answer our third research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mine a set of GitHub open source repositories and compute the prevalence of atom candidates.
+%To understand how often the analyzed atom candidates appear in open source JavaScript projects, and thus answer our third research question (\emph{What is the frequency of occurrence of atoms of confusion in practice?}), we mine a set of GitHub open source repositories and compute the prevalence of atom candidates.
 
-\subsection{Study Settings}
+We mine a set of GitHub open source repositories and compute how often these atom candidates occur. We do this with the goal of quantifying the prevalence of the investigated atom candidates. \revised{If they rarely occur in real-world systems, this would suggest that cannot be a significant source of confusion for developers. This study addresses our first research question (\emph{What is the frequency of occurrence of atom candidates in practice?}).}
+
+\subsection{Study Setting}
 
 We first collect the most popular GitHub repositories that are primarily written in JavaScript. We measure popularity using the project's stargazers. This metric, available through the GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate projects' popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then select the top 100 most popular repositories and remove projects that do not reach the first quartile of the distribution of lines of code (excluding from our dataset small projects). 
 
-After filtering out JavaScript project candidates, we build a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num{1244} forks and at least \num{23672} stars. We automate all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
+After filtering out JavaScript project candidates, we build a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num[group-separator = {,}]{1244} forks and at least \num[group-separator = {,}]{23672} stars. We automate all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
 
 We mine the occurrence of atom candidates from the repositories in our curated dataset using source code queries that we specified using the Semmle's CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). All CodeQL queries deal with a specific atom candidate, and collect the exact location in the source code where the atoms appear. Figure~\ref{lst:codeql} shows an example of a CodeQL query that mine occurrences of the conditional operator.
 
@@ -20,10 +22,10 @@ Although most of our queries are simple, we have to circumvent a few corner case
  \begin{tabular}{rrrrr}
    \toprule
                        & Min.             & Median        & Mean             & Max. \\ \midrule
- Lines of Code         & \num{5543}       & \num{36161.5} & \num{111432.33}  & \num{1278405} \\
- Num. of Forks         & \num{1244}       & \num{6078}    & \num{8906.24}    & \num{68849} \\
- Num. of Contributors  & \num{6}          & \num{285.5}   & \num{533.44}     & \num{4047} \\
- Num. of Stars         & \num{23672}      & \num{34990}   & \num{46919.51}   & \num{310935} \\
+ Lines of Code         & \num[group-separator = {,}]{5543}       & \num[group-separator = {,}]{36161.5} & \num[group-separator = {,}]{111432.33}  & \num[group-separator = {,}]{1278405} \\
+ Num. of Forks         & \num[group-separator = {,}]{1244}       & \num[group-separator = {,}]{6078}    & \num[group-separator = {,}]{8906.24}    & \num[group-separator = {,}]{68849} \\
+ Num. of Contributors  & \num[group-separator = {,}]{6}          & \num[group-separator = {,}]{285.5}   & \num[group-separator = {,}]{533.44}     & \num[group-separator = {,}]{4047} \\
+ Num. of Stars         & \num[group-separator = {,}]{23672}      & \num[group-separator = {,}]{34990}   & \num[group-separator = {,}]{46919.51}   & \num[group-separator = {,}]{310935} \\
  
     \bottomrule
  \end{tabular}
@@ -172,16 +174,18 @@ Implicit Predicate & 100\% & 19.89 \\%&  intensively used \\
 \end{table}
 
 
-Considering all JavaScript projects in our dataset, we found a total of \num{364873} atom candidates, though four atoms are responsible
-for 92.97\% of this total: Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces. The first two, based on the results of Section~\ref{sec:repeated} and Section~\ref{sec:latin}, can be considered atoms of confusion. The remaining atom
-candidates comprise \num{25621} occurrences combined, 7.03\% of the total number of occurrences.
+Considering all JavaScript projects in our dataset, we found a total of \num[group-separator = {,}]{364873} atom candidates, though four atoms are responsible
+for 92.97\% of this total: Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces. 
+%The first two, based on the results of Section~\ref{sec:repeated} and Section~\ref{sec:latin}, can be considered atoms of confusion. 
+The remaining atom
+candidates comprise \num[group-separator = {,}]{25621} occurrences combined, 7.03\% of the total number of occurrences.
 The Comma Operator and Arithmetic as Logic atoms are the ones that arise less
 frequently (0.001\% in total with 232 and 165 occurrences, respectively). 
 
 % Regarding frequency, we proceeded with a classification of \emph{atom occurrence}
 % based on thresholds used in a previous
 % study~\cite{DBLP:journals/ese/MedeirosLAAKRG19}. 
-% Atoms that occur 1000 times are classified as \textit{rarely used} while atoms with more than \num{10000} occurrences are classified as \textit{highly used}; \textit{commonly used} atoms occur in between.
+% Atoms that occur 1000 times are classified as \textit{rarely used} while atoms with more than \num[group-separator = {,}]{10000} occurrences are classified as \textit{highly used}; \textit{commonly used} atoms occur in between.
 We calculate the frequency of each atom per KLOC.
 The four atoms mentioned in the previous paragraph,
 Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces, occur frequently in the analyzed projects. All of them have more than 5 occurrences per KLOC on average. In particular, two atom candidates occur very frequently, Implicit Predicate (19.89 occurrences per KLOC) and Conditional Operator (10.16 occurrences per KLOC). On the other hand, Arithmetic as Logic and Comma Operator occur less than once for every 50 KLOC. 
@@ -189,7 +193,14 @@ Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Brac
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
-The results of our experiments and interviews suggest that Conditional Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to the Latin-square study). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, refactoring existing systems to avoid Post-Increment and Automatic Semicolon Insertion might improve the readability of large amounts of code in JavaScript projects. 
+
+
+
+%%%%%%%%%%%%%%%%%%%%%% MAYBE the following can go to a discussion section. 
+%%%%%%%%%%%%%%%%%%%%%% 
+%The first two, based on the results of Section~\ref{sec:repeated} and Section~\ref{sec:latin}, can be considered atoms of confusion. 
+
+%The results of our experiments and interviews suggest that Conditional Operator does not contribute significantly as a source of misunderstanding (increasing the number of wrong answers in 9\% of the cases, according to the Latin-square study). Nonetheless, the Post-Increment Expression and Automatic Semicolon Insertion atoms are listed in the top four sources of misunderstanding  (Table~\ref{tab:difference-correctness}), and also frequently appear in open source systems. As such, refactoring existing systems to avoid Post-Increment and Automatic Semicolon Insertion might improve the readability of large amounts of code in JavaScript projects. 
 
 
 
