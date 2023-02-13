@@ -1,13 +1,13 @@
 # Fdb version 3
-["bibtex main"] 1673480911 "main.aux" "main.bbl" "main" 1673481222
+["bibtex main"] 1673480911 "main.aux" "main.bbl" "main" 1676321297
   "/usr/local/texlive/2021/texmf-dist/bibtex/bst/elsarticle/elsarticle-num-names.bst" 1606256092 28896 7a30bf729a4503bf3d6be1e1e9480509 ""
-  "main.aux" 1673481181 17062 5d90acacbd2ae4cbbe26536be1d45e52 "pdflatex"
+  "main.aux" 1676321282 17062 5d90acacbd2ae4cbbe26536be1d45e52 "pdflatex"
   "reference.bib" 1667239755 18836 2d40f0a0948f866e9dbd0f867ae720de ""
   (generated)
   "main.bbl"
   "main.blg"
-["pdflatex"] 1673481179 "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.tex" "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.pdf" "main" 1673481222
-  "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.aux" 1673481181 17062 5d90acacbd2ae4cbbe26536be1d45e52 ""
+["pdflatex"] 1676321281 "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.tex" "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.pdf" "main" 1676321297
+  "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.aux" 1676321282 17062 5d90acacbd2ae4cbbe26536be1d45e52 ""
   "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.tex" 1673480471 6359 abe396150d3de5e03bc086711419bd17 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/map/fontname/texfonts.map" 1577235249 3524 cb3e574dea2d1052e39280babc910dc8 ""
   "/usr/local/texlive/2021/texmf-dist/fonts/tfm/adobe/symbol/psyr.tfm" 1136768653 1408 5937f58aa508ea2cea4901c07d10f5fe ""
@@ -247,20 +247,20 @@
   "images/latin-square.pdf" 1632775044 31581 7047a725fa701d08e8e092525ecb0305 ""
   "images/wrong-answers-plot-1.pdf" 1635193925 5278 3912cf9d8f87ac692a1b1215eb33cda9 ""
   "introduction.tex" 1673463627 27280 b8fd82a8d374ad10d9c6cf229f2fcc09 ""
-  "main.aux" 1673481181 17062 5d90acacbd2ae4cbbe26536be1d45e52 "pdflatex"
+  "main.aux" 1676321282 17062 5d90acacbd2ae4cbbe26536be1d45e52 "pdflatex"
   "main.bbl" 1673480911 16076 461e3f8d108e3f9433b7568115784b7b "bibtex main"
-  "main.spl" 1673481179 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
+  "main.spl" 1676321281 0 d41d8cd98f00b204e9800998ecf8427e "pdflatex"
   "main.tex" 1673480471 6359 abe396150d3de5e03bc086711419bd17 ""
   "methodology.tex" 1673463856 3174 a13ea70f6a9cf4f379d6fb22855e0bfc ""
-  "s01.tex" 1673481178 20626 903291f56ca9dd928481a3191fa0fed0 ""
-  "s02.tex" 1673480453 25192 577b599bde0a9ecda80494cc8c2b8789 ""
+  "s01.tex" 1676321280 20626 c90c54a3c451588a02fdb84929d294fc ""
+  "s02.tex" 1676321280 25201 410918b27389bcda3db3cd8e9d87790f ""
   "s03.tex" 1671620807 17741 f9d209e68abac78bd89aad6797ccb881 ""
   "s04.tex" 1673480907 12969 00cc76d370a831a33ea6ff7732196ee3 ""
   "threats.tex" 1671620807 7957 bb45c93c8f36f1f81e4098cd8c1f859b ""
   (generated)
-  "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.log"
-  "main.pdf"
   "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.pdf"
-  "main.log"
-  "main.aux"
+  "/Users/fernando/Meu Drive/ac/papers/jss_2022_atoms/icpc2021/main.log"
   "main.spl"
+  "main.pdf"
+  "main.aux"
+  "main.log"
