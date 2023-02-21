@@ -14,23 +14,130 @@ Our interviews and the study of Langhout and Aniche~\cite{Langhout:2021:ACJ} hav
 
 Considering the accumulated evidence for the aforementioned atoms, not only in terms of statistical significance but also effect sizes, it is reasonable to suggest that coding style guides avoid them if they aim to cater to a wide range of developer experience levels. These guides usually exist in contexts where multiple developers need to maintain the same codebase and they aim to promote uniformity\footnote{https://google.github.io/styleguide/} and readability\footnote{https://github.com/airbnb/javascript}. Although personal preference and development experience have an impact on individual developers' ability to understand these code patterns, this is arguably not the audience that coding style guides should target. 
 
-In the repeated measures study, we identified one JavaScript-specific atom, Object Destructuring. In the Latin square study, Automatic Semicolon Insertion was identified as another JavaScript-specific atom. For both cases, p-values were much lower than the threshold and effect sizes were high. However, in the repeated measures study obfuscated versions of Automatic Semicolon Insertion were not significantly different from their clean counterparts. Our interviewees favored the use of semicolon over Automatic Semicolon Insertion. Finally, as discussed in Section~\ref{sec:repeated:correct}, Array Destructuring exhibited a large effect size, in spite of the non-statistically significant difference (after correction). As discussed elsewhere~\cite{Ellis:2010:EGE}, this is a scenario that hints at practical relevance, especially considering the very low p-value ($< 0.003$). Further studies investigating these code patterns, potentially using different response variables~\cite{Oliveira:2020:ECR,Feitelson:2021:CPC}, are left for future work. 
+In the repeated measures study, we identified one JavaScript-specific atom, \textbf{Object Destructuring}. In the Latin square study, \textbf{Automatic Semicolon Insertion} was identified as another JavaScript-specific atom. For both cases, p-values were much lower than the threshold and effect sizes were high. However, in the repeated measures study obfuscated versions of Automatic Semicolon Insertion were not significantly different from their clean counterparts. Our interviewees favored the use of semicolon over Automatic Semicolon Insertion. Finally, as discussed in Section~\ref{sec:repeated:correct}, \textbf{Array Destructuring} exhibited a large effect size, in spite of the non-statistically significant difference (after correction). As discussed elsewhere~\cite{Ellis:2010:EGE}, this is a scenario that hints at practical relevance, especially considering the very low p-value ($< 0.003$). Further studies investigating these code patterns, potentially using different response variables~\cite{Oliveira:2020:ECR,Feitelson:2021:CPC}, are left for future work. 
 
-Some code patterns that have been identified as atoms in previous work were not confirmed in our experiments, at least from a correctness perspective. Comparing the results of the Latin square study to previous research, two atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed for \clang and \cpplang do not lead to a statistically significant impact on correctness in our study, Logic as Control Flow, and Conditional Operator. Conditional Operator was the only atom candidate in our interviews whose obfuscated version was considered less confusing than the corresponding clean version. 
+Some code patterns that have been identified as atoms in previous work were not confirmed in our experiments, at least from a correctness perspective. Comparing the results of the Latin square study to previous research, two atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed for \clang and \cpplang do not lead to a statistically significant impact on correctness in our study, \textbf{Logic as Control Flow}, and \textbf{Conditional Operator}. \textbf{Conditional Operator} was the only atom candidate in our interviews whose obfuscated version was considered less confusing than the corresponding clean version. 
 
-Logic as Control Flow is a more interesting case. Considering the correctness perspective, none of our experiments has identified Logic as Control Flow as an atom of confusion. However, in the Latin square study there was a significant difference in the time required to make a correct prediction in favor of the clean version of this atom candidate, with a medium effect size. Furthermore, both Langhout and Aniche~\cite{Langhout:2021:ACJ} and Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} have identified it as an atom. Two other atoms have exhibited a statistically significant difference in time, in favor of their obfuscated versions (with a small effect size). One of them, Pre-Increment, has been confirmed as an atom of confusion in multiple experiments, i.e., participants are less confused by the clean versions. These conflicting results reinforce the importance of conducting experiments that consider multiple response variables~\cite{Oliveira:2020:ECR}. In addition, it is clear that factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}.
+\textbf{Logic as Control Flow} is a more interesting case. Considering the correctness perspective, none of our experiments has identified Logic as Control Flow as an atom of confusion. However, in the Latin square study there was a significant difference in the time required to make a correct prediction in favor of the clean version of this atom candidate, with a medium effect size. Furthermore, both Langhout and Aniche~\cite{Langhout:2021:ACJ} and Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} have identified it as an atom. Two other atoms have exhibited a statistically significant difference in time, in favor of their obfuscated versions (with a small effect size). One of them, \textbf{Pre-Increment}, has been confirmed as an atom of confusion in multiple experiments, i.e., participants are less confused by the clean versions. These conflicting results reinforce the importance of conducting experiments that consider multiple response variables~\cite{Oliveira:2020:ECR}. In addition, it is clear that factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}. \revised{Table~\ref{tab:summary-of-findings} summarizes the correctness assessment results in our two experiments (columns Exp01 and Exp02) and the experiments of
+Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and Langhout and Aniche~\cite{Langhout:2021:ACJ}.}
+
+\begin{table}[htb]
+  \caption{Summary of the findings accross the different studies. Here we show 
+    only the atom candidates that have been explored in at least one
+    of our experiments. A {\bf True} value means that the experiment
+    confirms the code pattern as an atom candidate ({\bf False} otherwise).}
+  \label{tab:summary-of-findings}
+\begin{scriptsize}
+\begin{tabular}{lcccc}\toprule 
+Atom Candidate	                 & Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} & Langhout and Aniche~\cite{Langhout:2021:ACJ}  & Exp01     &  Exp02   \\ \midrule
+
+Change of Literal Encoding       &   TRUE   &   TRUE   &   TRUE    &   -      \\
+Assignment as Value              &   TRUE   &   -      &   TRUE    &   TRUE   \\
+Logic as Control Flow            &   TRUE   &   TRUE   &   FALSE   &   FALSE  \\
+Post-Increment                   &   TRUE   &   TRUE   &   FALSE   &   TRUE   \\
+Type Conversion                  &   TRUE   &   TRUE   &   TRUE    &   -      \\
+Conditional Operator             &   TRUE   &   FALSE  &   FALSE   &   FALSE  \\
+Infix Operator Precedence        &   TRUE   &   FALSE  &   FALSE   &   -      \\
+Comma Operator                   &   TRUE   &   -      &   TRUE    &   TRUE   \\
+Pre-Increment                    &   TRUE   &   TRUE   &   TRUE    &   FALSE  \\
+Implicit Predicate               &   TRUE   &   -      &   FALSE   &   TRUE   \\
+Repurposed Variable              &   TRUE   &   FALSE  &   FALSE   &   -      \\ 
+Omitted Curly Braces             &   TRUE   &   TRUE   &   TRUE    &   FALSE  \\
+Dead Unreachable Repeated        &   FALSE  &   FALSE  &   FALSE   &   -      \\
+Arithmetic as Logic              &   FALSE  &   FALSE  &   TRUE    &   FALSE  \\
+Object Destructuring             &   -      &   -      &   TRUE    &   -      \\
+Lack of Indentation no Braces    &   -      &   TRUE   &   TRUE    &   -      \\
+Array Destructuring              &   -      &   -      &   FALSE   &   -      \\
+Array Spread                     &   -      &   -      &   FALSE   &   -      \\
+Object Spread                    &   -      &   -      &   FALSE   &   -      \\
+Property Access                  &   -      &   -      &   FALSE   &   -      \\
+Arrow Function                   &   -      &   -      &   FALSE   &   -      \\
+Automatic Semicolon Insertion    &   -      &   -      &   FALSE   &   TRUE   \\
+Lack of Indentation with Braces  &   -      &   -      &   FALSE   &   -      \\ \bottomrule
+
+\end{tabular}
+\end{scriptsize}
+\end{table}
+
+
+\revised{It is not feasible to combine the results of the statistical assessments coming from our two experiments---because their design differs significantly.
+  Nonetheless, we can reason about the relationships between correct/wrong answers in both experiments and combine the results of the exploratory data analysis
+  we presented in Sections~\ref{sec:repeated:correct} and~\ref{sec:latin:correct}.
+  Considering the ten atoms explored in our two experiments, for six atom candidates the number of correct answers for the clean
+  version of the code snippets is at least 25\% higher than the number of correct answers for the obfuscated version of the code (see Table~\ref{tab:merge-exploratory-study}).}
+
+
+\begin{table}
+  \caption{Results of the exploratory data analysis for the experiments (Repeated Measurea and Latin Square)}
+  \label{tab:merge-exploratory-study}
+  \begin{scriptsize}
+  \begin{tabular}{lccccc} \toprule
+                                 & \multicolumn{2}{c}{Repeated Measures} & \multicolumn{2}{c}{Latin Square} & \\  
+  Atom Candidate                 &   Obfuscated   &   Clean   &   Obfuscated   &   Clean   &  $\delta$ (\%)    \\ \midrule
+Comma Operator                   &      8         &   29      &       28       &     65    &   161.11  \\
+Automatic Semicolong Insertion   &     15         &   21      &       32       &     68    &    89.36  \\
+Assignment as Value              &     18         &   43      &       56       &     68    &    50.00  \\
+Post-Increment                   &      8         &   17      &       48       &     64    &    44.64  \\
+Omitted Curly Braces             &     35         &   51      &       47       &     58    &    32.92  \\
+Pre-Increment                    &     13         &   28      &       50       &     53    &    28.57  \\
+Implicit Predicate               &     41         &   44      &       58       &     68    &    13.13  \\
+Conditional Operator             &     60         &   62      &       60       &     66    &     6.66  \\
+Logic as Control Flow            &     33         &   28      &       41       &     48    &     2.70  \\ 
+Arithmetic as Logic              &     52         &   47      &       64       &     63    &    -5.17  \\ \bottomrule
+  \end{tabular}
+\end{scriptsize}  
+\end{table}
+
+\revised{Besides that, the results of the two experiments reveal findings that diverge. That is, for six atom candidates (out of ten explored in both experiments),
+  the results of the statistical tests differ. Three main reasons might explain the differences: (a) the code snippets used in the experiments are different,
+  (b) the participants of the experiments are different, and (c) the design of the experiments and thus the analysis procedures are different.
+  As such, additional research would be necessary to understand the impact of these items on the results of empirical assessments of atoms of confusion in general.}
+
+\revised{Our findings here suggest the need for replication studies in this field. Here we left an additional question:
+  What would be the results of the original studies on atoms of confusion if an independent group reproduces the original research? Although the divergences in the two experiments might threaten our study's conclusions, we complement the experiments with a qualitative study based on interviews. We return to this issue of reporting the results
+of different experiments in Section~\ref{{sec:whytwo}}.} 
+  
 
 %----------------------------------------------------------------------
 \subsection{\revised{Addressing the research questions}}
 
-Altogether, we answer our first research question as follows. 
+
+The results of the first study (mining open source
+JavaScript repositories) provides evidence that,
+although atoms of confusion compromise program
+comprehension, they frequently appear in open
+source JavaScript projects. In particular,
+seven, out of 10 atoms considered
+  in our study, appear in more than 50\% of
+the 72 projects we analyzed. Furthermore, at least two of them are used intensively, more than once for every 200 lines of code. In summary, the first study
+allows us to answer the third research
+question.
+
 
 \begin{mh}
-  {\bf Answer to RQ1:} Our experiments using repeated measures and the Latin square designs give evidence that some of the atom candidates in \clang and \cpplang programs that also exist in JavaScript correspond to a source of misunderstanding in
-  JavaScript code. 
+  {\bf Answer to RQ1:} The MSR study reveals that
+  several atom candidates explored in our research
+  appear frequently in practice, and cleaning up the use of 
+  Post-Increment/Decrement and the Automatic Semicolon Insertion
+  might improve the readabiliy of JavaScript code substantially. 
 \end{mh}
 
-The results of the interview study complement the understanding of atoms of confusion because the participants make clear the existence of a trade-off between code comprehension and other quality attributes. For instance, most of the participants prefer the version of the code with the Conditional Operator, even though they agree that its use might contribute to the misunderstanding of JavaScript code, particularly when novices are maintaining the codebase. The participants of the interview study also
+Altogether, the results of our experiments allow us
+to answer the second research question of this
+study as follows. 
+
+
+\begin{mh}
+  {\bf Answer to RQ2:} Our experiments using repeated measures and the Latin square designs give evidence that some of
+  the atom candidates in \clang and \cpplang programs that also exist in JavaScript correspond to a source of misunderstanding in
+  JavaScript code. Two JavaScript-specific code patterns hava been identified as atoms of confusion by at least
+  one of our experiments: Object Descructuring and Automatic Semicolon Insertion. 
+\end{mh}
+
+The results of the interview study complement the understanding of atoms of confusion because the participants make clear the existence of a trade-off between
+code comprehension and other quality attributes. For instance, most of the participants prefer the version of the code with the
+Conditional Operator, even though they agree that its use might contribute to the misunderstanding of JavaScript code,
+particularly when novices are maintaining the codebase. The participants of the interview study also
 mentioned other possible sources of misunderstanding in JavaScript,
 including the use of prototype-based inheritance and nested call-backs (as discussed in Section~\ref{sec:interview-results}). Other JavaScript atom candidates include
 Object Destructuring, Array Spread, Object Spread, and Type Conversion.
@@ -38,7 +145,7 @@ In summary, the results of the second study (interviews) allow
 us to answer the second research question.
 
 \begin{mh}
-  {\bf Answer to RQ2:} The qualitative analysis of the
+  {\bf Answer to RQ3:} The qualitative analysis of the
   interviews supports the results of our experiments---
   JavaScript developers most often agree that atoms of confusion compromise
   source code understanding. 
@@ -51,25 +158,6 @@ us to answer the second research question.
 %%   nested callbacks. 
 %% \end{mh}
 
-The results of the third study (mining open source
-JavaScript repositories) provides evidence that,
-although atoms of confusion compromise program
-comprehension, they frequently appear in open
-source JavaScript projects. In particular,
-seven, out of 10 atoms considered
-  in our study, appear in more than 50\% of
-the 72 projects we analyzed. Furthermore, at least two of them are used intensively, more than once for every 200 lines of code. In summary, the third study
-allows us to answer the third research
-question.
-
-
-\begin{mh}
-  {\bf Answer to RQ3:} The MSR study reveals that
-  several atom candidates explored in our research
-  appear frequently in practice, and cleaning up the use of 
-  Post-Increment/Decrement and the Automatic Semicolon Insertion
-  might improve the readabiliy of JavaScript code substantially. 
-\end{mh}
 
 
 %----------------------------------------------------------------------

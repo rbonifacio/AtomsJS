@@ -1,6 +1,6 @@
 \section{Interview Study}\label{sec:s03}
 
-To complement the two experiments, we perform semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding programs containing atoms of confusion (research question RQ2). We also ask each participant if they know of any other JavaScript-specific construct or idiom they think is likely to make the code hard to understand. % (research question RQ3). 
+To complement the two experiments, we perform semi-structured interviews with professional JavaScript developers, aiming to identify their perceptions regarding programs containing atoms of confusion (research question RQ3). We also ask each participant if they know of any other JavaScript-specific construct or idiom they think is likely to make the code hard to understand. % (research question RQ3). 
 In this section we detail the protocol we followed to conduct the interviews and to analyze the results.
 
 % Nós realizamos entrevistas semi-estruturas com o objetivo de identificar a percepção dos desenvolvedores com experiência em JavaScript sobre algumas questões relacionadas à compreensão de código em JavaScript. Assim, nesta Seção nós descrevemos os procedimentos adotados para selecionar os participantes para as entrevistas e detalhamos como as entrevistas foram conduzidas. Além disso, detalhamos como os resultados das entrevistas foram analisados.
@@ -66,7 +66,7 @@ We first transcribe each interview and then examine the broad distribution of th
 
 \subsection{Results}\label{sec:interview-results}
 
-In this section we present the results of the interviews with the practitioners. We contrast the findings of the experiments of Sections~\ref{sec:repeated} and~\ref{sec:latin} with the opinion of software developers about their preferences regarding the obfuscated or clean versions of the code snippets. For the interview study, we only considered atoms that were analyzed in both the repeated measures (Section~\ref{sec:repeated}) and the latin square (Section~\ref{sec:latin}) studies. 
+In this section we present the results of the interviews with the practitioners. We contrast the findings of the experiments of Sections~\ref{sec:s01} and~\ref{sec:s02} with the opinion of software developers about their preferences regarding the obfuscated or clean versions of the code snippets. For the interview study, we only considered atoms that were analyzed in both the repeated measures (Section~\ref{sec:s01}) and the latin square (Section~\ref{sec:s02}) studies. 
 
 A total of 15 practitioners took part of the interviews.
 We collected information regarding programming
@@ -103,7 +103,7 @@ experience, familiarity with JavaScript, and their opinion about the \na atom ca
 
 \subsubsection{The Participants' perceptions of the atom candidates} 
 
-Supporting the results of Sections~\ref{sec:repeated} and~\ref{sec:latin}, Table~\ref{tab:interview-results1}
+Supporting the results of Sections~\ref{sec:repeated} and~\ref{sec:latin-results}, Table~\ref{tab:interview-results1}
  shows that for eight out of the
 10 scenarios surveyed, the majority of the respondents prefer the version of the
 code without the atom candidate.
@@ -185,7 +185,7 @@ When analyzing the Logic as Control Flow atom candidate, one of the interviewees
   \emph{``This one is interesting, because I have written code that looks like the left-hand side [obfuscated version], and my colleagues complained that it was difficult to understand. Nowadays I prefer to write code using the version on the right-hand side [clean version]''}.
 \end{mq}
 \noindent
-None of the two studies found a significant difference in correctness between clean and obfuscated versions of snippets related to this atom candidate. However, in the latin square study the participants analyzing clean versions of the snippets required significantly less time. 
+None of the two experiments we detailed in Sections~\ref{sec:s01} and~\ref{sec:s02} found a significant difference in correctness between clean and obfuscated versions of snippets related to the Logic as Control Flow atom candidate. However, in the latin square study the participants analyzing clean versions of the snippets required significantly less time to predict a correct answer. 
 
 For two of the atom candidates, the interviewees were unanimous in their preference for the clean version: Comma Operator and Omitted Curly Braces. Not coincidentally, in both experiments there were significant differences in correctness in favor of the clean versions for both atoms. Regarding the first one, we could often notice during the interviews that the \emph{\lhs} (with the atom of confusion) caused significant confusion among the participants. One remark about the \emph{Comma Operator} atom of confusion is listed below:
 

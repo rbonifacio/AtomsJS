@@ -8,7 +8,7 @@ We mine a set of GitHub open source repositories and compute how often these ato
 
 We first collect the most popular GitHub repositories that are primarily written in JavaScript. We measure popularity using the project's stargazers. This metric, available through the GitHub API, represents the number of stars a project received from users of the platform. The same metric has been used in a number of previous studies as a proxy to estimate projects' popularity~\cite{gyimesi2019bugsjs,canedo:esem2020}. We then select the top 100 most popular repositories and remove projects that do not reach the first quartile of the distribution of lines of code (excluding from our dataset small projects). 
 
-After filtering out JavaScript project candidates, we build a curated dataset comprising the top \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num[group-separator = {,}]{1244} forks and at least \num[group-separator = {,}]{23672} stars. We automate all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
+After filtering out JavaScript project candidates, we build a curated dataset comprising a total of \minedprojects repositories. Examples of projects in this dataset include \textsc{React}, \textsc{Node JS}, and \textsc{AngularJS}. Table~\ref{tab:projects-statistics} presents some statistics about the projects we consider in our research. The size of the projects range from small ones (5543 lines of code) to complex systems with more than 1 MLOC. All projects in our dataset have at least \num[group-separator = {,}]{1244} forks and at least \num[group-separator = {,}]{23672} stars. We automate all the steps to filter, clone, and collect the statistics from the repositories using Python scripts.
 
 We mine the occurrence of atom candidates from the repositories in our curated dataset using source code queries that we specified using the Semmle's CodeQL language~\cite{moor:gttse2007}. CodeQL is an object-oriented variant of the Datalog language~\cite{rodriguez2020efficient}, and currently supports researchers and practitioners to query the source code of systems written in different languages (such as \cpplang, Java, and JavaScript). All CodeQL queries deal with a specific atom candidate, and collect the exact location in the source code where the atoms appear. Figure~\ref{lst:codeql} shows an example of a CodeQL query that mine occurrences of the conditional operator.
 
@@ -39,7 +39,8 @@ import javascript
 
 from ConditionalExpr e
 where not e.getTopLevel().isMinified() 
-select e, e.getLocation().getStartLine() as Location,e.getLocation().getFile()
+select e, e.getLocation().getStartLine() as Location,
+       e.getLocation().getFile()
 \end{lstlisting}
 \caption{CodeQL query that searches for Conditional Expressions.}
 \label{lst:codeql}
@@ -62,11 +63,12 @@ select e, e.getLocation().getStartLine() as Location,e.getLocation().getFile()
 In this section we present the results of the  software repository
 mining effort, whose goal is to reveal how prevalent atom candidates are in open source JavaScript projects. 
 We mined \minedprojects open source JavaScript repositories to understand how
-often atoms arise in real software. As in the interview study, this study focused on atoms that were investigated in both
-experiments (detailed in Section~\ref{sec:s01} and Section~\ref{sec:s02}).  
+often atoms arise in real software. This study focused on atoms that were investigated in
+previous research~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and that we explored in the remaining
+studies of this research (detailed in Section~\ref{sec:s01}, Section~\ref{sec:s02}, and Section~\ref{sec:s03}).  
 
 
-Similarly to previous studies~\cite{DBLP:conf/msr/GopsteinZFC18,DBLP:journals/ese/MedeirosLAAKRG19} which investigate
+Similarly to previous studies~\cite{DBLP:journals/ese/MedeirosLAAKRG19,DBLP:conf/msr/GopsteinZFC18} which investigate
 the prevalence of atoms of confusion in open source \clang and \cpplang projects, we found that atoms of confusion
 frequently arise in JavaScript open source systems. For instance, the six most frequently found atoms
 occur in at least 80\% of the projects. Considering the extremes, atom candidates Conditional Operator and
@@ -189,7 +191,7 @@ frequently (0.001\% in total with 232 and 165 occurrences, respectively).
 We calculate the frequency of each atom per KLOC.
 The four atoms mentioned in the previous paragraph,
 Implicit Predicate, Post Increment, Conditional Operator, and Omitted Curly Braces, occur frequently in the analyzed projects. All of them have more than 5 occurrences per KLOC on average. In particular, two atom candidates occur very frequently, Implicit Predicate (19.89 occurrences per KLOC) and Conditional Operator (10.16 occurrences per KLOC). On the other hand, Arithmetic as Logic and Comma Operator occur less than once for every 50 KLOC. 
-
+\revised{Given the frequency of these code patterns in open-source JavaScript programs, it is worth it to investigate their impact on understanding JavaScript code. This is the goal of the studies we present in the following sections.}
 %In our dataset of JavaScript projects, 
 %We found the Ternary Operator atom occurring more frequently than the Omitted Curly Braces, differently from what has been reported in a previous work~\cite{DBLP:conf/msr/GopsteinZFC18}. %
 
