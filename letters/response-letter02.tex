@@ -1,0 +1,141 @@
+\documentclass{letter}
+
+\usepackage{xcolor}
+
+
+\usepackage{hyperref}
+\signature{Rodrigo Bonif\'{a}cio and Fernando Castor}
+\address{Computer Science Department \\ University of Bras\'{i}lia \\ Brazil}
+
+\begin{document}
+\newcommand{\comment}[1]{\emph{#1}}
+
+\begin{letter}{Journal of Systems and Software Editors-in-Chief}
+  
+  \opening{}
+
+
+  We thank the associate editor and reviewers again for their valuable feedback.
+  We hope we have correctly addressed the reviewers' main concerns in this second round.
+  In what follows, we present our actions to handle the reviewers' comments and answer some of the reviewers' questions.
+
+
+{\bf R1 argued that we have purposefully ignored some of his/her comments}
+
+We are really sorry about that. Nonetheless, we have changed
+the whole structure of the paper in the previous revision, in order
+to address one of the main concerns R1 raised in the first round.
+We used to believe that, in doing so, we have also handled
+most of the R1 comments. That was not true, and we hope that we
+have fixed such a mistake in the new version of this paper.
+
+In what follows, we present a detailed response on how we have addressed
+the R1 comments in the current version of the paper.
+
+\begin{itemize}
+  
+\item \comment{What concerns me the most are the paper's contributions. In some ways, the paper is like an extended work from C to JavaScript. There are only a few new atom candidates being researched that are specific to JavaScript. Given this concern, I believe it is necessary to reorder the RQs in order to boost the work's contributions. RQ3 should be the first RQ to uncover the prevalence of atom candidates in real-world js programming. There would be no need for this study to be done if these atom candidates were infrequently observed in the real world. Based on this discovery, the other experiments could be continued.}
+
+
+{\bf Action.} We have re-organized the studies as suggested by the reviewer. The repository mining study now comes first and is presented as a motivating study for the remaining studies, highlighting their relevance. Besides the re-ordering of the sections, changes have been applied to multiple parts of the paper. For instance, we present a better motivation for this work in the first section (Introduction).
+
+
+\item \comment{Pages 1-2: The research's conclusions and findings, which are summarized in the abstract, are too detailed and somewhat tedious. I would suggest that the authors revisit the answers to the three RQs and rewrite the back half of the abstract.}
+
+{\bf Action.} We have cut about 85 words from the abstract, specifically from the part about the contributions. We avoided cutting more because the paper presents the results of four different studies and the abstract to a certain extent reflects that. 
+
+\item \comment{age 6: At the beginning of section 3, I expect a figure introducing the entire workflow. Given that the paper includes several experiments, it would be helpful to use a figure to create a broad overview of the paper.}
+
+{\bf Action.} We discussed this comment for a long time and we agree that a workflow would be necessary to understand the first version of the paper better. Thanks for raising this issue. However, we believe that, in the current organization of the paper, a workflow is not necessary since the order of the studies is flowing better now. 
+
+
+\item \comment{As stated by the authors on this page,  for the second experiment, they only use ten of the atom candidates that were used in the first experiment. Table 2 shows that 14 atom candidates were not studied in the second experiment. Can the authors explain how the atom candidate was chosen for the second experiment?}
+
+{\bf Answer.} In the second experiment, we have tackled the nine atoms that have been validated for the C language in the original paper by Gopstein et al. (2017). In addition, we have studied a single atom that is specific to JavaScript programs, Automated Semicolon Insertion. We explain this in the beginning of Section 6. The reason for analyzing a smaller number of atoms is to attempt to increase the number of participants, since a large number of tasks in a study usually results in subjects not participating or dropping out of the study. This strategy was successful, as can be seen by the considerably larger number of participants in the Latin Square Study, twice as large as that of the repeated measures study. We emphasize that the two experiments were designed and conducted independently, by two independent groups without knowledge about the other. This explains why some atom candidates are in one study and not the other.
+
+\item \comment{It seems that developers need more time to submit the correct answer using the obfuscated versions of two atom candidates than the clean versions. Is there a rationale behind this?}
+
+{\bf Answer.} This could only be observed with statistical significance for three of the atoms, after p-value correction. Effect sizes are also mostly very small and they are not affected by sample sizes, differently from the p-values. This combination of results makes it difficult to formulate hypotheses beyond the obvious: that obfuscated snippets are slightly more confusing than the cleaned ones, with few exceptions. 
+
+
+\item \comment{I do not think it is a good idea to answer all of the RQs on one page. Since the experiments involve so many details, it is difficult for readers to recall all of them when reading these answers. I would suggest treating RQs as separate sections, with the answers to RQ serving as a summary of the section. They could have a look at the following paper: Li, H., Shang, W. \& Hassan, A.E. Which log level should developers choose for a new logging statement?. Empir Software Eng 22, 1684-1716 (2017).}
+
+{\bf Action.} We thank the reviewer for the comment. We have restructured the sections of the paper so that each study is wholly contained in a single section, both the methodology and the results. This addresses a comment from another review but we believe it improves the cohesiveness of the sections. As for the summaries of the responses, we would prefer to keep it in a single place, though, for ease of reference. The goal is to enable readers to have a high-level overview of the results in a single place. 
+
+
+\item \comment{Minor Issues}
+
+\begin{itemize}
+  \item \comment{Page 6: the analyzed code patternson -> the analyzed code patterns on}
+    \begin{itemize}
+     \item Fixed. Thanks.
+    \end{itemize}  
+  \item \comment{Page 13: pilot.Undergraduate -> pilot. Undergraduate} 
+    \begin{itemize}
+      \item Fixed. Thanks. 
+    \end{itemize}
+  \item \comment{Thousand separators are missing in numbers.}
+    \begin{itemize}
+      \item Fixed. Thanks. We gave a pass through the entire paper but only found numbers requiring this correction in Section 4 (the MSR study). Please let us know if we have missed any others. 
+    \end{itemize}
+ \item \comment{I would suggest rounding the decimals to the same number of decimal places.}
+   \begin{itemize}
+   \item We have partially incorporated this suggestion. We focused mainly on the tables, where we believe the uniformity matters more for presentation and interpretation purposes. For p-values, we kept the four decimal places because it is relevant to be precise, as some p-values are very small. For all the other numbers where decimal places matter, we used two. In the text itself, we did not change the number of decimal places because we do not think much is lost. For example, for a p-value of 0.007, we prefer to use 0.007 instead of saying 0.0070 just to preserve uniformity.
+  \end{itemize}   
+ \item \comment{Page 25: Seven atom candidates are mentioned in the text, but the table lists eight candidates.}
+  \begin{itemize}
+    \item Fixed. Thanks.
+  \end{itemize}  
+\end{itemize}
+
+\end{itemize}
+
+
+{\bf R2 recommended our paper for publication}
+
+Thank you for your comments and feedback. Your approval means a lot to our study.
+
+{\bf R3 concerns about the presentation of both experiments (RM/LS)}
+
+{\bf Action.} We included two additional tables in Section 8.1 (Tables 13 and 14) that
+aim to better compare the results of the two experiments. We also
+discuss possible reasons that might explain the different findings at the end of Section 8.1.
+We still believe that reporting the results of two independent experiments is worth. However,
+if the reviewers and editors agree that we should present only the results of one
+experiment, we would accept the recommendation and remove our second experiment
+based on the Latin Square design. 
+
+{\bf R3 concerns about the replication package}
+
+We improved the replication package to address those comments. Thanks so much for the
+recommendations.
+
+{\bf R3 concerns about the code snippets}
+
+\comment{It might be worth mentioning some summary of the following in the paper:}
+
+\begin{itemize}
+ \item \comment{Comma Operator A - Only reporting the sum of the values allows certain types of misunderstanding to go unreported. E.g. what if a subject thinks the second line operates like multiple assignment assigning 1 to V1 and 2 to V2? The output would be 3 just as the correct interpretation.}
+ \item \comment{Ternary Operator A - I would love to see an investigation of the confusingness of === vs ==. I know there's a difference, but I have no idea what it is.}
+ \item \comment{Implicit Predicate A - This snippet contains the modulo operator which is likely an atom of confusion as well as per [Gopstein 2020 - Thinking Aloud \ldots]}
+\item  \comment{Logic Control Flow A - This snippet contains both Pre-Increment and Implicit Predicate atoms as well as Logic Control Flow. This violates the concept of "minimality" in an atom of confusion.}
+\end{itemize}
+
+Many thanks for raising these questions. It is hard to devise code snippets that can avoid
+all different sources of misunderstanding. Regarding the third and fourth bullets above,
+we have updated our threats to the validity section (page 41, paragraph starting with ``We manually devised \ldots'')
+to recognize this issue as a possible threat to the validity of our study. 
+
+{\bf R3 reflections on Section 8.3 (``Why multiple studies'')}
+
+We agree with R3's clever observations and changed several sentences in this section. 
+
+\closing{Yours Faithfully,}
+
+
+\end{letter}
+\end{document}
+
+
+
+

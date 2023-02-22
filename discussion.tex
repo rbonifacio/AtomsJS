@@ -163,7 +163,7 @@ us to answer the second research question.
 %----------------------------------------------------------------------
 \subsection{\revised{Why multiple studies?}}\label{sec:whytwo}
 
-\revised{It is not reasonable to consider something a scientific fact in an area as inexact as Software Engineering based on a single experiment. We present two independently-designed and conducted studies, with diverse code snippets, samples, and experimental designs, to provide stronger evidence. We believe that atom candidates confirmed to be atoms of confusion by both experiments arguably provide more reliable evidence of the potential to cause confusion of these code patterns for a wide range of developers, in diverse scenarios. That is the case for the Comma Operator and Assignment as Value atoms. Considering our work and others', there is little doubt that these are code patterns that lead to confusion. Furthermore, we complement the two experiments with interviews with 15 developers. Generally, in more mature areas of science, conducting multiple independent studies, potentially with different experimental designs, e.g., controlled vs. free-living experiments in the medical sciences~\cite{Weggemans:2001:DCE}, and examining their results in combination is the most reliable way of establishing truth.}
+\revised{It is not reasonable to consider something a scientific fact in an area as inexact as Software Engineering based on a single experiment. We present two independently-designed and conducted studies, with diverse code snippets, samples, and experimental designs, to provide stronger evidence. Due to the independence of the studies, the experiment using the Latin Square design does not cover all atom candidates the Repeated Measures experiment explores. Nonetheless, we believe that atom candidates confirmed to be atoms of confusion by both experiments arguably provide more reliable evidence of the potential to cause confusion of these code patterns for a wide range of developers, in diverse scenarios. That is the case for the Comma Operator and Assignment as Value atoms. Considering our work and others', there is little doubt that these are code patterns that lead to confusion. Furthermore, we complement the two experiments with interviews with 15 developers. Generally, in more mature areas of science, conducting multiple independent studies, potentially with different experimental designs, e.g., controlled vs. free-living experiments in the medical sciences~\cite{Weggemans:2001:DCE}, and examining their results in combination is the most reliable way of establishing truth.}
 
 % \castor{For the pros and cons of each approach, do you prefer lists of items or regular text paragraphs?}
 \revised{The experimental designs we have employed in the two experiments have different trade-offs. The main advantages of having a repeated measures (or within subjects) study are the following: 
@@ -179,22 +179,22 @@ Conversely, the main limitations of a repeated measures study are the following:
 \begin{itemize}
 \item[--] Data is not independent. This precludes the use of some statistical techniques and tests. 
 \item [--] There is a potential learning/practice effect, since going through multiple examples may make the participants able to predict results of subsequent cases. This can be mitigated by separating examples pertaining to the same atom candidate, but not eliminated. 
-\item [--] Fatigue effect, since participants have to examine more code snippets. This was exacerbated in our case, due to the larger number of atom candidates.
+\item [--] Fatigue effect, since participants have to examine more code snippets. This was exacerbated in our case, due to the larger number of atom candidates. Although we could have mitigated this problem by limiting the number of atom candidates shown to the subjects, our decision was to ask the participants to evaluate pairs of code snippets for every atom candidate---and thus collecting a large number of answers.
 \end{itemize}}
 \revised{
 The Latin square study is an example of a between subjects study. In a way, its main advantages are precisely the absence (or a reduction) of the disadvantages of the repeated measures study and its main disadvantages are related to the advantages of a repeated measures study: 
 \begin{itemize}
-\item[+] Data is independent. 
-\item[+] There is no possibility of learning/practice effect and the fatigue effect is reduced since each participant is only exposed to one version of each code snippet. There is no possibility of learning/practice effect because each participant is only exposed to one treatment.  
+\item[+] Although there is some data dependency (since we collect different observations from a given subject),	analyzing the data in the Latin square	design allows us to isolate confounding variables better.
+\item[+] There is no possibility of learning/practice effect and the fatigue effect is reduced since each participant is only exposed to one version of each code snippet. 
 \end{itemize}}
 \revised{
 \noindent
 The main disadvantages of a between subjects study are the following:
 \begin{itemize}
-  \item[-] Effect sizes tend to be lower. 
+  \item[-] Statistical significance tends to be lower. 
   \item[-] Does not account for variance within groups.
 \end{itemize}
-The use of a Latin square mitigates some of the disadvantages intrinsic to a between subjects design. For example, since less work is required from participants, it was possible to obtain more data for the latin square study than we could get for the repeated measures study. This increases its statistical power, making it possible to detect smaller effect sizes.}
+The use of a Latin square mitigates some of the disadvantages intrinsic to within subjects design. For example, since less work is required from participants, it was possible to obtain more data for the latin square study than we could get for the repeated measures study. This increases its statistical power, making it possible to detect smaller effect sizes.}
 
 \revised{
 In addition, to capture aspects that none of these studies can capture, e.g., personal impressions, we also leverage the interview study. Section~\ref{sec:contrast} highlights that some atoms that are perceived as confusing did not cause participants of the experiments to commit mistakes, e.g., Arithmetic as Logic. This combination of three different studies, with different samples and designs provides a more in-depth perspective on the extent to which these code patterns confuse JavaScript developers than we could obtain by having a single study. 
