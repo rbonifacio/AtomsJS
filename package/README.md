@@ -11,8 +11,8 @@ Evolving software is particularly challenging when the code has been poorly writ
 
 #### Repeated Measures Experiment
   * [Atoms](https://docs.google.com/spreadsheets/d/1A7Y605WK1fttCUmG9I-I2aTG9C95PVSjBRa3KNUlYn4/edit?usp=sharing)
-  * Datasets
-  * Analysis
+  * [Dataset](https://github.com/rbonifacio/AtomsJS/blob/main/package/s01/results_JS_replication_study.csv) 
+  * Analysis (https://github.com/rbonifacio/AtomsJS/blob/main/package/s01/analysis.ipynb)
   
 ### Latin Square Experiment
   * [Atoms](https://github.com/rbonifacio/AtomsJS/blob/main/package/s02/atoms.pdf)
