@@ -18,7 +18,7 @@ In the repeated measures study, we identified one JavaScript-specific atom, \tex
 
 Some code patterns that have been identified as atoms in previous work were not confirmed in our experiments, at least from a correctness perspective. Comparing the results of the Latin square study to previous research, two atoms of confusion that Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} confirmed for \clang and \cpplang do not lead to a statistically significant impact on correctness in our study, \textbf{Logic as Control Flow}, and \textbf{Conditional Operator}. \textbf{Conditional Operator} was the only atom candidate in our interviews whose obfuscated version was considered less confusing than the corresponding clean version. 
 
-\textbf{Logic as Control Flow} is a more interesting case. Considering the correctness perspective, none of our experiments has identified Logic as Control Flow as an atom of confusion. However, in the Latin square study there was a significant difference in the time required to make a correct prediction in favor of the clean version of this atom candidate, with a medium effect size. Furthermore, both Langhout and Aniche~\cite{Langhout:2021:ACJ} and Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} have identified it as an atom. Two other atoms have exhibited a statistically significant difference in time, in favor of their obfuscated versions (with a small effect size). One of them, \textbf{Pre-Increment}, has been confirmed as an atom of confusion in multiple experiments, i.e., participants are less confused by the clean versions. These conflicting results reinforce the importance of conducting experiments that consider multiple response variables~\cite{Oliveira:2020:ECR}. In addition, it is clear that factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}. \revised{Table~\ref{tab:summary-of-findings} summarizes the correctness assessment results in our two experiments (columns Exp01 and Exp02) and the experiments of
+\textbf{Logic as Control Flow} is a more interesting case. Considering the correctness perspective, none of our experiments has identified Logic as Control Flow as an atom of confusion. However, in the Latin square study there was a significant difference in the time required to make a correct prediction in favor of the clean version of this atom candidate, with a medium effect size. Furthermore, both Langhout and Aniche~\cite{Langhout:2021:ACJ} and Gopstein and colleagues~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} have identified it as an atom. Two other atoms have exhibited a statistically significant difference in time, in favor of their obfuscated versions (with a small effect size). One of them, \textbf{Pre-Increment}, has been confirmed as an atom of confusion in multiple experiments, i.e., participants are less confused by the clean versions. These conflicting results reinforce the importance of conducting experiments that consider multiple response variables~\cite{Oliveira:2020:ECR}. In addition, it is clear that factors such as the experience of the participants and the selection of code snippets can have considerable impact on the results of studies about code readability~\cite{Feitelson:2021:CPC}. \revised{Table~\ref{tab:summary-of-findings} summarizes the correctness assessment results in our two experiments: Repeated Measures Study (column Exp01) and Latin Squares Study (column Exp02) and the experiments of
 Gopstein et al.~\cite{DBLP:conf/sigsoft/GopsteinIYDZYC17} and Langhout and Aniche~\cite{Langhout:2021:ACJ}.}
 
 \begin{table}[htb]
@@ -68,22 +68,25 @@ Lack of Indentation with Braces  &   -      &   -      &   FALSE   &   -      \\
 
 
 \begin{table}
-  \caption{Results of the exploratory data analysis for the experiments (Repeated Measurea and Latin Square)}
+  \caption{Results of the exploratory data analysis for the experiments (Repeated Measures and Latin Squares design). The Obfuscated and
+    Clean columns show the number of correct answers for the obfuscated and clean versions of the code samples in both experiments. We compute the {\bf total} number of correct answers for the obfuscated
+    version of the code in both experiments (TO) and the {\bf total} number of correct answers for the clean version of the code in
+    both experiments (TC). The $\Delta$ column is given by $\Delta = \frac{TC - TO}{TO}$.}
   \label{tab:merge-exploratory-study}
   \begin{scriptsize}
-  \begin{tabular}{lccccc} \toprule
+  \begin{tabular}{lcccc|ccc} \toprule
                                  & \multicolumn{2}{c}{Repeated Measures} & \multicolumn{2}{c}{Latin Square} & \\  
-  Atom Candidate                 &   Obfuscated   &   Clean   &   Obfuscated   &   Clean   &  $\Delta$ (\%)    \\ \midrule
-Comma Operator                   &      8         &   29      &       28       &     65    &   161.11  \\
-Automatic Semicolong Insertion   &     15         &   21      &       32       &     68    &    89.36  \\
-Assignment as Value              &     18         &   43      &       56       &     68    &    50.00  \\
-Post-Increment                   &      8         &   17      &       48       &     64    &    44.64  \\
-Omitted Curly Braces             &     35         &   51      &       47       &     58    &    32.92  \\
-Pre-Increment                    &     13         &   28      &       50       &     53    &    28.57  \\
-Implicit Predicate               &     41         &   44      &       58       &     68    &    13.13  \\
-Conditional Operator             &     60         &   62      &       60       &     66    &     6.66  \\
-Logic as Control Flow            &     33         &   28      &       41       &     48    &     2.70  \\ 
-Arithmetic as Logic              &     52         &   47      &       64       &     63    &    -5.17  \\ \bottomrule
+  Atom Candidate                 &   Obfuscated   &   Clean   &   Obfuscated   &   Clean   & TO  & TC  & $\Delta$ (\%)    \\ \midrule
+Comma Operator                   &      8         &   29      &       28       &     65    & 36  & 94  & 161.11  \\
+Automatic Semicolong Insertion   &     15         &   21      &       32       &     68    & 47  & 89  & 89.36  \\
+Assignment as Value              &     18         &   43      &       56       &     68    & 74  & 111 & 50.00  \\
+Post-Increment                   &      8         &   17      &       48       &     64    & 56  & 81  & 44.64  \\
+Omitted Curly Braces             &     35         &   51      &       47       &     58    & 82  & 109 & 32.92  \\
+Pre-Increment                    &     13         &   28      &       50       &     53    & 63  & 81  & 28.57  \\
+Implicit Predicate               &     41         &   44      &       58       &     68    & 99  & 112 & 13.13  \\
+Conditional Operator             &     60         &   62      &       60       &     66    & 120 & 128 &  6.66  \\
+Logic as Control Flow            &     33         &   28      &       41       &     48    & 74  & 76  & 2.70  \\ 
+Arithmetic as Logic              &     52         &   47      &       64       &     63    & 116 & 110 & -5.17  \\ \bottomrule
   \end{tabular}
 \end{scriptsize}  
 \end{table}
